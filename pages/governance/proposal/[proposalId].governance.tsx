@@ -168,7 +168,7 @@ export default function ProposalPage({
     <>
       {ipfs && (
         <Meta
-          imageUrl="https://app.aave.com/aaveMetaLogo-min.jpg"
+          imageUrl="https://app.aave.com/wordmark_seamless.svg"
           title={ipfs.title}
           description={ipfs.shortDescription}
         />

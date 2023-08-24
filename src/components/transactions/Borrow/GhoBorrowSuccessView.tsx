@@ -272,7 +272,7 @@ export const GhoBorrowSuccessView = ({ txHash, action, amount, symbol }: Success
                         <CheckIcon />
                       </SvgIcon>
                     ) : (
-                      <Download style={{ fontSize: 16, fill: 'white' }} />
+                      <Download style={{ fontSize: 16, color: 'white' }} />
                     )
                   }
                 >

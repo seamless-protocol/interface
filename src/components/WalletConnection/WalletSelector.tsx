@@ -4,7 +4,6 @@ import { UnsupportedChainIdError } from '@web3-react/core';
 import { NoEthereumProviderError } from '@web3-react/injected-connector';
 import { utils } from 'ethers';
 import { useEffect, useState } from 'react';
-import { ReadOnlyModeTooltip } from 'src/components/infoTooltips/ReadOnlyModeTooltip';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 import { UserRejectedRequestError } from 'src/libs/web3-data-provider/WalletConnectConnector';
 import { WalletType } from 'src/libs/web3-data-provider/WalletOptions';
@@ -12,6 +11,7 @@ import { useRootStore } from 'src/store/root';
 import { getENSProvider } from 'src/utils/marketsAndNetworksConfig';
 import { AUTH } from 'src/utils/mixPanelEvents';
 
+import { ReadOnlyModeTooltip } from '../infoTooltips/ReadOnlyModeTooltip';
 import { Warning } from '../primitives/Warning';
 import { TxModalTitle } from '../transactions/FlowCommons/TxModalTitle';
 
@@ -114,21 +114,6 @@ export const WalletSelector = () => {
   const sm = useMediaQuery(breakpoints.down('sm'));
   const mainnetProvider = getENSProvider();
   const [unsTlds, setUnsTlds] = useState<string[]>([]);
-  const trackEvent = useRootStore((store) => store.trackEvent);
-
-  let blockingError: ErrorType | undefined = undefined;
-  if (error) {
-    if (error instanceof UnsupportedChainIdError) {
-      blockingError = ErrorType.UNSUPORTED_CHAIN;
-    } else if (error instanceof UserRejectedRequestError) {
-      blockingError = ErrorType.USER_REJECTED_REQUEST;
-    } else if (error instanceof NoEthereumProviderError) {
-      blockingError = ErrorType.NO_WALLET_DETECTED;
-    } else {
-      blockingError = ErrorType.UNDETERMINED_ERROR;
-    }
-    // TODO: add other errors
-  }
 
   // Get UNS Tlds. Grabbing this fron an endpoint since Unstoppable adds new TLDs frequently, so this wills tay updated
   useEffect(() => {
@@ -145,6 +130,20 @@ export const WalletSelector = () => {
       console.log('Error fetching UNS TLDs: ', e);
     }
   }, []);
+
+  let blockingError: ErrorType | undefined = undefined;
+  if (error) {
+    if (error instanceof UnsupportedChainIdError) {
+      blockingError = ErrorType.UNSUPORTED_CHAIN;
+    } else if (error instanceof UserRejectedRequestError) {
+      blockingError = ErrorType.USER_REJECTED_REQUEST;
+    } else if (error instanceof NoEthereumProviderError) {
+      blockingError = ErrorType.NO_WALLET_DETECTED;
+    } else {
+      blockingError = ErrorType.UNDETERMINED_ERROR;
+    }
+    // TODO: add other errors
+  }
 
   const handleBlocking = () => {
     switch (blockingError) {
@@ -219,8 +218,6 @@ export const WalletSelector = () => {
         walletName="Coinbase Wallet"
         walletType={WalletType.WALLET_LINK}
       />
-      <WalletRow key="torus_wallet" walletName="Torus" walletType={WalletType.TORUS} />
-      <WalletRow key="frame_wallet" walletName="Frame" walletType={WalletType.FRAME} />
       <Box sx={{ display: 'flex', alignItems: 'center', mb: 1, padding: '10px 0' }}>
         <Typography variant="subheader1" color="text.secondary">
           <Trans>Track wallet balance in read-only mode</Trans>
@@ -257,7 +254,6 @@ export const WalletSelector = () => {
           }}
           size="large"
           fullWidth
-          onClick={() => trackEvent(AUTH.MOCK_WALLET)}
           disabled={
             !utils.isAddress(inputMockWalletAddress) &&
             inputMockWalletAddress.slice(-4) !== '.eth' &&

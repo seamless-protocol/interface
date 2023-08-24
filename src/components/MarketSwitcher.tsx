@@ -12,9 +12,7 @@ import {
   useTheme,
 } from '@mui/material';
 import React, { useState } from 'react';
-import { useRootStore } from 'src/store/root';
 import { BaseNetworkConfig } from 'src/ui-config/networksConfig';
-import { DASHBOARD } from 'src/utils/mixPanelEvents';
 
 import { useProtocolDataContext } from '../hooks/useProtocolDataContext';
 import {
@@ -114,7 +112,6 @@ export const MarketSwitcher = () => {
   const theme = useTheme();
   const upToLG = useMediaQuery(theme.breakpoints.up('lg'));
   const downToXSM = useMediaQuery(theme.breakpoints.down('xsm'));
-  const trackEvent = useRootStore((store) => store.trackEvent);
 
   const isV3MarketsAvailable = availableMarkets
     .map((marketId: CustomMarket) => {
@@ -125,7 +122,6 @@ export const MarketSwitcher = () => {
     .some((item) => !!item);
 
   const handleMarketSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    trackEvent(DASHBOARD.CHANGE_MARKET, { market: e.target.value });
     setCurrentMarket(e.target.value as unknown as CustomMarket);
   };
 
@@ -228,7 +224,6 @@ export const MarketSwitcher = () => {
           </Trans>
         </Typography>
       </Box>
-
       {isV3MarketsAvailable && (
         <Box sx={{ mx: '18px', display: 'flex', justifyContent: 'center' }}>
           <StyledToggleButtonGroup

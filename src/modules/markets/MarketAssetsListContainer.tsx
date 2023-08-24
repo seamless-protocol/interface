@@ -13,26 +13,21 @@ import { useProtocolDataContext } from 'src/hooks/useProtocolDataContext';
 import MarketAssetsList from 'src/modules/markets/MarketAssetsList';
 import { useRootStore } from 'src/store/root';
 import { fetchIconSymbolAndName } from 'src/ui-config/reservePatches';
-import { getGhoReserve, GHO_SUPPORTED_MARKETS, GHO_SYMBOL } from 'src/utils/ghoUtilities';
 
 import { GENERAL } from '../../utils/mixPanelEvents';
-import { GhoBanner } from './Gho/GhoBanner';
 
 export const MarketAssetsListContainer = () => {
   const { reserves, loading } = useAppDataContext();
-  const { currentMarket, currentMarketData, currentNetworkConfig } = useProtocolDataContext();
+  const { currentMarketData, currentNetworkConfig } = useProtocolDataContext();
   const [searchTerm, setSearchTerm] = useState('');
   const { breakpoints } = useTheme();
   const sm = useMediaQuery(breakpoints.down('sm'));
   const trackEvent = useRootStore((store) => store.trackEvent);
 
-  const ghoReserve = getGhoReserve(reserves);
   const filteredData = reserves
     // Filter out any non-active reserves
     .filter((res) => res.isActive)
     // Filter out all GHO, as we deliberately display it on supported markets
-    .filter((res) => res !== ghoReserve)
-    // filter out any that don't meet search term criteria
     .filter((res) => {
       if (!searchTerm) return true;
       const term = searchTerm.toLowerCase().trim();
@@ -59,23 +54,6 @@ export const MarketAssetsListContainer = () => {
 
   const frozenOrPausedReserves = filteredData.filter((r) => r.isFrozen || r.isPaused);
 
-  // Determine if to show GHO market list item
-  const shouldDisplayGho = (marketTitle: string, searchTerm: string): boolean => {
-    if (!GHO_SUPPORTED_MARKETS.includes(marketTitle)) {
-      return false;
-    }
-
-    if (!searchTerm) {
-      return true;
-    }
-
-    const normalizedSearchTerm = searchTerm.toLowerCase().trim();
-    return (
-      normalizedSearchTerm.length <= 3 && GHO_SYMBOL.toLowerCase().includes(normalizedSearchTerm)
-    );
-  };
-  const displayGho: boolean = shouldDisplayGho(currentMarket, searchTerm);
-
   return (
     <ListWrapper
       titleComponent={
@@ -93,12 +71,6 @@ export const MarketAssetsListContainer = () => {
       {showFrozenMarketWarning && (
         <Box mx={6}>
           <MarketWarning marketName={currentMarketData.marketTitle} forum />
-        </Box>
-      )}
-
-      {displayGho && (
-        <Box mb={4}>
-          <GhoBanner reserve={ghoReserve} />
         </Box>
       )}
 
@@ -136,7 +108,7 @@ export const MarketAssetsListContainer = () => {
       <MarketAssetsList reserves={frozenOrPausedReserves} loading={loading} />
 
       {/* Show no search results message if nothing hits in either list */}
-      {!loading && filteredData.length === 0 && !displayGho && (
+      {!loading && filteredData.length === 0 && (
         <NoSearchResults
           searchTerm={searchTerm}
           subtitle={

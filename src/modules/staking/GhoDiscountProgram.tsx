@@ -1,18 +1,16 @@
 import { ChevronRightIcon } from '@heroicons/react/solid';
 import { Trans } from '@lingui/macro';
 import { Box, Button, Typography, useMediaQuery, useTheme } from '@mui/material';
-import { Link, ROUTES } from 'src/components/primitives/Link';
-import { useRootStore } from 'src/store/root';
-import { CustomMarket, marketsData } from 'src/ui-config/marketsConfig';
+import { Link } from 'src/components/primitives/Link';
 
 export const GhoDiscountProgram = () => {
   const { breakpoints } = useTheme();
   const downToXsm = useMediaQuery(breakpoints.down('xsm'));
-  const currentMarket = useRootStore((store) => store.currentMarket);
+  //const currentMarket = useRootStore((store) => store.currentMarket);
 
-  const ghoTokenAddress = marketsData[
-    CustomMarket.proto_mainnet_v3
-  ].addresses.GHO_TOKEN_ADDRESS?.toLowerCase() as string;
+  // const ghoTokenAddress = marketsData[
+  //   CustomMarket.proto_mainnet_v3
+  // ].addresses.GHO_TOKEN_ADDRESS?.toLowerCase() as string;
 
   return (
     <Box
@@ -50,7 +48,6 @@ export const GhoDiscountProgram = () => {
       >
         <Box
           component="img"
-          src="/illustration_token.png"
           sx={{
             position: 'absolute',
             left: -40,
@@ -84,7 +81,7 @@ export const GhoDiscountProgram = () => {
           <Button
             variant="contained"
             component={Link}
-            href={ROUTES.reserveOverview(ghoTokenAddress, currentMarket)}
+            //href={ROUTES.reserveOverview(ghoTokenAddress, currentMarket)}
             size={downToXsm ? 'medium' : 'small'}
             sx={{
               alignItems: 'center',
@@ -96,18 +93,6 @@ export const GhoDiscountProgram = () => {
             <ChevronRightIcon width={downToXsm ? 20 : 12} height={downToXsm ? 20 : 12} />
           </Button>
         </Box>
-        <Box
-          component="img"
-          src="/illustration_friendly_ghost.png"
-          sx={{
-            position: 'absolute',
-            right: [-200, -190],
-            bottom: [-265, -270],
-            overflow: 'hidden',
-            transform: 'scaleY(0.5) scaleX(0.5)',
-          }}
-          alt="gho ghost"
-        />
       </Box>
     </Box>
   );

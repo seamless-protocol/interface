@@ -9,7 +9,7 @@ import { providers } from 'ethers';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 import { AddressBlocked } from 'src/components/AddressBlocked';
 import { Meta } from 'src/components/Meta';
 import { TransactionEventHandler } from 'src/components/TransactionEventHandler';
@@ -31,7 +31,6 @@ import { AppDataProvider } from 'src/hooks/app-data-provider/useAppDataProvider'
 import { ModalContextProvider } from 'src/hooks/useModal';
 import { PermissionProvider } from 'src/hooks/usePermissions';
 import { Web3ContextProvider } from 'src/libs/web3-data-provider/Web3Provider';
-import { useRootStore } from 'src/store/root';
 import { SharedDependenciesProvider } from 'src/ui-config/SharedDependenciesProvider';
 
 import createEmotionCache from '../src/createEmotionCache';
@@ -61,16 +60,6 @@ interface MyAppProps extends AppProps {
 export default function MyApp(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const getLayout = Component.getLayout ?? ((page: ReactNode) => page);
-  const initializeMixpanel = useRootStore((store) => store.initializeMixpanel);
-
-  const MIXPANEL_TOKEN = process.env.NEXT_PUBLIC_MIXPANEL;
-  useEffect(() => {
-    if (MIXPANEL_TOKEN) {
-      initializeMixpanel();
-    } else {
-      console.log('no analytics tracking');
-    }
-  }, [MIXPANEL_TOKEN, initializeMixpanel]);
 
   return (
     <CacheProvider value={emotionCache}>
@@ -80,9 +69,9 @@ export default function MyApp(props: MyAppProps) {
       <Meta
         title={'Open Source Liquidity Protocol'}
         description={
-          'Aave is an Open Source Protocol to create Non-Custodial Liquidity Markets to earn interest on supplying and borrowing assets with a variable or stable interest rate. The protocol is designed for easy integration into your products and services.'
+          'Seamless is an Open Source Protocol to create Non-Custodial Liquidity Markets to earn interest on supplying and borrowing assets with a variable or stable interest rate. The protocol is designed for easy integration into your products and services.'
         }
-        imageUrl="https://app.aave.com/aaveMetaLogo-min.jpg"
+        imageUrl="https://app.aave.com/wordmark_seamless.svg"
       />
       <LanguageProvider>
         <QueryClientProvider client={queryClient}>
