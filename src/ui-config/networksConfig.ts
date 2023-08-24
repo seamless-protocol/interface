@@ -263,6 +263,27 @@ export const networkConfigs: Record<string, BaseNetworkConfig> = {
     },
     // ratesHistoryApiUrl: 'https://aave-api-v2.aave.com/data/rates-history',
   },
+  [84531 as ChainId /*ChainId.base_goerli*/]: {
+    name: 'Base Görli',
+    publicJsonRPCUrl: [
+      'https://base-goerli.gateway.tenderly.co/1SVyxsO1IHL8NHPgMyQmuF',
+      // 'https://goerli.base.org',
+    ],
+    publicJsonRPCWSUrl: 'wss://base-goerli.gateway.tenderly.co/1SVyxsO1IHL8NHPgMyQmuF',
+    baseUniswapAdapter: '0x0',
+    baseAssetSymbol: 'ETH',
+    wrappedBaseAssetSymbol: 'WETH',
+    baseAssetDecimals: 18,
+    explorerLink: 'https://goerli.basescan.org',
+    // usdMarket: true,
+    isTestnet: true,
+    networkLogoPath: '/icons/networks/base.svg',
+    bridge: {
+      icon: '/icons/networks/base.svg',
+      name: 'Base Bridge',
+      url: 'https://goerli.bridge.base.org/',
+    },
+  },
   [ChainId.harmony]: {
     name: 'Harmony',
     privateJsonRPCUrl: 'https://harmony-0.gateway.pokt.network/v1/lb/62b3314e123e6f00397f19ca',

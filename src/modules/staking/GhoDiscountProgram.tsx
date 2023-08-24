@@ -50,7 +50,6 @@ export const GhoDiscountProgram = () => {
       >
         <Box
           component="img"
-          src="/illustration_token.png"
           sx={{
             position: 'absolute',
             left: -40,
@@ -96,18 +95,6 @@ export const GhoDiscountProgram = () => {
             <ChevronRightIcon width={downToXsm ? 20 : 12} height={downToXsm ? 20 : 12} />
           </Button>
         </Box>
-        <Box
-          component="img"
-          src="/illustration_friendly_ghost.png"
-          sx={{
-            position: 'absolute',
-            right: [-200, -190],
-            bottom: [-265, -270],
-            overflow: 'hidden',
-            transform: 'scaleY(0.5) scaleX(0.5)',
-          }}
-          alt="gho ghost"
-        />
       </Box>
     </Box>
   );

@@ -23,6 +23,7 @@ export const configEnvWithTenderly = ({
   wallet?: { address: string; privateKey: string };
   enableTestnet?: boolean;
 }) => {
+  console.log('chainId: ', chainId);
   const tenderly = new TenderlyFork({ forkNetworkID: chainId });
   const walletAddress: string = wallet != null ? wallet.address : DEFAULT_TEST_ACCOUNT.address;
   const privateKey: string = wallet != null ? wallet.privateKey : DEFAULT_TEST_ACCOUNT.privateKey;

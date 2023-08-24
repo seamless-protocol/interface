@@ -10,7 +10,6 @@ import {
   Skeleton,
   Stack,
   Typography,
-  useTheme,
 } from '@mui/material';
 import BigNumber from 'bignumber.js';
 import React, { ReactNode, useState } from 'react';
@@ -463,8 +462,6 @@ interface WalletBalanceProps {
   marketTitle: string;
 }
 const WalletBalance = ({ balance, symbol, marketTitle }: WalletBalanceProps) => {
-  const theme = useTheme();
-
   return (
     <Stack direction="row" gap={3}>
       <Box
@@ -479,7 +476,7 @@ const WalletBalance = ({ balance, symbol, marketTitle }: WalletBalanceProps) => 
           justifyContent: 'center',
         })}
       >
-        <WalletIcon sx={{ stroke: `${theme.palette.text.secondary}` }} />
+        <WalletIcon sx={{ stroke: `black` }} />
       </Box>
       <Box>
         <Typography variant="description" color="text.secondary">

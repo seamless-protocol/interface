@@ -62,6 +62,11 @@
       "version": "v3",
       "dataCy": "marketSelector_proto_arbitrum_goerli_v3"
     },
+    "BaseGoerliV3Market": {
+      "name": "Base",
+      "version": "v3",
+      "dataCy": "marketSelector_proto_base_goerli_v3"
+    },
     "AvalancheFujiV3Market": {
       "name": "Avalanche",
       "version": "v3",
