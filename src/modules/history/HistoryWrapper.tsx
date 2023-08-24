@@ -19,7 +19,7 @@ import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 import { useRootStore } from 'src/store/root';
 import { TRANSACTION_HISTORY } from 'src/utils/mixPanelEvents';
 
-import Logo from '/public/logo_seamless.svg';
+import Logo from '/public/logo-seamless.svg';
 
 import { downloadData, formatTransactionData, groupByDate } from './helpers';
 import { HistoryFilterMenu } from './HistoryFilterMenu';
