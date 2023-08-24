@@ -1,13 +1,13 @@
 {
-  "short_name": "Aave",
-  "name": "Aave",
+  "short_name": "Seamless",
+  "name": "Seamless",
   "description": "Non-custodial liquidity protocol",
-  "iconPath": "aave.svg",
+  "iconPath": "logo_seamless.svg",
   "icons": [
     {
-      "src": "favicon32.png",
+      "src": "logo_seamless.svg",
       "sizes": "32x32",
-      "type": "image/png"
+      "type": "image/svg"
     }
   ],
   "start_url": "./index.html",

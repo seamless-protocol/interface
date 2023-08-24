@@ -1100,6 +1100,10 @@ msgstr "GHO is a native decentralized, collateral-backed digital asset pegged to
 msgid "Get ABP Token"
 msgstr "Get ABP Token"
 
+#: src/ui-config/menu-items/index.tsx
+msgid "Geyser"
+msgstr "Geyser"
+
 #: src/layouts/MobileMenu.tsx
 #: src/layouts/SettingsMenu.tsx
 msgid "Global settings"
@@ -1364,10 +1368,6 @@ msgstr "MAI has been paused due to a community decision. Supply, borrows and rep
 #: src/modules/dashboard/LiquidationRiskParametresModal/components/LTVContent.tsx
 msgid "MAX"
 msgstr "MAX"
-
-#: src/layouts/AppFooter.tsx
-msgid "Manage analytics"
-msgstr "Manage analytics"
 
 #: src/modules/reserve-overview/ReserveTopDetailsWrapper.tsx
 msgid "Market"
@@ -1651,10 +1651,6 @@ msgstr "Please connect your wallet to see your supplies, borrowings, and open po
 #: src/modules/history/HistoryWrapper.tsx
 msgid "Please connect your wallet to view transaction history."
 msgstr "Please connect your wallet to view transaction history."
-
-#: src/components/WalletConnection/WalletSelector.tsx
-msgid "Please enter a valid wallet address."
-msgstr "Please enter a valid wallet address."
 
 #: src/components/transactions/Warnings/ChangeNetworkWarning.tsx
 msgid "Please switch to {networkName}."
@@ -1968,10 +1964,6 @@ msgstr "Selected borrow assets"
 #: src/components/transactions/MigrateV3/MigrateV3ModalContent.tsx
 msgid "Selected supply assets"
 msgstr "Selected supply assets"
-
-#: src/layouts/AppFooter.tsx
-msgid "Send feedback"
-msgstr "Send feedback"
 
 #: src/modules/governance/DelegatedInfoPanel.tsx
 msgid "Set up delegation"
@@ -2553,14 +2545,6 @@ msgstr "Total voting power"
 #: src/components/transactions/ClaimRewards/ClaimRewardsModalContent.tsx
 msgid "Total worth"
 msgstr "Total worth"
-
-#: src/components/WalletConnection/WalletSelector.tsx
-msgid "Track wallet"
-msgstr "Track wallet"
-
-#: src/components/WalletConnection/WalletSelector.tsx
-msgid "Track wallet balance in read-only mode"
-msgstr "Track wallet balance in read-only mode"
 
 #: src/components/transactions/FlowCommons/Error.tsx
 msgid "Transaction failed"
@@ -3195,3 +3179,7 @@ msgstr "{title}"
 #: src/components/CircleIcon.tsx
 msgid "{tooltipText}"
 msgstr "{tooltipText}"
+
+#: src/layouts/AppFooter.tsx
+msgid "~ BASE | Onchain Summer ~"
+msgstr "~ BASE | Onchain Summer ~"

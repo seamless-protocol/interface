@@ -25,6 +25,11 @@ export const navigation: Navigation[] = [
     dataCy: 'menuMarkets',
   },
   {
+    link: ROUTES.geyser,
+    title: t`Geyser`,
+    dataCy: 'menuGeyser',
+  },
+  {
     link: ROUTES.staking,
     title: t`Stake`,
     dataCy: 'menuStake',

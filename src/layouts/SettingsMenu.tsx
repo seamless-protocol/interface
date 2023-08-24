@@ -7,7 +7,6 @@ import { useRootStore } from 'src/store/root';
 import { PROD_ENV } from 'src/utils/marketsAndNetworksConfig';
 import { SETTINGS } from 'src/utils/mixPanelEvents';
 
-import { DarkModeSwitcher } from './components/DarkModeSwitcher';
 import { LanguageListItem, LanguagesList } from './components/LanguageSwitcher';
 import { TestNetModeSwitcher } from './components/TestNetModeSwitcher';
 
@@ -87,7 +86,6 @@ export function SettingsMenu() {
           </Typography>
         </MenuItem>
 
-        <DarkModeSwitcher component={MenuItem} />
         {PROD_ENV && <TestNetModeSwitcher />}
         <LanguageListItem onClick={handleLanguageClick} component={MenuItem} />
       </Menu>

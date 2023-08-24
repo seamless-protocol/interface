@@ -1,5 +1,6 @@
 import { Box, Container } from '@mui/material';
 import { ReactNode, useEffect } from 'react';
+import { useProtocolDataContext } from 'src/hooks/useProtocolDataContext';
 import { MainLayout } from 'src/layouts/MainLayout';
 import { MarketAssetsListContainer } from 'src/modules/markets/MarketAssetsListContainer';
 import { MarketsTopPanel } from 'src/modules/markets/MarketsTopPanel';
@@ -34,6 +35,8 @@ export const marketContainerProps = {
 };
 
 export const MarketContainer = ({ children }: MarketContainerProps) => {
+  const data = useProtocolDataContext();
+  console.log(data);
   return <Container {...marketContainerProps}>{children}</Container>;
 };
 

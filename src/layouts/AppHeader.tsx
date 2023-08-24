@@ -135,8 +135,9 @@ export function AppHeader() {
           }}
           onClick={() => setMobileMenuOpen(false)}
         >
-          <img src={uiConfig.appLogo} alt="An SVG of an eye" height={20} />
+          <img src={uiConfig.appLogo} alt="An SVG of an eye" height={96} />
         </Box>
+
         <Box sx={{ mr: sm ? 1 : 3 }}>
           {ENABLE_TESTNET && (
             <ContentWithTooltip tooltipContent={testnetTooltip} offset={[0, -4]} withoutHover>
@@ -157,7 +158,6 @@ export function AppHeader() {
             </ContentWithTooltip>
           )}
         </Box>
-
         <Box sx={{ display: { xs: 'none', md: 'block' } }}>
           <NavItems />
         </Box>
