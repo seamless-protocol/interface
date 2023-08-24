@@ -130,7 +130,7 @@ export const HistoryWrapper = () => {
           flex: 1,
         }}
       >
-        <Logo style={{ marginBottom: '16px', fill: 'white' }} />
+        <Logo style={{ marginBottom: '16px', color: 'white' }} />
         <Typography variant={downToMD ? 'h4' : 'h3'}>
           <Trans>Transaction history is not currently available for this market</Trans>
         </Typography>

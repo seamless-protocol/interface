@@ -392,6 +392,10 @@ msgstr "Available to borrow"
 msgid "Available to supply"
 msgstr "Available to supply"
 
+#: src/layouts/AppFooter.tsx
+msgid "BASE | Onchain Summer"
+msgstr "BASE | Onchain Summer"
+
 #: pages/404.page.tsx
 msgid "Back to Dashboard"
 msgstr "Back to Dashboard"
@@ -846,6 +850,10 @@ msgstr "Differential"
 msgid "Disable E-Mode"
 msgstr "Disable E-Mode"
 
+#: src/layouts/AppHeader.tsx
+msgid "Disable testnet"
+msgstr "Disable testnet"
+
 #: src/components/transactions/CollateralChange/CollateralChangeActions.tsx
 msgid "Disable {symbol} as collateral"
 msgstr "Disable {symbol} as collateral"
@@ -890,10 +898,6 @@ msgstr "Discount parameters are decided by the Aave community and may be changed
 #: src/modules/reserve-overview/Gho/GhoDiscountCalculator.tsx
 msgid "Discountable amount"
 msgstr "Discountable amount"
-
-#: src/layouts/AppFooter.tsx
-msgid "Docs"
-msgstr "Docs"
 
 #: src/components/transactions/Borrow/GhoBorrowSuccessView.tsx
 msgid "Download"
@@ -1022,10 +1026,6 @@ msgstr "Export data to"
 msgid "FAQ"
 msgstr "FAQ"
 
-#: src/layouts/AppFooter.tsx
-msgid "FAQS"
-msgstr "FAQS"
-
 #: src/modules/governance/proposal/VotersListContainer.tsx
 msgid "Failed to load proposal voters. Please refresh the page."
 msgstr "Failed to load proposal voters. Please refresh the page."
@@ -1095,6 +1095,10 @@ msgstr "GHO is a native decentralized, collateral-backed digital asset pegged to
 #: src/modules/staking/GetABPTokenModal.tsx
 msgid "Get ABP Token"
 msgstr "Get ABP Token"
+
+#: src/ui-config/menu-items/index.tsx
+msgid "Geyser"
+msgstr "Geyser"
 
 #: src/layouts/MobileMenu.tsx
 #: src/layouts/SettingsMenu.tsx
@@ -1360,10 +1364,6 @@ msgstr "MAI has been paused due to a community decision. Supply, borrows and rep
 #: src/modules/dashboard/LiquidationRiskParametresModal/components/LTVContent.tsx
 msgid "MAX"
 msgstr "MAX"
-
-#: src/layouts/AppFooter.tsx
-msgid "Manage analytics"
-msgstr "Manage analytics"
 
 #: src/modules/reserve-overview/ReserveTopDetailsWrapper.tsx
 msgid "Market"
@@ -1648,6 +1648,10 @@ msgstr "Please connect your wallet to see your supplies, borrowings, and open po
 msgid "Please connect your wallet to view transaction history."
 msgstr "Please connect your wallet to view transaction history."
 
+#: src/components/WalletConnection/WalletSelector.tsx
+msgid "Please enter a valid wallet address."
+msgstr "Please enter a valid wallet address."
+
 #: src/components/transactions/Warnings/ChangeNetworkWarning.tsx
 msgid "Please switch to {networkName}."
 msgstr "Please switch to {networkName}."
@@ -1684,10 +1688,6 @@ msgstr "Price impact is the spread between the total value of the entry tokens s
 #: src/components/infoTooltips/PriceImpactTooltip.tsx
 msgid "Price impact {0}%"
 msgstr "Price impact {0}%"
-
-#: src/layouts/AppFooter.tsx
-msgid "Privacy"
-msgstr "Privacy"
 
 #: pages/governance/proposal/[proposalId].governance.tsx
 msgid "Proposal details"
@@ -1960,10 +1960,6 @@ msgstr "Selected borrow assets"
 #: src/components/transactions/MigrateV3/MigrateV3ModalContent.tsx
 msgid "Selected supply assets"
 msgstr "Selected supply assets"
-
-#: src/layouts/AppFooter.tsx
-msgid "Send feedback"
-msgstr "Send feedback"
 
 #: src/modules/governance/DelegatedInfoPanel.tsx
 msgid "Set up delegation"
@@ -2258,10 +2254,6 @@ msgstr "Switching rate"
 msgid "Techpaper"
 msgstr "Techpaper"
 
-#: src/layouts/AppFooter.tsx
-msgid "Terms"
-msgstr "Terms"
-
 #: src/modules/faucet/FaucetAssetsList.tsx
 msgid "Test Assets"
 msgstr "Test Assets"
@@ -2269,6 +2261,10 @@ msgstr "Test Assets"
 #: src/layouts/components/TestNetModeSwitcher.tsx
 msgid "Testnet mode"
 msgstr "Testnet mode"
+
+#: src/layouts/AppHeader.tsx
+msgid "Testnet mode is ON"
+msgstr "Testnet mode is ON"
 
 #: src/components/transactions/GovVote/GovVoteModalContent.tsx
 msgid "Thank you for voting!!"
@@ -2298,6 +2294,10 @@ msgstr "The Stable Rate is not enabled for this currency"
 #: src/ui-config/errorMapping.tsx
 msgid "The address of the pool addresses provider is invalid"
 msgstr "The address of the pool addresses provider is invalid"
+
+#: src/layouts/AppHeader.tsx
+msgid "The app is running in testnet mode. Learn how it works in"
+msgstr "The app is running in testnet mode. Learn how it works in"
 
 #: src/ui-config/errorMapping.tsx
 msgid "The caller of the function is not an AToken"
@@ -2538,6 +2538,14 @@ msgstr "Total voting power"
 msgid "Total worth"
 msgstr "Total worth"
 
+#: src/components/WalletConnection/WalletSelector.tsx
+msgid "Track wallet"
+msgstr "Track wallet"
+
+#: src/components/WalletConnection/WalletSelector.tsx
+msgid "Track wallet balance in read-only mode"
+msgstr "Track wallet balance in read-only mode"
+
 #: src/components/transactions/FlowCommons/Error.tsx
 msgid "Transaction failed"
 msgstr "Transaction failed"
@@ -2686,6 +2694,14 @@ msgstr "Variable interest rate will <0>fluctuate</0> based on the market conditi
 #: src/components/transactions/DebtSwitch/DebtSwitchModalContent.tsx
 msgid "Variable rate"
 msgstr "Variable rate"
+
+#: src/components/MarketSwitcher.tsx
+msgid "Version 2"
+msgstr "Version 2"
+
+#: src/components/MarketSwitcher.tsx
+msgid "Version 3"
+msgstr "Version 3"
 
 #: src/modules/history/TransactionRowItem.tsx
 msgid "View"

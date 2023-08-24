@@ -1,13 +1,17 @@
 import { Trans } from '@lingui/macro';
-import { Box, Button, Link, Typography } from '@mui/material';
+import { Box, Button, InputBase, Link, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { UnsupportedChainIdError } from '@web3-react/core';
 import { NoEthereumProviderError } from '@web3-react/injected-connector';
+import { utils } from 'ethers';
+import { useEffect, useState } from 'react';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 import { UserRejectedRequestError } from 'src/libs/web3-data-provider/WalletConnectConnector';
 import { WalletType } from 'src/libs/web3-data-provider/WalletOptions';
 import { useRootStore } from 'src/store/root';
+import { getENSProvider } from 'src/utils/marketsAndNetworksConfig';
 import { AUTH } from 'src/utils/mixPanelEvents';
 
+import { ReadOnlyModeTooltip } from '../infoTooltips/ReadOnlyModeTooltip';
 import { Warning } from '../primitives/Warning';
 import { TxModalTitle } from '../transactions/FlowCommons/TxModalTitle';
 
@@ -43,6 +47,24 @@ const WalletRow = ({ walletName, walletType }: WalletRowProps) => {
         return (
           <img
             src={`/icons/wallets/coinbase.svg`}
+            width="24px"
+            height="24px"
+            alt={`browser wallet icon`}
+          />
+        );
+      case WalletType.TORUS:
+        return (
+          <img
+            src={`/icons/wallets/torus.svg`}
+            width="24px"
+            height="24px"
+            alt={`browser wallet icon`}
+          />
+        );
+      case WalletType.FRAME:
+        return (
+          <img
+            src={`/icons/wallets/frame.svg`}
             width="24px"
             height="24px"
             alt={`browser wallet icon`}
@@ -85,7 +107,29 @@ export enum ErrorType {
 }
 
 export const WalletSelector = () => {
-  const { error } = useWeb3Context();
+  const { error, connectReadOnlyMode } = useWeb3Context();
+  const [inputMockWalletAddress, setInputMockWalletAddress] = useState('');
+  const [validAddressError, setValidAddressError] = useState<boolean>(false);
+  const { breakpoints } = useTheme();
+  const sm = useMediaQuery(breakpoints.down('sm'));
+  const mainnetProvider = getENSProvider();
+  const [unsTlds, setUnsTlds] = useState<string[]>([]);
+
+  // Get UNS Tlds. Grabbing this fron an endpoint since Unstoppable adds new TLDs frequently, so this wills tay updated
+  useEffect(() => {
+    const unsTlds = async () => {
+      const url = 'https://resolve.unstoppabledomains.com/supported_tlds';
+      const response = await fetch(url);
+      const data = await response.json();
+      setUnsTlds(data['tlds']);
+    };
+
+    try {
+      unsTlds();
+    } catch (e) {
+      console.log('Error fetching UNS TLDs: ', e);
+    }
+  }, []);
 
   let blockingError: ErrorType | undefined = undefined;
   if (error) {
@@ -115,6 +159,46 @@ export const WalletSelector = () => {
     }
   };
 
+  const handleReadAddress = async (inputMockWalletAddress: string): Promise<void> => {
+    if (validAddressError) setValidAddressError(false);
+    if (utils.isAddress(inputMockWalletAddress)) {
+      connectReadOnlyMode(inputMockWalletAddress);
+    } else {
+      // Check if address could be valid ENS before trying to resolve
+      if (inputMockWalletAddress.slice(-4) === '.eth') {
+        // Attempt to resolve ENS name and use resolved address if valid
+        const resolvedAddress = await mainnetProvider.resolveName(inputMockWalletAddress);
+        if (resolvedAddress && utils.isAddress(resolvedAddress)) {
+          connectReadOnlyMode(resolvedAddress);
+        } else {
+          setValidAddressError(true);
+        }
+      } else if (unsTlds.includes(inputMockWalletAddress.split('.').pop() as string)) {
+        // Handle UNS names
+        const url = 'https://resolve.unstoppabledomains.com/domains/' + inputMockWalletAddress;
+        const options = {
+          method: 'GET',
+          headers: { Authorization: 'Bearer 01f60ca8-2dc3-457d-b12e-95ac2a7fb517' },
+        };
+        const response = await fetch(url, options);
+        const data = await response.json();
+        const resolvedAddress = data['meta']['owner'];
+        if (resolvedAddress && utils.isAddress(resolvedAddress)) {
+          connectReadOnlyMode(resolvedAddress);
+        } else {
+          setValidAddressError(true);
+        }
+      } else {
+        setValidAddressError(true);
+      }
+    }
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    handleReadAddress(inputMockWalletAddress);
+  };
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
       <TxModalTitle title="Connect a wallet" />
@@ -134,6 +218,57 @@ export const WalletSelector = () => {
         walletName="Coinbase Wallet"
         walletType={WalletType.WALLET_LINK}
       />
+      <Box sx={{ display: 'flex', alignItems: 'center', mb: 1, padding: '10px 0' }}>
+        <Typography variant="subheader1" color="text.secondary">
+          <Trans>Track wallet balance in read-only mode</Trans>
+        </Typography>
+        <ReadOnlyModeTooltip />
+      </Box>
+      <form onSubmit={handleSubmit}>
+        <InputBase
+          sx={(theme) => ({
+            py: 1,
+            px: 3,
+            border: `1px solid ${theme.palette.divider}`,
+            borderRadius: '6px',
+            mb: 1,
+            overflow: 'show',
+            fontSize: sm ? '16px' : '14px',
+          })}
+          placeholder="Enter ethereum address or username"
+          fullWidth
+          value={inputMockWalletAddress}
+          onChange={(e) => setInputMockWalletAddress(e.target.value)}
+          inputProps={{
+            'aria-label': 'read-only mode address',
+          }}
+        />
+        <Button
+          type="submit"
+          variant="outlined"
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            mb: '8px',
+          }}
+          size="large"
+          fullWidth
+          disabled={
+            !utils.isAddress(inputMockWalletAddress) &&
+            inputMockWalletAddress.slice(-4) !== '.eth' &&
+            !unsTlds.includes(inputMockWalletAddress.split('.').pop() as string)
+          }
+          aria-label="read-only mode address"
+        >
+          <Trans>Track wallet</Trans>
+        </Button>
+      </form>
+      {validAddressError && (
+        <Typography variant="helperText" color="error.main">
+          <Trans>Please enter a valid wallet address.</Trans>
+        </Typography>
+      )}
       <Typography variant="description" sx={{ mt: '22px', mb: '30px', alignSelf: 'center' }}>
         <Trans>
           Need help connecting a wallet?{' '}

@@ -64,8 +64,6 @@ export const SupplyAssetsList = () => {
     localStorage.getItem(localStorageName) === 'true'
   );
 
-  console.log;
-
   const tokensToSupply = reserves
     .filter((reserve: ComputedReserveData) => !(reserve.isFrozen || reserve.isPaused))
     .map((reserve: ComputedReserveData) => {
@@ -180,8 +178,6 @@ export const SupplyAssetsList = () => {
     'assets',
     preSortedReserves
   );
-
-  console.log('reserves', sortedReserves);
 
   const RenderHeader: React.FC = () => {
     return (

@@ -32,7 +32,7 @@ export const ConnectWalletPaper = ({
         ...sx,
       }}
     >
-      <Logo style={{ innerHeight: '48', marginBottom: '16px', fill: 'white' }} />
+      <Logo style={{ innerHeight: '48', marginBottom: '16px', color: 'white' }} />
       <>
         {loading ? (
           <CircularProgress />

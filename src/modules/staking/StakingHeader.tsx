@@ -37,7 +37,7 @@ export const StakingHeader: React.FC<StakingHeaderProps> = ({ tvl, stkEmission, 
               width="32px"
               height="32px"
               alt=""
-              style={{ fill: 'white' }}
+              style={{ color: 'white' }}
             />
             <Typography
               variant={downToXSM ? 'h2' : upToLG ? 'display1' : 'h1'}

@@ -267,7 +267,7 @@ export const networkConfigs: Record<string, BaseNetworkConfig> = {
     name: 'Base Görli',
     publicJsonRPCUrl: [
       'https://base-goerli.gateway.tenderly.co/1SVyxsO1IHL8NHPgMyQmuF',
-      // 'https://goerli.base.org',
+      'https://goerli.base.org',
     ],
     publicJsonRPCWSUrl: 'wss://base-goerli.gateway.tenderly.co/1SVyxsO1IHL8NHPgMyQmuF',
     baseUniswapAdapter: '0x0',
