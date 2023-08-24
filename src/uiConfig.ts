@@ -1,3 +1,3 @@
 export const uiConfig = {
-  appLogo: '/wordmark_seamless.svg',
+  appLogo: '/wordmark-seamless.svg',
 };

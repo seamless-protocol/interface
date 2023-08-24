@@ -135,7 +135,7 @@ export function AppHeader() {
           }}
           onClick={() => setMobileMenuOpen(false)}
         >
-          <img src={uiConfig.appLogo} alt="An SVG of an eye" height={20} />
+          <img src={uiConfig.appLogo} alt="An SVG of an eye" height={96} />
         </Box>
 
         <Box sx={{ mr: sm ? 1 : 3 }}>

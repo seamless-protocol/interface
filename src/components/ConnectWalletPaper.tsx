@@ -2,7 +2,7 @@ import { Trans } from '@lingui/macro';
 import { CircularProgress, Paper, PaperProps, Typography } from '@mui/material';
 import { ReactNode } from 'react';
 
-import Logo from '/public/logo_seamless.svg';
+import Logo from '/public/logo-seamless.svg';
 
 import { ConnectWalletButton } from './WalletConnection/ConnectWalletButton';
 
