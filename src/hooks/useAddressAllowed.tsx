@@ -6,29 +6,51 @@ export interface AddressAllowedResult {
   isAllowed: boolean;
 }
 
-const TWO_MINUTES = 2 * 60 * 1000;
+const ONE_HOUR = 60 * 60 * 1000;
+
+export interface TRMScreeningResponse {
+  address: string;
+  isSanctioned: boolean;
+}
 
 export const useAddressAllowed = (address: string): AddressAllowedResult => {
   const [isAllowed, setIsAllowed] = useState(true);
 
-  const screeningUrl = `${process.env.NEXT_PUBLIC_API_BASEURL}/addresses/status`;
-  const queryParams = `?address=${address}`;
+  const TRM_URL = 'https://api.trmlabs.com/public/v1/sanctions/screening';
 
   const getIsAddressAllowed = async () => {
-    if (screeningUrl && address) {
+    if (TRM_URL && address) {
       try {
-        const response = await fetch(screeningUrl + queryParams);
+        const body = JSON.stringify({
+          addresses: [address],
+        });
+
+        const response = await fetch(TRM_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body,
+        });
+
         if (response.ok) {
-          const data: { addressAllowed: boolean } = await response.json();
-          setIsAllowed(data.addressAllowed);
+          console.log('ok');
+          const data: { isSanctioned: boolean } = await response.json();
+          setIsAllowed(!data.isSanctioned);
+
+          console.log('data', data);
+        } else {
+          console.error('Response not OK:', response.status, await response.text());
         }
-      } catch (e) {}
+      } catch (e) {
+        console.error('Error:', e);
+      }
     } else {
       setIsAllowed(true);
     }
   };
 
-  usePolling(getIsAddressAllowed, TWO_MINUTES, false, [address]);
+  usePolling(getIsAddressAllowed, ONE_HOUR, false, [address]);
 
   return {
     isAllowed,
