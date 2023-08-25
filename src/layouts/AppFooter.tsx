@@ -18,7 +18,7 @@ const StyledLink = styled(Link)<StyledLinkProps>(({ theme }) => ({
 
 const FOOTER_ICONS = [
   {
-    href: 't.me/seamless_protocol',
+    href: 'https://t.me/seamless_protocol',
     icon: <Telegram />,
     title: 'Telegram',
   },
