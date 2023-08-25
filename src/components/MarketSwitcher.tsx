@@ -100,7 +100,7 @@ export const MarketLogo = ({ size, logo, testChainName }: MarketLogoProps) => {
 };
 
 enum SelectedMarketVersion {
-  V2,
+  // V2,
   V3,
 }
 
@@ -167,29 +167,17 @@ export const MarketSwitcher = () => {
                   {getMarketHelpData(market.marketTitle).name} {market.isFork ? 'Fork' : ''}
                   {upToLG && ' Market'}
                 </Typography>
-                {market.v3 ? (
-                  <Box
-                    sx={{
-                      color: '#fff',
-                      px: 2,
-                      borderRadius: '12px',
-                      background: (theme) => theme.palette.gradients.aaveGradient,
-                    }}
-                  >
-                    <Typography variant="subheader2">V3</Typography>
-                  </Box>
-                ) : (
-                  <Box
-                    sx={{
-                      color: '#A5A8B6',
-                      px: 2,
-                      borderRadius: '12px',
-                      backgroundColor: '#383D51',
-                    }}
-                  >
-                    <Typography variant="subheader2">V2</Typography>
-                  </Box>
-                )}
+
+                <Box
+                  sx={{
+                    color: '#fff',
+                    px: 2,
+                    borderRadius: '12px',
+                    background: (theme) => theme.palette.gradients.aaveGradient,
+                  }}
+                >
+                  <Typography variant="subheader2">V3</Typography>
+                </Box>
               </Box>
             </Box>
           );
@@ -220,7 +208,9 @@ export const MarketSwitcher = () => {
       <Box>
         <Typography variant="subheader2" color="text.secondary" sx={{ px: 4, pt: 2 }}>
           <Trans>
-            {ENABLE_TESTNET || STAGING_ENV ? 'Select Aave Testnet Market' : 'Select Aave Market'}
+            {ENABLE_TESTNET || STAGING_ENV
+              ? 'Select Seamless Testnet Market'
+              : 'Select Seamless Market'}
           </Trans>
         </Typography>
       </Box>
@@ -276,35 +266,6 @@ export const MarketSwitcher = () => {
                 <Trans>Version 3</Trans>
               </Typography>
             </StyledToggleButton>
-            <StyledToggleButton
-              value={SelectedMarketVersion.V2}
-              data-cy={`markets_switch_button_v2`}
-              sx={{
-                backgroundColor: theme.palette.mode === 'dark' ? '#EAEBEF' : '#383D51',
-                '&.Mui-selected, &.Mui-selected:hover': {
-                  backgroundColor: theme.palette.mode === 'dark' ? '#292E41' : '#FFFFFF',
-                  boxShadow: '0px 1px 0px rgba(0, 0, 0, 0.05)',
-                },
-                borderRadius: '4px',
-              }}
-            >
-              <Typography
-                variant="buttonM"
-                sx={
-                  selectedMarketVersion === SelectedMarketVersion.V2
-                    ? {
-                        backgroundImage: (theme) => theme.palette.gradients.aaveGradient,
-                        backgroundClip: 'text',
-                        color: 'transparent',
-                      }
-                    : {
-                        color: theme.palette.mode === 'dark' ? '#0F121D' : '#FFFFFF',
-                      }
-                }
-              >
-                <Trans>Version 2</Trans>
-              </Typography>
-            </StyledToggleButton>
           </StyledToggleButtonGroup>
         </Box>
       )}
@@ -319,10 +280,7 @@ export const MarketSwitcher = () => {
             sx={{
               '.MuiListItemIcon-root': { minWidth: 'unset' },
               display:
-                (market.v3 && selectedMarketVersion === SelectedMarketVersion.V2) ||
-                (!market.v3 && selectedMarketVersion === SelectedMarketVersion.V3)
-                  ? 'none'
-                  : 'flex',
+                !market.v3 && selectedMarketVersion === SelectedMarketVersion.V3 ? 'none' : 'flex',
             }}
           >
             <MarketLogo

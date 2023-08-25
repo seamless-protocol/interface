@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/macro';
-import { GitHub, Twitter } from '@mui/icons-material';
+import { GitHub, Telegram, Twitter } from '@mui/icons-material';
 import { Box, styled, SvgIcon, Typography } from '@mui/material';
 import { Link } from 'src/components/primitives/Link';
 
@@ -17,11 +17,11 @@ const StyledLink = styled(Link)<StyledLinkProps>(({ theme }) => ({
 }));
 
 const FOOTER_ICONS = [
-  // {
-  //   href: 'https://lenster.xyz/u/aaveaave',
-  //   icon: <LensLogoIcon />,
-  //   title: 'Aave',
-  // },
+  {
+    href: 't.me/seamless_protocol',
+    icon: <Telegram />,
+    title: 'Telegram',
+  },
   {
     href: 'https://twitter.com/seamlessfi',
     icon: <Twitter />,
@@ -31,11 +31,6 @@ const FOOTER_ICONS = [
   //   href: 'https://discord.com/invite/aave',
   //   icon: <DiscordIcon />,
   //   title: 'Discord',
-  // },
-  // {
-  //   href: 'https://github.com/aave',
-  //   icon: < />,
-  //   title: 'Telegram',
   // },
   {
     href: 'https://github.com/seamless-protocol/',
@@ -57,16 +52,16 @@ export function AppFooter() {
     //   label: <Trans>Privacy</Trans>,
     //   key: 'Privacy',
     // },
-    // {
-    //   href: 'https://docs.aave.com/hub/',
-    //   label: <Trans>Docs</Trans>,
-    //   key: 'Docs',
-    // },
-    // {
-    //   href: 'https://docs.aave.com/faq/',
-    //   label: <Trans>FAQS</Trans>,
-    //   key: 'FAQS',
-    // },
+    {
+      href: 'https://docs.seamlessprotocol.com/overview/introduction-to-seamless-protocol',
+      label: <Trans>Docs</Trans>,
+      key: 'Docs',
+    },
+    {
+      href: 'https://docs.seamlessprotocol.com/overview/faq',
+      label: <Trans>FAQ</Trans>,
+      key: 'FAQ',
+    },
     {
       href: 'https://onchainsummer.xyz/base',
       label: <Trans>BASE | Onchain Summer</Trans>,
