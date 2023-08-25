@@ -100,14 +100,14 @@ export const DashboardEModeButton = ({ userEmodeCategoryId }: DashboardEModeButt
             sx={{
               fontSize: iconButtonSize,
               mr: '4px',
-              color: isEModeDisabled ? 'text.muted' : 'text.primary',
+              color: isEModeDisabled ? '#000' : 'text.primary',
             }}
           >
             {isEModeDisabled ? <LightningBoltIcon /> : <LightningBoltGradient />}
           </SvgIcon>
 
           {isEModeDisabled ? (
-            <Typography variant="buttonS" color="text.secondary">
+            <Typography variant="buttonS" color="#000">
               <EModeLabelMessage />
             </Typography>
           ) : (

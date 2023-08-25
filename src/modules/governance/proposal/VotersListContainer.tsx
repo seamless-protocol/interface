@@ -1,7 +1,6 @@
 import { Trans } from '@lingui/macro';
 import { Box, Button, CircularProgress, Typography, useMediaQuery, useTheme } from '@mui/material';
-import fetch from 'isomorphic-unfetch';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Row } from 'src/components/primitives/Row';
 import { CustomProposalType } from 'src/static-build/proposal';
 import { useRootStore } from 'src/store/root';
@@ -23,7 +22,7 @@ export type GovernanceVoter = {
   support: boolean;
 };
 
-type GovernanceProposalTopVotersResponse = [GovernanceVoter[], GovernanceVoter[]];
+//type GovernanceProposalTopVotersResponse = [GovernanceVoter[], GovernanceVoter[]];
 
 export type VotersData = {
   yaes: GovernanceVoter[];
@@ -31,52 +30,51 @@ export type VotersData = {
   combined: GovernanceVoter[];
 };
 
-const sortByVotingPower = (a: GovernanceVoter, b: GovernanceVoter) => {
-  return a.votingPower < b.votingPower ? 1 : a.votingPower > b.votingPower ? -1 : 0;
-};
+// const sortByVotingPower = (a: GovernanceVoter, b: GovernanceVoter) => {
+//   return a.votingPower < b.votingPower ? 1 : a.votingPower > b.votingPower ? -1 : 0;
+// };
 
 export const VotersListContainer = (props: VotersListProps): JSX.Element => {
   const { proposal } = props;
-  const { id: proposalId, forVotes, againstVotes } = proposal;
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<boolean>(false);
-  const [voters, setVoters] = useState<VotersData>();
+  //const { id: proposalId, forVotes, againstVotes } = proposal;
+  const [loading] = useState(true);
+  const [error] = useState<boolean>(false);
+  const [voters] = useState<VotersData>();
   const [votersModalOpen, setVotersModalOpen] = useState(false);
   const { breakpoints } = useTheme();
   const mdScreen = useMediaQuery(breakpoints.only('md'));
 
-  const votersUrl = `${process.env.NEXT_PUBLIC_API_BASEURL}/data/proposal-votes`;
-  const queryParams = `?proposal=${proposalId}`;
+  //const queryParams = `?proposal=${proposalId}`;
   const trackEvent = useRootStore((store) => store.trackEvent);
 
-  const getVoterInfo = async () => {
-    if (error) setError(false);
+  // const getVoterInfo = async () => {
+  //   if (error) setError(false);
 
-    try {
-      // Get proposal voters data
-      const resp = await fetch(votersUrl + queryParams);
+  //   try {
+  //     // Get proposal voters data
+  //     const resp = await fetch(votersUrl + queryParams);
 
-      if (resp.ok) {
-        const [yaes, nays]: GovernanceProposalTopVotersResponse = await resp.json();
-        const votersData: VotersData = {
-          yaes: yaes.sort(sortByVotingPower),
-          nays: nays.sort(sortByVotingPower),
-          combined: yaes.concat(nays).sort(sortByVotingPower),
-        };
-        setVoters(votersData);
-      } else {
-        setError(true);
-      }
-    } catch (e: unknown) {
-      console.error(e);
-      setError(true);
-    }
-    setLoading(false);
-  };
+  //     if (resp.ok) {
+  //       const [yaes, nays]: GovernanceProposalTopVotersResponse = await resp.json();
+  //       const votersData: VotersData = {
+  //         yaes: yaes.sort(sortByVotingPower),
+  //         nays: nays.sort(sortByVotingPower),
+  //         combined: yaes.concat(nays).sort(sortByVotingPower),
+  //       };
+  //       setVoters(votersData);
+  //     } else {
+  //       setError(true);
+  //     }
+  //   } catch (e: unknown) {
+  //     console.error(e);
+  //     setError(true);
+  //   }
+  //   setLoading(false);
+  // };
 
-  useEffect(() => {
-    getVoterInfo();
-  }, [forVotes, againstVotes]); /* eslint-disable-line react-hooks/exhaustive-deps */
+  // useEffect(() => {
+  //   getVoterInfo();
+  // }, [forVotes, againstVotes]); /* eslint-disable-line react-hooks/exhaustive-deps */
 
   const handleOpenAllVotes = () => {
     trackEvent(AIP.VIEW_ALL_VOTES);

@@ -13,16 +13,14 @@ import { getNormalizedMintAmount } from './utils';
 
 export const CaptchaFaucetModalContent = ({ underlyingAsset }: { underlyingAsset: string }) => {
   const { readOnlyModeAddress } = useWeb3Context();
-  const { account, currentMarket, currentMarketData } = useRootStore();
   const reserves = useRootStore((state) => selectCurrentReserves(state));
 
   const [captchaToken, setCaptchaToken] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading] = useState<boolean>(false);
   const [captchaLoading, setCaptchaLoading] = useState<boolean>(true);
-  const [txHash, setTxHash] = useState<string>('');
-  const [error, setError] = useState<string>('');
+  const [txHash] = useState<string>('');
+  const [error] = useState<string>('');
 
-  const faucetUrl = `${process.env.NEXT_PUBLIC_API_BASEURL}/faucet`;
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY as string;
 
   const poolReserve = reserves.find(
@@ -36,41 +34,41 @@ export const CaptchaFaucetModalContent = ({ underlyingAsset }: { underlyingAsset
     setCaptchaLoading(false);
   };
 
-  const faucet = async () => {
-    try {
-      setTxHash('');
-      setLoading(true);
-      setError('');
-      const response = await fetch(faucetUrl, {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          address: account,
-          captchaToken,
-          market: currentMarket,
-          tokenAddress: poolReserve.underlyingAsset,
-          tokenSymbol: poolReserve.symbol,
-          faucetAddress: currentMarketData.addresses.FAUCET,
-        }),
-      });
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.msg);
-      }
-      setTxHash(data.msg);
-    } catch (e: unknown) {
-      if (e instanceof Error && e.message) {
-        setError(e.message);
-      } else {
-        setError('An error occurred trying to send the transaction');
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const faucet = async () => {
+  //   try {
+  //     setTxHash('');
+  //     setLoading(true);
+  //     setError('');
+  //     const response = await fetch(faucetUrl, {
+  //       method: 'POST',
+  //       headers: {
+  //         Accept: 'application/json',
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({
+  //         address: account,
+  //         captchaToken,
+  //         market: currentMarket,
+  //         tokenAddress: poolReserve.underlyingAsset,
+  //         tokenSymbol: poolReserve.symbol,
+  //         faucetAddress: currentMarketData.addresses.FAUCET,
+  //       }),
+  //     });
+  //     const data = await response.json();
+  //     if (!response.ok) {
+  //       throw new Error(data.msg);
+  //     }
+  //     setTxHash(data.msg);
+  //   } catch (e: unknown) {
+  //     if (e instanceof Error && e.message) {
+  //       setError(e.message);
+  //     } else {
+  //       setError('An error occurred trying to send the transaction');
+  //     }
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   if (txHash) {
     return (
@@ -113,7 +111,9 @@ export const CaptchaFaucetModalContent = ({ underlyingAsset }: { underlyingAsset
         <Button
           variant="contained"
           disabled={loading || !captchaToken || readOnlyModeAddress !== undefined}
-          onClick={faucet}
+          onClick={() => {
+            console.log('faucet');
+          }}
           size="large"
           sx={{ minHeight: '44px' }}
         >
