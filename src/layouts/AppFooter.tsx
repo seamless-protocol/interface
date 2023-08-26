@@ -27,11 +27,6 @@ const FOOTER_ICONS = [
     icon: <Twitter />,
     title: 'Twitter',
   },
-  // {
-  //   href: 'https://discord.com/invite/aave',
-  //   icon: <DiscordIcon />,
-  //   title: 'Discord',
-  // },
   {
     href: 'https://github.com/seamless-protocol/',
     icon: <GitHub />,
@@ -42,16 +37,16 @@ const FOOTER_ICONS = [
 export function AppFooter() {
   // const [setAnalyticsConfigOpen] = useRootStore((store) => [store.setAnalyticsConfigOpen]);
   const FOOTER_LINKS = [
-    // {
-    //   href: 'https://aave.com/term-of-use/',
-    //   label: <Trans>Terms</Trans>,
-    //   key: 'Terms',
-    // },
-    // {
-    //   href: 'https://aave.com/privacy-policy/',
-    //   label: <Trans>Privacy</Trans>,
-    //   key: 'Privacy',
-    // },
+    {
+      href: 'https://seamlessprotocol.medium.com/seamless-protocol-terms-of-use-f9d75a855fb3',
+      label: <Trans>Terms</Trans>,
+      key: 'Terms',
+    },
+    {
+      href: 'https://seamlessprotocol.medium.com/seamless-privacy-policy-2ebfda169143',
+      label: <Trans>Privacy</Trans>,
+      key: 'Privacy',
+    },
     {
       href: 'https://docs.seamlessprotocol.com/overview/introduction-to-seamless-protocol',
       label: <Trans>Docs</Trans>,
@@ -67,11 +62,6 @@ export function AppFooter() {
       label: <Trans>BASE | Onchain Summer</Trans>,
       key: 'Base',
     },
-    // {
-    //   href: 'https://discord.com/invite/7kHKnkDEUf',
-    //   label: <Trans>Send feedback</Trans>,
-    //   key: 'Send feedback',
-    // },
     // {
     //   href: '',
     //   label: <Trans>Manage analytics</Trans>,
