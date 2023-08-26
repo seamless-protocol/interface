@@ -899,6 +899,10 @@ msgstr "Discount parameters are decided by the Aave community and may be changed
 msgid "Discountable amount"
 msgstr "Discountable amount"
 
+#: src/layouts/AppFooter.tsx
+msgid "Docs"
+msgstr "Docs"
+
 #: src/components/transactions/Borrow/GhoBorrowSuccessView.tsx
 msgid "Download"
 msgstr "Download"
@@ -1021,6 +1025,7 @@ msgstr "Expires"
 msgid "Export data to"
 msgstr "Export data to"
 
+#: src/layouts/AppFooter.tsx
 #: src/modules/reserve-overview/Gho/GhoReserveConfiguration.tsx
 #: src/ui-config/menu-items/index.tsx
 msgid "FAQ"
@@ -2694,10 +2699,6 @@ msgstr "Variable interest rate will <0>fluctuate</0> based on the market conditi
 #: src/components/transactions/DebtSwitch/DebtSwitchModalContent.tsx
 msgid "Variable rate"
 msgstr "Variable rate"
-
-#: src/components/MarketSwitcher.tsx
-msgid "Version 2"
-msgstr "Version 2"
 
 #: src/components/MarketSwitcher.tsx
 msgid "Version 3"
