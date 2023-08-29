@@ -21,8 +21,8 @@ export const ListItem = ({ children, minHeight = 71, px = 4, button, ...rest }: 
           borderBottom: '1px solid',
           borderColor: 'divider',
         },
-        ...(button ? { '&:hover': { bgcolor: 'action.hover' } } : {}),
         ...rest.sx,
+        ...(button ? { '&:hover': { bgcolor: 'action.hover', color: `text.hover` } } : {}),
       }}
     >
       {children}

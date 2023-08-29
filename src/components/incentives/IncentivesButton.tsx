@@ -125,6 +125,7 @@ export const IncentivesButton = ({ incentives, symbol, displayBlank }: Incentive
           '&:hover': {
             bgcolor: 'action.hover',
             borderColor: 'action.disabled',
+            color: 'text.hover',
           },
         })}
         onClick={() => {

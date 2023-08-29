@@ -24,6 +24,7 @@ declare module '@mui/material/styles/createPalette' {
 
   interface TypeText {
     muted: string;
+    links: string;
   }
 
   interface TypeBackground {
@@ -32,6 +33,7 @@ declare module '@mui/material/styles/createPalette' {
     surface: string;
     surface2: string;
     header: string;
+    footer: string;
     disabled: string;
   }
 
@@ -174,24 +176,27 @@ export const getDesignTokens = (mode: 'light' | 'dark') => {
         '200': getColor('#ECF8ED', '#0A130B'), // for alert background
       },
       text: {
-        primary: getColor('#FFF', '#FFF'),
-        secondary: getColor('#FFF', '#FFF'),
+        primary: getColor('#000', '#000'),
+        secondary: getColor('#000', '#000'),
         disabled: getColor('#D2D4DC', '#62677B'),
-        muted: getColor('#FFF', '#FFF'),
+        muted: getColor('#000', '#000'),
         highlight: getColor('#383D51', '#C9B3F9'),
+        links: '#FFF',
+        hover: `#FFF`,
       },
       background: {
-        default: getColor('#00F6FF', '#00F6FF'),
-        paper: getColor('#613EFC', '#613EFC'),
+        default: getColor('#F8F0E5', '#F8F0E5'),
+        paper: getColor('#FFF', '#FFF'),
         surface: getColor('#FEFB02', '#FEFB02'),
         surface2: getColor('#F9F9FB', '#383D51'),
-        header: getColor('#0053FE', '#0053FE'),
+        header: getColor('#0C356A', '#0C356A'),
+        footer: getColor('#613EFC', '#613EFC'),
         disabled: getColor('#EAEBEF', '#EBEBEF14'),
       },
       divider: getColor('#EAEBEF', '#EBEBEF14'),
       action: {
         active: getColor('#8E92A3', '#EBEBEF8F'),
-        hover: getColor('#FF6ED7', '#FF6ED7'),
+        hover: getColor('#613EFC', '#613EFC'),
         selected: getColor('#EAEBEF', '#EBEBEF29'),
         disabled: getColor('#BBBECA', '#EBEBEF4D'),
         disabledBackground: getColor('#EAEBEF', '#EBEBEF1F'),
