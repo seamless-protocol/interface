@@ -25,9 +25,9 @@ export const navigation: Navigation[] = [
     dataCy: 'menuMarkets',
   },
   {
-    link: ROUTES.geyser,
-    title: t`Geyser`,
-    dataCy: 'menuGeyser',
+    link: ROUTES.farms,
+    title: t`Farms`,
+    dataCy: 'menuFarms',
   },
   {
     link: ROUTES.staking,
@@ -61,12 +61,12 @@ interface MoreMenuItem extends Navigation {
 
 const moreMenuItems: MoreMenuItem[] = [
   {
-    link: 'https://docs.aave.com/faq/',
+    link: 'https://docs.seamlessprotocol.com/overview/faq',
     title: t`FAQ`,
     icon: <QuestionMarkCircleIcon />,
   },
   {
-    link: 'https://docs.aave.com/portal/',
+    link: 'https://github.com/seamless-protocol/interface',
     title: t`Developers`,
     icon: <BookOpenIcon />,
   },

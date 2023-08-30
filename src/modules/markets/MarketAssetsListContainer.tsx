@@ -98,7 +98,7 @@ export const MarketAssetsListContainer = () => {
                 href="https://governance.aave.com"
                 underline="always"
               >
-                Aave governance forum
+                Community Governance forum
               </Link>{' '}
               for further updates.
             </Trans>

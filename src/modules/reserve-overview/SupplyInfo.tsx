@@ -96,13 +96,7 @@ export const SupplyInfo = ({
                       <Trans>
                         Asset supply is limited to a certain amount to reduce protocol exposure to
                         the asset and to help manage risks involved.
-                      </Trans>{' '}
-                      <Link
-                        href="https://docs.aave.com/developers/whats-new/supply-borrow-caps"
-                        underline="always"
-                      >
-                        <Trans>Learn more</Trans>
-                      </Link>
+                      </Trans>
                     </>
                   </TextWithTooltip>
                 </Box>
@@ -182,10 +176,7 @@ export const SupplyInfo = ({
               <Typography variant="caption">
                 In Isolation mode you cannot supply other assets as collateral for borrowing. Assets
                 used as collateral in Isolation mode can only be borrowed to a specific debt
-                ceiling.{' '}
-                <Link href="https://docs.aave.com/faq/aave-v3-features#isolation-mode">
-                  Learn more
-                </Link>
+                ceiling.
               </Typography>
             </Warning>
           </Box>

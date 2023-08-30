@@ -19,7 +19,6 @@ import { GENERAL } from 'src/utils/mixPanelEvents';
 import { CapType } from '../../../../components/caps/helper';
 import { AvailableTooltip } from '../../../../components/infoTooltips/AvailableTooltip';
 import { ListWrapper } from '../../../../components/lists/ListWrapper';
-import { Link } from '../../../../components/primitives/Link';
 import {
   ComputedReserveData,
   useAppDataContext,
@@ -240,9 +239,6 @@ export const BorrowAssetsList = () => {
                 {user?.isInIsolationMode && (
                   <Warning severity="warning">
                     <Trans>Borrowing power and assets are limited due to Isolation mode. </Trans>
-                    <Link href="https://docs.aave.com/faq/" target="_blank" rel="noopener">
-                      Learn More
-                    </Link>
                   </Warning>
                 )}
                 {user?.isInEmode && (

@@ -2,7 +2,6 @@ import { Trans } from '@lingui/macro';
 import { AlertProps } from '@mui/material';
 import { AssetCapData } from 'src/hooks/useAssetCaps';
 
-import { Link } from '../../primitives/Link';
 import { Warning } from '../../primitives/Warning';
 
 type BorrowCapWarningProps = AlertProps & {
@@ -28,10 +27,7 @@ export const BorrowCapWarning = ({ borrowCap, icon = true, ...rest }: BorrowCapW
 
   return (
     <Warning severity={severity} icon={icon} {...rest}>
-      {renderText()}{' '}
-      <Link href="https://docs.aave.com/developers/whats-new/supply-borrow-caps" underline="always">
-        <Trans>Learn more</Trans>
-      </Link>
+      {renderText()}
     </Warning>
   );
 };

@@ -14,7 +14,11 @@ export const CircleIcon = ({ downToSM, tooltipText, children }: CircleIconProps)
   return (
     <DarkTooltip
       title={
-        <Typography>
+        <Typography
+          sx={(theme) => ({
+            color: `${theme.palette.text.primary}`,
+          })}
+        >
           <Trans>{tooltipText}</Trans>
         </Typography>
       }

@@ -4,10 +4,7 @@ import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { ChainAvailabilityText } from 'src/components/ChainAvailabilityText';
 import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
 import { TopInfoPanel } from 'src/components/TopInfoPanel/TopInfoPanel';
-import { useRootStore } from 'src/store/root';
-import { GENERAL } from 'src/utils/mixPanelEvents';
 
-import { Link } from '../../components/primitives/Link';
 import { TopInfoPanelItem } from '../../components/TopInfoPanel/TopInfoPanelItem';
 
 interface StakingHeaderProps {
@@ -24,7 +21,6 @@ export const StakingHeader: React.FC<StakingHeaderProps> = ({ tvl, stkEmission, 
 
   const valueTypographyVariant = downToSM ? 'main16' : 'main21';
   const symbolsTypographyVariant = downToSM ? 'secondary16' : 'secondary21';
-  const trackEvent = useRootStore((store) => store.trackEvent);
 
   return (
     <TopInfoPanel
@@ -53,18 +49,7 @@ export const StakingHeader: React.FC<StakingHeaderProps> = ({ tvl, stkEmission, 
               more security to the protocol and earn Safety Incentives. In the case of a shortfall
               event, up to 30% of your stake can be slashed to cover the deficit, providing an
               additional layer of protection for the protocol.
-            </Trans>{' '}
-            <Link
-              href="https://docs.aave.com/faq/migration-and-staking"
-              sx={{ textDecoration: 'underline', color: '#8E92A3' }}
-              onClick={() =>
-                trackEvent(GENERAL.EXTERNAL_LINK, {
-                  Link: 'Staking Risks',
-                })
-              }
-            >
-              <Trans>Learn more about risks involved</Trans>
-            </Link>
+            </Trans>
           </Typography>
         </Box>
       }

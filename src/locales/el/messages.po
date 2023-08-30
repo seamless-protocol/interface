@@ -41,7 +41,7 @@ msgid "<0>Ampleforth</0> is a rebasing asset. Visit the <1>documentation</1> to 
 msgstr ""
 
 #: src/components/transactions/Borrow/ParameterChangewarning.tsx
-msgid "<0>Attention:</0> Parameter changes via governance can alter your account health factor and risk of liquidation. Follow the <1>Aave governance forum</1> for updates."
+msgid "<0>Attention:</0> Parameter changes via governance can alter your account health factor and risk of liquidation. Follow the <1>Community Governance forum</1> for updates."
 msgstr ""
 
 #: src/modules/dashboard/lists/SlippageList.tsx
@@ -119,7 +119,7 @@ msgid "AToken supply is not zero"
 msgstr "Η προσφορά AToken δεν είναι μηδενική"
 
 #: src/modules/governance/GovernanceTopPanel.tsx
-msgid "Aave Governance"
+msgid "Community Governance"
 msgstr "Διακυβέρνηση Aave"
 
 #: src/modules/reserve-overview/AddTokenDropdown.tsx
@@ -937,7 +937,7 @@ msgid "E-Mode increases your LTV for a selected category of assets up to<0/>. <1
 msgstr "Το E-Mode αυξάνει το LTV σας για μια επιλεγμένη κατηγορία περιουσιακών στοιχείων έως και <0/>. <1>Μάθετε περισσότερα</1>"
 
 #: src/modules/reserve-overview/ReserveEModePanel.tsx
-msgid "E-Mode increases your LTV for a selected category of assets, meaning that when E-mode is enabled, you will have higher borrowing power over assets of the same E-mode category which are defined by Aave Governance. You can enter E-Mode from your <0>Dashboard</0>. To learn more about E-Mode and applied restrictions in <1>FAQ</1> or <2>Aave V3 Technical Paper</2>."
+msgid "E-Mode increases your LTV for a selected category of assets, meaning that when E-mode is enabled, you will have higher borrowing power over assets of the same E-mode category which are defined by Community Governance. You can enter E-Mode from your <0>Dashboard</0>. To learn more about E-Mode and applied restrictions in <1>FAQ</1> or <2>Aave V3 Technical Paper</2>."
 msgstr "Η λειτουργία E-Mode αυξάνει το LTV σας για μια επιλεγμένη κατηγορία περιουσιακών στοιχείων, πράγμα που σημαίνει ότι όταν είναι ενεργοποιημένη η λειτουργία E-Mode, θα έχετε μεγαλύτερη δανειοληπτική ικανότητα για περιουσιακά στοιχεία της ίδιας κατηγορίας E-mode που έχει οριστεί από την Διακυβέρνηση του Aave. Μπορείτε να εισέλθετε στην κατάσταση E-Mode από τον <0>Πίνακα Ελέγχου</0>. Για να μάθετε περισσότερα σχετικά με το E-Mode και τους εφαρμοζόμενους περιορισμούς στο <1>FAQ</1> ή στο <2>Aave V3 Technical Paper</2>."
 
 #: src/modules/reserve-overview/Gho/GhoInterestRateGraph.tsx
@@ -1854,7 +1854,7 @@ msgid "Reserve factor"
 msgstr ""
 
 #: src/components/infoTooltips/ReserveFactorTooltip.tsx
-msgid "Reserve factor is a percentage of interest which goes to a {0} that is controlled by Aave governance to promote ecosystem growth."
+msgid "Reserve factor is a percentage of interest which goes to a {0} that is controlled by Community Governance to promote ecosystem growth."
 msgstr ""
 
 #: src/modules/reserve-overview/ReserveConfigurationWrapper.tsx
@@ -2138,7 +2138,7 @@ msgid "State"
 msgstr "Κατάσταση"
 
 #: src/components/infoTooltips/FixedAPYTooltip.tsx
-msgid "Static interest rate that is determined by Aave Governance. This rate may be changed over time depending on the need for the GHO supply to contract/expand. <0>Learn more</0>"
+msgid "Static interest rate that is determined by Community Governance. This rate may be changed over time depending on the need for the GHO supply to contract/expand. <0>Learn more</0>"
 msgstr ""
 
 #: src/components/transactions/Supply/SupplyModalContent.tsx
@@ -2394,7 +2394,7 @@ msgid "There was some error. Please try changing the parameters or <0><1>copy th
 msgstr "Υπήρξε κάποιο σφάλμα. Προσπαθήστε να αλλάξετε τις παραμέτρους ή <0><1>αντιγράψτε το σφάλμα</1></0>"
 
 #: src/modules/markets/MarketAssetsListContainer.tsx
-msgid "These assets are temporarily frozen or paused by Aave community decisions, meaning that further supply / borrow, or rate swap of these assets are unavailable. Withdrawals and debt repayments are allowed. Follow the <0>Aave governance forum</0> for further updates."
+msgid "These assets are temporarily frozen or paused by Aave community decisions, meaning that further supply / borrow, or rate swap of these assets are unavailable. Withdrawals and debt repayments are allowed. Follow the <0>Community Governance forum</0> for further updates."
 msgstr ""
 
 #: src/components/transactions/Withdraw/WithdrawModalContent.tsx
@@ -2491,7 +2491,7 @@ msgid "To borrow you need to supply any asset to be used as collateral."
 msgstr "Για να δανειστείτε πρέπει να προσκομίσετε οποιοδήποτε περιουσιακό στοιχείο που θα χρησιμοποιηθεί ως εγγύηση."
 
 #: src/components/infoTooltips/ApprovalTooltip.tsx
-msgid "To continue, you need to grant Aave smart contracts permission to move your funds from your wallet. Depending on the asset and wallet you use, it is done by signing the permission message (gas free), or by submitting an approval transaction (requires gas). <0>Learn more</0>"
+msgid "To continue, you need to grant Seamless smart contracts permission to move your funds from your wallet. Depending on the asset and wallet you use, it is done by signing the permission message (gas free), or by submitting an approval transaction (requires gas). <0>Learn more</0>"
 msgstr ""
 
 #: src/components/transactions/Emode/EmodeModalContent.tsx

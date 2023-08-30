@@ -88,7 +88,7 @@ export function AppHeader() {
       <Typography variant="description">
         <Trans>The app is running in testnet mode. Learn how it works in</Trans>{' '}
         <Link
-          href="https://docs.aave.com/faq/testing-aave"
+          href="https://docs.seamlessprotocol.com/overview/faq"
           style={{ fontSize: '14px', fontWeight: 400, textDecoration: 'underline' }}
         >
           FAQ.

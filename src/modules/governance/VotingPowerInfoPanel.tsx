@@ -3,7 +3,6 @@ import { Box, Paper, Typography } from '@mui/material';
 import { AvatarSize } from 'src/components/Avatar';
 import { CompactMode } from 'src/components/CompactableTypography';
 import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
-import { Link } from 'src/components/primitives/Link';
 import { TextWithTooltip } from 'src/components/TextWithTooltip';
 import { UserDisplay } from 'src/components/UserDisplay';
 import { usePowers } from 'src/hooks/governance/usePowers';
@@ -91,14 +90,6 @@ export function VotingPowerInfoPanel() {
                     To submit a proposal for minor changes to the protocol, you&apos;ll need at
                     least 80.00K power. If you want to change the core code base, you&apos;ll need
                     320k power.
-                    <Link
-                      href="https://docs.aave.com/developers/v/2.0/protocol-governance/governance"
-                      target="_blank"
-                      variant="description"
-                      sx={{ textDecoration: 'underline', ml: 1 }}
-                    >
-                      <Trans>Learn more.</Trans>
-                    </Link>
                   </Trans>
                 </Typography>
               </>

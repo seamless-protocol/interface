@@ -43,7 +43,6 @@ export const GovernanceTopPanel = () => {
   const theme = useTheme();
   const upToLG = useMediaQuery(theme.breakpoints.up('lg'));
   const downToXSM = useMediaQuery(theme.breakpoints.down('xsm'));
-  const trackEvent = useRootStore((store) => store.trackEvent);
 
   return (
     <TopInfoPanel
@@ -62,25 +61,17 @@ export const GovernanceTopPanel = () => {
               variant={downToXSM ? 'h2' : upToLG ? 'display1' : 'h1'}
               sx={{ ml: 2, mr: 3 }}
             >
-              <Trans>Aave Governance</Trans>
+              <Trans>Community Governance</Trans>
             </Typography>
           </Box>
 
           <Typography sx={{ color: '#8E92A3', maxWidth: '824px' }}>
             <Trans>
-              Aave is a fully decentralized, community governed protocol by the AAVE token-holders.
-              AAVE token-holders collectively discuss, propose, and vote on upgrades to the
-              protocol. AAVE token-holders (Ethereum network only) can either vote themselves on new
-              proposals or delagate to an address of choice. To learn more check out the Governance
-            </Trans>{' '}
-            <Link
-              onClick={() => trackEvent(GENERAL.EXTERNAL_LINK, { Link: 'FAQ Docs Governance' })}
-              href="https://docs.aave.com/faq/governance"
-              sx={{ textDecoration: 'underline', color: '#8E92A3' }}
-            >
-              <Trans>documentation</Trans>
-            </Link>
-            .
+              Seamless is a fully decentralized, community governed protocol by the SEAM
+              token-holders. SEAM token-holders collectively discuss, propose, and vote on upgrades
+              to the protocol. SEAM token-holders (Ethereum network only) can either vote themselves
+              on new proposals or delagate to an address of choice.
+            </Trans>
           </Typography>
         </Box>
       }
@@ -94,9 +85,9 @@ export const GovernanceTopPanel = () => {
           maxWidth: 'sm',
         }}
       >
-        <ExternalLink text="SNAPSHOTS" href="https://snapshot.org/#/aave.eth" />
-        <ExternalLink text="FORUM" href="https://governance.aave.com/" />
-        <ExternalLink text="FAQ" href="https://docs.aave.com/faq/governance" />
+        <ExternalLink text="SNAPSHOTS" href="" />
+        <ExternalLink text="FORUM" href="" />
+        <ExternalLink text="FAQ" href="" />
       </Box>
     </TopInfoPanel>
   );

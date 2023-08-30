@@ -41,7 +41,7 @@ msgid "<0>Ampleforth</0> is a rebasing asset. Visit the <1>documentation</1> to 
 msgstr "<0>Ampleforth</0> es un activo con rebase. Visita la <1>documentación</1> para aprender más."
 
 #: src/components/transactions/Borrow/ParameterChangewarning.tsx
-msgid "<0>Attention:</0> Parameter changes via governance can alter your account health factor and risk of liquidation. Follow the <1>Aave governance forum</1> for updates."
+msgid "<0>Attention:</0> Parameter changes via governance can alter your account health factor and risk of liquidation. Follow the <1>Community Governance forum</1> for updates."
 msgstr "<0>Atención:</0> Los cambios de parámetros a través de la gobernanza pueden alterar el factor de salud de tu cuenta y el riesgo de liquidación. Sigue el <1>foro de gobierno de Aave</1> para mantenerte actualizado."
 
 #: src/modules/dashboard/lists/SlippageList.tsx
@@ -119,7 +119,7 @@ msgid "AToken supply is not zero"
 msgstr "El balance de AToken no es cero"
 
 #: src/modules/governance/GovernanceTopPanel.tsx
-msgid "Aave Governance"
+msgid "Community Governance"
 msgstr "Gobierno de Aave"
 
 #: src/modules/reserve-overview/AddTokenDropdown.tsx
@@ -937,7 +937,7 @@ msgid "E-Mode increases your LTV for a selected category of assets up to<0/>. <1
 msgstr "El E-Mode incrementa tu LTV para una categoría seleccionada de activos hasta el <0/>. <1>Aprende más</1>"
 
 #: src/modules/reserve-overview/ReserveEModePanel.tsx
-msgid "E-Mode increases your LTV for a selected category of assets, meaning that when E-mode is enabled, you will have higher borrowing power over assets of the same E-mode category which are defined by Aave Governance. You can enter E-Mode from your <0>Dashboard</0>. To learn more about E-Mode and applied restrictions in <1>FAQ</1> or <2>Aave V3 Technical Paper</2>."
+msgid "E-Mode increases your LTV for a selected category of assets, meaning that when E-mode is enabled, you will have higher borrowing power over assets of the same E-mode category which are defined by Community Governance. You can enter E-Mode from your <0>Dashboard</0>. To learn more about E-Mode and applied restrictions in <1>FAQ</1> or <2>Aave V3 Technical Paper</2>."
 msgstr "El E-Mode aumenta tu LTV para una categoría seleccionada de activos, lo que significa que cuando el E-mode está habilitado, tendrás un mayor poder de préstamo sobre los activos de la misma categoría del E-mode que están definidos por el gobierno de Aave. Puedes entrar al E-Mode desde tu <0>Panel de control</0>. Para apreneder más sobre el E-Mode y las restricciones aplicables, puedes consultar las <1>Preguntas frecuentes</1> o el <2>Documento técnico de Aave V3</2>."
 
 #: src/modules/reserve-overview/Gho/GhoInterestRateGraph.tsx
@@ -1854,7 +1854,7 @@ msgid "Reserve factor"
 msgstr "Factor de reserva"
 
 #: src/components/infoTooltips/ReserveFactorTooltip.tsx
-msgid "Reserve factor is a percentage of interest which goes to a {0} that is controlled by Aave governance to promote ecosystem growth."
+msgid "Reserve factor is a percentage of interest which goes to a {0} that is controlled by Community Governance to promote ecosystem growth."
 msgstr "El factor de reserva es un porcentaje de interés que va a un {0} que es controlado por el gobierno de Aave para promover el crecimiento del ecosistema."
 
 #: src/modules/reserve-overview/ReserveConfigurationWrapper.tsx
@@ -2138,7 +2138,7 @@ msgid "State"
 msgstr "Estado"
 
 #: src/components/infoTooltips/FixedAPYTooltip.tsx
-msgid "Static interest rate that is determined by Aave Governance. This rate may be changed over time depending on the need for the GHO supply to contract/expand. <0>Learn more</0>"
+msgid "Static interest rate that is determined by Community Governance. This rate may be changed over time depending on the need for the GHO supply to contract/expand. <0>Learn more</0>"
 msgstr "Tasa de interés estática determinada por el Gobierno de Aave. Esta tasa puede ser cambiada con el tiempo dependiendo de la necesidad de que el suministro de GHO se reduzca/expanda. <0>Aprende más</0>"
 
 #: src/components/transactions/Supply/SupplyModalContent.tsx
@@ -2393,7 +2393,7 @@ msgid "There was some error. Please try changing the parameters or <0><1>copy th
 msgstr "Hubo un error. Por favor intenta cambiar los parámetros o <0><1>copiar el error</1></0>"
 
 #: src/modules/markets/MarketAssetsListContainer.tsx
-msgid "These assets are temporarily frozen or paused by Aave community decisions, meaning that further supply / borrow, or rate swap of these assets are unavailable. Withdrawals and debt repayments are allowed. Follow the <0>Aave governance forum</0> for further updates."
+msgid "These assets are temporarily frozen or paused by Aave community decisions, meaning that further supply / borrow, or rate swap of these assets are unavailable. Withdrawals and debt repayments are allowed. Follow the <0>Community Governance forum</0> for further updates."
 msgstr "Estos activos están temporalmente congelados o pausados por decisiones de la comunidad de Aave, lo que significa que no se puede suministrar / tomar prestado o intercambiar tasas de estos activos. Se permiten retiros y pagos de deuda. Sigue el <0>foro de gobierno de Aave</0> para más actualizaciones."
 
 #: src/components/transactions/Withdraw/WithdrawModalContent.tsx
@@ -2490,7 +2490,7 @@ msgid "To borrow you need to supply any asset to be used as collateral."
 msgstr "Para tomar prestado, necesitas suministrar cualquier activo para ser utilizado como garantía."
 
 #: src/components/infoTooltips/ApprovalTooltip.tsx
-msgid "To continue, you need to grant Aave smart contracts permission to move your funds from your wallet. Depending on the asset and wallet you use, it is done by signing the permission message (gas free), or by submitting an approval transaction (requires gas). <0>Learn more</0>"
+msgid "To continue, you need to grant Seamless smart contracts permission to move your funds from your wallet. Depending on the asset and wallet you use, it is done by signing the permission message (gas free), or by submitting an approval transaction (requires gas). <0>Learn more</0>"
 msgstr "Para continuar, necesitas otorgar permiso a los contratos inteligentes de Aave para mover tus fondos de tu cartera. Según el activo y la cartera que uses, se hace firmando el mensaje de permiso (sin coste de gas), o enviando una transacción de aprobación (requiere coste de gas). <0>Aprende más</0>"
 
 #: src/components/transactions/Emode/EmodeModalContent.tsx

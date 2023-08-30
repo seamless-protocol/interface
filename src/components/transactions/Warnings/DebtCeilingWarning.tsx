@@ -2,7 +2,6 @@ import { Trans } from '@lingui/macro';
 import { AlertProps } from '@mui/material';
 import { AssetCapData } from 'src/hooks/useAssetCaps';
 
-import { Link } from '../../primitives/Link';
 import { Warning } from '../../primitives/Warning';
 
 type DebtCeilingWarningProps = AlertProps & {
@@ -36,13 +35,7 @@ export const DebtCeilingWarning = ({
 
   return (
     <Warning severity={severity} icon={icon} {...rest}>
-      {renderText()}{' '}
-      <Link
-        href="https://docs.aave.com/faq/aave-v3-features#how-does-isolation-mode-affect-my-borrowing-power"
-        underline="always"
-      >
-        <Trans>Learn more</Trans>
-      </Link>
+      {renderText()}
     </Warning>
   );
 };

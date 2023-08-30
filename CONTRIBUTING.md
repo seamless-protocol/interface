@@ -1,11 +1,11 @@
 # Objective of the Aave Interface
 
-The website-hosted user interface at app.aave.com (the “Interface”) is provided by the Aave Companies, a group of software development companies that build open source, blockchain-based software. The Interface is hosted on the Interplanetary File System (“IPFS”), is open source and provides information to users regarding the (a) the Aave Protocol, a decentralized, non-custodial liquidity protocol on the Ethereum blockchain that allows users to supply or borrow cryptoassets and earn interest on supplied assets (the “Aave Protocol”); (b) the Aave Safety Module, the primary mechanism for securing the Aave Protocol (the “Aave Safety Module”); and (c) Aave Governance, the mechanism through which AAVE token holders collectively discuss, propose, and vote on upgrades to the Aave Protocol (“Aave Governance”).
+The website-hosted user interface at app.aave.com (the “Interface”) is provided by the Aave Companies, a group of software development companies that build open source, blockchain-based software. The Interface is hosted on the Interplanetary File System (“IPFS”), is open source and provides information to users regarding the (a) the Aave Protocol, a decentralized, non-custodial liquidity protocol on the Ethereum blockchain that allows users to supply or borrow cryptoassets and earn interest on supplied assets (the “Aave Protocol”); (b) the Aave Safety Module, the primary mechanism for securing the Aave Protocol (the “Aave Safety Module”); and (c) Community Governance, the mechanism through which AAVE token holders collectively discuss, propose, and vote on upgrades to the Aave Protocol (“Community Governance”).
 
 The Interface serves as an informational gateway, which allows users to:
 - Monitor their positions on the Aave Protocol;
 - Monitor their positions on the Aave Safety Module; and
-- Monitor and coordinate participation in Aave Governance.
+- Monitor and coordinate participation in Community Governance.
 
 Given the nature of decentralized blockchain technology, the Aave Prococol can either be accessed though the Interface, directly through smart contracts, or through third party protocol integrators. The Interface is a public good, along with the hundreds of other, unaffiliated on-ramps into the Aave Protocol.  Our aim, in the interest of decentralization, is transparency and contributions from all community members only enhance the Aave Protocol ecosystem. This document and the below guidelines will constantly evolve – including with input from the community – but will endeavor to provide you with information about navigating the Interface smoothly.
 

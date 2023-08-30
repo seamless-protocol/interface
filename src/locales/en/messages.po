@@ -36,8 +36,8 @@ msgid "<0>Ampleforth</0> is a rebasing asset. Visit the <1>documentation</1> to 
 msgstr "<0>Ampleforth</0> is a rebasing asset. Visit the <1>documentation</1> to learn more."
 
 #: src/components/transactions/Borrow/ParameterChangewarning.tsx
-msgid "<0>Attention:</0> Parameter changes via governance can alter your account health factor and risk of liquidation. Follow the <1>Aave governance forum</1> for updates."
-msgstr "<0>Attention:</0> Parameter changes via governance can alter your account health factor and risk of liquidation. Follow the <1>Aave governance forum</1> for updates."
+msgid "<0>Attention:</0> Parameter changes via governance can alter your account health factor and risk of liquidation. Follow the <1>Community Governance forum</1> for updates."
+msgstr "<0>Attention:</0> Parameter changes via governance can alter your account health factor and risk of liquidation. Follow the <1>Community Governance forum</1> for updates."
 
 #: src/modules/dashboard/lists/SlippageList.tsx
 msgid "<0>Slippage tolerance </0><1>{selectedSlippage}% </1><2>{0}</2>"
@@ -113,10 +113,6 @@ msgstr "APY, variable"
 msgid "AToken supply is not zero"
 msgstr "AToken supply is not zero"
 
-#: src/modules/governance/GovernanceTopPanel.tsx
-msgid "Aave Governance"
-msgstr "Aave Governance"
-
 #: src/modules/reserve-overview/AddTokenDropdown.tsx
 #: src/modules/reserve-overview/TokenLinkDropdown.tsx
 msgid "Aave aToken"
@@ -125,10 +121,6 @@ msgstr "Aave aToken"
 #: src/modules/reserve-overview/TokenLinkDropdown.tsx
 msgid "Aave debt token"
 msgstr "Aave debt token"
-
-#: src/modules/governance/GovernanceTopPanel.tsx
-msgid "Aave is a fully decentralized, community governed protocol by the AAVE token-holders. AAVE token-holders collectively discuss, propose, and vote on upgrades to the protocol. AAVE token-holders (Ethereum network only) can either vote themselves on new proposals or delagate to an address of choice. To learn more check out the Governance"
-msgstr "Aave is a fully decentralized, community governed protocol by the AAVE token-holders. AAVE token-holders collectively discuss, propose, and vote on upgrades to the protocol. AAVE token-holders (Ethereum network only) can either vote themselves on new proposals or delagate to an address of choice. To learn more check out the Governance"
 
 #: src/modules/staking/StakingPanel.tsx
 msgid "Aave per month"
@@ -703,12 +695,9 @@ msgid "Collateral usage is limited because of Isolation mode."
 msgstr "Collateral usage is limited because of Isolation mode."
 
 #: src/components/isolationMode/IsolatedBadge.tsx
+#: src/modules/dashboard/lists/SupplyAssetsList/SupplyAssetsList.tsx
 msgid "Collateral usage is limited because of isolation mode."
 msgstr "Collateral usage is limited because of isolation mode."
-
-#: src/modules/dashboard/lists/SupplyAssetsList/SupplyAssetsList.tsx
-msgid "Collateral usage is limited because of isolation mode. <0>Learn More</0>"
-msgstr "Collateral usage is limited because of isolation mode. <0>Learn More</0>"
 
 #: src/components/transactions/FlowCommons/TxModalDetails.tsx
 #: src/components/transactions/Swap/SwapModalDetails.tsx
@@ -723,6 +712,10 @@ msgstr "Collector Contract"
 #: src/modules/reserve-overview/BorrowInfo.tsx
 msgid "Collector Info"
 msgstr "Collector Info"
+
+#: src/modules/governance/GovernanceTopPanel.tsx
+msgid "Community Governance"
+msgstr "Community Governance"
 
 #: src/components/WalletConnection/ConnectWalletButton.tsx
 #: src/layouts/WalletWidget.tsx
@@ -928,16 +921,16 @@ msgid "E-Mode category"
 msgstr "E-Mode category"
 
 #: src/modules/dashboard/DashboardEModeButton.tsx
-msgid "E-Mode increases your LTV for a selected category of assets up to 97%. <0>Learn more</0>"
-msgstr "E-Mode increases your LTV for a selected category of assets up to 97%. <0>Learn more</0>"
+msgid "E-Mode increases your LTV for a selected category of assets up to 97%."
+msgstr "E-Mode increases your LTV for a selected category of assets up to 97%."
 
 #: src/components/infoTooltips/EModeTooltip.tsx
-msgid "E-Mode increases your LTV for a selected category of assets up to<0/>. <1>Learn more</1>"
-msgstr "E-Mode increases your LTV for a selected category of assets up to<0/>. <1>Learn more</1>"
+msgid "E-Mode increases your LTV for a selected category of assets up to<0/>."
+msgstr "E-Mode increases your LTV for a selected category of assets up to<0/>."
 
 #: src/modules/reserve-overview/ReserveEModePanel.tsx
-msgid "E-Mode increases your LTV for a selected category of assets, meaning that when E-mode is enabled, you will have higher borrowing power over assets of the same E-mode category which are defined by Aave Governance. You can enter E-Mode from your <0>Dashboard</0>. To learn more about E-Mode and applied restrictions in <1>FAQ</1> or <2>Aave V3 Technical Paper</2>."
-msgstr "E-Mode increases your LTV for a selected category of assets, meaning that when E-mode is enabled, you will have higher borrowing power over assets of the same E-mode category which are defined by Aave Governance. You can enter E-Mode from your <0>Dashboard</0>. To learn more about E-Mode and applied restrictions in <1>FAQ</1> or <2>Aave V3 Technical Paper</2>."
+msgid "E-Mode increases your LTV for a selected category of assets, meaning that when E-mode is enabled, you will have higher borrowing power over assets of the same E-mode category which are defined by Community Governance. You can enter E-Mode from your <0>Dashboard</0>. To learn more about E-Mode and applied restrictions in <1>FAQ</1> or <2>Github</2>."
+msgstr "E-Mode increases your LTV for a selected category of assets, meaning that when E-mode is enabled, you will have higher borrowing power over assets of the same E-mode category which are defined by Community Governance. You can enter E-Mode from your <0>Dashboard</0>. To learn more about E-Mode and applied restrictions in <1>FAQ</1> or <2>Github</2>."
 
 #: src/modules/reserve-overview/Gho/GhoInterestRateGraph.tsx
 msgid "Effective interest rate"
@@ -1035,6 +1028,10 @@ msgstr "FAQ"
 msgid "Failed to load proposal voters. Please refresh the page."
 msgstr "Failed to load proposal voters. Please refresh the page."
 
+#: src/ui-config/menu-items/index.tsx
+msgid "Farms"
+msgstr "Farms"
+
 #: src/components/transactions/Faucet/CaptchaFaucetModalContent.tsx
 #: src/components/transactions/Faucet/FaucetModal.tsx
 #: src/modules/dashboard/lists/ListBottomText.tsx
@@ -1100,10 +1097,6 @@ msgstr "GHO is a native decentralized, collateral-backed digital asset pegged to
 #: src/modules/staking/GetABPTokenModal.tsx
 msgid "Get ABP Token"
 msgstr "Get ABP Token"
-
-#: src/ui-config/menu-items/index.tsx
-msgid "Geyser"
-msgstr "Geyser"
 
 #: src/layouts/MobileMenu.tsx
 #: src/layouts/SettingsMenu.tsx
@@ -1271,35 +1264,16 @@ msgstr "LEARN MORE"
 msgid "Language"
 msgstr "Language"
 
-#: src/components/caps/DebtCeilingStatus.tsx
 #: src/components/incentives/GhoIncentivesCard.tsx
-#: src/components/infoTooltips/BorrowCapMaxedTooltip.tsx
-#: src/components/infoTooltips/DebtCeilingMaxedTooltip.tsx
-#: src/components/infoTooltips/SupplyCapMaxedTooltip.tsx
-#: src/components/transactions/StakeCooldown/StakeCooldownModalContent.tsx
-#: src/components/transactions/Warnings/BorrowCapWarning.tsx
-#: src/components/transactions/Warnings/DebtCeilingWarning.tsx
 #: src/components/transactions/Warnings/MarketWarning.tsx
-#: src/components/transactions/Warnings/SupplyCapWarning.tsx
 #: src/layouts/TopBarNotify.tsx
-#: src/modules/dashboard/LiquidationRiskParametresModal/LiquidationRiskParametresModal.tsx
-#: src/modules/reserve-overview/BorrowInfo.tsx
-#: src/modules/reserve-overview/SupplyInfo.tsx
 #: src/modules/reserve-overview/SupplyInfo.tsx
 msgid "Learn more"
 msgstr "Learn more"
 
-#: src/modules/staking/StakingHeader.tsx
-msgid "Learn more about risks involved"
-msgstr "Learn more about risks involved"
-
 #: src/components/isolationMode/IsolatedBadge.tsx
 msgid "Learn more in our <0>FAQ guide</0>"
 msgstr "Learn more in our <0>FAQ guide</0>"
-
-#: src/modules/governance/DelegatedInfoPanel.tsx
-msgid "Learn more."
-msgstr "Learn more."
 
 #: src/layouts/MobileMenu.tsx
 msgid "Links"
@@ -1694,6 +1668,10 @@ msgstr "Price impact is the spread between the total value of the entry tokens s
 msgid "Price impact {0}%"
 msgstr "Price impact {0}%"
 
+#: src/layouts/AppFooter.tsx
+msgid "Privacy"
+msgstr "Privacy"
+
 #: pages/governance/proposal/[proposalId].governance.tsx
 msgid "Proposal details"
 msgstr "Proposal details"
@@ -1846,8 +1824,8 @@ msgid "Reserve factor"
 msgstr "Reserve factor"
 
 #: src/components/infoTooltips/ReserveFactorTooltip.tsx
-msgid "Reserve factor is a percentage of interest which goes to a {0} that is controlled by Aave governance to promote ecosystem growth."
-msgstr "Reserve factor is a percentage of interest which goes to a {0} that is controlled by Aave governance to promote ecosystem growth."
+msgid "Reserve factor is a percentage of interest which goes to a {0} that is controlled by Community Governance to promote ecosystem growth."
+msgstr "Reserve factor is a percentage of interest which goes to a {0} that is controlled by Community Governance to promote ecosystem growth."
 
 #: src/modules/reserve-overview/ReserveConfigurationWrapper.tsx
 msgid "Reserve status & configuration"
@@ -1917,6 +1895,10 @@ msgstr "Safety of your deposited collateral against the borrowed assets and its 
 #: src/components/transactions/Borrow/GhoBorrowSuccessView.tsx
 msgid "Save and share"
 msgstr "Save and share"
+
+#: src/modules/governance/GovernanceTopPanel.tsx
+msgid "Seamless is a fully decentralized, community governed protocol by the SEAM token-holders. SEAM token-holders collectively discuss, propose, and vote on upgrades to the protocol. SEAM token-holders (Ethereum network only) can either vote themselves on new proposals or delagate to an address of choice."
+msgstr "Seamless is a fully decentralized, community governed protocol by the SEAM token-holders. SEAM token-holders collectively discuss, propose, and vote on upgrades to the protocol. SEAM token-holders (Ethereum network only) can either vote themselves on new proposals or delagate to an address of choice."
 
 #: pages/governance/proposal/[proposalId].governance.tsx
 msgid "Seatbelt report"
@@ -2126,8 +2108,8 @@ msgid "State"
 msgstr "State"
 
 #: src/components/infoTooltips/FixedAPYTooltip.tsx
-msgid "Static interest rate that is determined by Aave Governance. This rate may be changed over time depending on the need for the GHO supply to contract/expand. <0>Learn more</0>"
-msgstr "Static interest rate that is determined by Aave Governance. This rate may be changed over time depending on the need for the GHO supply to contract/expand. <0>Learn more</0>"
+msgid "Static interest rate that is determined by Community Governance. This rate may be changed over time depending on the need for the GHO supply to contract/expand. <0>Learn more</0>"
+msgstr "Static interest rate that is determined by Community Governance. This rate may be changed over time depending on the need for the GHO supply to contract/expand. <0>Learn more</0>"
 
 #: src/components/transactions/Supply/SupplyModalContent.tsx
 msgid "Supplied"
@@ -2259,6 +2241,10 @@ msgstr "Switching rate"
 msgid "Techpaper"
 msgstr "Techpaper"
 
+#: src/layouts/AppFooter.tsx
+msgid "Terms"
+msgstr "Terms"
+
 #: src/modules/faucet/FaucetAssetsList.tsx
 msgid "Test Assets"
 msgstr "Test Assets"
@@ -2321,8 +2307,8 @@ msgid "The collateral chosen cannot be liquidated"
 msgstr "The collateral chosen cannot be liquidated"
 
 #: src/components/Warnings/CooldownWarning.tsx
-msgid "The cooldown period is the time required prior to unstaking your tokens (20 days). You can only withdraw your assets from the Security Module after the cooldown period and within the unstake window.<0>Learn more</0>"
-msgstr "The cooldown period is the time required prior to unstaking your tokens (20 days). You can only withdraw your assets from the Security Module after the cooldown period and within the unstake window.<0>Learn more</0>"
+msgid "The cooldown period is the time required prior to unstaking your tokens (20 days). You can only withdraw your assets from the Security Module after the cooldown period and within the unstake window."
+msgstr "The cooldown period is the time required prior to unstaking your tokens (20 days). You can only withdraw your assets from the Security Module after the cooldown period and within the unstake window."
 
 #: src/components/transactions/StakeCooldown/StakeCooldownModalContent.tsx
 msgid "The cooldown period is {0}. After {1} of cooldown, you will enter unstake window of {2}. You will continue receiving rewards during cooldown and unstake window."
@@ -2377,8 +2363,8 @@ msgid "There was some error. Please try changing the parameters or <0><1>copy th
 msgstr "There was some error. Please try changing the parameters or <0><1>copy the error</1></0>"
 
 #: src/modules/markets/MarketAssetsListContainer.tsx
-msgid "These assets are temporarily frozen or paused by Aave community decisions, meaning that further supply / borrow, or rate swap of these assets are unavailable. Withdrawals and debt repayments are allowed. Follow the <0>Aave governance forum</0> for further updates."
-msgstr "These assets are temporarily frozen or paused by Aave community decisions, meaning that further supply / borrow, or rate swap of these assets are unavailable. Withdrawals and debt repayments are allowed. Follow the <0>Aave governance forum</0> for further updates."
+msgid "These assets are temporarily frozen or paused by Aave community decisions, meaning that further supply / borrow, or rate swap of these assets are unavailable. Withdrawals and debt repayments are allowed. Follow the <0>Community Governance forum</0> for further updates."
+msgstr "These assets are temporarily frozen or paused by Aave community decisions, meaning that further supply / borrow, or rate swap of these assets are unavailable. Withdrawals and debt repayments are allowed. Follow the <0>Community Governance forum</0> for further updates."
 
 #: src/components/transactions/Withdraw/WithdrawModalContent.tsx
 msgid "These funds have been borrowed and are not available for withdrawal at this time."
@@ -2397,8 +2383,8 @@ msgid "This action will reduce your health factor. Please be mindful of the incr
 msgstr "This action will reduce your health factor. Please be mindful of the increased risk of collateral liquidation."
 
 #: src/components/AddressBlockedModal.tsx
-msgid "This address is blocked on app.aave.com because it is associated with one or more"
-msgstr "This address is blocked on app.aave.com because it is associated with one or more"
+msgid "This address is blocked on app.aave.com because it is associated with one or more blocked activities."
+msgstr "This address is blocked on app.aave.com because it is associated with one or more blocked activities."
 
 #: src/components/caps/CapsTooltip.tsx
 msgid "This asset has almost reached its borrow cap. There is only {messageValue} available to be borrowed from this market."
@@ -2474,8 +2460,8 @@ msgid "To borrow you need to supply any asset to be used as collateral."
 msgstr "To borrow you need to supply any asset to be used as collateral."
 
 #: src/components/infoTooltips/ApprovalTooltip.tsx
-msgid "To continue, you need to grant Aave smart contracts permission to move your funds from your wallet. Depending on the asset and wallet you use, it is done by signing the permission message (gas free), or by submitting an approval transaction (requires gas). <0>Learn more</0>"
-msgstr "To continue, you need to grant Aave smart contracts permission to move your funds from your wallet. Depending on the asset and wallet you use, it is done by signing the permission message (gas free), or by submitting an approval transaction (requires gas). <0>Learn more</0>"
+msgid "To continue, you need to grant Seamless smart contracts permission to move your funds from your wallet. Depending on the asset and wallet you use, it is done by signing the permission message (gas free), or by submitting an approval transaction (requires gas). <0>Learn more</0>"
+msgstr "To continue, you need to grant Seamless smart contracts permission to move your funds from your wallet. Depending on the asset and wallet you use, it is done by signing the permission message (gas free), or by submitting an approval transaction (requires gas). <0>Learn more</0>"
 
 #: src/components/transactions/Emode/EmodeModalContent.tsx
 msgid "To enable E-mode for the {0} category, all borrow positions outside of this category must be closed."
@@ -2490,8 +2476,8 @@ msgid "To request access for this permissioned market, please visit: <0>Acces Pr
 msgstr "To request access for this permissioned market, please visit: <0>Acces Provider Name</0>"
 
 #: src/modules/governance/VotingPowerInfoPanel.tsx
-msgid "To submit a proposal for minor changes to the protocol, you'll need at least 80.00K power. If you want to change the core code base, you'll need 320k power.<0>Learn more.</0>"
-msgstr "To submit a proposal for minor changes to the protocol, you'll need at least 80.00K power. If you want to change the core code base, you'll need 320k power.<0>Learn more.</0>"
+msgid "To submit a proposal for minor changes to the protocol, you'll need at least 80.00K power. If you want to change the core code base, you'll need 320k power."
+msgstr "To submit a proposal for minor changes to the protocol, you'll need at least 80.00K power. If you want to change the core code base, you'll need 320k power."
 
 #: src/modules/governance/proposal/VotersListContainer.tsx
 msgid "Top 10 addresses"
@@ -2700,10 +2686,6 @@ msgstr "Variable interest rate will <0>fluctuate</0> based on the market conditi
 msgid "Variable rate"
 msgstr "Variable rate"
 
-#: src/components/MarketSwitcher.tsx
-msgid "Version 3"
-msgstr "Version 3"
-
 #: src/modules/history/TransactionRowItem.tsx
 msgid "View"
 msgstr "View"
@@ -2814,8 +2796,8 @@ msgid "With a voting power of <0/>"
 msgstr "With a voting power of <0/>"
 
 #: src/modules/faucet/FaucetTopPanel.tsx
-msgid "With testnet Faucet you can get free assets to test the Aave Protocol. Make sure to switch your wallet provider to the appropriate testnet network, select desired asset, and click ‘Faucet’ to get tokens transferred to your wallet. The assets on a testnet are not “real,” meaning they have no monetary value. <0>Learn more</0>"
-msgstr "With testnet Faucet you can get free assets to test the Aave Protocol. Make sure to switch your wallet provider to the appropriate testnet network, select desired asset, and click ‘Faucet’ to get tokens transferred to your wallet. The assets on a testnet are not “real,” meaning they have no monetary value. <0>Learn more</0>"
+msgid "With testnet Faucet you can get free assets to test the Aave Protocol. Make sure to switch your wallet provider to the appropriate testnet network, select desired asset, and click ‘Faucet’ to get tokens transferred to your wallet. The assets on a testnet are not “real,” meaning they have no monetary value."
+msgstr "With testnet Faucet you can get free assets to test the Aave Protocol. Make sure to switch your wallet provider to the appropriate testnet network, select desired asset, and click ‘Faucet’ to get tokens transferred to your wallet. The assets on a testnet are not “real,” meaning they have no monetary value."
 
 #: src/components/transactions/Withdraw/WithdrawModal.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsListItem.tsx
@@ -3011,10 +2993,6 @@ msgstr "Zero address not valid"
 msgid "assets"
 msgstr "assets"
 
-#: src/components/AddressBlockedModal.tsx
-msgid "blocked activities"
-msgstr "blocked activities"
-
 #: src/components/transactions/FlowCommons/GasEstimationError.tsx
 msgid "copy the error"
 msgstr "copy the error"
@@ -3022,10 +3000,6 @@ msgstr "copy the error"
 #: src/modules/history/actions/ActionDetails.tsx
 msgid "disabled"
 msgstr "disabled"
-
-#: src/modules/governance/GovernanceTopPanel.tsx
-msgid "documentation"
-msgstr "documentation"
 
 #: src/modules/history/actions/ActionDetails.tsx
 msgid "enabled"

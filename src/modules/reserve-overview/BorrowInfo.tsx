@@ -6,7 +6,6 @@ import { IncentivesButton } from 'src/components/incentives/IncentivesButton';
 import { StableAPYTooltip } from 'src/components/infoTooltips/StableAPYTooltip';
 import { VariableAPYTooltip } from 'src/components/infoTooltips/VariableAPYTooltip';
 import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
-import { Link } from 'src/components/primitives/Link';
 import { ReserveSubheader } from 'src/components/ReserveSubheader';
 import { TextWithTooltip } from 'src/components/TextWithTooltip';
 import { ComputedReserveData } from 'src/hooks/app-data-provider/useAppDataProvider';
@@ -92,13 +91,7 @@ export const BorrowInfo = ({
                       <Trans>
                         Borrowing of this asset is limited to a certain amount to minimize liquidity
                         pool insolvency.
-                      </Trans>{' '}
-                      <Link
-                        href="https://docs.aave.com/developers/whats-new/supply-borrow-caps"
-                        underline="always"
-                      >
-                        <Trans>Learn more</Trans>
-                      </Link>
+                      </Trans>
                     </>
                   </TextWithTooltip>
                 </Box>

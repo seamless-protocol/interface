@@ -1,12 +1,9 @@
 import { Trans } from '@lingui/macro';
 import { AlertColor, Typography } from '@mui/material';
-import { useRootStore } from 'src/store/root';
-import { GENERAL } from 'src/utils/mixPanelEvents';
 
 import { HealthFactorNumber } from '../../../components/HealthFactorNumber';
 import { BasicModal } from '../../../components/primitives/BasicModal';
 import { FormattedNumber } from '../../../components/primitives/FormattedNumber';
-import { Link } from '../../../components/primitives/Link';
 import { HFContent } from './components/HFContent';
 import { InfoWrapper } from './components/InfoWrapper';
 import { LTVContent } from './components/LTVContent';
@@ -35,7 +32,6 @@ export const LiquidationRiskParametresInfoModal = ({
   } else if (hf <= 1.1) {
     healthFactorColor = 'error';
   }
-  const trackEvent = useRootStore((store) => store.trackEvent);
 
   let ltvColor: AlertColor = 'success';
   const ltvPercent = Number(loanToValue) * 100;
@@ -56,20 +52,7 @@ export const LiquidationRiskParametresInfoModal = ({
         <Trans>
           Your health factor and loan to value determine the assurance of your collateral. To avoid
           liquidations you can supply more collateral or repay borrow positions.
-        </Trans>{' '}
-        <Link
-          onClick={() => {
-            trackEvent(GENERAL.EXTERNAL_LINK, {
-              Link: 'HF Risk Link',
-            });
-          }}
-          href="https://docs.aave.com/faq/"
-          sx={{ textDecoration: 'underline' }}
-          color="text.primary"
-          variant="description"
-        >
-          <Trans>Learn more</Trans>
-        </Link>
+        </Trans>
       </Typography>
 
       <InfoWrapper

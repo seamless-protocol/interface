@@ -18,7 +18,6 @@ import { getNetworkConfig } from 'src/utils/marketsAndNetworksConfig';
 import { GENERAL } from 'src/utils/mixPanelEvents';
 
 import { formattedTime, timeText } from '../../../helpers/timeHelper';
-import { Link } from '../../primitives/Link';
 import { TxErrorView } from '../FlowCommons/Error';
 import { GasEstimationError } from '../FlowCommons/GasEstimationError';
 import { TxSuccessView } from '../FlowCommons/Success';
@@ -125,21 +124,7 @@ export const StakeCooldownModalContent = ({ stakeAssetName }: StakeCooldownProps
           {timeMessage(stakeCooldownSeconds)} of cooldown, you will enter unstake window of{' '}
           {timeMessage(stakeUnstakeWindow)}. You will continue receiving rewards during cooldown and
           unstake window.
-        </Trans>{' '}
-        <Link
-          onClick={() =>
-            trackEvent(GENERAL.EXTERNAL_LINK, {
-              assetName: 'ABPT',
-              link: 'Cooldown Learn More',
-            })
-          }
-          variant="description"
-          href="https://docs.aave.com/faq/migration-and-staking"
-          sx={{ textDecoration: 'underline' }}
-        >
-          <Trans>Learn more</Trans>
-        </Link>
-        .
+        </Trans>
       </Typography>
 
       <Box

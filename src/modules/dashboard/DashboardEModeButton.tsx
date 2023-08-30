@@ -11,7 +11,6 @@ import { DASHBOARD, GENERAL } from 'src/utils/mixPanelEvents';
 
 import LightningBoltGradient from '/public/lightningBoltGradient.svg';
 
-import { Link } from '../../components/primitives/Link';
 import { Row } from '../../components/primitives/Row';
 import { TypographyGradient } from '../../components/primitives/TypographyGradient';
 import { getEmodeMessage } from '../../components/transactions/Emode/EmodeNaming';
@@ -193,17 +192,7 @@ export const DashboardEModeButton = ({ userEmodeCategoryId }: DashboardEModeButt
           )}
 
           <Typography variant="caption" color="text.secondary" mb={4}>
-            <Trans>
-              E-Mode increases your LTV for a selected category of assets up to 97%.{' '}
-              <Link
-                href="https://docs.aave.com/faq/aave-v3-features#high-efficiency-mode-e-mode"
-                sx={{ textDecoration: 'underline' }}
-                variant="caption"
-                color="text.secondary"
-              >
-                Learn more
-              </Link>
-            </Trans>
+            <Trans>E-Mode increases your LTV for a selected category of assets up to 97%.</Trans>
           </Typography>
 
           {isEModeDisabled ? (

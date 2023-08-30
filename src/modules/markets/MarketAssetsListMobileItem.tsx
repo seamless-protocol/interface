@@ -120,7 +120,17 @@ export const MarketAssetsListMobileItem = ({ ...reserve }: ComputedReserveData) 
         mb={4}
         align="flex-start"
       >
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        {' '}
+        sx={{}}
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            '&:hover': {
+              color: '#FFF',
+            },
+          }}
+        >
           <IncentivesCard
             align="flex-end"
             value={showStableBorrowRate ? reserve.stableBorrowAPY : '-1'}

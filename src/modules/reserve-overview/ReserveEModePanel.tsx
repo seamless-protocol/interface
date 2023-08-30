@@ -88,7 +88,7 @@ export const ReserveEModePanel: React.FC<ReserverEModePanelProps> = ({ reserve }
           <Trans>
             E-Mode increases your LTV for a selected category of assets, meaning that when E-mode is
             enabled, you will have higher borrowing power over assets of the same E-mode category
-            which are defined by Aave Governance. You can enter E-Mode from your{' '}
+            which are defined by Community Governance. You can enter E-Mode from your{' '}
             <Link
               href={ROUTES.dashboard}
               sx={{ textDecoration: 'underline' }}
@@ -102,7 +102,7 @@ export const ReserveEModePanel: React.FC<ReserverEModePanelProps> = ({ reserve }
             </Link>
             . To learn more about E-Mode and applied restrictions in{' '}
             <Link
-              href="https://docs.aave.com/faq/aave-v3-features#high-efficiency-mode-e-mode"
+              href="https://docs.seamlessprotocol.com/overview/faq"
               sx={{ textDecoration: 'underline' }}
               variant="caption"
               color="text.secondary"
@@ -114,7 +114,7 @@ export const ReserveEModePanel: React.FC<ReserverEModePanelProps> = ({ reserve }
             </Link>{' '}
             or{' '}
             <Link
-              href="https://github.com/aave/aave-v3-core/blob/master/techpaper/Aave_V3_Technical_Paper.pdf"
+              href="https://github.com/seamless-protocol/interface"
               sx={{ textDecoration: 'underline' }}
               variant="caption"
               color="text.secondary"
@@ -122,7 +122,7 @@ export const ReserveEModePanel: React.FC<ReserverEModePanelProps> = ({ reserve }
                 trackEvent(GENERAL.EXTERNAL_LINK, { Link: 'V3 Tech Paper' });
               }}
             >
-              Aave V3 Technical Paper
+              Github
             </Link>
             .
           </Trans>
