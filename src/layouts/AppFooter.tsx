@@ -87,7 +87,7 @@ export function AppFooter() {
           theme.palette.mode === 'light'
             ? 'inset 0px 1px 0px rgba(0, 0, 0, 0.04)'
             : 'inset 0px 1px 0px rgba(255, 255, 255, 0.12)',
-        bgcolor: theme.palette.background.footer,
+        background: theme.palette.gradients.seamlessFooter,
       })}
     >
       <Box sx={{ display: 'flex', gap: '10px', alignItems: 'center' }}>

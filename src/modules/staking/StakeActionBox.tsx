@@ -43,7 +43,7 @@ export const StakeActionBox = ({
           bottom: -1,
           left: -1,
           right: -1,
-          background: gradientBorder ? theme.palette.gradients.aaveGradient : 'transparent',
+          background: gradientBorder ? theme.palette.gradients.seamless : 'transparent',
         },
       })}
     >

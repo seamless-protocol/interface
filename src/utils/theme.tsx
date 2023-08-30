@@ -33,14 +33,13 @@ declare module '@mui/material/styles/createPalette' {
     surface: string;
     surface2: string;
     header: string;
-    footer: string;
     disabled: string;
   }
 
   interface Palette {
     gradients: {
-      aaveGradient: string;
-      newGradient: string;
+      seamless: string;
+      seamlessFooter: string;
     };
     other: {
       standardInputLine: string;
@@ -49,8 +48,8 @@ declare module '@mui/material/styles/createPalette' {
 
   interface PaletteOptions {
     gradients: {
-      aaveGradient: string;
-      newGradient: string;
+      seamless: string;
+      seamlessFooter: string;
     };
   }
 }
@@ -190,7 +189,6 @@ export const getDesignTokens = (mode: 'light' | 'dark') => {
         surface: getColor('#FEFB02', '#FEFB02'),
         surface2: getColor('#F9F9FB', '#383D51'),
         header: getColor('#0C356A', '#0C356A'),
-        footer: getColor('#613EFC', '#613EFC'),
         disabled: getColor('#EAEBEF', '#EBEBEF14'),
       },
       divider: getColor('#EAEBEF', '#EBEBEF14'),
@@ -206,8 +204,9 @@ export const getDesignTokens = (mode: 'light' | 'dark') => {
         standardInputLine: getColor('#383D511F', '#EBEBEF6B'),
       },
       gradients: {
-        aaveGradient: 'linear-gradient(248.86deg, #6EDCD9 10.51%, #E15FED 93.41%)',
-        newGradient: 'linear-gradient(79.67deg, #8C3EBC 0%, #007782 95.82%)',
+        seamless: 'linear-gradient(248.86deg, #CDF3A2 5%, #21E1E1 15%, #D69BDF 40%, #506FF3 91%)',
+        seamlessFooter:
+          'linear-gradient(248.86deg, #506FF3 1%, #CDF3A2 15%, #21E1E1 30%, #D69BDF 50%, #506FF3 81%)',
       },
     },
     spacing: 4,
@@ -451,10 +450,10 @@ export function getThemedComponents(theme: Theme) {
             props: { variant: 'gradient' },
             style: {
               color: theme.palette.common.white,
-              background: theme.palette.gradients.aaveGradient,
+              background: theme.palette.gradients.seamless,
               transition: 'all 0.2s ease',
               '&:hover, &.Mui-focusVisible': {
-                background: theme.palette.gradients.aaveGradient,
+                background: theme.palette.gradients.seamless,
                 opacity: '0.9',
               },
             },
@@ -840,10 +839,10 @@ export function getThemedComponents(theme: Theme) {
       MuiLinearProgress: {
         styleOverrides: {
           bar1Indeterminate: {
-            background: theme.palette.gradients.aaveGradient,
+            background: theme.palette.gradients.seamless,
           },
           bar2Indeterminate: {
-            background: theme.palette.gradients.aaveGradient,
+            background: theme.palette.gradients.seamless,
           },
         },
       },

@@ -120,7 +120,7 @@ export const ReserveTopDetailsWrapper = ({ underlyingAsset }: ReserveTopDetailsP
                     px: 2,
                     mx: 2,
                     borderRadius: '12px',
-                    background: (theme) => theme.palette.gradients.aaveGradient,
+                    background: (theme) => theme.palette.gradients.seamless,
                   }}
                 >
                   <Typography variant="subheader2">Version 3</Typography>
