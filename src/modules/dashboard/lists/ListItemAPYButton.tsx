@@ -57,6 +57,13 @@ export const ListItemAPYButton = ({
       <Button
         variant="outlined"
         onClick={handleClick}
+        sx={{
+          color: 'white',
+          bgcolor: '#3AB0FF',
+          '&:hover': {
+            bgcolor: '#3AB0FF',
+          },
+        }}
         size="small"
         endIcon={
           stableBorrowRateEnabled && (

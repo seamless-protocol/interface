@@ -32,7 +32,9 @@ declare module '@mui/material/styles/createPalette' {
     paper: string;
     surface: string;
     surface2: string;
+    surface2Light: string;
     header: string;
+    footer: string;
     disabled: string;
   }
 
@@ -58,6 +60,7 @@ interface TypographyCustomVariants {
   display1: React.CSSProperties;
   subheader1: React.CSSProperties;
   subheader2: React.CSSProperties;
+  subheader2Light: React.CSSProperties;
   description: React.CSSProperties;
   buttonL: React.CSSProperties;
   buttonM: React.CSSProperties;
@@ -92,6 +95,7 @@ declare module '@mui/material/Typography' {
     display1: true;
     subheader1: true;
     subheader2: true;
+    subheader2Light: true;
     description: true;
     buttonL: true;
     buttonM: true;
@@ -186,9 +190,11 @@ export const getDesignTokens = (mode: 'light' | 'dark') => {
       background: {
         default: getColor('#F8F0E5', '#F8F0E5'),
         paper: getColor('#FFF', '#FFF'),
-        surface: getColor('#FEFB02', '#FEFB02'),
-        surface2: getColor('#F9F9FB', '#383D51'),
+        surface: getColor('#77037B', '#77037B'),
+        surface2: getColor('#3AB0FF', '#3AB0FF'),
+        surface2Light: getColor('#3AB0FF', '#3AB0FF'),
         header: getColor('#0C356A', '#0C356A'),
+        footer: getColor('#0C356A', '#0C356A'),
         disabled: getColor('#EAEBEF', '#EBEBEF14'),
       },
       divider: getColor('#EAEBEF', '#EBEBEF14'),
@@ -265,6 +271,14 @@ export const getDesignTokens = (mode: 'light' | 'dark') => {
       subheader2: {
         fontFamily: FONT,
         fontWeight: 500,
+        letterSpacing: pxToRem(0.1),
+        lineHeight: pxToRem(16),
+        fontSize: pxToRem(12),
+      },
+      subheader2Light: {
+        fontFamily: FONT,
+        fontWeight: 500,
+        color: '#FFF',
         letterSpacing: pxToRem(0.1),
         lineHeight: pxToRem(16),
         fontSize: pxToRem(12),

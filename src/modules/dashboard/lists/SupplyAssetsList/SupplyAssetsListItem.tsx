@@ -91,6 +91,7 @@ export const SupplyAssetsListItem = ({
           onClick={() => {
             openSupply(underlyingAsset, currentMarket, name, 'dashboard');
           }}
+          sx={{ color: 'white', bgcolor: '#3AB0FF' }}
         >
           <Trans>Supply</Trans>
         </Button>
@@ -106,6 +107,7 @@ export const SupplyAssetsListItem = ({
               asset: underlyingAsset,
             });
           }}
+          sx={{ bgcolor: '#77037B', color: 'white' }}
         >
           <Trans>Details</Trans>
         </Button>

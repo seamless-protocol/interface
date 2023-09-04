@@ -143,7 +143,12 @@ const BorrowedPositionsListItemDesktop = ({
       </ListColumn>
 
       <ListButtonsColumn>
-        <Button disabled={!isActive} variant="contained" onClick={onOpenRepay}>
+        <Button
+          disabled={!isActive}
+          variant="contained"
+          onClick={onOpenRepay}
+          sx={{ bgcolor: '#3AB0FF' }}
+        >
           <Trans>Repay</Trans>
         </Button>
         {showSwitchButton ? (
@@ -152,11 +157,17 @@ const BorrowedPositionsListItemDesktop = ({
             variant="outlined"
             onClick={onDetbSwitchClick}
             data-cy={`swapButton`}
+            sx={{ bgcolor: '#3AB0FF' }}
           >
             <Trans>Switch</Trans>
           </Button>
         ) : (
-          <Button disabled={disableBorrow} variant="outlined" onClick={onOpenBorrow}>
+          <Button
+            disabled={disableBorrow}
+            variant="outlined"
+            onClick={onOpenBorrow}
+            sx={{ color: 'white' }}
+          >
             <Trans>Borrow</Trans>
           </Button>
         )}

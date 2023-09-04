@@ -94,6 +94,7 @@ export const SuppliedPositionsListItem = ({
           onClick={() => {
             openWithdraw(underlyingAsset, currentMarket, reserve.name, 'dashboard');
           }}
+          sx={{ bgcolor: '#3AB0FF', color: 'white' }}
         >
           <Trans>Withdraw</Trans>
         </Button>
@@ -122,6 +123,7 @@ export const SuppliedPositionsListItem = ({
             disabled={disableSupply}
             variant="outlined"
             onClick={() => openSupply(underlyingAsset, currentMarket, reserve.name, 'dashboard')}
+            sx={{ color: 'white', bgcolor: '#77037B' }}
           >
             <Trans>Supply</Trans>
           </Button>

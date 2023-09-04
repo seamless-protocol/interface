@@ -77,6 +77,7 @@ export const BorrowAssetsListItem = ({
           onClick={() => {
             openBorrow(underlyingAsset, currentMarket, name, 'dashboard');
           }}
+          sx={{ bgcolor: '#3AB0FF' }}
         >
           <Trans>Borrow</Trans>
         </Button>
@@ -92,6 +93,7 @@ export const BorrowAssetsListItem = ({
               asset: underlyingAsset,
             });
           }}
+          sx={{ bgcolor: '#77037B', color: 'white' }}
         >
           <Trans>Details</Trans>
         </Button>

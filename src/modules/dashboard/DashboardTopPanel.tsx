@@ -225,10 +225,14 @@ export const DashboardTopPanel = () => {
               </Box>
 
               <Button
-                variant="gradient"
                 size="small"
                 onClick={() => openClaimRewards()}
-                sx={{ minWidth: 'unset', ml: { xs: 0, xsm: 2 } }}
+                sx={{
+                  minWidth: 'unset',
+                  bgcolor: '#3AB0FF',
+                  color: 'white',
+                  ml: { xs: 0, xsm: 2 },
+                }}
                 data-cy={'Dashboard_Claim_Button'}
               >
                 <Trans>Claim</Trans>

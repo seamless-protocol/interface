@@ -10,7 +10,7 @@ export const FaucetButton = () => {
   const { currentNetworkConfig } = useProtocolDataContext();
 
   return (
-    <DarkTooltip title="Get free assets to test the Aave Protocol">
+    <DarkTooltip title="Get free assets to test the Seamless Protocol">
       <Button
         startIcon={
           <img
@@ -28,6 +28,7 @@ export const FaucetButton = () => {
         href={ROUTES.faucet}
         variant="outlined"
         size="small"
+        sx={{ bgcolor: '#77037B', color: '#fff' }}
       >
         <Typography variant="buttonS">
           <Trans>{currentNetworkConfig.name} Faucet</Trans>

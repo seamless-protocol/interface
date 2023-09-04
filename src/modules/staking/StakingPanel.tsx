@@ -506,6 +506,7 @@ export const StakingPanel: React.FC<StakingPanelProps> = ({
               data-cy={`claimBtn_${stakedToken}`}
               sx={{
                 flex: 1,
+                bgcolor: '#3AB0FF',
                 mb: { xs: 2, sm: 0 },
                 mr: { xs: 0, sm: 1 },
               }}

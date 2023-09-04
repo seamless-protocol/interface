@@ -131,7 +131,11 @@ export default function FaucetAssetsList() {
             )}
 
             <ListColumn maxWidth={280} align="right">
-              <Button variant="contained" onClick={() => openFaucet(reserve.underlyingAsset)}>
+              <Button
+                variant="contained"
+                onClick={() => openFaucet(reserve.underlyingAsset)}
+                sx={{ color: 'white', bgcolor: '#77037B' }}
+              >
                 <Trans>Faucet</Trans>
               </Button>
             </ListColumn>
