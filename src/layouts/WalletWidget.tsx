@@ -151,6 +151,7 @@ export default function WalletWidget({ open, setOpen, headerHeight }: WalletWidg
             sx={{
               padding: '0 5px',
               marginRight: '10px',
+              color: '#FFF',
             }}
             size="small"
             onClick={handleSwitchWallet}
@@ -161,6 +162,7 @@ export default function WalletWidget({ open, setOpen, headerHeight }: WalletWidg
             variant="outlined"
             sx={{
               padding: '0 5px',
+              color: '#FFF',
             }}
             size="small"
             onClick={handleDisconnect}
@@ -327,7 +329,7 @@ export default function WalletWidget({ open, setOpen, headerHeight }: WalletWidg
         <Skeleton height={36} width={126} sx={{ background: '#383D51' }} />
       ) : (
         <Button
-          variant={connected ? 'surface' : 'gradient'}
+          variant={connected ? 'surface' : 'surface'}
           aria-label="wallet"
           id="wallet-button"
           aria-controls={open ? 'wallet-button' : undefined}

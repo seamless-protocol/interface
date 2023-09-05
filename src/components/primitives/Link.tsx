@@ -125,5 +125,5 @@ export const ROUTES = {
   reserveOverview: (underlyingAsset: string, marketName: CustomMarket) =>
     `/reserve-overview/?underlyingAsset=${underlyingAsset}&marketName=${marketName}`,
   history: '/history',
-  farms: 'https://token-geyser-v2.vercel.app/',
+  farms: 'https://farms.seamlessprotocol.com',
 };

@@ -148,6 +148,7 @@ export const DashboardTopPanel = () => {
             <div style={{ display: 'flex' }}>
               <Trans>Net APY</Trans>
               <NetAPYTooltip
+                iconColor="text.links"
                 event={{
                   eventName: GENERAL.TOOL_TIP,
                   eventParams: { tooltip: 'NET APY: Dashboard Banner' },

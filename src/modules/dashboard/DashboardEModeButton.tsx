@@ -89,7 +89,7 @@ export const DashboardEModeButton = ({ userEmodeCategoryId }: DashboardEModeButt
             bgcolor: isEModeDisabled
               ? open
                 ? theme.palette.background.disabled
-                : theme.palette.background.surface
+                : theme.palette.background.surface2
               : theme.palette.background.paper,
             px: '4px',
             borderRadius: '4px',
@@ -99,14 +99,14 @@ export const DashboardEModeButton = ({ userEmodeCategoryId }: DashboardEModeButt
             sx={{
               fontSize: iconButtonSize,
               mr: '4px',
-              color: isEModeDisabled ? '#000' : 'text.primary',
+              color: isEModeDisabled ? '#FFF' : 'text.primary',
             }}
           >
             {isEModeDisabled ? <LightningBoltIcon /> : <LightningBoltGradient />}
           </SvgIcon>
 
           {isEModeDisabled ? (
-            <Typography variant="buttonS" color="#000">
+            <Typography variant="buttonS" color="#FFF">
               <EModeLabelMessage />
             </Typography>
           ) : (
@@ -119,7 +119,7 @@ export const DashboardEModeButton = ({ userEmodeCategoryId }: DashboardEModeButt
             sx={{
               fontSize: iconButtonSize,
               ml: '4px',
-              color: 'primary.light',
+              color: '#FFF',
             }}
           >
             <CogIcon />

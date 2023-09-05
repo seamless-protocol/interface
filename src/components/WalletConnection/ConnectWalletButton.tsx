@@ -17,11 +17,20 @@ export const ConnectWalletButton: React.FC<ConnectWalletProps> = ({ funnel }) =>
   return (
     <>
       <Button
-        variant="gradient"
         onClick={() => {
           trackEvent(AUTH.CONNECT_WALLET, { funnel: funnel });
           setWalletModalOpen(true);
         }}
+        sx={(theme) => ({
+          color: theme.palette.text.links,
+          backgroundColor: theme.palette.background.surface,
+          borderColor: theme.palette.primary.main,
+          '&:hover': {
+            color: theme.palette.text.links,
+            backgroundColor: theme.palette.background.surface,
+            borderColor: theme.palette.primary.main,
+          },
+        })}
       >
         <Trans>Connect wallet</Trans>
       </Button>
