@@ -19,6 +19,20 @@ export const BridgeButton = ({ bridge }: Pick<NetworkConfig, 'bridge'>) => {
       size="small"
       variant="outlined"
       href={bridge.url || ''}
+      sx={(theme) => ({
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        mb: '8px',
+        color: theme.palette.text.links,
+        backgroundColor: theme.palette.background.surface2,
+        borderColor: theme.palette.primary.main,
+        '&:hover': {
+          color: theme.palette.text.links,
+          backgroundColor: theme.palette.background.surface2,
+          borderColor: theme.palette.primary.main,
+        },
+      })}
     >
       <Typography variant="buttonS">{bridge.name}</Typography>
     </Button>

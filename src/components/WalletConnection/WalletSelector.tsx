@@ -83,13 +83,19 @@ const WalletRow = ({ walletName, walletType }: WalletRowProps) => {
     <Button
       disabled={loading}
       variant="outlined"
-      sx={{
+      sx={(theme) => ({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '100%',
         mb: '8px',
-      }}
+        bgcolor: theme.palette.background.surface,
+        color: theme.palette.text.links,
+        '&:hover': {
+          bgcolor: theme.palette.background.surface,
+          color: theme.palette.text.links,
+        },
+      })}
       size="large"
       onClick={connectWalletClick}
       endIcon={getWalletIcon(walletType)}
@@ -246,12 +252,20 @@ export const WalletSelector = () => {
         <Button
           type="submit"
           variant="outlined"
-          sx={{
+          sx={(theme) => ({
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'center',
             mb: '8px',
-          }}
+            color: theme.palette.text.links,
+            backgroundColor: theme.palette.background.surface,
+            borderColor: theme.palette.primary.main,
+            '&:hover': {
+              color: theme.palette.text.links,
+              backgroundColor: theme.palette.background.surface,
+              borderColor: theme.palette.primary.main,
+            },
+          })}
           size="large"
           fullWidth
           disabled={
