@@ -87,11 +87,15 @@ export const SupplyAssetsListItem = ({
       <ListButtonsColumn>
         <Button
           disabled={disableSupply}
-          variant="contained"
+          variant="outlined"
           onClick={() => {
             openSupply(underlyingAsset, currentMarket, name, 'dashboard');
           }}
-          sx={{ color: 'white', bgcolor: '#3AB0FF' }}
+          sx={(theme) => ({
+            backgroundColor: theme.palette.background.surface2,
+            color: theme.palette.text.links,
+            '&:hover': { backgroundColor: theme.palette.background.surface2 },
+          })}
         >
           <Trans>Supply</Trans>
         </Button>
@@ -107,7 +111,11 @@ export const SupplyAssetsListItem = ({
               asset: underlyingAsset,
             });
           }}
-          sx={{ bgcolor: '#77037B', color: 'white' }}
+          sx={(theme) => ({
+            backgroundColor: theme.palette.background.surface,
+            color: theme.palette.text.links,
+            '&:hover': { backgroundColor: theme.palette.background.surface },
+          })}
         >
           <Trans>Details</Trans>
         </Button>

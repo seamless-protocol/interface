@@ -90,11 +90,15 @@ export const SuppliedPositionsListItem = ({
       <ListButtonsColumn>
         <Button
           disabled={disableWithdraw}
-          variant="contained"
+          variant="outlined"
           onClick={() => {
             openWithdraw(underlyingAsset, currentMarket, reserve.name, 'dashboard');
           }}
-          sx={{ bgcolor: '#3AB0FF', color: 'white' }}
+          sx={(theme) => ({
+            backgroundColor: theme.palette.background.surface2,
+            color: theme.palette.text.links,
+            '&:hover': { backgroundColor: theme.palette.background.surface2 },
+          })}
         >
           <Trans>Withdraw</Trans>
         </Button>
@@ -123,7 +127,11 @@ export const SuppliedPositionsListItem = ({
             disabled={disableSupply}
             variant="outlined"
             onClick={() => openSupply(underlyingAsset, currentMarket, reserve.name, 'dashboard')}
-            sx={{ color: 'white', bgcolor: '#77037B' }}
+            sx={(theme) => ({
+              backgroundColor: theme.palette.background.surface,
+              color: theme.palette.text.links,
+              '&:hover': { backgroundColor: theme.palette.background.surface },
+            })}
           >
             <Trans>Supply</Trans>
           </Button>

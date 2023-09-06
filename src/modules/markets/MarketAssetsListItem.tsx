@@ -131,7 +131,11 @@ export const MarketAssetsListItem = ({ ...reserve }: ComputedReserveData) => {
               market: currentMarket,
             })
           }
-          sx={{ bgcolor: '#77037B', color: 'white' }}
+          sx={(theme) => ({
+            backgroundColor: theme.palette.background.surface,
+            color: theme.palette.text.links,
+            '&:hover': { backgroundColor: theme.palette.background.surface },
+          })}
         >
           <Trans>Details</Trans>
         </Button>

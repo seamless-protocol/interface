@@ -93,7 +93,11 @@ export const BorrowAssetsListItem = ({
               asset: underlyingAsset,
             });
           }}
-          sx={{ bgcolor: '#77037B', color: 'white' }}
+          sx={(theme) => ({
+            backgroundColor: theme.palette.background.surface,
+            color: theme.palette.text.links,
+            '&:hover': { backgroundColor: theme.palette.background.surface },
+          })}
         >
           <Trans>Details</Trans>
         </Button>

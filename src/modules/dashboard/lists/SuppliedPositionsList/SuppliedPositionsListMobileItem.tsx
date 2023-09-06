@@ -98,7 +98,11 @@ export const SuppliedPositionsListMobileItem = ({
           disabled={disableWithdraw}
           variant="contained"
           onClick={() => openWithdraw(underlyingAsset, currentMarket, reserve.name, 'dashboard')}
-          sx={{ mr: 1.5 }}
+          sx={(theme) => ({
+            backgroundColor: theme.palette.background.surface2,
+            color: theme.palette.text.links,
+            '&:hover': { backgroundColor: theme.palette.background.surface2 },
+          })}
           fullWidth
         >
           <Trans>Withdraw</Trans>
@@ -117,6 +121,11 @@ export const SuppliedPositionsListMobileItem = ({
             disabled={disableSupply}
             variant="outlined"
             onClick={() => openSupply(underlyingAsset, currentMarket, reserve.name, 'dashboard')}
+            sx={(theme) => ({
+              backgroundColor: theme.palette.background.surface,
+              color: theme.palette.text.links,
+              '&:hover': { backgroundColor: theme.palette.background.surface },
+            })}
             fullWidth
           >
             <Trans>Supply</Trans>

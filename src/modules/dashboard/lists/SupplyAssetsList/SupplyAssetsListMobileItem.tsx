@@ -95,7 +95,11 @@ export const SupplyAssetsListMobileItem = ({
           disabled={disableSupply}
           variant="contained"
           onClick={() => openSupply(underlyingAsset, currentMarket, name, 'dashboard')}
-          sx={{ mr: 1.5 }}
+          sx={(theme) => ({
+            backgroundColor: theme.palette.background.surface2,
+            color: theme.palette.text.links,
+            '&:hover': { backgroundColor: theme.palette.background.surface2 },
+          })}
           fullWidth
         >
           <Trans>Supply</Trans>
@@ -105,6 +109,11 @@ export const SupplyAssetsListMobileItem = ({
           component={Link}
           href={ROUTES.reserveOverview(detailsAddress, currentMarket)}
           fullWidth
+          sx={(theme) => ({
+            backgroundColor: theme.palette.background.surface,
+            color: theme.palette.text.links,
+            '&:hover': { backgroundColor: theme.palette.background.surface },
+          })}
         >
           <Trans>Details</Trans>
         </Button>

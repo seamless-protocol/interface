@@ -3129,10 +3129,13 @@ msgstr "{h}h"
 msgid "{m}m"
 msgstr "{m}m"
 
-#: src/hooks/useReserveActionState.tsx
 #: src/modules/dashboard/lists/SupplyAssetsList/SupplyAssetsList.tsx
 msgid "{networkName} Faucet"
 msgstr "{networkName} Faucet"
+
+#: src/hooks/useReserveActionState.tsx
+msgid "{networkName} Fauceta"
+msgstr "{networkName} Fauceta"
 
 #: src/layouts/TopBarNotify.tsx
 msgid "{notifyText}"

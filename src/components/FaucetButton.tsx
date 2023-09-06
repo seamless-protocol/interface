@@ -28,7 +28,11 @@ export const FaucetButton = () => {
         href={ROUTES.faucet}
         variant="outlined"
         size="small"
-        sx={{ bgcolor: '#77037B', color: '#fff' }}
+        sx={(theme) => ({
+          backgroundColor: theme.palette.background.surface,
+          color: theme.palette.text.links,
+          '&:hover': { backgroundColor: theme.palette.background.surface },
+        })}
       >
         <Typography variant="buttonS">
           <Trans>{currentNetworkConfig.name} Faucet</Trans>

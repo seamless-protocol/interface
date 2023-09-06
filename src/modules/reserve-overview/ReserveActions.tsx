@@ -424,15 +424,27 @@ const WrappedBaseAssetSelector = ({
       color="primary"
       value={selectedAsset}
       exclusive
-      onChange={(_, value) => setSelectedAsset(value)}
+      onChange={(_, value) => {
+        if (value !== selectedAsset) setSelectedAsset(value);
+      }}
       sx={{ mb: 4 }}
     >
       <StyledTxModalToggleButton value={assetSymbol}>
-        <Typography variant="buttonM">{assetSymbol}</Typography>
+        <Typography
+          variant="buttonM"
+          sx={{ color: `${selectedAsset === assetSymbol ? '#000' : '#FFF'}` }}
+        >
+          {assetSymbol}
+        </Typography>
       </StyledTxModalToggleButton>
 
       <StyledTxModalToggleButton value={baseAssetSymbol}>
-        <Typography variant="buttonM">{baseAssetSymbol}</Typography>
+        <Typography
+          variant="buttonM"
+          sx={{ color: `${selectedAsset === baseAssetSymbol ? '#000' : '#FFF'}` }}
+        >
+          {baseAssetSymbol}
+        </Typography>
       </StyledTxModalToggleButton>
     </StyledTxModalToggleGroup>
   );
@@ -468,7 +480,7 @@ const WalletBalance = ({ balance, symbol, marketTitle }: WalletBalanceProps) => 
         sx={(theme) => ({
           width: '42px',
           height: '42px',
-          background: theme.palette.background.surface,
+          background: '#F7F7F9',
           border: `0.5px solid ${theme.palette.background.disabled}`,
           borderRadius: '12px',
           display: 'flex',

@@ -16,10 +16,7 @@ export const FaucetTopPanel = () => {
       pageTitle={<></>}
       titleComponent={
         <Box>
-          <PageTitle
-            pageTitle={<Trans>{currentMarketData.marketTitle} Faucet</Trans>}
-            withMarketSwitcher={true}
-          />
+          <PageTitle pageTitle={<Trans>{currentMarketData.marketTitle} Faucet</Trans>} />
           <Box sx={{ width: md ? (xsm ? '320px' : '540px') : '860px' }}>
             <Typography variant="description" color="#A5A8B6">
               <Trans>

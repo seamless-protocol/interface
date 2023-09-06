@@ -73,7 +73,7 @@ export const useReserveActionState = ({
                   disableRipple
                 >
                   <Typography variant="caption">
-                    <Trans>{networkName} Faucet</Trans>
+                    <Trans>{networkName} Fauceta</Trans>
                   </Typography>
                 </Button>
               </Warning>

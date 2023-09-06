@@ -102,7 +102,11 @@ export const BorrowAssetsListMobileItem = ({
           disabled={disableBorrow}
           variant="contained"
           onClick={() => openBorrow(underlyingAsset, currentMarket, name, 'dashboard')}
-          sx={{ mr: 1.5 }}
+          sx={(theme) => ({
+            backgroundColor: theme.palette.background.surface,
+            color: theme.palette.text.links,
+            '&:hover': { backgroundColor: theme.palette.background.surface },
+          })}
           fullWidth
         >
           <Trans>Borrow</Trans>
@@ -112,7 +116,11 @@ export const BorrowAssetsListMobileItem = ({
           component={Link}
           href={ROUTES.reserveOverview(underlyingAsset, currentMarket)}
           fullWidth
-          sx={{ bgcolor: '#77037B', color: 'white' }}
+          sx={(theme) => ({
+            backgroundColor: theme.palette.background.surface,
+            color: theme.palette.text.links,
+            '&:hover': { backgroundColor: theme.palette.background.surface },
+          })}
         >
           <Trans>Details</Trans>
         </Button>

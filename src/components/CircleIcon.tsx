@@ -16,7 +16,7 @@ export const CircleIcon = ({ downToSM, tooltipText, children }: CircleIconProps)
       title={
         <Typography
           sx={(theme) => ({
-            color: `${theme.palette.text.primary}`,
+            color: `${theme.palette.text.links}`,
           })}
         >
           <Trans>{tooltipText}</Trans>

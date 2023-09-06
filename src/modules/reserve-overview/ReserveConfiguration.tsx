@@ -168,7 +168,7 @@ export const ReserveConfiguration: React.FC<ReserveConfigurationProps> = ({ rese
                   component={Link}
                   size="small"
                   variant="outlined"
-                  sx={{ verticalAlign: 'top' }}
+                  sx={{ verticalAlign: 'top', bgcolor: 'background.surface2', color: 'text.links' }}
                 >
                   <Trans>Interest rate strategy</Trans>
                 </Button>

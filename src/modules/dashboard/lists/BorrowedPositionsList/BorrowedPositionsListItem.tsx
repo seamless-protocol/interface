@@ -145,9 +145,13 @@ const BorrowedPositionsListItemDesktop = ({
       <ListButtonsColumn>
         <Button
           disabled={!isActive}
-          variant="contained"
+          variant="outlined"
           onClick={onOpenRepay}
-          sx={{ bgcolor: '#3AB0FF' }}
+          sx={(theme) => ({
+            backgroundColor: theme.palette.background.surface2,
+            color: theme.palette.text.links,
+            '&:hover': { backgroundColor: theme.palette.background.surface2 },
+          })}
         >
           <Trans>Repay</Trans>
         </Button>

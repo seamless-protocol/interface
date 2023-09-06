@@ -134,7 +134,11 @@ export default function FaucetAssetsList() {
               <Button
                 variant="contained"
                 onClick={() => openFaucet(reserve.underlyingAsset)}
-                sx={{ color: 'white', bgcolor: '#77037B' }}
+                sx={(theme) => ({
+                  backgroundColor: theme.palette.background.surface,
+                  color: theme.palette.text.links,
+                  '&:hover': { backgroundColor: theme.palette.background.surface },
+                })}
               >
                 <Trans>Faucet</Trans>
               </Button>
