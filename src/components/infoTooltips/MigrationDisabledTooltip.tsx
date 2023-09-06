@@ -23,10 +23,10 @@ export const MigrationDisabledTooltip = ({
   const warningText: Record<MigrationDisabled, ReactNode> = {
     [MigrationDisabled.EModeBorrowDisabled]: (
       <Trans>
-        Asset cannot be migrated to {marketName} V3 Market due to E-mode restrictions. You can
-        disable or manage E-mode categories in your{' '}
+        Asset cannot be migrated to {marketName} Market due to E-mode restrictions. You can disable
+        or manage E-mode categories in your{' '}
         <Link href={dashboardLink || ''} target="_blank" underline="always">
-          V3 Dashboard
+          Dashboard
         </Link>
       </Trans>
     ),
@@ -54,7 +54,7 @@ export const MigrationDisabledTooltip = ({
         Asset cannot be migrated because you have isolated collateral in {marketName} v3 Market
         which limits borrowable assets. You can manage your collateral in{' '}
         <Link href={dashboardLink || ''} target="_blank" underline="always">
-          {marketName} V3 Dashboard
+          {marketName} Dashboard
         </Link>{' '}
       </Trans>
     ) : (

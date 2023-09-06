@@ -172,11 +172,11 @@ export const DetailsNumberLineWithSub = ({
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               {valueUSD && (
                 <>
-                  <FormattedNumber value={valueUSD} variant="helperText" compact symbol="USD" />
+                  <FormattedNumber value={valueUSD} variant="helperText" compact />
                   {ArrowRightIcon}
                 </>
               )}
-              <FormattedNumber value={futureValueUSD} variant="helperText" compact symbol="USD" />
+              <FormattedNumber value={futureValueUSD} variant="helperText" compact />
             </Box>
           </>
         )}

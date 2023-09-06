@@ -273,8 +273,8 @@ msgid "Asset can only be used as collateral in isolation mode only."
 msgstr "Asset can only be used as collateral in isolation mode only."
 
 #: src/components/infoTooltips/MigrationDisabledTooltip.tsx
-msgid "Asset cannot be migrated because you have isolated collateral in {marketName} v3 Market which limits borrowable assets. You can manage your collateral in <0>{marketName} V3 Dashboard</0>"
-msgstr "Asset cannot be migrated because you have isolated collateral in {marketName} v3 Market which limits borrowable assets. You can manage your collateral in <0>{marketName} V3 Dashboard</0>"
+msgid "Asset cannot be migrated because you have isolated collateral in {marketName} v3 Market which limits borrowable assets. You can manage your collateral in <0>{marketName} Dashboard</0>"
+msgstr "Asset cannot be migrated because you have isolated collateral in {marketName} v3 Market which limits borrowable assets. You can manage your collateral in <0>{marketName} Dashboard</0>"
 
 #: src/components/infoTooltips/MigrationDisabledTooltip.tsx
 msgid "Asset cannot be migrated due to insufficient liquidity or borrow cap limitation in {marketName} v3 market."
@@ -285,8 +285,8 @@ msgid "Asset cannot be migrated due to supply cap restriction in {marketName} v3
 msgstr "Asset cannot be migrated due to supply cap restriction in {marketName} v3 market."
 
 #: src/components/infoTooltips/MigrationDisabledTooltip.tsx
-msgid "Asset cannot be migrated to {marketName} V3 Market due to E-mode restrictions. You can disable or manage E-mode categories in your <0>V3 Dashboard</0>"
-msgstr "Asset cannot be migrated to {marketName} V3 Market due to E-mode restrictions. You can disable or manage E-mode categories in your <0>V3 Dashboard</0>"
+msgid "Asset cannot be migrated to {marketName} Market due to E-mode restrictions. You can disable or manage E-mode categories in your <0>Dashboard</0>"
+msgstr "Asset cannot be migrated to {marketName} Market due to E-mode restrictions. You can disable or manage E-mode categories in your <0>Dashboard</0>"
 
 #: src/components/infoTooltips/MigrationDisabledTooltip.tsx
 msgid "Asset cannot be migrated to {marketName} v3 Market since collateral asset will enable isolation mode."

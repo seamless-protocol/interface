@@ -218,7 +218,6 @@ export const DashboardTopPanel = () => {
                   variant={valueTypographyVariant}
                   visibleDecimals={2}
                   compact
-                  symbol="USD"
                   symbolsColor="#A5A8B6"
                   symbolsVariant={noDataTypographyVariant}
                   data-cy={'Claim_Value'}
