@@ -23,18 +23,18 @@ const WarningMessage = ({ market }: { market: string }) => {
 const getLink = (market: string, forum: boolean | undefined): string => {
   if (market === 'Harmony') {
     if (forum) {
-      return 'https://governance.aave.com/t/harmony-horizon-bridge-exploit-consequences-to-aave-v3-harmony/8614';
+      return 'https://governance.seamlessprotocol.com/t/harmony-horizon-bridge-exploit-consequences-to-seamlessprotocol-v3-harmony/8614';
     } else {
-      return 'https://snapshot.org/#/aave.eth/proposal/0x81a78109941e5e0ac6cb5ebf82597c839c20ad6821a8c3ff063dba39032533d4';
+      return 'https://snapshot.org/#/seamlessprotocol.eth/proposal/0x81a78109941e5e0ac6cb5ebf82597c839c20ad6821a8c3ff063dba39032533d4';
     }
   } else if (market === 'Fantom') {
     if (forum) {
-      return 'https://governance.aave.com/t/arc-aave-v3-fantom-freeze-reserves/9166';
+      return 'https://governance.seamlessprotocol.com/t/arc-seamlessprotocol-v3-fantom-freeze-reserves/9166';
     } else {
-      return 'https://snapshot.org/#/aave.eth/proposal/0xeefcd76e523391a14cfd0a79b531ea0a3faf0eb4a058e255fac13a2d224cc647';
+      return 'https://snapshot.org/#/seamlessprotocol.eth/proposal/0xeefcd76e523391a14cfd0a79b531ea0a3faf0eb4a058e255fac13a2d224cc647';
     }
   } else if (market === 'Ethereum AMM') {
-    return 'https://app.aave.com/governance/proposal/?proposalId=239';
+    return 'https://app.seamlessprotocol.com/governance/proposal/?proposalId=239';
   } else {
     return '';
   }

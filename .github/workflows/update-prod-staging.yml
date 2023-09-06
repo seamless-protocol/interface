@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Production
-      url: 'https://app.aave.com'
+      url: 'https://app.seamlessprotocol.com'
     steps:
       - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # v3.0.2
 
@@ -26,7 +26,7 @@ jobs:
       - name: Pin to sefl-hosted cluster
         uses: ./.github/actions/private-ipfs-pin
         with:
-          DOMAIN: app.aave.com
+          DOMAIN: app.seamlessprotocol.com
           GCP_SA_KEY: '${{ secrets.GCP_SA_KEY }}'
           GKE_CLUSTER: '${{ secrets.GKE_CLUSTER }}'
           GKE_CLUSTER_REGION: '${{ secrets.GKE_CLUSTER_REGION }}'
@@ -41,12 +41,12 @@ jobs:
           cid: '${{ inputs.PINATA_HASH }}'
           seeds: '${{ secrets.CRUST_SEEDS }}'
 
-      - uses: aave/cloudflare-update-action@5c1b528c9c6e0aed18a7dbdd7f957e0b8815a75e
+      - uses: seamless/cloudflare-update-action@5c1b528c9c6e0aed18a7dbdd7f957e0b8815a75e
         with:
           CF_API_TOKEN: '${{ secrets.CF_API_TOKEN }}'
           CF_ZONE_ID: '${{ secrets.CF_ZONE_ID }}'
           HASH: '${{ inputs.PINATA_HASH }}'
-          CF_DEPLOYMENT_DOMAIN: app.aave.com
+          CF_DEPLOYMENT_DOMAIN: app.seamlessprotocol.com
 
       - name: prepare release
         run: |
@@ -67,7 +67,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Staging
-      url: 'https://staging.aave.com'
+      url: 'https://staging.seamless.com'
     steps:
       - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # v3.0.2
 
@@ -79,11 +79,11 @@ jobs:
 
       - name: pinata
         id: pinata
-        uses: aave/pinata-action@a3409e26f4cb859a2d9984109317caac53db5f68
+        uses: seamless/pinata-action@a3409e26f4cb859a2d9984109317caac53db5f68
         with:
           PINATA_API_KEY: '${{ secrets.PINATA_API_KEY }}'
           PINATA_SECRET_KEY: '${{ secrets.PINATA_SECRET_KEY }}'
-          PIN_ALIAS: 'app-aave-staging'
+          PIN_ALIAS: 'app-seamless-staging'
           BUILD_LOCATION: './out_staging'
           CID_VERSION: 1
 
@@ -91,16 +91,16 @@ jobs:
         uses: ./.github/actions/private-ipfs-pin
         continue-on-error: true
         with:
-          DOMAIN: staging.aave.com
+          DOMAIN: staging.seamless.com
           GCP_SA_KEY: '${{ secrets.GCP_SA_KEY }}'
           GKE_CLUSTER: '${{ secrets.GKE_CLUSTER }}'
           GKE_CLUSTER_REGION: '${{ secrets.GKE_CLUSTER_REGION }}'
           BUILD_PATH: 'out_staging'
           PINATA_HASH: '${{ steps.pinata.outputs.hash }}'
 
-      - uses: aave/cloudflare-update-action@8b9720cbb79a5b824e8e2e618df8955dd9c3a93c
+      - uses: seamless/cloudflare-update-action@8b9720cbb79a5b824e8e2e618df8955dd9c3a93c
         with:
           CF_API_TOKEN: '${{ secrets.CF_API_TOKEN }}'
           CF_ZONE_ID: '${{ secrets.CF_ZONE_ID }}'
           HASH: '${{ steps.pinata.outputs.hash }}'
-          CF_DEPLOYMENT_DOMAIN: staging.aave.com
+          CF_DEPLOYMENT_DOMAIN: staging.seamless.com

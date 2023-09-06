@@ -34,8 +34,8 @@ export const AddressBlockedModal = ({ address, onDisconnectWallet }: AddressBloc
         </Typography>
         <Typography variant="description" sx={{ textAlign: 'center', mb: 4 }}>
           <Trans>
-            This address is blocked on app.aave.com because it is associated with one or more
-            blocked activities.
+            This address is blocked on app.seamlessprotocol.com because it is associated with one or
+            more blocked activities.
           </Trans>
         </Typography>
         <Button variant="contained" onClick={onDisconnectWallet}>

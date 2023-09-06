@@ -2383,8 +2383,8 @@ msgid "This action will reduce your health factor. Please be mindful of the incr
 msgstr "This action will reduce your health factor. Please be mindful of the increased risk of collateral liquidation."
 
 #: src/components/AddressBlockedModal.tsx
-msgid "This address is blocked on app.aave.com because it is associated with one or more blocked activities."
-msgstr "This address is blocked on app.aave.com because it is associated with one or more blocked activities."
+msgid "This address is blocked on app.seamlessprotocol.com because it is associated with one or more blocked activities."
+msgstr "This address is blocked on app.seamlessprotocol.com because it is associated with one or more blocked activities."
 
 #: src/components/caps/CapsTooltip.tsx
 msgid "This asset has almost reached its borrow cap. There is only {messageValue} available to be borrowed from this market."
