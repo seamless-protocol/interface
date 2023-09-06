@@ -1028,10 +1028,6 @@ msgstr "FAQ"
 msgid "Failed to load proposal voters. Please refresh the page."
 msgstr "Failed to load proposal voters. Please refresh the page."
 
-#: src/ui-config/menu-items/index.tsx
-msgid "Farms"
-msgstr "Farms"
-
 #: src/components/transactions/Faucet/CaptchaFaucetModalContent.tsx
 #: src/components/transactions/Faucet/FaucetModal.tsx
 #: src/modules/dashboard/lists/ListBottomText.tsx
@@ -1897,8 +1893,8 @@ msgid "Save and share"
 msgstr "Save and share"
 
 #: src/modules/governance/GovernanceTopPanel.tsx
-msgid "Seamless is a fully decentralized, community governed protocol by the SEAM token-holders. SEAM token-holders collectively discuss, propose, and vote on upgrades to the protocol. SEAM token-holders (Ethereum network only) can either vote themselves on new proposals or delagate to an address of choice."
-msgstr "Seamless is a fully decentralized, community governed protocol by the SEAM token-holders. SEAM token-holders collectively discuss, propose, and vote on upgrades to the protocol. SEAM token-holders (Ethereum network only) can either vote themselves on new proposals or delagate to an address of choice."
+msgid "Seamless is a fully decentralized, community governed protocol by the OG Points token-holders. OG Points token-holders collectively discuss, propose, and vote on upgrades to the protocol. OG Points token-holders (Ethereum network only) can either vote themselves on new proposals or delagate to an address of choice."
+msgstr "Seamless is a fully decentralized, community governed protocol by the OG Points token-holders. OG Points token-holders collectively discuss, propose, and vote on upgrades to the protocol. OG Points token-holders (Ethereum network only) can either vote themselves on new proposals or delagate to an address of choice."
 
 #: pages/governance/proposal/[proposalId].governance.tsx
 msgid "Seatbelt report"
@@ -2085,6 +2081,10 @@ msgstr "Staking"
 #: src/modules/staking/StakingPanelNoWallet.tsx
 msgid "Staking APR"
 msgstr "Staking APR"
+
+#: src/ui-config/menu-items/index.tsx
+msgid "Staking Farms"
+msgstr "Staking Farms"
 
 #: src/modules/reserve-overview/SupplyInfo.tsx
 msgid "Staking Rewards"

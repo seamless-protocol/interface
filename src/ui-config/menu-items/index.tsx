@@ -26,7 +26,7 @@ export const navigation: Navigation[] = [
   },
   {
     link: ROUTES.farms,
-    title: t`Farms`,
+    title: t`Staking Farms`,
     dataCy: 'menuFarms',
   },
   {

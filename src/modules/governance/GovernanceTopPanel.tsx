@@ -67,10 +67,10 @@ export const GovernanceTopPanel = () => {
 
           <Typography sx={{ color: '#8E92A3', maxWidth: '824px' }}>
             <Trans>
-              Seamless is a fully decentralized, community governed protocol by the SEAM
-              token-holders. SEAM token-holders collectively discuss, propose, and vote on upgrades
-              to the protocol. SEAM token-holders (Ethereum network only) can either vote themselves
-              on new proposals or delagate to an address of choice.
+              Seamless is a fully decentralized, community governed protocol by the OG Points
+              token-holders. OG Points token-holders collectively discuss, propose, and vote on
+              upgrades to the protocol. OG Points token-holders (Ethereum network only) can either
+              vote themselves on new proposals or delagate to an address of choice.
             </Trans>
           </Typography>
         </Box>
