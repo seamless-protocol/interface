@@ -247,7 +247,11 @@ export const networkConfigs: Record<string, BaseNetworkConfig> = {
   },
   [ChainId.base]: {
     name: 'Base',
-    publicJsonRPCUrl: ['https://mainnet.base.org'],
+    publicJsonRPCUrl: [
+      'https://mainnet.base.org',
+      'https://base.gateway.tenderly.co/1SVyxsO1IHL8NHPgMyQmuF',
+      //https://rpc.tenderly.co/fork/c9cbea21-f1d9-4082-a75d-67d75e346da0'],
+    ],
     // protocolDataUrl: '',
     baseUniswapAdapter: '0x0',
     baseAssetSymbol: 'ETH',
