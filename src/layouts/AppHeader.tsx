@@ -94,7 +94,18 @@ export function AppHeader() {
           FAQ.
         </Link>
       </Typography>
-      <Button variant="outlined" sx={{ mt: '12px' }} onClick={disableTestnet}>
+      <Button
+        variant="outlined"
+        sx={(theme) => ({
+          mt: '12px',
+          color: theme.palette.text.links,
+          '&:hover': {
+            color: theme.palette.text.links,
+            backgroundColor: theme.palette.background.surface,
+          },
+        })}
+        onClick={disableTestnet}
+      >
         <Trans>Disable testnet</Trans>
       </Button>
     </Box>

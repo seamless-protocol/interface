@@ -113,19 +113,6 @@ msgstr "APY, variable"
 msgid "AToken supply is not zero"
 msgstr "AToken supply is not zero"
 
-#: src/modules/reserve-overview/AddTokenDropdown.tsx
-#: src/modules/reserve-overview/TokenLinkDropdown.tsx
-msgid "Aave aToken"
-msgstr "Aave aToken"
-
-#: src/modules/reserve-overview/TokenLinkDropdown.tsx
-msgid "Aave debt token"
-msgstr "Aave debt token"
-
-#: src/modules/staking/StakingPanel.tsx
-msgid "Aave per month"
-msgstr "Aave per month"
-
 #: src/modules/reserve-overview/Gho/GhoReserveConfiguration.tsx
 msgid "About GHO"
 msgstr "About GHO"
@@ -638,8 +625,8 @@ msgid "Claim {symbol}"
 msgstr "Claim {symbol}"
 
 #: src/modules/staking/StakingPanel.tsx
-msgid "Claimable AAVE"
-msgstr "Claimable AAVE"
+msgid "Claimable OG Points"
+msgstr "Claimable OG Points"
 
 #: src/components/transactions/ClaimRewards/ClaimRewardsModalContent.tsx
 #: src/components/transactions/StakeRewardClaim/StakeRewardClaimModalContent.tsx
@@ -1556,6 +1543,10 @@ msgstr "Nothing supplied yet"
 msgid "Notify"
 msgstr "Notify"
 
+#: src/modules/staking/StakingPanel.tsx
+msgid "OG Points per month"
+msgstr "OG Points per month"
+
 #: src/components/transactions/FlowCommons/Success.tsx
 msgid "Ok, Close"
 msgstr "Ok, Close"
@@ -1738,8 +1729,8 @@ msgid "Read more here."
 msgstr "Read more here."
 
 #: src/components/infoTooltips/ReadOnlyModeTooltip.tsx
-msgid "Read-only mode allows to see address positions in Aave, but you won't be able to perform transactions."
-msgstr "Read-only mode allows to see address positions in Aave, but you won't be able to perform transactions."
+msgid "Read-only mode allows to see address positions in Seamless, but you won't be able to perform transactions."
+msgstr "Read-only mode allows to see address positions in Seamless, but you won't be able to perform transactions."
 
 #: src/layouts/WalletWidget.tsx
 msgid "Read-only mode."
@@ -1891,6 +1882,15 @@ msgstr "Safety of your deposited collateral against the borrowed assets and its 
 #: src/components/transactions/Borrow/GhoBorrowSuccessView.tsx
 msgid "Save and share"
 msgstr "Save and share"
+
+#: src/modules/reserve-overview/AddTokenDropdown.tsx
+#: src/modules/reserve-overview/TokenLinkDropdown.tsx
+msgid "Seamless aToken"
+msgstr "Seamless aToken"
+
+#: src/modules/reserve-overview/TokenLinkDropdown.tsx
+msgid "Seamless debt token"
+msgstr "Seamless debt token"
 
 #: src/modules/governance/GovernanceTopPanel.tsx
 msgid "Seamless is a fully decentralized, community governed protocol by the OG Points token-holders. OG Points token-holders collectively discuss, propose, and vote on upgrades to the protocol. OG Points token-holders (Ethereum network only) can either vote themselves on new proposals or delagate to an address of choice."
@@ -2363,8 +2363,8 @@ msgid "There was some error. Please try changing the parameters or <0><1>copy th
 msgstr "There was some error. Please try changing the parameters or <0><1>copy the error</1></0>"
 
 #: src/modules/markets/MarketAssetsListContainer.tsx
-msgid "These assets are temporarily frozen or paused by Aave community decisions, meaning that further supply / borrow, or rate swap of these assets are unavailable. Withdrawals and debt repayments are allowed. Follow the <0>Community Governance forum</0> for further updates."
-msgstr "These assets are temporarily frozen or paused by Aave community decisions, meaning that further supply / borrow, or rate swap of these assets are unavailable. Withdrawals and debt repayments are allowed. Follow the <0>Community Governance forum</0> for further updates."
+msgid "These assets are temporarily frozen or paused by community decisions, meaning that further supply / borrow, or rate swap of these assets are unavailable. Withdrawals and debt repayments are allowed."
+msgstr "These assets are temporarily frozen or paused by community decisions, meaning that further supply / borrow, or rate swap of these assets are unavailable. Withdrawals and debt repayments are allowed."
 
 #: src/components/transactions/Withdraw/WithdrawModalContent.tsx
 msgid "These funds have been borrowed and are not available for withdrawal at this time."
@@ -2402,10 +2402,6 @@ msgstr "This asset has reached its borrow cap. Nothing is available to be borrow
 msgid "This asset has reached its supply cap. Nothing is available to be supplied from this market."
 msgstr "This asset has reached its supply cap. Nothing is available to be supplied from this market."
 
-#: src/modules/reserve-overview/ReserveConfiguration.tsx
-msgid "This asset is frozen due to an Aave community decision. <0>More details</0>"
-msgstr "This asset is frozen due to an Aave community decision. <0>More details</0>"
-
 #: src/components/infoTooltips/FrozenTooltip.tsx
 msgid "This asset is frozen due to an Seamless Protocol Governance decision. <0>More details</0>"
 msgstr "This asset is frozen due to an Seamless Protocol Governance decision. <0>More details</0>"
@@ -2413,6 +2409,10 @@ msgstr "This asset is frozen due to an Seamless Protocol Governance decision. <0
 #: src/components/infoTooltips/RenFILToolTip.tsx
 msgid "This asset is frozen due to an Seamless Protocol Governance decision. On the 20th of December 2022, renFIL will no longer be supported and cannot be bridged back to its native network. It is recommended to withdraw supply positions and repay borrow positions so that renFIL can be bridged back to FIL before the deadline. After this date, it will no longer be possible to convert renFIL to FIL. <0>More details</0>"
 msgstr "This asset is frozen due to an Seamless Protocol Governance decision. On the 20th of December 2022, renFIL will no longer be supported and cannot be bridged back to its native network. It is recommended to withdraw supply positions and repay borrow positions so that renFIL can be bridged back to FIL before the deadline. After this date, it will no longer be possible to convert renFIL to FIL. <0>More details</0>"
+
+#: src/modules/reserve-overview/ReserveConfiguration.tsx
+msgid "This asset is frozen due to an community decision. <0>More details</0>"
+msgstr "This asset is frozen due to an community decision. <0>More details</0>"
 
 #: src/components/Warnings/BUSDOffBoardingWarning.tsx
 msgid "This asset is planned to be offboarded due to an Seamless Protocol Governance decision. <0>More details</0>"

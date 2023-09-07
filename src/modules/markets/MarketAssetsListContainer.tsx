@@ -85,22 +85,9 @@ export const MarketAssetsListContainer = () => {
           </Typography>
           <Warning severity="info">
             <Trans>
-              These assets are temporarily frozen or paused by Aave community decisions, meaning
-              that further supply / borrow, or rate swap of these assets are unavailable.
-              Withdrawals and debt repayments are allowed. Follow the{' '}
-              <Link
-                onClick={() => {
-                  trackEvent(GENERAL.EXTERNAL_LINK, {
-                    link: 'Frozen Market Markets Page',
-                    frozenMarket: currentNetworkConfig.name,
-                  });
-                }}
-                href="https://governance.aave.com"
-                underline="always"
-              >
-                Community Governance forum
-              </Link>{' '}
-              for further updates.
+              These assets are temporarily frozen or paused by community decisions, meaning that
+              further supply / borrow, or rate swap of these assets are unavailable. Withdrawals and
+              debt repayments are allowed.
             </Trans>
           </Warning>
         </Box>

@@ -163,7 +163,7 @@ export const AddTokenDropdown = ({
           <Box>
             <Box sx={{ px: 4, pt: 3, pb: 2 }}>
               <Typography variant="secondary12" color="text.secondary">
-                <Trans>Aave aToken</Trans>
+                <Trans>Seamless aToken</Trans>
               </Typography>
             </Box>
             <MenuItem
@@ -183,7 +183,7 @@ export const AddTokenDropdown = ({
                   addERC20Token({
                     address: poolReserve.aTokenAddress,
                     decimals: poolReserve.decimals,
-                    symbol: `a${poolReserve.symbol}`,
+                    symbol: `${poolReserve.symbol}`,
                     image: !/_/.test(poolReserve.symbol) ? aTokenBase64 : undefined,
                   });
                 }
@@ -192,7 +192,7 @@ export const AddTokenDropdown = ({
             >
               <TokenIcon symbol={poolReserve.iconSymbol} sx={{ fontSize: '20px' }} aToken={true} />
               <Typography variant="subheader1" sx={{ ml: 3 }} noWrap data-cy={`assetName`}>
-                {`a${poolReserve.symbol}`}
+                {`${poolReserve.symbol}`}
               </Typography>
             </MenuItem>
           </Box>

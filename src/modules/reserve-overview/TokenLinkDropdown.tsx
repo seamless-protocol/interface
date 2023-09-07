@@ -110,7 +110,7 @@ export const TokenLinkDropdown = ({
           <Box>
             <Box sx={{ px: 4, pt: 3, pb: 2 }}>
               <Typography variant="secondary12" color="text.secondary">
-                <Trans>Aave aToken</Trans>
+                <Trans>Seamless aToken</Trans>
               </Typography>
             </Box>
 
@@ -134,7 +134,7 @@ export const TokenLinkDropdown = ({
             >
               <TokenIcon symbol={poolReserve.iconSymbol} aToken={true} sx={{ fontSize: '20px' }} />
               <Typography variant="subheader1" sx={{ ml: 3 }} noWrap data-cy={`assetName`}>
-                {'a' + poolReserve.symbol}
+                {poolReserve.symbol}
               </Typography>
             </MenuItem>
           </Box>
@@ -143,7 +143,7 @@ export const TokenLinkDropdown = ({
         {showDebtTokenHeader && (
           <Box sx={{ px: 4, pt: 3, pb: 2 }}>
             <Typography variant="secondary12" color="text.secondary">
-              <Trans>Aave debt token</Trans>
+              <Trans>Seamless debt token</Trans>
             </Typography>
           </Box>
         )}
