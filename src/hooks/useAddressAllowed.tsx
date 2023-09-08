@@ -6,7 +6,7 @@ export interface AddressAllowedResult {
   isAllowed: boolean;
 }
 
-const ONE_HOUR = 60 * 60 * 1000;
+const ONE_HOUR = 12 * 60 * 60 * 1000;
 
 export interface TRMScreeningResponse {
   address: string;
@@ -21,9 +21,7 @@ export const useAddressAllowed = (address: string): AddressAllowedResult => {
   const getIsAddressAllowed = async () => {
     if (TRM_URL && address) {
       try {
-        const body = JSON.stringify({
-          addresses: [address],
-        });
+        const body = JSON.stringify([{ address: address }]);
 
         const response = await fetch(TRM_URL, {
           method: 'POST',
@@ -37,8 +35,6 @@ export const useAddressAllowed = (address: string): AddressAllowedResult => {
           console.log('ok');
           const data: { isSanctioned: boolean } = await response.json();
           setIsAllowed(!data.isSanctioned);
-
-          console.log('data', data);
         } else {
           console.error('Response not OK:', response.status, await response.text());
         }

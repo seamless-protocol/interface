@@ -371,10 +371,6 @@ msgstr "Available to borrow"
 msgid "Available to supply"
 msgstr "Available to supply"
 
-#: src/layouts/AppFooter.tsx
-msgid "BASE | Onchain Summer"
-msgstr "BASE | Onchain Summer"
-
 #: pages/404.page.tsx
 msgid "Back to Dashboard"
 msgstr "Back to Dashboard"

@@ -57,11 +57,6 @@ export function AppFooter() {
       label: <Trans>FAQ</Trans>,
       key: 'FAQ',
     },
-    {
-      href: 'https://onchainsummer.xyz/base',
-      label: <Trans>BASE | Onchain Summer</Trans>,
-      key: 'Base',
-    },
     // {
     //   href: '',
     //   label: <Trans>Manage analytics</Trans>,

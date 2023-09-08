@@ -1,5 +1,5 @@
 import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { CookieConsent as AnalyticsConsentBanner } from 'react-cookie-consent';
 import { Link } from 'src/components/primitives/Link';
 import { useRootStore } from 'src/store/root';
@@ -11,16 +11,16 @@ export default function AnalyticsBanner() {
     store.analyticsConfigOpen,
   ]);
 
-  const [bannerVisible, setBannerVisible] = useState(false);
+  const [bannerVisible] = useState(false);
 
-  useEffect(() => {
-    // Adds a delay before showing the banner.
-    const timerId = setTimeout(() => {
-      setBannerVisible(true);
-    }, 1000); // Start sliding in after 1 second.
+  // useEffect(() => {
+  //   // Adds a delay before showing the banner.
+  //   const timerId = setTimeout(() => {
+  //     setBannerVisible(true);
+  //   }, 1000); // Start sliding in after 1 second.
 
-    return () => clearTimeout(timerId);
-  }, []);
+  //   return () => clearTimeout(timerId);
+  // }, []);
 
   const theme = useTheme();
 
