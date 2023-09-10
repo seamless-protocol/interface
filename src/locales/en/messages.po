@@ -109,10 +109,6 @@ msgstr "APY, stable"
 msgid "APY, variable"
 msgstr "APY, variable"
 
-#: src/ui-config/errorMapping.tsx
-msgid "AToken supply is not zero"
-msgstr "AToken supply is not zero"
-
 #: src/modules/reserve-overview/Gho/GhoReserveConfiguration.tsx
 msgid "About GHO"
 msgstr "About GHO"
@@ -1871,6 +1867,10 @@ msgstr "Risk details"
 msgid "SEE CHARTS"
 msgstr "SEE CHARTS"
 
+#: src/ui-config/errorMapping.tsx
+msgid "SToken supply is not zero"
+msgstr "SToken supply is not zero"
+
 #: src/modules/dashboard/LiquidationRiskParametresModal/LiquidationRiskParametresModal.tsx
 msgid "Safety of your deposited collateral against the borrowed assets and its underlying value."
 msgstr "Safety of your deposited collateral against the borrowed assets and its underlying value."
@@ -1879,11 +1879,6 @@ msgstr "Safety of your deposited collateral against the borrowed assets and its 
 msgid "Save and share"
 msgstr "Save and share"
 
-#: src/modules/reserve-overview/AddTokenDropdown.tsx
-#: src/modules/reserve-overview/TokenLinkDropdown.tsx
-msgid "Seamless aToken"
-msgstr "Seamless aToken"
-
 #: src/modules/reserve-overview/TokenLinkDropdown.tsx
 msgid "Seamless debt token"
 msgstr "Seamless debt token"
@@ -1891,6 +1886,11 @@ msgstr "Seamless debt token"
 #: src/modules/governance/GovernanceTopPanel.tsx
 msgid "Seamless is a fully decentralized, community governed protocol by the OG Points token-holders. OG Points token-holders collectively discuss, propose, and vote on upgrades to the protocol. OG Points token-holders (Ethereum network only) can either vote themselves on new proposals or delagate to an address of choice."
 msgstr "Seamless is a fully decentralized, community governed protocol by the OG Points token-holders. OG Points token-holders collectively discuss, propose, and vote on upgrades to the protocol. OG Points token-holders (Ethereum network only) can either vote themselves on new proposals or delagate to an address of choice."
+
+#: src/modules/reserve-overview/AddTokenDropdown.tsx
+#: src/modules/reserve-overview/TokenLinkDropdown.tsx
+msgid "Seamless sToken"
+msgstr "Seamless sToken"
 
 #: pages/governance/proposal/[proposalId].governance.tsx
 msgid "Seatbelt report"
@@ -2287,8 +2287,8 @@ msgid "The app is running in testnet mode. Learn how it works in"
 msgstr "The app is running in testnet mode. Learn how it works in"
 
 #: src/ui-config/errorMapping.tsx
-msgid "The caller of the function is not an AToken"
-msgstr "The caller of the function is not an AToken"
+msgid "The caller of the function is not an sToken"
+msgstr "The caller of the function is not an sToken"
 
 #: src/ui-config/errorMapping.tsx
 msgid "The caller of this function must be a pool"
