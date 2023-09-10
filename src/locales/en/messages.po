@@ -36,8 +36,8 @@ msgid "<0>Ampleforth</0> is a rebasing asset. Visit the <1>documentation</1> to 
 msgstr "<0>Ampleforth</0> is a rebasing asset. Visit the <1>documentation</1> to learn more."
 
 #: src/components/transactions/Borrow/ParameterChangewarning.tsx
-msgid "<0>Attention:</0> Parameter changes via governance can alter your account health factor and risk of liquidation. Follow the <1>Community Governance forum</1> for updates."
-msgstr "<0>Attention:</0> Parameter changes via governance can alter your account health factor and risk of liquidation. Follow the <1>Community Governance forum</1> for updates."
+msgid "<0>Attention:</0> Parameter changes via governance can alter your account health factor and risk of liquidation. Follow the <1>Community Discord</1> for updates."
+msgstr "<0>Attention:</0> Parameter changes via governance can alter your account health factor and risk of liquidation. Follow the <1>Community Discord</1> for updates."
 
 #: src/modules/dashboard/lists/SlippageList.tsx
 msgid "<0>Slippage tolerance </0><1>{selectedSlippage}% </1><2>{0}</2>"
@@ -1564,8 +1564,8 @@ msgid "Page not found"
 msgstr "Page not found"
 
 #: src/components/incentives/IncentivesTooltipContent.tsx
-msgid "Participating in this {symbol} reserve gives annualized rewards."
-msgstr "Participating in this {symbol} reserve gives annualized rewards."
+msgid "Participating in this {symbol} reserve gives annualized rewards. APY refers solely to the annualized rate of earning OG Points for your participation in the Seamless ecosystem. OG Points have no monetary value, cannot be traded or transferred among holders, and cannot be exchanged for cash or any other type of monetary value. No other rewards are offered hereby."
+msgstr "Participating in this {symbol} reserve gives annualized rewards. APY refers solely to the annualized rate of earning OG Points for your participation in the Seamless ecosystem. OG Points have no monetary value, cannot be traded or transferred among holders, and cannot be exchanged for cash or any other type of monetary value. No other rewards are offered hereby."
 
 #: src/components/transactions/CollateralChange/CollateralChangeActions.tsx
 #: src/components/transactions/Faucet/FaucetActions.tsx

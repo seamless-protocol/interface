@@ -1,6 +1,7 @@
 import { Trans } from '@lingui/macro';
 import { GitHub, Telegram, Twitter } from '@mui/icons-material';
 import { Box, styled, SvgIcon, Typography } from '@mui/material';
+import Discord from 'public/icons/discord.svg';
 import { Link } from 'src/components/primitives/Link';
 
 interface StyledLinkProps {
@@ -21,6 +22,11 @@ const FOOTER_ICONS = [
     href: 'https://t.me/seamless_protocol',
     icon: <Telegram />,
     title: 'Telegram',
+  },
+  {
+    href: 'https://discord.gg/urQPJu3CKt',
+    icon: <Discord fill="white" />,
+    title: 'Discord',
   },
   {
     href: 'https://twitter.com/seamlessfi',
