@@ -58,10 +58,10 @@ export const ListItemAPYButton = ({
         variant="outlined"
         onClick={handleClick}
         sx={{
-          color: 'white',
-          bgcolor: '#3AB0FF',
+          color: 'text.links',
+          bgcolor: 'background.surfaceLight',
           '&:hover': {
-            bgcolor: '#3AB0FF',
+            bgcolor: 'background.surfaceLight',
           },
         }}
         size="small"

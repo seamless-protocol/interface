@@ -32,7 +32,7 @@ declare module '@mui/material/styles/createPalette' {
     paper: string;
     surface: string;
     surface2: string;
-    surface2Light: string;
+    surfaceLight: string;
     header: string;
     footer: string;
     disabled: string;
@@ -192,7 +192,7 @@ export const getDesignTokens = (mode: 'light' | 'dark') => {
         paper: getColor('#FFF', '#FFF'),
         surface: getColor('#77037B', '#77037B'),
         surface2: getColor('#3AB0FF', '#3AB0FF'),
-        surface2Light: getColor('#3AB0FF', '#3AB0FF'),
+        surfaceLight: getColor('#B06FB3', '#B06FB3'),
         header: getColor('#0C356A', '#0C356A'),
         footer: getColor('#0C356A', '#0C356A'),
         disabled: getColor('#EAEBEF', '#EBEBEF14'),

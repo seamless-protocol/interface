@@ -57,6 +57,11 @@ export function AppFooter() {
       label: <Trans>FAQ</Trans>,
       key: 'FAQ',
     },
+    {
+      href: 'https://bridge.base.org/',
+      label: 'Base Bridge',
+      key: 'Bridge',
+    },
     // {
     //   href: '',
     //   label: <Trans>Manage analytics</Trans>,
