@@ -41,7 +41,17 @@ export default function Aave404Page() {
             <Trans>We suggest you go back to the Dashboard.</Trans>
           </Typography>
           <Link href="/" passHref>
-            <Button variant="outlined" color="primary">
+            <Button
+              variant="outlined"
+              color="primary"
+              sx={(theme) => ({
+                bgcolor: theme.palette.background.surface,
+                color: theme.palette.text.links,
+                '&:hover': {
+                  color: theme.palette.text.links,
+                },
+              })}
+            >
               <Trans>Back to Dashboard</Trans>
             </Button>
           </Link>
