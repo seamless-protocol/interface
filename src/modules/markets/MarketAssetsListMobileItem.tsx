@@ -120,8 +120,6 @@ export const MarketAssetsListMobileItem = ({ ...reserve }: ComputedReserveData) 
         mb={4}
         align="flex-start"
       >
-        {' '}
-        sx={{}}
         <Box
           sx={{
             display: 'flex',
@@ -157,6 +155,14 @@ export const MarketAssetsListMobileItem = ({ ...reserve }: ComputedReserveData) 
             assetName: reserve.name,
           });
         }}
+        sx={(theme) => ({
+          color: theme.palette.text.links,
+          bgcolor: theme.palette.background.surface,
+          '&:hover': {
+            color: theme.palette.text.links,
+            bgcolor: theme.palette.background.surface,
+          },
+        })}
       >
         <Trans>View details</Trans>
       </Button>
