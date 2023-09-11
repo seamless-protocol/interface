@@ -58,7 +58,7 @@ type MarketAssetsListProps = {
 };
 
 export default function MarketAssetsList({ reserves, loading }: MarketAssetsListProps) {
-  const isTableChangedToCards = useMediaQuery('(max-width:1125px)');
+  const isTableChangedToCards = useMediaQuery('xs');
   const [sortName, setSortName] = useState('');
   const [sortDesc, setSortDesc] = useState(false);
 

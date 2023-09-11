@@ -1,6 +1,7 @@
 import createEmotionServer from '@emotion/server/create-instance';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 import * as React from 'react';
+import { Meta } from 'src/components/Meta';
 
 import createEmotionCache from '../src/createEmotionCache';
 
@@ -12,6 +13,12 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content="#1B2030" />
           <link rel="shortcut icon" href="/favicon.ico" />
           <link rel="manifest" href="/manifest.json" />
+          {Meta({
+            title: 'Seamless Protocol',
+            description:
+              'A decentralized, non-custodial liquidity market that creates a more seamless experience for Suppliers and Borrowers.',
+            imageUrl: '/seamless.png',
+          })}
           {
             // Inject MUI styles first to match with the prepend: true configuration.
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
