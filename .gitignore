@@ -47,3 +47,6 @@ package-lock.json
 .idea
 .vscode
 .env.development
+
+# Sentry Auth Token
+.sentryclirc
