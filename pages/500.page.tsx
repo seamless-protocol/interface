@@ -54,7 +54,14 @@ export default function Aave500Page() {
               </SvgIcon>
             }
             onClick={() => window.location.reload()}
-            sx={{ mb: 10 }}
+            sx={(theme) => ({
+              mb: 10,
+              bgcolor: theme.palette.background.surface,
+              color: theme.palette.text.links,
+              '&:hover': {
+                color: theme.palette.text.links,
+              },
+            })}
           >
             <Trans>Reload the page</Trans>
           </Button>
