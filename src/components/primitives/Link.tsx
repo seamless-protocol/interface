@@ -126,5 +126,4 @@ export const ROUTES = {
     `/reserve-overview/?underlyingAsset=${underlyingAsset}&marketName=${marketName}`,
   history: '/history',
   farms: 'https://farms.seamlessprotocol.com',
-  sentry: '/sentry',
 };
