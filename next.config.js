@@ -32,11 +32,9 @@ module.exports = withBundleAnalyzer({
   trailingSlash: true,
   pageExtensions,
 });
-
-
 // Injected content via Sentry wizard below
-
-const { withSentryConfig } = require("@sentry/nextjs");
+// eslint-disable-next-line
+const { withSentryConfig } = require('@sentry/nextjs');
 
 module.exports = withSentryConfig(
   module.exports,
@@ -47,8 +45,8 @@ module.exports = withSentryConfig(
     // Suppresses source map uploading logs during build
     silent: true,
 
-    org: "seamless-978d47163",
-    project: "javascript-nextjs",
+    org: 'seamless-978d47163',
+    project: 'javascript-nextjs',
   },
   {
     // For all available options, see:
@@ -61,7 +59,7 @@ module.exports = withSentryConfig(
     transpileClientSDK: true,
 
     // Routes browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers (increases server load)
-    tunnelRoute: "/monitoring",
+    tunnelRoute: '/monitoring',
 
     // Hides source maps from generated client bundles
     hideSourceMaps: true,
