@@ -31,3 +31,16 @@ The seamless-ui is hosted on IPFS in a decentralized manner. `app.seamlessprotoc
 ## Credits
 
 To all the Ethereum community
+
+## Deployment in IPFS
+
+This app is actively deployed in IPFS. To deploy a new version, follow the next step of intstructions:
+
+1. Create an Infura account and create a new project with IPFS steps enabled with a custom gateway. (This is an upgraded account)
+2. Install IPFS CLI: https://blog.infura.io/post/ipfs-file-upload-client-tool
+3. Run `yarn build && yarn export`
+4. Run ./ipfs-upload-client --id <INFURA_PROJECT_ID> --secret <INFURA_PROJECT_SECRET> --source <POINT_TO_BUILD_FOLDER>
+5. Use the the gateway from step one to access the hosted ipfs which will look like below:
+   https://seamless-protocol.infura-ipfs.io/ipfs/QmcDp4k9siuUsVrtYxk4drq66JkfVyetdcbGzxWkpYxKQc/
+6. Click into the IPFS link within the address bar to get the direct and use this to point a custom domain to it.
+   https://bafybeigoimqumlwxnexnacekz2g7ztuuljxj2uqgggaslvlmorxdkowybe.ipfs.dweb.link/
