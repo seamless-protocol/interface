@@ -253,6 +253,7 @@ export const networkConfigs: Record<string, BaseNetworkConfig> = {
       'https://base.gateway.tenderly.co/1SVyxsO1IHL8NHPgMyQmuF',
       //https://rpc.tenderly.co/fork/c9cbea21-f1d9-4082-a75d-67d75e346da0'],
     ],
+    publicJsonRPCWSUrl: 'wss://base-mainnet.g.alchemy.com/v2/cmOQkZesrPx6CW_f1TnZWzODwtDIf1f1',
     // protocolDataUrl: '',
     baseUniswapAdapter: '0x0',
     baseAssetSymbol: 'ETH',
