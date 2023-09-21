@@ -248,6 +248,7 @@ export const networkConfigs: Record<string, BaseNetworkConfig> = {
   [ChainId.base]: {
     name: 'Base',
     publicJsonRPCUrl: [
+      'https://base-mainnet.g.alchemy.com/v2/cmOQkZesrPx6CW_f1TnZWzODwtDIf1f1',
       'https://mainnet.base.org',
       'https://base.gateway.tenderly.co/1SVyxsO1IHL8NHPgMyQmuF',
       //https://rpc.tenderly.co/fork/c9cbea21-f1d9-4082-a75d-67d75e346da0'],
@@ -270,9 +271,9 @@ export const networkConfigs: Record<string, BaseNetworkConfig> = {
   [84531 as ChainId /*ChainId.base_goerli*/]: {
     name: 'Base Görli',
     publicJsonRPCUrl: [
-      //'https://rpc.tenderly.co/fork/c9cbea21-f1d9-4082-a75d-67d75e346da0',
-      'https://base-goerli.gateway.tenderly.co/1SVyxsO1IHL8NHPgMyQmuF',
+      'https://rpc.ankr.com/base_goerli',
       'https://goerli.base.org',
+      'https://base-goerli.gateway.tenderly.co/1SVyxsO1IHL8NHPgMyQmuF',
     ],
     publicJsonRPCWSUrl: 'wss://base-goerli.gateway.tenderly.co/1SVyxsO1IHL8NHPgMyQmuF',
     baseUniswapAdapter: '0x0',
