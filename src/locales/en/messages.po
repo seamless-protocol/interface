@@ -244,6 +244,7 @@ msgstr "Array parameters that should be equal length are not"
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsList.tsx
 #: src/modules/faucet/FaucetAssetsList.tsx
 #: src/modules/markets/MarketAssetsList.tsx
+#: src/modules/markets/Strategy/StrategyAssetsList.tsx
 msgid "Asset"
 msgstr "Asset"
 
@@ -367,6 +368,10 @@ msgstr "Available to borrow"
 msgid "Available to supply"
 msgstr "Available to supply"
 
+#: src/modules/markets/MarketAssetsListContainer.tsx
+msgid "BORROW TOKENS USING COLLATERAL"
+msgstr "BORROW TOKENS USING COLLATERAL"
+
 #: pages/404.page.tsx
 msgid "Back to Dashboard"
 msgstr "Back to Dashboard"
@@ -434,11 +439,13 @@ msgstr "Borrow APY, fixed rate"
 
 #: src/modules/markets/MarketAssetsList.tsx
 #: src/modules/markets/MarketAssetsListMobileItem.tsx
+#: src/modules/markets/Strategy/StrategyAssetsListMobileItem.tsx
 msgid "Borrow APY, stable"
 msgstr "Borrow APY, stable"
 
 #: src/modules/markets/MarketAssetsList.tsx
 #: src/modules/markets/MarketAssetsListMobileItem.tsx
+#: src/modules/markets/Strategy/StrategyAssetsListMobileItem.tsx
 msgid "Borrow APY, variable"
 msgstr "Borrow APY, variable"
 
@@ -798,6 +805,10 @@ msgstr "Debt ceiling limits the amount possible to borrow against this asset by 
 msgid "Delegated power"
 msgstr "Delegated power"
 
+#: src/modules/markets/Strategy/StrategyAssetsList.tsx
+msgid "Description"
+msgstr "Description"
+
 #: src/modules/dashboard/lists/BorrowAssetsList/BorrowAssetsListItem.tsx
 #: src/modules/dashboard/lists/BorrowAssetsList/BorrowAssetsListMobileItem.tsx
 #: src/modules/dashboard/lists/BorrowAssetsList/GhoBorrowAssetsListItem.tsx
@@ -805,6 +816,7 @@ msgstr "Delegated power"
 #: src/modules/dashboard/lists/SupplyAssetsList/SupplyAssetsListItem.tsx
 #: src/modules/dashboard/lists/SupplyAssetsList/SupplyAssetsListMobileItem.tsx
 #: src/modules/markets/MarketAssetsListItem.tsx
+#: src/modules/markets/Strategy/StrategyAssetsListItem.tsx
 msgid "Details"
 msgstr "Details"
 
@@ -974,6 +986,7 @@ msgid "Error connecting. Try refreshing the page."
 msgstr "Error connecting. Try refreshing the page."
 
 #: src/components/transactions/FlowCommons/TxModalDetails.tsx
+#: src/modules/markets/Strategy/StrategyAssetsList.tsx
 msgid "Estimated Net APY"
 msgstr "Estimated Net APY"
 
@@ -1061,6 +1074,7 @@ msgid "French"
 msgstr "French"
 
 #: src/modules/markets/MarketAssetsListContainer.tsx
+#: src/modules/markets/Strategy/StrategyAssetsListContainer.tsx
 msgid "Frozen or paused assets"
 msgstr "Frozen or paused assets"
 
@@ -1238,6 +1252,10 @@ msgstr "Join the community discussion"
 #: src/layouts/TopBarNotify.tsx
 msgid "LEARN MORE"
 msgstr "LEARN MORE"
+
+#: src/modules/markets/Strategy/StrategyAssetsListContainer.tsx
+msgid "LOOP YOUR POSITION TO MULTIPLY YOUR SIZE"
+msgstr "LOOP YOUR POSITION TO MULTIPLY YOUR SIZE"
 
 #: src/layouts/components/LanguageSwitcher.tsx
 msgid "Language"
@@ -2023,6 +2041,10 @@ msgstr "Sorry, an unexpected error happened. In the meantime you may try reloadi
 msgid "Sorry, we couldn't find the page you were looking for."
 msgstr "Sorry, we couldn't find the page you were looking for."
 
+#: src/modules/markets/Strategy/StrategyAssetsList.tsx
+msgid "Space Available"
+msgstr "Space Available"
+
 #: src/layouts/components/LanguageSwitcher.tsx
 msgid "Spanish"
 msgstr "Spanish"
@@ -2150,6 +2172,7 @@ msgstr "Supply"
 #: src/modules/dashboard/lists/SupplyAssetsList/SupplyAssetsListMobileItem.tsx
 #: src/modules/markets/MarketAssetsList.tsx
 #: src/modules/markets/MarketAssetsListMobileItem.tsx
+#: src/modules/markets/Strategy/StrategyAssetsListMobileItem.tsx
 msgid "Supply APY"
 msgstr "Supply APY"
 
@@ -2252,6 +2275,7 @@ msgid "Switching rate"
 msgstr "Switching rate"
 
 #: src/components/transactions/Loop/LoopModalContent.tsx
+#: src/modules/markets/Strategy/StrategyAssetsList.tsx
 msgid "Target Multiple"
 msgstr "Target Multiple"
 
@@ -2381,6 +2405,7 @@ msgid "There was some error. Please try changing the parameters or <0><1>copy th
 msgstr "There was some error. Please try changing the parameters or <0><1>copy the error</1></0>"
 
 #: src/modules/markets/MarketAssetsListContainer.tsx
+#: src/modules/markets/Strategy/StrategyAssetsListContainer.tsx
 msgid "These assets are temporarily frozen or paused by community decisions, meaning that further supply / borrow, or rate swap of these assets are unavailable. Withdrawals and debt repayments are allowed."
 msgstr "These assets are temporarily frozen or paused by community decisions, meaning that further supply / borrow, or rate swap of these assets are unavailable. Withdrawals and debt repayments are allowed."
 
@@ -2508,6 +2533,7 @@ msgstr "Total available"
 #: src/modules/markets/Gho/GhoBanner.tsx
 #: src/modules/markets/MarketAssetsList.tsx
 #: src/modules/markets/MarketAssetsListMobileItem.tsx
+#: src/modules/markets/Strategy/StrategyAssetsListMobileItem.tsx
 #: src/modules/reserve-overview/BorrowInfo.tsx
 #: src/modules/reserve-overview/BorrowInfo.tsx
 #: src/modules/reserve-overview/Gho/GhoBorrowInfo.tsx
@@ -2534,6 +2560,7 @@ msgstr "Total market size"
 
 #: src/modules/markets/MarketAssetsList.tsx
 #: src/modules/markets/MarketAssetsListMobileItem.tsx
+#: src/modules/markets/Strategy/StrategyAssetsListMobileItem.tsx
 #: src/modules/reserve-overview/SupplyInfo.tsx
 #: src/modules/reserve-overview/SupplyInfo.tsx
 msgid "Total supplied"
@@ -2718,6 +2745,7 @@ msgstr "View contract"
 
 #: src/modules/markets/Gho/GhoBanner.tsx
 #: src/modules/markets/MarketAssetsListMobileItem.tsx
+#: src/modules/markets/Strategy/StrategyAssetsListMobileItem.tsx
 msgid "View details"
 msgstr "View details"
 
@@ -2786,6 +2814,7 @@ msgid "Wallets are provided by External Providers and by selecting you agree to 
 msgstr "Wallets are provided by External Providers and by selecting you agree to Terms of those Providers. Your access to the wallet might be reliant on the External Provider being operational."
 
 #: src/modules/markets/MarketAssetsListContainer.tsx
+#: src/modules/markets/Strategy/StrategyAssetsListContainer.tsx
 msgid "We couldn't find any assets related to your search. Try again with a different asset name, symbol, or address."
 msgstr "We couldn't find any assets related to your search. Try again with a different asset name, symbol, or address."
 
@@ -2945,6 +2974,10 @@ msgstr "You {action} <0/> {symbol}"
 msgid "You've successfully switched borrow position."
 msgstr "You've successfully switched borrow position."
 
+#: src/modules/markets/Strategy/StrategyAssetsList.tsx
+msgid "Your Position"
+msgstr "Your Position"
+
 #: src/modules/dashboard/lists/BorrowedPositionsList/BorrowedPositionsList.tsx
 #: src/modules/dashboard/lists/BorrowedPositionsList/BorrowedPositionsList.tsx
 msgid "Your borrows"
@@ -3007,10 +3040,6 @@ msgstr "Your {networkName} wallet is empty. Get free test {0} at"
 #: src/ui-config/errorMapping.tsx
 msgid "Zero address not valid"
 msgstr "Zero address not valid"
-
-#: src/modules/markets/MarketAssetsListContainer.tsx
-msgid "assets"
-msgstr "assets"
 
 #: src/components/transactions/FlowCommons/GasEstimationError.tsx
 msgid "copy the error"

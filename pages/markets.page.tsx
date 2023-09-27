@@ -3,6 +3,7 @@ import { ReactNode, useEffect } from 'react';
 import { MainLayout } from 'src/layouts/MainLayout';
 import { MarketAssetsListContainer } from 'src/modules/markets/MarketAssetsListContainer';
 import { MarketsTopPanel } from 'src/modules/markets/MarketsTopPanel';
+import { StrategyAssetsListContainer } from 'src/modules/markets/Strategy/StrategyAssetsListContainer';
 import { useRootStore } from 'src/store/root';
 
 interface MarketContainerProps {
@@ -30,6 +31,7 @@ export const marketContainerProps = {
       xl: 'unset',
       xxl: '1440px',
     },
+    gap: 4,
   },
 };
 
@@ -58,6 +60,7 @@ export default function Markets() {
         }}
       >
         <MarketContainer>
+          <StrategyAssetsListContainer />
           <MarketAssetsListContainer />
         </MarketContainer>
       </Box>

@@ -24,7 +24,6 @@ import { TxSuccessView } from '../FlowCommons/Success';
 import {
   DetailsIncentivesLine,
   DetailsNetApy,
-  DetailsNumberLine,
   MultiplierLine,
   TxModalDetails,
 } from '../FlowCommons/TxModalDetails';
