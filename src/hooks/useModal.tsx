@@ -27,6 +27,7 @@ export enum ModalType {
   V3Migration,
   RevokeGovDelegation,
   StakeRewardsClaimRestake,
+  Loop,
 }
 
 export interface ModalArgsType {
@@ -83,6 +84,13 @@ export interface ModalContextType<T extends ModalArgsType> {
     name: string,
     funnel: string,
     usageAsCollateralEnabledOnUser: boolean
+  ) => void;
+  openLoop: (
+    underlyingAsset: string,
+    currentMarket: string,
+    name: string,
+    funnel: string,
+    isReserve?: boolean
   ) => void;
   openRateSwitch: (underlyingAsset: string, currentRateMode: InterestRate) => void;
   openStake: (stakeAssetName: string, icon: string) => void;
@@ -155,6 +163,18 @@ export const ModalContextProvider: React.FC = ({ children }) => {
               funnel,
             });
           }
+        },
+        openLoop: (underlyingAsset, currentMarket, name, funnel) => {
+          setType(ModalType.Loop);
+          setArgs({ underlyingAsset });
+
+          trackEvent(GENERAL.OPEN_MODAL, {
+            modal: 'Loop',
+            market: currentMarket,
+            assetName: name,
+            asset: underlyingAsset,
+            funnel,
+          });
         },
         openWithdraw: (underlyingAsset, currentMarket, name, funnel) => {
           setType(ModalType.Withdraw);

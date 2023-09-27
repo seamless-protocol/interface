@@ -67,6 +67,16 @@ export const TxModalDetails: React.FC<TxModalDetailsProps> = ({
     </Box>
   );
 };
+interface MultiplierLineProps {
+  description: ReactNode;
+  multiplier: string;
+}
+
+export const MultiplierLine = ({ description, multiplier }: MultiplierLineProps) => (
+  <Row caption={description} captionVariant="description" mb={4}>
+    <Box sx={{ display: 'flex', alignItems: 'center' }}>{multiplier}</Box>
+  </Row>
+);
 
 interface DetailsNumberLineProps extends FormattedNumberProps {
   description: ReactNode;
@@ -231,6 +241,22 @@ export const CollateralState = ({ collateralType }: CollateralStateProps) => {
         }[collateralType]
       }
     </Box>
+  );
+};
+
+export interface DetailsNetApy {
+  apy: string | number;
+}
+
+export const DetailsNetApy = ({ apy }: DetailsNetApy) => {
+  return (
+    <Row caption={<Trans>Estimated Net APY</Trans>} captionVariant="description" mb={4}>
+      <Box sx={{ display: 'inline-flex', alignItems: 'center' }}>
+        <Typography variant="description" color="success.main">
+          <Trans>{apy}</Trans>
+        </Typography>
+      </Box>
+    </Row>
   );
 };
 

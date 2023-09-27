@@ -20,6 +20,7 @@ import { DebtSwitchModal } from 'src/components/transactions/DebtSwitch/DebtSwit
 import { EmodeModal } from 'src/components/transactions/Emode/EmodeModal';
 import { FaucetModal } from 'src/components/transactions/Faucet/FaucetModal';
 import { GasStationProvider } from 'src/components/transactions/GasStation/GasStationProvider';
+import { LoopModal } from 'src/components/transactions/Loop/LoopModal';
 import { MigrateV3Modal } from 'src/components/transactions/MigrateV3/MigrateV3Modal';
 import { RateSwitchModal } from 'src/components/transactions/RateSwitch/RateSwitchModal';
 import { RepayModal } from 'src/components/transactions/Repay/RepayModal';
@@ -87,6 +88,7 @@ export default function MyApp(props: MyAppProps) {
                             <SharedDependenciesProvider>
                               {getLayout(<Component {...pageProps} />)}
                               <SupplyModal />
+                              <LoopModal />
                               <WithdrawModal />
                               <BorrowModal />
                               <RepayModal />

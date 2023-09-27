@@ -973,6 +973,10 @@ msgstr "Enter an amount"
 msgid "Error connecting. Try refreshing the page."
 msgstr "Error connecting. Try refreshing the page."
 
+#: src/components/transactions/FlowCommons/TxModalDetails.tsx
+msgid "Estimated Net APY"
+msgstr "Estimated Net APY"
+
 #: src/components/incentives/GhoIncentivesCard.tsx
 msgid "Estimated compounding interest, including discount for Staking {0}AAVE in Safety Module."
 msgstr "Estimated compounding interest, including discount for Staking {0}AAVE in Safety Module."
@@ -1306,6 +1310,19 @@ msgstr "Liquidation value"
 #: src/modules/reserve-overview/graphs/ApyGraphContainer.tsx
 msgid "Loading data..."
 msgstr "Loading data..."
+
+#: src/components/transactions/Loop/LoopModal.tsx
+#: src/modules/history/actions/ActionDetails.tsx
+msgid "Loop"
+msgstr "Loop"
+
+#: src/components/transactions/Loop/LoopActions.tsx
+msgid "Loop {symbol}"
+msgstr "Loop {symbol}"
+
+#: src/components/transactions/Loop/LoopActions.tsx
+msgid "Looping {symbol}"
+msgstr "Looping {symbol}"
 
 #: src/ui-config/errorMapping.tsx
 msgid "Ltv validation failed"
@@ -2107,6 +2124,7 @@ msgstr "State"
 msgid "Static interest rate that is determined by Community Governance. This rate may be changed over time depending on the need for the GHO supply to contract/expand. <0>Learn more</0>"
 msgstr "Static interest rate that is determined by Community Governance. This rate may be changed over time depending on the need for the GHO supply to contract/expand. <0>Learn more</0>"
 
+#: src/components/transactions/Loop/LoopModalContent.tsx
 #: src/components/transactions/Supply/SupplyModalContent.tsx
 msgid "Supplied"
 msgstr "Supplied"
@@ -2232,6 +2250,10 @@ msgstr "Switching E-Mode"
 #: src/components/transactions/RateSwitch/RateSwitchActions.tsx
 msgid "Switching rate"
 msgstr "Switching rate"
+
+#: src/components/transactions/Loop/LoopModalContent.tsx
+msgid "Target Multiple"
+msgstr "Target Multiple"
 
 #: src/modules/reserve-overview/Gho/GhoReserveConfiguration.tsx
 msgid "Techpaper"
@@ -2745,6 +2767,7 @@ msgstr "Voting results"
 msgid "Wallet Balance"
 msgstr "Wallet Balance"
 
+#: src/components/transactions/Loop/LoopModalContent.tsx
 #: src/components/transactions/Repay/RepayModalContent.tsx
 #: src/components/transactions/Repay/RepayTypeSelector.tsx
 #: src/components/transactions/Stake/StakeModalContent.tsx
@@ -3108,6 +3131,10 @@ msgstr "{0} on-ramp service is provided by External Provider and by selecting yo
 #: src/modules/staking/BuyWithFiatModal.tsx
 msgid "{0}{name}"
 msgstr "{0}{name}"
+
+#: src/components/transactions/FlowCommons/TxModalDetails.tsx
+msgid "{apy}"
+msgstr "{apy}"
 
 #: src/components/transactions/FlowCommons/ApprovalMethodToggleButton.tsx
 msgid "{currentMethod}"

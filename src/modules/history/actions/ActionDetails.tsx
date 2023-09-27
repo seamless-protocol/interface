@@ -19,6 +19,8 @@ export const ActionTextMap = ({ action }: { action: string }) => {
       return <Trans>Supply</Trans>;
     case 'Borrow':
       return <Trans>Borrow</Trans>;
+    case 'Loop':
+      return <Trans>Loop</Trans>;
     case 'RedeemUnderlying':
       return <Trans>Withdraw</Trans>;
     case 'Repay':
