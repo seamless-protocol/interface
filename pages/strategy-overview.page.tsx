@@ -12,7 +12,7 @@ import { AssetCapsProvider } from 'src/hooks/useAssetCaps';
 import { MainLayout } from 'src/layouts/MainLayout';
 import { ReserveActions } from 'src/modules/overviews/ReserveActions';
 import { ReserveConfigurationWrapper } from 'src/modules/overviews/ReserveConfigurationWrapper';
-import { ReserveTopDetailsWrapper } from 'src/modules/overviews/ReserveTopDetailsWrapper';
+import { StrategyTopDetailsWrapper } from 'src/modules/overviews/strategy-overview/StrategyTopDetailsWrapper';
 import { useRootStore } from 'src/store/root';
 
 import { ContentContainer } from '../src/components/ContentContainer';
@@ -39,7 +39,7 @@ export default function ReserveOverview() {
 
   return (
     <AssetCapsProvider asset={reserve}>
-      <ReserveTopDetailsWrapper underlyingAsset={underlyingAsset} />
+      <StrategyTopDetailsWrapper underlyingAsset={underlyingAsset} />
 
       <ContentContainer>
         <Box

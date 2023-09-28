@@ -18,10 +18,12 @@ export const TopInfoPanel = ({
   children,
   containerProps = {},
 }: TopInfoPanelProps) => {
+  const useStrategyColor = window.location.pathname.includes('strategy-overview');
+
   return (
     <Box
       sx={{
-        bgcolor: 'background.header',
+        bgcolor: useStrategyColor ? '#2a2d3c' : 'background.header',
         pt: { xs: 10, md: 12 },
         pb: { xs: 18, md: 20, lg: '94px', xl: '92px', xxl: '96px' },
         color: '#F1F1F3',

@@ -5,7 +5,7 @@
 import dayjs from 'dayjs';
 import { useCallback, useEffect, useState } from 'react';
 import { useProtocolDataContext } from 'src/hooks/useProtocolDataContext';
-import { ESupportedTimeRanges } from 'src/modules/reserve-overview/TimeRangeSelector';
+import { ESupportedTimeRanges } from 'src/modules/overviews/TimeRangeSelector';
 import { makeCancelable } from 'src/utils/utils';
 
 export const reserveRateTimeRangeOptions = [
