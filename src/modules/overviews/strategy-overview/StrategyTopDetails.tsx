@@ -1,12 +1,12 @@
 import { ExternalLinkIcon } from '@heroicons/react/outline';
 import { Trans } from '@lingui/macro';
-import { Box, Skeleton, SvgIcon, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Button, Skeleton, SvgIcon, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { CircleIcon } from 'src/components/CircleIcon';
 import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
-import { Link } from 'src/components/primitives/Link';
+import { Link, ROUTES } from 'src/components/primitives/Link';
 import { useProtocolDataContext } from 'src/hooks/useProtocolDataContext';
 import { useRootStore } from 'src/store/root';
-import { GENERAL } from 'src/utils/mixPanelEvents';
+import { GENERAL, RESERVE_DETAILS } from 'src/utils/mixPanelEvents';
 
 import { TopInfoPanelItem } from '../../../components/TopInfoPanel/TopInfoPanelItem';
 import {
@@ -20,7 +20,7 @@ interface StrategyTopDetailsProps {
 
 export const StrategyTopDetails = ({ underlyingAsset }: StrategyTopDetailsProps) => {
   const { reserves, loading } = useAppDataContext();
-  const { currentNetworkConfig } = useProtocolDataContext();
+  const { currentNetworkConfig, currentMarket } = useProtocolDataContext();
   const trackEvent = useRootStore((store) => store.trackEvent);
 
   const theme = useTheme();
@@ -43,6 +43,30 @@ export const StrategyTopDetails = ({ underlyingAsset }: StrategyTopDetailsProps)
 
   return (
     <>
+      <Button
+        variant="outlined"
+        component={Link}
+        href={ROUTES.reserveOverview(poolReserve.underlyingAsset, currentMarket)}
+        onClick={() =>
+          trackEvent(RESERVE_DETAILS.SWAP_VIEWS, {
+            type: 'Button',
+            assetName: poolReserve.name,
+            asset: poolReserve.underlyingAsset,
+            market: currentMarket,
+          })
+        }
+        sx={(theme) => ({
+          mt: 1,
+          backgroundColor: theme.palette.background.surface,
+          color: theme.palette.text.links,
+          '&:hover': {
+            backgroundColor: theme.palette.background.surface,
+            color: theme.palette.text.links,
+          },
+        })}
+      >
+        <Trans>Asset View</Trans>
+      </Button>
       <TopInfoPanelItem title={<Trans>Target Multiple</Trans>} loading={loading} hideIcon>
         <Typography
           variant={valueTypographyVariant}

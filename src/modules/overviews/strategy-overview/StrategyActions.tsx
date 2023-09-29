@@ -247,8 +247,8 @@ const LoopAction = ({
 }: ActionProps) => {
   return (
     <Stack>
-      <Grid container columns={2} columnSpacing={12}>
-        <Grid item sx={{ width: '175px' }}>
+      <Grid container columns={2} columnSpacing={12} marginBottom={2}>
+        <Grid item marginBottom={4} sx={{ width: '175px' }}>
           <AvailableTooltip
             variant="description"
             text={<Trans>Available to loop</Trans>}

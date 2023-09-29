@@ -10,6 +10,7 @@ import { MarketWarning } from 'src/components/transactions/Warnings/MarketWarnin
 import { useAppDataContext } from 'src/hooks/app-data-provider/useAppDataProvider';
 import { useProtocolDataContext } from 'src/hooks/useProtocolDataContext';
 import { fetchIconSymbolAndName } from 'src/ui-config/reservePatches';
+import { IsAllowListedForILM } from 'src/utils/ILMConfig';
 
 import StrategyAssetsList from './StrategyAssetsList';
 
@@ -33,6 +34,8 @@ export const StrategyAssetsListContainer = () => {
         res.underlyingAsset.toLowerCase().includes(term)
       );
     })
+    // Filter out non-ILM assets
+    .filter((res) => IsAllowListedForILM(res.underlyingAsset))
     // Transform the object for list to consume it
     .map((reserve) => ({
       ...reserve,
@@ -57,7 +60,11 @@ export const StrategyAssetsListContainer = () => {
           onSearchTermChange={setSearchTerm}
           title={
             <>
-              <Trans>LOOP YOUR POSITION TO MULTIPLY YOUR SIZE</Trans>
+              <Trans>Integrated Lending Market</Trans>
+              <br />
+              <Typography>
+                <Trans>Loop your position to multiply your size</Trans>
+              </Typography>
             </>
           }
           searchPlaceholder={sm ? 'Search asset' : 'Search asset name, symbol, or address'}

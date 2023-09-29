@@ -1,12 +1,13 @@
 import { ExternalLinkIcon } from '@heroicons/react/outline';
 import { Trans } from '@lingui/macro';
-import { Box, Skeleton, SvgIcon, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Button, Skeleton, SvgIcon, useMediaQuery, useTheme } from '@mui/material';
 import { CircleIcon } from 'src/components/CircleIcon';
 import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
-import { Link } from 'src/components/primitives/Link';
+import { Link, ROUTES } from 'src/components/primitives/Link';
 import { useProtocolDataContext } from 'src/hooks/useProtocolDataContext';
 import { useRootStore } from 'src/store/root';
-import { GENERAL } from 'src/utils/mixPanelEvents';
+import { IsAllowListedForILM } from 'src/utils/ILMConfig';
+import { GENERAL, RESERVE_DETAILS } from 'src/utils/mixPanelEvents';
 
 import { TopInfoPanelItem } from '../../components/TopInfoPanel/TopInfoPanelItem';
 import {
@@ -20,7 +21,7 @@ interface ReserveTopDetailsProps {
 
 export const ReserveTopDetails = ({ underlyingAsset }: ReserveTopDetailsProps) => {
   const { reserves, loading } = useAppDataContext();
-  const { currentNetworkConfig } = useProtocolDataContext();
+  const { currentNetworkConfig, currentMarket } = useProtocolDataContext();
   const trackEvent = useRootStore((store) => store.trackEvent);
 
   const theme = useTheme();
@@ -43,6 +44,32 @@ export const ReserveTopDetails = ({ underlyingAsset }: ReserveTopDetailsProps) =
 
   return (
     <>
+      {IsAllowListedForILM(poolReserve.underlyingAsset) && (
+        <Button
+          variant="outlined"
+          component={Link}
+          href={ROUTES.strategyOverview(poolReserve.underlyingAsset, currentMarket)}
+          onClick={() =>
+            trackEvent(RESERVE_DETAILS.SWAP_VIEWS, {
+              type: 'Button',
+              assetName: poolReserve.name,
+              asset: poolReserve.underlyingAsset,
+              market: currentMarket,
+            })
+          }
+          sx={(theme) => ({
+            mt: 1,
+            backgroundColor: theme.palette.background.surface2,
+            color: theme.palette.text.links,
+            '&:hover': {
+              backgroundColor: theme.palette.background.surface2,
+              color: theme.palette.text.links,
+            },
+          })}
+        >
+          <Trans>Strategy View</Trans>
+        </Button>
+      )}
       <TopInfoPanelItem title={<Trans>Reserve Size</Trans>} loading={loading} hideIcon>
         <FormattedNumber
           value={Math.max(Number(poolReserve?.totalLiquidityUSD), 0)}

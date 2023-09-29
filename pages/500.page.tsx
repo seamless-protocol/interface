@@ -59,6 +59,7 @@ export default function Aave500Page() {
               bgcolor: theme.palette.background.surface,
               color: theme.palette.text.links,
               '&:hover': {
+                bgcolor: theme.palette.background.surface,
                 color: theme.palette.text.links,
               },
             })}

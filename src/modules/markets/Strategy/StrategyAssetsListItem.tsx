@@ -24,9 +24,6 @@ export const StrategyAssetsListItem = ({ ...reserve }: ComputedReserveData) => {
   const trackEvent = useRootStore((store) => store.trackEvent);
 
   const showStableBorrowRate = Number(reserve.totalStableDebtUSD) > 0;
-  // if (currentMarket === CustomMarket.proto_mainnet && reserve.symbol === 'TUSD') {
-  //   showStableBorrowRate = false;
-  // }
 
   return (
     <ListItem
@@ -39,7 +36,7 @@ export const StrategyAssetsListItem = ({ ...reserve }: ComputedReserveData) => {
           asset: reserve.underlyingAsset,
           market: currentMarket,
         });
-        router.push(ROUTES.reserveOverview(reserve.underlyingAsset, currentMarket));
+        router.push(ROUTES.strategyOverview(reserve.underlyingAsset, currentMarket));
       }}
       sx={{ cursor: 'pointer' }}
       button
@@ -122,7 +119,7 @@ export const StrategyAssetsListItem = ({ ...reserve }: ComputedReserveData) => {
         <Button
           variant="outlined"
           component={Link}
-          href={ROUTES.reserveOverview(reserve.underlyingAsset, currentMarket)}
+          href={ROUTES.strategyOverview(reserve.underlyingAsset, currentMarket)}
           onClick={() =>
             trackEvent(MARKETS.DETAILS_NAVIGATION, {
               type: 'Button',
@@ -132,10 +129,10 @@ export const StrategyAssetsListItem = ({ ...reserve }: ComputedReserveData) => {
             })
           }
           sx={(theme) => ({
-            backgroundColor: theme.palette.background.surface,
+            backgroundColor: theme.palette.background.surface2,
             color: theme.palette.text.links,
             '&:hover': {
-              backgroundColor: theme.palette.background.surface,
+              backgroundColor: theme.palette.background.surface2,
               color: theme.palette.text.links,
             },
           })}

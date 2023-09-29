@@ -49,6 +49,7 @@ export const RESERVE_DETAILS = {
   GRAPH_TIME_PERIOD: 'Graph Time Period Selector',
   GHO_CALCULATOR_ADD: 'Add stkAAVE to borrow at max discount',
   GHO_CALCULATOR_AMOUNT_CHANGE: 'Slider amount change',
+  SWAP_VIEWS: 'Swap views',
 };
 
 export const YOUR_INFO_RESERVE_DETAILS = {

@@ -56,7 +56,11 @@ export const MarketAssetsListContainer = () => {
           onSearchTermChange={setSearchTerm}
           title={
             <>
-              <Trans>BORROW TOKENS USING COLLATERAL</Trans>
+              <Trans>Borrowing and Lending Market</Trans>
+              <br />
+              <Typography>
+                <Trans>Borrow tokens using collateral</Trans>
+              </Typography>
             </>
           }
           searchPlaceholder={sm ? 'Search asset' : 'Search asset name, symbol, or address'}

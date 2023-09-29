@@ -56,6 +56,8 @@ msgstr "APR"
 #: src/modules/dashboard/lists/BorrowedPositionsList/BorrowedPositionsList.tsx
 #: src/modules/dashboard/lists/BorrowedPositionsList/BorrowedPositionsListItem.tsx
 #: src/modules/dashboard/lists/BorrowedPositionsList/GhoBorrowedPositionsListItem.tsx
+#: src/modules/dashboard/lists/ILMPositionsList/ILMPositionsList.tsx
+#: src/modules/dashboard/lists/ILMPositionsList/ILMPositionsList.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsList.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsList.tsx
 #: src/modules/dashboard/lists/SupplyAssetsList/SupplyAssetsList.tsx
@@ -242,12 +244,17 @@ msgstr "Array parameters that should be equal length are not"
 
 #: src/modules/dashboard/lists/BorrowAssetsList/BorrowAssetsList.tsx
 #: src/modules/dashboard/lists/BorrowedPositionsList/BorrowedPositionsList.tsx
+#: src/modules/dashboard/lists/ILMPositionsList/ILMPositionsList.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsList.tsx
 #: src/modules/faucet/FaucetAssetsList.tsx
 #: src/modules/markets/MarketAssetsList.tsx
 #: src/modules/markets/Strategy/StrategyAssetsList.tsx
 msgid "Asset"
 msgstr "Asset"
+
+#: src/modules/overviews/strategy-overview/StrategyTopDetails.tsx
+msgid "Asset View"
+msgstr "Asset View"
 
 #: src/components/isolationMode/IsolatedBadge.tsx
 msgid "Asset can be only used as collateral in isolation mode with limited borrowing power. To enter isolation mode, disable all other collateral."
@@ -376,10 +383,6 @@ msgstr "Available to loop"
 msgid "Available to supply"
 msgstr "Available to supply"
 
-#: src/modules/markets/MarketAssetsListContainer.tsx
-msgid "BORROW TOKENS USING COLLATERAL"
-msgstr "BORROW TOKENS USING COLLATERAL"
-
 #: pages/404.page.tsx
 msgid "Back to Dashboard"
 msgstr "Back to Dashboard"
@@ -387,6 +390,8 @@ msgstr "Back to Dashboard"
 #: src/components/transactions/AssetInput.tsx
 #: src/components/transactions/ClaimRewards/ClaimRewardsModalContent.tsx
 #: src/modules/dashboard/lists/BorrowedPositionsList/BorrowedPositionsList.tsx
+#: src/modules/dashboard/lists/ILMPositionsList/ILMPositionsList.tsx
+#: src/modules/dashboard/lists/ILMPositionsList/ILMPositionsList.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsList.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsList.tsx
 msgid "Balance"
@@ -505,6 +510,10 @@ msgstr "Borrow power used"
 msgid "Borrow rate change"
 msgstr "Borrow rate change"
 
+#: src/modules/markets/MarketAssetsListContainer.tsx
+msgid "Borrow tokens using collateral"
+msgstr "Borrow tokens using collateral"
+
 #: src/components/transactions/Borrow/BorrowActions.tsx
 msgid "Borrow {symbol}"
 msgstr "Borrow {symbol}"
@@ -517,6 +526,10 @@ msgstr "Borrowed"
 #: src/components/transactions/DebtSwitch/DebtSwitchModalContent.tsx
 msgid "Borrowed asset amount"
 msgstr "Borrowed asset amount"
+
+#: src/modules/markets/MarketAssetsListContainer.tsx
+msgid "Borrowing and Lending Market"
+msgstr "Borrowing and Lending Market"
 
 #: src/components/transactions/Borrow/BorrowModalContent.tsx
 #: src/components/transactions/Borrow/GhoBorrowModalContent.tsx
@@ -656,6 +669,7 @@ msgid "Close"
 msgstr "Close"
 
 #: src/components/transactions/Repay/RepayTypeSelector.tsx
+#: src/modules/dashboard/lists/ILMPositionsList/ILMPositionsList.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsList.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsList.tsx
 msgid "Collateral"
@@ -818,9 +832,17 @@ msgstr "Debt ceiling limits the amount possible to borrow against this asset by 
 msgid "Delegated power"
 msgstr "Delegated power"
 
+#: src/modules/dashboard/lists/ILMPositionsList/ILMPositionsListItem.tsx
+msgid "Deposit"
+msgstr "Deposit"
+
 #: src/modules/overviews/strategy-overview/StrategyActions.tsx
 msgid "Deposited {0}"
 msgstr "Deposited {0}"
+
+#: src/modules/markets/Strategy/StrategyAssetsList.tsx
+msgid "Description"
+msgstr "Description"
 
 #: src/modules/dashboard/lists/BorrowAssetsList/BorrowAssetsListItem.tsx
 #: src/modules/dashboard/lists/BorrowAssetsList/BorrowAssetsListMobileItem.tsx
@@ -1003,8 +1025,8 @@ msgid "Error connecting. Try refreshing the page."
 msgstr "Error connecting. Try refreshing the page."
 
 #: src/components/transactions/FlowCommons/TxModalDetails.tsx
+#: src/modules/markets/Strategy/StrategyAssetsList.tsx
 #: src/modules/overviews/strategy-overview/StrategyTopDetails.tsx
-
 msgid "Estimated Net APY"
 msgstr "Estimated Net APY"
 
@@ -1212,6 +1234,10 @@ msgstr "Inconsistent flashloan parameters"
 msgid "Insufficient collateral to cover new borrow position. Wallet must have borrowing power remaining to perform debt switch."
 msgstr "Insufficient collateral to cover new borrow position. Wallet must have borrowing power remaining to perform debt switch."
 
+#: src/modules/markets/Strategy/StrategyAssetsListContainer.tsx
+msgid "Integrated Lending Market"
+msgstr "Integrated Lending Market"
+
 #: src/modules/overviews/Gho/GhoInterestRateGraph.tsx
 msgid "Interest accrued"
 msgstr "Interest accrued"
@@ -1271,10 +1297,6 @@ msgstr "Join the community discussion"
 #: src/layouts/TopBarNotify.tsx
 msgid "LEARN MORE"
 msgstr "LEARN MORE"
-
-#: src/modules/markets/Strategy/StrategyAssetsListContainer.tsx
-msgid "LOOP YOUR POSITION TO MULTIPLY YOUR SIZE"
-msgstr "LOOP YOUR POSITION TO MULTIPLY YOUR SIZE"
 
 #: src/layouts/components/LanguageSwitcher.tsx
 msgid "Language"
@@ -1354,6 +1376,10 @@ msgstr "Loading data..."
 #: src/modules/overviews/strategy-overview/StrategyActions.tsx
 msgid "Loop"
 msgstr "Loop"
+
+#: src/modules/markets/Strategy/StrategyAssetsListContainer.tsx
+msgid "Loop your position to multiply your size"
+msgstr "Loop your position to multiply your size"
 
 #: src/components/transactions/Loop/LoopActions.tsx
 msgid "Loop {symbol}"
@@ -1579,6 +1605,10 @@ msgstr "Not reached"
 #: src/modules/dashboard/lists/BorrowedPositionsList/BorrowedPositionsList.tsx
 msgid "Nothing borrowed yet"
 msgstr "Nothing borrowed yet"
+
+#: src/modules/dashboard/lists/ILMPositionsList/ILMPositionsList.tsx
+msgid "Nothing deposited yet"
+msgstr "Nothing deposited yet"
 
 #: src/modules/history/HistoryWrapper.tsx
 #: src/modules/history/HistoryWrapperMobile.tsx
@@ -2073,6 +2103,7 @@ msgstr "Sorry, an unexpected error happened. In the meantime you may try reloadi
 msgid "Sorry, we couldn't find the page you were looking for."
 msgstr "Sorry, we couldn't find the page you were looking for."
 
+#: src/modules/markets/Strategy/StrategyAssetsList.tsx
 #: src/modules/overviews/strategy-overview/StrategyTopDetails.tsx
 msgid "Space Available"
 msgstr "Space Available"
@@ -2179,6 +2210,10 @@ msgstr "State"
 msgid "Static interest rate that is determined by Community Governance. This rate may be changed over time depending on the need for the GHO supply to contract/expand. <0>Learn more</0>"
 msgstr "Static interest rate that is determined by Community Governance. This rate may be changed over time depending on the need for the GHO supply to contract/expand. <0>Learn more</0>"
 
+#: src/modules/overviews/ReserveTopDetails.tsx
+msgid "Strategy View"
+msgstr "Strategy View"
+
 #: src/modules/overviews/strategy-overview/StrategyConfigurationWrapper.tsx
 msgid "Strategy status & configuration"
 msgstr "Strategy status & configuration"
@@ -2260,6 +2295,7 @@ msgstr "Supplying {symbol}"
 #: src/modules/dashboard/lists/BorrowedPositionsList/BorrowedPositionsListItem.tsx
 #: src/modules/dashboard/lists/BorrowedPositionsList/GhoBorrowedPositionsListItem.tsx
 #: src/modules/dashboard/lists/BorrowedPositionsList/GhoBorrowedPositionsListItem.tsx
+#: src/modules/dashboard/lists/ILMPositionsList/ILMPositionsListItem.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsListItem.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsListMobileItem.tsx
 msgid "Switch"
@@ -2312,10 +2348,15 @@ msgid "Switching rate"
 msgstr "Switching rate"
 
 #: src/components/transactions/Loop/LoopModalContent.tsx
+#: src/modules/markets/Strategy/StrategyAssetsList.tsx
 #: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 #: src/modules/overviews/strategy-overview/StrategyTopDetails.tsx
 msgid "Target Multiple"
 msgstr "Target Multiple"
+
+#: src/modules/dashboard/lists/ILMPositionsList/ILMPositionsList.tsx
+msgid "Target Multiplier"
+msgstr "Target Multiplier"
 
 #: src/modules/overviews/Gho/GhoReserveConfiguration.tsx
 msgid "Techpaper"
@@ -2576,12 +2617,12 @@ msgstr "Total available"
 #: src/modules/markets/Gho/GhoBanner.tsx
 #: src/modules/markets/MarketAssetsList.tsx
 #: src/modules/markets/MarketAssetsListMobileItem.tsx
+#: src/modules/markets/Strategy/StrategyAssetsListMobileItem.tsx
 #: src/modules/overviews/BorrowInfo.tsx
 #: src/modules/overviews/BorrowInfo.tsx
 #: src/modules/overviews/Gho/GhoBorrowInfo.tsx
 #: src/modules/overviews/Gho/GhoBorrowInfo.tsx
 #: src/modules/overviews/Gho/GhoReserveTopDetails.tsx
-
 msgid "Total borrowed"
 msgstr "Total borrowed"
 
@@ -2603,11 +2644,11 @@ msgstr "Total market size"
 
 #: src/modules/markets/MarketAssetsList.tsx
 #: src/modules/markets/MarketAssetsListMobileItem.tsx
+#: src/modules/markets/Strategy/StrategyAssetsListMobileItem.tsx
 #: src/modules/overviews/SupplyInfo.tsx
 #: src/modules/overviews/SupplyInfo.tsx
 #: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 #: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
-
 msgid "Total supplied"
 msgstr "Total supplied"
 
@@ -2894,6 +2935,7 @@ msgid "With testnet Faucet you can get free assets to test the Seamless Protocol
 msgstr "With testnet Faucet you can get free assets to test the Seamless Protocol. Make sure to switch your wallet provider to the appropriate testnet network, select desired asset, and click ‘Faucet’ to get tokens transferred to your wallet. The assets on a testnet are not “real,” meaning they have no monetary value."
 
 #: src/components/transactions/Withdraw/WithdrawModal.tsx
+#: src/modules/dashboard/lists/ILMPositionsList/ILMPositionsListItem.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsListItem.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsListMobileItem.tsx
 #: src/modules/history/HistoryFilterMenu.tsx
@@ -3019,6 +3061,11 @@ msgstr "You {action} <0/> {symbol}"
 #: src/components/transactions/DebtSwitch/DebtSwitchModalContent.tsx
 msgid "You've successfully switched borrow position."
 msgstr "You've successfully switched borrow position."
+
+#: src/modules/dashboard/lists/ILMPositionsList/ILMPositionsList.tsx
+#: src/modules/dashboard/lists/ILMPositionsList/ILMPositionsList.tsx
+msgid "Your ILM positions"
+msgstr "Your ILM positions"
 
 #: src/modules/markets/Strategy/StrategyAssetsList.tsx
 msgid "Your Position"

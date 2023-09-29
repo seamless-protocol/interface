@@ -4,6 +4,7 @@ import { useRootStore } from 'src/store/root';
 
 import { BorrowAssetsList } from './lists/BorrowAssetsList/BorrowAssetsList';
 import { BorrowedPositionsList } from './lists/BorrowedPositionsList/BorrowedPositionsList';
+import { ILMPositionsList } from './lists/ILMPositionsList/ILMPositionsList';
 import { SuppliedPositionsList } from './lists/SuppliedPositionsList/SuppliedPositionsList';
 import { SupplyAssetsList } from './lists/SupplyAssetsList/SupplyAssetsList';
 
@@ -19,6 +20,11 @@ export const DashboardContentWrapper = ({ isBorrow }: DashboardContentWrapperPro
   return (
     <Box>
       {currentMarketData.chainId === ChainId.polygon && !currentMarketData.v3}
+
+      <Box sx={{ width: '100%', marginBottom: 4 }}>
+        <ILMPositionsList />
+      </Box>
+
       <Box
         sx={{
           display: isDesktop ? 'flex' : 'block',
