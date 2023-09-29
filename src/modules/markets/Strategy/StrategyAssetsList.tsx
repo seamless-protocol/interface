@@ -8,10 +8,10 @@ import { ListHeaderTitle } from 'src/components/lists/ListHeaderTitle';
 import { ListHeaderWrapper } from 'src/components/lists/ListHeaderWrapper';
 import { ComputedReserveData } from 'src/hooks/app-data-provider/useAppDataProvider';
 
-import { AssetsListItemLoader } from './AssetsListItemLoader';
-import { AssetsListMobileItemLoader } from './AssetsListMobileItemLoader';
-import { MarketAssetsListItem } from './MarketAssetsListItem';
-import { MarketAssetsListMobileItem } from './MarketAssetsListMobileItem';
+import { AssetsListItemLoader } from '../AssetsListItemLoader';
+import { AssetsListMobileItemLoader } from '../AssetsListMobileItemLoader';
+import { StrategyAssetsListItem } from './StrategyAssetsListItem';
+import { StrategyAssetsListMobileItem } from './StrategyAssetsListMobileItem';
 
 const listHeaders = [
   {
@@ -19,21 +19,21 @@ const listHeaders = [
     sortKey: 'symbol',
   },
   {
-    title: <Trans>Total supplied</Trans>,
-    sortKey: 'totalLiquidityUSD',
+    title: <Trans>Space Available</Trans>,
+    sortKey: 'spaceAvailable',
   },
   {
-    title: <Trans>Supply APY</Trans>,
-    sortKey: 'supplyAPY',
+    title: <Trans>Description</Trans>,
+    sortKey: 'description',
   },
   {
-    title: <Trans>Total borrowed</Trans>,
-    sortKey: 'totalDebtUSD',
+    title: <Trans>Target Multiple</Trans>,
+    sortKey: 'targetMultiple',
   },
   {
     title: (
       <VariableAPYTooltip
-        text={<Trans>Borrow APY, variable</Trans>}
+        text={<Trans>Estimated Net APY</Trans>}
         key="APY_list_variable_type"
         variant="subheader2"
       />
@@ -43,7 +43,7 @@ const listHeaders = [
   {
     title: (
       <StableAPYTooltip
-        text={<Trans>Borrow APY, stable</Trans>}
+        text={<Trans>Your Position</Trans>}
         key="APY_list_stable_type"
         variant="subheader2"
       />
@@ -52,12 +52,12 @@ const listHeaders = [
   },
 ];
 
-type MarketAssetsListProps = {
+type StrategyAssetsListProps = {
   reserves: ComputedReserveData[];
   loading: boolean;
 };
 
-export default function MarketAssetsList({ reserves, loading }: MarketAssetsListProps) {
+export default function StrategyAssetsList({ reserves, loading }: StrategyAssetsListProps) {
   const isTableChangedToCards = useMediaQuery('(max-width:1125px)');
   const [sortName, setSortName] = useState('');
   const [sortDesc, setSortDesc] = useState(false);
@@ -128,9 +128,9 @@ export default function MarketAssetsList({ reserves, loading }: MarketAssetsList
 
       {reserves.map((reserve) =>
         isTableChangedToCards ? (
-          <MarketAssetsListMobileItem {...reserve} key={reserve.id} />
+          <StrategyAssetsListMobileItem {...reserve} key={reserve.id} />
         ) : (
-          <MarketAssetsListItem {...reserve} key={reserve.id} />
+          <StrategyAssetsListItem {...reserve} key={reserve.id} />
         )
       )}
     </>

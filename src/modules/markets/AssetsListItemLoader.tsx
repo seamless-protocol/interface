@@ -3,7 +3,7 @@ import { Box, Skeleton } from '@mui/material';
 import { ListColumn } from '../../components/lists/ListColumn';
 import { ListItem } from '../../components/lists/ListItem';
 
-export const MarketAssetsListItemLoader = () => {
+export const AssetsListItemLoader = () => {
   return (
     <ListItem px={6} minHeight={76}>
       <ListColumn isRow maxWidth={280}>

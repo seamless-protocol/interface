@@ -9,10 +9,11 @@ import { TitleWithSearchBar } from 'src/components/TitleWithSearchBar';
 import { MarketWarning } from 'src/components/transactions/Warnings/MarketWarning';
 import { useAppDataContext } from 'src/hooks/app-data-provider/useAppDataProvider';
 import { useProtocolDataContext } from 'src/hooks/useProtocolDataContext';
-import MarketAssetsList from 'src/modules/markets/MarketAssetsList';
 import { fetchIconSymbolAndName } from 'src/ui-config/reservePatches';
 
-export const MarketAssetsListContainer = () => {
+import StrategyAssetsList from './StrategyAssetsList';
+
+export const StrategyAssetsListContainer = () => {
   const { reserves, loading } = useAppDataContext();
   const { currentMarketData, currentNetworkConfig } = useProtocolDataContext();
   const [searchTerm, setSearchTerm] = useState('');
@@ -56,7 +57,7 @@ export const MarketAssetsListContainer = () => {
           onSearchTermChange={setSearchTerm}
           title={
             <>
-              <Trans>BORROW TOKENS USING COLLATERAL</Trans>
+              <Trans>LOOP YOUR POSITION TO MULTIPLY YOUR SIZE</Trans>
             </>
           }
           searchPlaceholder={sm ? 'Search asset' : 'Search asset name, symbol, or address'}
@@ -70,7 +71,7 @@ export const MarketAssetsListContainer = () => {
       )}
 
       {/* Unfrozen assets list */}
-      <MarketAssetsList reserves={unfrozenReserves} loading={loading} />
+      <StrategyAssetsList reserves={unfrozenReserves} loading={loading} />
 
       {/* Frozen or paused assets list */}
       {frozenOrPausedReserves.length > 0 && (
@@ -87,7 +88,7 @@ export const MarketAssetsListContainer = () => {
           </Warning>
         </Box>
       )}
-      <MarketAssetsList reserves={frozenOrPausedReserves} loading={loading} />
+      <StrategyAssetsList reserves={frozenOrPausedReserves} loading={loading} />
 
       {/* Show no search results message if nothing hits in either list */}
       {!loading && filteredData.length === 0 && (
