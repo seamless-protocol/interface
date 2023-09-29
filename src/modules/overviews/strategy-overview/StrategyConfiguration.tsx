@@ -12,7 +12,7 @@ import { useProtocolDataContext } from 'src/hooks/useProtocolDataContext';
 import { BROKEN_ASSETS } from 'src/hooks/useReservesHistory';
 
 import { PanelRow, PanelTitle } from '../ReservePanels';
-import { SupplyInfo } from '../SupplyInfo';
+import { StrategySupplyInfo } from './StrategySupplyInfo';
 
 type StrategyConfigurationProps = {
   reserve: ComputedReserveData;
@@ -76,7 +76,7 @@ export const StrategyConfiguration: React.FC<StrategyConfigurationProps> = ({ re
 
       <PanelRow>
         <PanelTitle>Loop Info</PanelTitle>
-        <SupplyInfo
+        <StrategySupplyInfo
           reserve={reserve}
           currentMarketData={currentMarketData}
           renderCharts={renderCharts}

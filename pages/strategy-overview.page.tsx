@@ -27,7 +27,7 @@ export default function ReserveOverview() {
 
   useEffect(() => {
     trackEvent('Page Viewed', {
-      'Page Name': 'Reserve Overview',
+      'Page Name': 'Strategy Overview',
     });
   }, [trackEvent]);
 

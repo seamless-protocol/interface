@@ -1,17 +1,16 @@
 import { API_ETH_MOCK_ADDRESS, InterestRate } from '@aave/contract-helpers';
-import { BigNumberValue, USD_DECIMALS, valueToBigNumber } from '@aave/math-utils';
 import { Trans } from '@lingui/macro';
 import {
   Box,
   Button,
   CircularProgress,
   Divider,
+  Grid,
   Paper,
   Skeleton,
   Stack,
   Typography,
 } from '@mui/material';
-import BigNumber from 'bignumber.js';
 import React, { ReactNode, useState } from 'react';
 import { WalletIcon } from 'src/components/icons/WalletIcon';
 import { getMarketInfoById } from 'src/components/MarketSwitcher';
@@ -31,30 +30,14 @@ import { useProtocolDataContext } from 'src/hooks/useProtocolDataContext';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 import { BuyWithFiat } from 'src/modules/staking/BuyWithFiat';
 import { useRootStore } from 'src/store/root';
-import {
-  getMaxAmountAvailableToBorrow,
-  getMaxGhoMintAmount,
-} from 'src/utils/getMaxAmountAvailableToBorrow';
+import { getMaxAmountAvailableToBorrow } from 'src/utils/getMaxAmountAvailableToBorrow';
 import { getMaxAmountAvailableToSupply } from 'src/utils/getMaxAmountAvailableToSupply';
 import { GENERAL } from 'src/utils/mixPanelEvents';
-import { amountToUsd } from 'src/utils/utils';
 
 import { CapType } from '../../../components/caps/helper';
 import { AvailableTooltip } from '../../../components/infoTooltips/AvailableTooltip';
 import { Link, ROUTES } from '../../../components/primitives/Link';
 import { useReserveActionState } from '../../../hooks/useReserveActionState';
-
-const amountToUSD = (
-  amount: BigNumberValue,
-  formattedPriceInMarketReferenceCurrency: string,
-  marketReferencePriceInUsd: string
-) => {
-  return valueToBigNumber(amount)
-    .multipliedBy(formattedPriceInMarketReferenceCurrency)
-    .multipliedBy(marketReferencePriceInUsd)
-    .shiftedBy(-USD_DECIMALS)
-    .toString();
-};
 
 interface StrategyActionsProps {
   reserve: ComputedReserveData;
@@ -65,19 +48,13 @@ export const StrategyActions = ({ reserve }: StrategyActionsProps) => {
 
   const { currentAccount, loading: loadingWeb3Context } = useWeb3Context();
   const { isPermissionsLoading } = usePermissions();
-  const { openBorrow, openSupply } = useModalContext();
+  const { openLoop } = useModalContext();
   const { currentMarket, currentNetworkConfig } = useProtocolDataContext();
-  const {
-    ghoReserveData,
-    user,
-    loading: loadingReserves,
-    marketReferencePriceInUsd,
-  } = useAppDataContext();
+  const { user, loading: loadingReserves } = useAppDataContext();
   const { walletBalances, loading: loadingWalletBalance } = useWalletBalances();
 
-  const [minRemainingBaseTokenBalance, displayGho] = useRootStore((store) => [
+  const [minRemainingBaseTokenBalance] = useRootStore((store) => [
     store.poolComputed.minRemainingBaseTokenBalance,
-    store.displayGho,
   ]);
   const { baseAssetSymbol } = currentNetworkConfig;
   let balance = walletBalances[reserve.underlyingAsset];
@@ -87,43 +64,21 @@ export const StrategyActions = ({ reserve }: StrategyActionsProps) => {
 
   let maxAmountToBorrow = '0';
   let maxAmountToSupply = '0';
-  const isGho = displayGho({ symbol: reserve.symbol, currentMarket });
 
-  if (isGho) {
-    const maxMintAmount = getMaxGhoMintAmount(user);
-    maxAmountToBorrow = BigNumber.min(
-      maxMintAmount,
-      valueToBigNumber(ghoReserveData.aaveFacilitatorRemainingCapacity)
-    ).toString();
-    maxAmountToSupply = '0';
-  } else {
-    maxAmountToBorrow = getMaxAmountAvailableToBorrow(
-      reserve,
-      user,
-      InterestRate.Variable
-    ).toString();
-
-    maxAmountToSupply = getMaxAmountAvailableToSupply(
-      balance?.amount || '0',
-      reserve,
-      reserve.underlyingAsset,
-      minRemainingBaseTokenBalance
-    ).toString();
-  }
-
-  const maxAmountToBorrowUsd = amountToUsd(
-    maxAmountToBorrow,
-    reserve.formattedPriceInMarketReferenceCurrency,
-    marketReferencePriceInUsd
+  maxAmountToBorrow = getMaxAmountAvailableToBorrow(
+    reserve,
+    user,
+    InterestRate.Variable
   ).toString();
 
-  const maxAmountToSupplyUsd = amountToUSD(
-    maxAmountToSupply,
-    reserve.formattedPriceInMarketReferenceCurrency,
-    marketReferencePriceInUsd
+  maxAmountToSupply = getMaxAmountAvailableToSupply(
+    balance?.amount || '0',
+    reserve,
+    reserve.underlyingAsset,
+    minRemainingBaseTokenBalance
   ).toString();
 
-  const { disableSupplyButton, disableBorrowButton, alerts } = useReserveActionState({
+  const { disableBorrowButton, alerts } = useReserveActionState({
     balance: balance?.amount || '0',
     maxAmountToSupply: maxAmountToSupply.toString(),
     maxAmountToBorrow: maxAmountToBorrow.toString(),
@@ -137,14 +92,6 @@ export const StrategyActions = ({ reserve }: StrategyActionsProps) => {
   if (loadingReserves || loadingWalletBalance) {
     return <ActionsSkeleton />;
   }
-
-  const onSupplyClicked = () => {
-    if (reserve.isWrappedBaseAsset && selectedAsset === baseAssetSymbol) {
-      openSupply(API_ETH_MOCK_ADDRESS.toLowerCase(), currentMarket, reserve.name, 'reserve', true);
-    } else {
-      openSupply(reserve.underlyingAsset, currentMarket, reserve.name, 'reserve', true);
-    }
-  };
 
   const { market } = getMarketInfoById(currentMarket);
 
@@ -171,25 +118,15 @@ export const StrategyActions = ({ reserve }: StrategyActionsProps) => {
         <>
           <Divider sx={{ my: 6 }} />
           <Stack gap={3}>
-            {!isGho && (
-              <SupplyAction
-                reserve={reserve}
-                value={maxAmountToSupply.toString()}
-                usdValue={maxAmountToSupplyUsd}
-                symbol={selectedAsset}
-                disable={disableSupplyButton}
-                onActionClicked={onSupplyClicked}
-              />
-            )}
             {reserve.borrowingEnabled && (
-              <BorrowAction
+              <LoopAction
                 reserve={reserve}
-                value={maxAmountToBorrow.toString()}
-                usdValue={maxAmountToBorrowUsd}
+                value={balance.amount.toString()}
+                usdValue={balance.amountUSD.toString()}
                 symbol={selectedAsset}
                 disable={disableBorrowButton}
                 onActionClicked={() => {
-                  openBorrow(reserve.underlyingAsset, currentMarket, reserve.name, 'reserve', true);
+                  openLoop(reserve.underlyingAsset, currentMarket, reserve.name, 'reserve', true);
                 }}
               />
             )}
@@ -300,7 +237,7 @@ interface ActionProps {
   reserve: ComputedReserveData;
 }
 
-const SupplyAction = ({
+const LoopAction = ({
   reserve,
   value,
   usdValue,
@@ -310,100 +247,134 @@ const SupplyAction = ({
 }: ActionProps) => {
   return (
     <Stack>
-      <AvailableTooltip
-        variant="description"
-        text={<Trans>Available to supply</Trans>}
-        capType={CapType.supplyCap}
-        event={{
-          eventName: GENERAL.TOOL_TIP,
-          eventParams: {
-            tooltip: 'Available to supply: your info',
-            asset: reserve.underlyingAsset,
-            assetName: reserve.name,
-          },
-        }}
-      />
-      <Stack
-        sx={{ height: '44px' }}
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <Box>
-          <ValueWithSymbol value={value} symbol={symbol} />
-          <FormattedNumber
-            value={usdValue}
-            variant="subheader2"
-            color="text.muted"
-            symbolsColor="text.muted"
-            symbol="USD"
+      <Grid container columns={2} columnSpacing={12}>
+        <Grid item sx={{ width: '175px' }}>
+          <AvailableTooltip
+            variant="description"
+            text={<Trans>Available to loop</Trans>}
+            capType={CapType.borrowCap}
+            event={{
+              eventName: GENERAL.TOOL_TIP,
+              eventParams: {
+                tooltip: 'Available to loop: your info',
+                asset: reserve.underlyingAsset,
+                assetName: reserve.name,
+              },
+            }}
           />
-        </Box>
-        <Button
-          sx={{ height: '36px', width: '96px' }}
-          onClick={onActionClicked}
-          disabled={disable}
-          fullWidth={false}
-          variant="contained"
-          data-cy="supplyButton"
-        >
-          <Trans>Supply</Trans>
-        </Button>
-      </Stack>
-    </Stack>
-  );
-};
+          <Stack
+            sx={{ height: '44px' }}
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Box>
+              <ValueWithSymbol value={value} symbol={symbol} />
+              <FormattedNumber
+                value={usdValue}
+                variant="subheader2"
+                color="text.muted"
+                symbolsColor="text.muted"
+                symbol="USD"
+              />
+            </Box>
+          </Stack>
+        </Grid>
 
-const BorrowAction = ({
-  reserve,
-  value,
-  usdValue,
-  symbol,
-  disable,
-  onActionClicked,
-}: ActionProps) => {
-  return (
-    <Stack>
-      <AvailableTooltip
-        variant="description"
-        text={<Trans>Available to borrow</Trans>}
-        capType={CapType.borrowCap}
-        event={{
-          eventName: GENERAL.TOOL_TIP,
-          eventParams: {
-            tooltip: 'Available to borrow: your info',
-            asset: reserve.underlyingAsset,
-            assetName: reserve.name,
+        <Grid item>
+          <AvailableTooltip
+            variant="description"
+            text={<Trans>Deposited {reserve.name}</Trans>}
+            capType={CapType.borrowCap}
+            event={{
+              eventName: GENERAL.TOOL_TIP,
+              eventParams: {
+                tooltip: 'Deposited: your info',
+                asset: reserve.underlyingAsset,
+                assetName: reserve.name,
+              },
+            }}
+          />
+          <Stack
+            sx={{ height: '44px' }}
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Box>
+              <ValueWithSymbol value={value} symbol={symbol} />
+            </Box>
+          </Stack>
+        </Grid>
+
+        <Grid item sx={{ width: '175px' }}>
+          <AvailableTooltip
+            variant="description"
+            text={<Trans>Total Exposure</Trans>}
+            capType={CapType.borrowCap}
+            event={{
+              eventName: GENERAL.TOOL_TIP,
+              eventParams: {
+                tooltip: 'Total Exposure: your info',
+                asset: reserve.underlyingAsset,
+                assetName: reserve.name,
+              },
+            }}
+          />
+          <Stack
+            sx={{ height: '44px' }}
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Box>
+              <ValueWithSymbol value={(Number(value) * 3).toLocaleString()} symbol={symbol} />
+            </Box>
+          </Stack>
+        </Grid>
+
+        <Grid item>
+          <AvailableTooltip
+            variant="description"
+            text={<Trans>Earned so far</Trans>}
+            capType={CapType.borrowCap}
+            event={{
+              eventName: GENERAL.TOOL_TIP,
+              eventParams: {
+                tooltip: 'Earned so far: your info',
+                asset: reserve.underlyingAsset,
+                assetName: reserve.name,
+              },
+            }}
+          />
+          <Stack
+            sx={{ height: '44px' }}
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Box>
+              <ValueWithSymbol value={value} symbol={symbol} />
+            </Box>
+          </Stack>
+        </Grid>
+      </Grid>
+      <Button
+        sx={{
+          height: '36px',
+          backgroundColor: 'background.surface2',
+          '&:hover': {
+            backgroundColor: 'background.surface',
           },
         }}
-      />
-      <Stack
-        sx={{ height: '44px' }}
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
+        onClick={onActionClicked}
+        disabled={disable}
+        fullWidth={true}
+        variant="contained"
+        data-cy="loopButton"
       >
-        <Box>
-          <ValueWithSymbol value={value} symbol={symbol} />
-          <FormattedNumber
-            value={usdValue}
-            variant="subheader2"
-            color="text.muted"
-            symbolsColor="text.muted"
-            symbol="USD"
-          />
-        </Box>
-        <Button
-          sx={{ height: '36px', width: '96px' }}
-          onClick={onActionClicked}
-          disabled={disable}
-          fullWidth={false}
-          variant="contained"
-          data-cy="borrowButton"
-        >
-          <Trans>Borrow </Trans>
-        </Button>
-      </Stack>
+        <Trans>Loop</Trans>
+      </Button>
     </Stack>
   );
 };

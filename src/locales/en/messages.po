@@ -62,6 +62,7 @@ msgstr "APR"
 #: src/modules/history/actions/BorrowRateModeBlock.tsx
 #: src/modules/history/actions/BorrowRateModeBlock.tsx
 #: src/modules/overviews/SupplyInfo.tsx
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "APY"
 msgstr "APY"
 
@@ -252,6 +253,7 @@ msgid "Asset can be only used as collateral in isolation mode with limited borro
 msgstr "Asset can be only used as collateral in isolation mode with limited borrowing power. To enter isolation mode, disable all other collateral."
 
 #: src/modules/overviews/SupplyInfo.tsx
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "Asset can only be used as collateral in isolation mode only."
 msgstr "Asset can only be used as collateral in isolation mode only."
 
@@ -276,6 +278,7 @@ msgid "Asset cannot be migrated to {marketName} v3 Market since collateral asset
 msgstr "Asset cannot be migrated to {marketName} v3 Market since collateral asset will enable isolation mode."
 
 #: src/modules/overviews/SupplyInfo.tsx
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "Asset cannot be used as collateral."
 msgstr "Asset cannot be used as collateral."
 
@@ -297,6 +300,7 @@ msgid "Asset is not listed"
 msgstr "Asset is not listed"
 
 #: src/modules/overviews/SupplyInfo.tsx
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "Asset supply is limited to a certain amount to reduce protocol exposure to the asset and to help manage risks involved."
 msgstr "Asset supply is limited to a certain amount to reduce protocol exposure to the asset and to help manage risks involved."
 
@@ -359,13 +363,15 @@ msgstr "Available rewards"
 #: src/modules/dashboard/lists/BorrowAssetsList/GhoBorrowAssetsListItem.tsx
 #: src/modules/overviews/Gho/GhoReserveTopDetails.tsx
 #: src/modules/overviews/ReserveActions.tsx
-#: src/modules/overviews/strategy-overview/StrategyActions.tsx
 msgid "Available to borrow"
 msgstr "Available to borrow"
 
+#: src/modules/overviews/strategy-overview/StrategyActions.tsx
+msgid "Available to loop"
+msgstr "Available to loop"
+
 #: src/components/caps/CapsHint.tsx
 #: src/modules/overviews/ReserveActions.tsx
-#: src/modules/overviews/strategy-overview/StrategyActions.tsx
 msgid "Available to supply"
 msgstr "Available to supply"
 
@@ -419,7 +425,6 @@ msgstr "Blocked Address"
 #: src/modules/history/HistoryFilterMenu.tsx
 #: src/modules/history/actions/ActionDetails.tsx
 #: src/modules/overviews/ReserveActions.tsx
-#: src/modules/overviews/strategy-overview/StrategyActions.tsx
 msgid "Borrow"
 msgstr "Borrow"
 
@@ -574,6 +579,7 @@ msgstr "COPY IMAGE"
 #: src/modules/dashboard/lists/SupplyAssetsList/SupplyAssetsList.tsx
 #: src/modules/dashboard/lists/SupplyAssetsList/SupplyAssetsListMobileItem.tsx
 #: src/modules/overviews/SupplyInfo.tsx
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "Can be collateral"
 msgstr "Can be collateral"
 
@@ -670,6 +676,9 @@ msgstr "Collateral to repay with"
 #: src/modules/overviews/SupplyInfo.tsx
 #: src/modules/overviews/SupplyInfo.tsx
 #: src/modules/overviews/SupplyInfo.tsx
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "Collateral usage"
 msgstr "Collateral usage"
 
@@ -802,6 +811,10 @@ msgstr "Debt ceiling limits the amount possible to borrow against this asset by 
 msgid "Delegated power"
 msgstr "Delegated power"
 
+#: src/modules/overviews/strategy-overview/StrategyActions.tsx
+msgid "Deposited {0}"
+msgstr "Deposited {0}"
+
 #: src/modules/dashboard/lists/BorrowAssetsList/BorrowAssetsListItem.tsx
 #: src/modules/dashboard/lists/BorrowAssetsList/BorrowAssetsListMobileItem.tsx
 #: src/modules/dashboard/lists/BorrowAssetsList/GhoBorrowAssetsListItem.tsx
@@ -914,6 +927,10 @@ msgstr "E-Mode increases your LTV for a selected category of assets up to<0/>."
 #: src/modules/overviews/ReserveEModePanel.tsx
 msgid "E-Mode increases your LTV for a selected category of assets, meaning that when E-mode is enabled, you will have higher borrowing power over assets of the same E-mode category which are defined by Community Governance. You can enter E-Mode from your <0>Dashboard</0>. To learn more about E-Mode and applied restrictions in <1>FAQ</1> or <2>Github</2>."
 msgstr "E-Mode increases your LTV for a selected category of assets, meaning that when E-mode is enabled, you will have higher borrowing power over assets of the same E-mode category which are defined by Community Governance. You can enter E-Mode from your <0>Dashboard</0>. To learn more about E-Mode and applied restrictions in <1>FAQ</1> or <2>Github</2>."
+
+#: src/modules/overviews/strategy-overview/StrategyActions.tsx
+msgid "Earned so far"
+msgstr "Earned so far"
 
 #: src/modules/overviews/Gho/GhoInterestRateGraph.tsx
 msgid "Effective interest rate"
@@ -1253,6 +1270,7 @@ msgstr "Language"
 #: src/components/transactions/Warnings/MarketWarning.tsx
 #: src/layouts/TopBarNotify.tsx
 #: src/modules/overviews/SupplyInfo.tsx
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "Learn more"
 msgstr "Learn more"
 
@@ -1319,6 +1337,7 @@ msgstr "Loading data..."
 
 #: src/components/transactions/Loop/LoopModal.tsx
 #: src/modules/history/actions/ActionDetails.tsx
+#: src/modules/overviews/strategy-overview/StrategyActions.tsx
 msgid "Loop"
 msgstr "Loop"
 
@@ -1364,6 +1383,10 @@ msgstr "Max"
 msgid "Max LTV"
 msgstr "Max LTV"
 
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
+msgid "Max Multiple before Rebalance"
+msgstr "Max Multiple before Rebalance"
+
 #: src/modules/staking/StakingPanel.tsx
 msgid "Max slashing"
 msgstr "Max slashing"
@@ -1383,6 +1406,7 @@ msgstr "Maximum amount available to borrow is limited because protocol borrow ca
 
 #: src/modules/overviews/BorrowInfo.tsx
 #: src/modules/overviews/SupplyInfo.tsx
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "Maximum amount available to supply is <0/> {0} (<1/>)."
 msgstr "Maximum amount available to supply is <0/> {0} (<1/>)."
 
@@ -1835,7 +1859,6 @@ msgid "Reserve factor is a percentage of interest which goes to a {0} that is co
 msgstr "Reserve factor is a percentage of interest which goes to a {0} that is controlled by Community Governance to promote ecosystem growth."
 
 #: src/modules/overviews/ReserveConfigurationWrapper.tsx
-#: src/modules/overviews/strategy-overview/StrategyConfigurationWrapper.tsx
 msgid "Reserve status & configuration"
 msgstr "Reserve status & configuration"
 
@@ -2117,6 +2140,7 @@ msgid "Staking Farms"
 msgstr "Staking Farms"
 
 #: src/modules/overviews/SupplyInfo.tsx
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "Staking Rewards"
 msgstr "Staking Rewards"
 
@@ -2141,6 +2165,10 @@ msgstr "State"
 msgid "Static interest rate that is determined by Community Governance. This rate may be changed over time depending on the need for the GHO supply to contract/expand. <0>Learn more</0>"
 msgstr "Static interest rate that is determined by Community Governance. This rate may be changed over time depending on the need for the GHO supply to contract/expand. <0>Learn more</0>"
 
+#: src/modules/overviews/strategy-overview/StrategyConfigurationWrapper.tsx
+msgid "Strategy status & configuration"
+msgstr "Strategy status & configuration"
+
 #: src/components/transactions/Loop/LoopModalContent.tsx
 #: src/components/transactions/Supply/SupplyModalContent.tsx
 msgid "Supplied"
@@ -2159,7 +2187,6 @@ msgstr "Supplied asset amount"
 #: src/modules/history/HistoryFilterMenu.tsx
 #: src/modules/history/actions/ActionDetails.tsx
 #: src/modules/overviews/ReserveActions.tsx
-#: src/modules/overviews/strategy-overview/StrategyActions.tsx
 msgid "Supply"
 msgstr "Supply"
 
@@ -2270,6 +2297,7 @@ msgid "Switching rate"
 msgstr "Switching rate"
 
 #: src/components/transactions/Loop/LoopModalContent.tsx
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 #: src/modules/overviews/strategy-overview/StrategyTopDetails.tsx
 msgid "Target Multiple"
 msgstr "Target Multiple"
@@ -2521,6 +2549,10 @@ msgstr "To submit a proposal for minor changes to the protocol, you'll need at l
 msgid "Top 10 addresses"
 msgstr "Top 10 addresses"
 
+#: src/modules/overviews/strategy-overview/StrategyActions.tsx
+msgid "Total Exposure"
+msgstr "Total Exposure"
+
 #: src/modules/markets/MarketsTopPanel.tsx
 msgid "Total available"
 msgstr "Total available"
@@ -2556,6 +2588,8 @@ msgstr "Total market size"
 #: src/modules/markets/MarketAssetsListMobileItem.tsx
 #: src/modules/overviews/SupplyInfo.tsx
 #: src/modules/overviews/SupplyInfo.tsx
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "Total supplied"
 msgstr "Total supplied"
 
@@ -2608,6 +2642,7 @@ msgid "Unavailable"
 msgstr "Unavailable"
 
 #: src/modules/overviews/SupplyInfo.tsx
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "Unbacked"
 msgstr "Unbacked"
 
@@ -3065,6 +3100,8 @@ msgstr "for"
 #: src/modules/overviews/Gho/GhoBorrowInfo.tsx
 #: src/modules/overviews/SupplyInfo.tsx
 #: src/modules/overviews/SupplyInfo.tsx
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "of"
 msgstr "of"
 
@@ -3081,6 +3118,7 @@ msgid "repaid"
 msgstr "repaid"
 
 #: src/modules/overviews/SupplyInfo.tsx
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "stETH supplied as collateral will continue to accrue staking rewards provided by daily rebases."
 msgstr "stETH supplied as collateral will continue to accrue staking rewards provided by daily rebases."
 

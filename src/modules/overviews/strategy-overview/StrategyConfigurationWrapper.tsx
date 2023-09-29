@@ -39,7 +39,7 @@ export const StrategyConfigurationWrapper: React.FC<ReserveConfigurationProps> =
         }}
       >
         <Typography variant="h3">
-          <Trans>Reserve status &#38; configuration</Trans>
+          <Trans>Strategy status &#38; configuration</Trans>
         </Typography>
       </Box>
       {isGho ? (
