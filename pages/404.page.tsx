@@ -48,6 +48,7 @@ export default function Aave404Page() {
                 bgcolor: theme.palette.background.surface,
                 color: theme.palette.text.links,
                 '&:hover': {
+                  bgcolor: theme.palette.background.surface,
                   color: theme.palette.text.links,
                 },
               })}

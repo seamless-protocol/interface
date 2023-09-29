@@ -124,6 +124,8 @@ export const ROUTES = {
   dynamicRenderedProposal: (proposalId: number) => `/governance/proposal?proposalId=${proposalId}`,
   reserveOverview: (underlyingAsset: string, marketName: CustomMarket) =>
     `/reserve-overview/?underlyingAsset=${underlyingAsset}&marketName=${marketName}`,
+  strategyOverview: (underlyingAsset: string, marketName: CustomMarket) =>
+    `/strategy-overview/?underlyingAsset=${underlyingAsset}&marketName=${marketName}`,
   history: '/history',
   farms: 'https://farms.seamlessprotocol.com',
 };

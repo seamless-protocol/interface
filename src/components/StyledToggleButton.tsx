@@ -48,7 +48,7 @@ const CustomTxModalToggleButton = styled(ToggleButton)<ToggleButtonProps>(({ the
     height: '100%',
     display: 'flex',
     justifyContent: 'center',
-    color: theme.palette.background.header,
+    color: 'theme.palette.background.header',
   },
 })) as typeof ToggleButton;
 

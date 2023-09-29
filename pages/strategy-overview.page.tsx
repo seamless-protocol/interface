@@ -10,9 +10,9 @@ import {
 } from 'src/hooks/app-data-provider/useAppDataProvider';
 import { AssetCapsProvider } from 'src/hooks/useAssetCaps';
 import { MainLayout } from 'src/layouts/MainLayout';
-import { ReserveActions } from 'src/modules/overviews/ReserveActions';
-import { ReserveConfigurationWrapper } from 'src/modules/overviews/ReserveConfigurationWrapper';
-import { ReserveTopDetailsWrapper } from 'src/modules/overviews/ReserveTopDetailsWrapper';
+import { StrategyActions } from 'src/modules/overviews/strategy-overview/StrategyActions';
+import { StrategyConfigurationWrapper } from 'src/modules/overviews/strategy-overview/StrategyConfigurationWrapper';
+import { StrategyTopDetailsWrapper } from 'src/modules/overviews/strategy-overview/StrategyTopDetailsWrapper';
 import { useRootStore } from 'src/store/root';
 
 import { ContentContainer } from '../src/components/ContentContainer';
@@ -27,7 +27,7 @@ export default function ReserveOverview() {
 
   useEffect(() => {
     trackEvent('Page Viewed', {
-      'Page Name': 'Reserve Overview',
+      'Page Name': 'Strategy Overview',
     });
   }, [trackEvent]);
 
@@ -39,7 +39,7 @@ export default function ReserveOverview() {
 
   return (
     <AssetCapsProvider asset={reserve}>
-      <ReserveTopDetailsWrapper underlyingAsset={underlyingAsset} />
+      <StrategyTopDetailsWrapper underlyingAsset={underlyingAsset} />
 
       <ContentContainer>
         <Box
@@ -78,7 +78,7 @@ export default function ReserveOverview() {
               mr: { xs: 0, lg: 4 },
             }}
           >
-            <ReserveConfigurationWrapper reserve={reserve} />
+            <StrategyConfigurationWrapper reserve={reserve} />
           </Box>
 
           {/** Right panel with actions*/}
@@ -88,7 +88,7 @@ export default function ReserveOverview() {
               width: { xs: '100%', lg: '416px' },
             }}
           >
-            <ReserveActions reserve={reserve} />
+            <StrategyActions reserve={reserve} />
           </Box>
         </Box>
       </ContentContainer>

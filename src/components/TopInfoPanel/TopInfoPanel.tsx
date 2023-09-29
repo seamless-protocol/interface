@@ -1,5 +1,5 @@
 import { Box, Container, ContainerProps } from '@mui/material';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 import { PageTitle, PageTitleProps } from './PageTitle';
 
@@ -18,10 +18,19 @@ export const TopInfoPanel = ({
   children,
   containerProps = {},
 }: TopInfoPanelProps) => {
+  const [useStrategyColor, setUseStrategyColor] = useState(false);
+
+  useEffect(() => {
+    // Check for 'window' and access 'window.location.pathname' only on the client side
+    if (typeof window !== 'undefined' && window.location.pathname.includes('strategy-overview')) {
+      setUseStrategyColor(true);
+    }
+  }, []);
+
   return (
     <Box
       sx={{
-        bgcolor: 'background.header',
+        bgcolor: useStrategyColor ? '#2a2d3c' : 'background.header',
         pt: { xs: 10, md: 12 },
         pb: { xs: 18, md: 20, lg: '94px', xl: '92px', xxl: '96px' },
         color: '#F1F1F3',
