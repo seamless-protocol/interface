@@ -359,11 +359,13 @@ msgstr "Available rewards"
 #: src/modules/dashboard/lists/BorrowAssetsList/GhoBorrowAssetsListItem.tsx
 #: src/modules/overviews/Gho/GhoReserveTopDetails.tsx
 #: src/modules/overviews/ReserveActions.tsx
+#: src/modules/overviews/strategy-overview/StrategyActions.tsx
 msgid "Available to borrow"
 msgstr "Available to borrow"
 
 #: src/components/caps/CapsHint.tsx
 #: src/modules/overviews/ReserveActions.tsx
+#: src/modules/overviews/strategy-overview/StrategyActions.tsx
 msgid "Available to supply"
 msgstr "Available to supply"
 
@@ -392,6 +394,7 @@ msgid "Be mindful of the network congestion and gas prices."
 msgstr "Be mindful of the network congestion and gas prices."
 
 #: src/modules/overviews/ReserveActions.tsx
+#: src/modules/overviews/strategy-overview/StrategyActions.tsx
 msgid "Because this asset is paused, no actions can be taken until further notice"
 msgstr "Because this asset is paused, no actions can be taken until further notice"
 
@@ -416,6 +419,7 @@ msgstr "Blocked Address"
 #: src/modules/history/HistoryFilterMenu.tsx
 #: src/modules/history/actions/ActionDetails.tsx
 #: src/modules/overviews/ReserveActions.tsx
+#: src/modules/overviews/strategy-overview/StrategyActions.tsx
 msgid "Borrow"
 msgstr "Borrow"
 
@@ -1331,6 +1335,7 @@ msgid "Ltv validation failed"
 msgstr "Ltv validation failed"
 
 #: src/modules/overviews/ReserveConfiguration.tsx
+#: src/modules/overviews/strategy-overview/StrategyConfiguration.tsx
 msgid "MAI has been paused due to a community decision. Supply, borrows and repays are impacted. <0>More details</0>"
 msgstr "MAI has been paused due to a community decision. Supply, borrows and repays are impacted. <0>More details</0>"
 
@@ -1608,6 +1613,7 @@ msgstr "Please always be aware of your <0>Health Factor (HF)</0> when partially 
 
 #: src/modules/governance/UserGovernanceInfo.tsx
 #: src/modules/overviews/ReserveActions.tsx
+#: src/modules/overviews/strategy-overview/StrategyActions.tsx
 msgid "Please connect a wallet to view your personal information here."
 msgstr "Please connect a wallet to view your personal information here."
 
@@ -1829,6 +1835,7 @@ msgid "Reserve factor is a percentage of interest which goes to a {0} that is co
 msgstr "Reserve factor is a percentage of interest which goes to a {0} that is controlled by Community Governance to promote ecosystem growth."
 
 #: src/modules/overviews/ReserveConfigurationWrapper.tsx
+#: src/modules/overviews/strategy-overview/StrategyConfigurationWrapper.tsx
 msgid "Reserve status & configuration"
 msgstr "Reserve status & configuration"
 
@@ -2000,6 +2007,7 @@ msgid "Signing"
 msgstr "Signing"
 
 #: src/modules/overviews/ReserveActions.tsx
+#: src/modules/overviews/strategy-overview/StrategyActions.tsx
 msgid "Since this asset is frozen, the only available actions are withdraw and repay which can be accessed from the <0>Dashboard</0>"
 msgstr "Since this asset is frozen, the only available actions are withdraw and repay which can be accessed from the <0>Dashboard</0>"
 
@@ -2151,6 +2159,7 @@ msgstr "Supplied asset amount"
 #: src/modules/history/HistoryFilterMenu.tsx
 #: src/modules/history/actions/ActionDetails.tsx
 #: src/modules/overviews/ReserveActions.tsx
+#: src/modules/overviews/strategy-overview/StrategyActions.tsx
 msgid "Supply"
 msgstr "Supply"
 
@@ -2439,6 +2448,7 @@ msgid "This asset is frozen due to an Seamless Protocol Governance decision. On 
 msgstr "This asset is frozen due to an Seamless Protocol Governance decision. On the 20th of December 2022, renFIL will no longer be supported and cannot be bridged back to its native network. It is recommended to withdraw supply positions and repay borrow positions so that renFIL can be bridged back to FIL before the deadline. After this date, it will no longer be possible to convert renFIL to FIL. <0>More details</0>"
 
 #: src/modules/overviews/ReserveConfiguration.tsx
+#: src/modules/overviews/strategy-overview/StrategyConfiguration.tsx
 msgid "This asset is frozen due to an community decision. <0>More details</0>"
 msgstr "This asset is frozen due to an community decision. <0>More details</0>"
 
@@ -2975,6 +2985,8 @@ msgstr "Your health factor and loan to value determine the assurance of your col
 #: src/modules/governance/VotingPowerInfoPanel.tsx
 #: src/modules/overviews/ReserveActions.tsx
 #: src/modules/overviews/ReserveActions.tsx
+#: src/modules/overviews/strategy-overview/StrategyActions.tsx
+#: src/modules/overviews/strategy-overview/StrategyActions.tsx
 msgid "Your info"
 msgstr "Your info"
 

@@ -1,5 +1,5 @@
 import { Box, Container, ContainerProps } from '@mui/material';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 import { PageTitle, PageTitleProps } from './PageTitle';
 
@@ -18,7 +18,14 @@ export const TopInfoPanel = ({
   children,
   containerProps = {},
 }: TopInfoPanelProps) => {
-  const useStrategyColor = window.location.pathname.includes('strategy-overview');
+  const [useStrategyColor, setUseStrategyColor] = useState(false);
+
+  useEffect(() => {
+    // Check for 'window' and access 'window.location.pathname' only on the client side
+    if (typeof window !== 'undefined' && window.location.pathname.includes('strategy-overview')) {
+      setUseStrategyColor(true);
+    }
+  }, []);
 
   return (
     <Box
