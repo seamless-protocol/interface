@@ -229,7 +229,7 @@ export const StrategySupplyInfo = ({
               />
             }
           >
-            3x
+            3.0x
           </ReserveOverviewBox>
 
           <ReserveOverviewBox
@@ -249,7 +249,7 @@ export const StrategySupplyInfo = ({
               />
             }
           >
-            4x
+            4.0x
           </ReserveOverviewBox>
 
           {/* <ReserveOverviewBox

@@ -33,12 +33,16 @@ const head = [
     sortKey: 'symbol',
   },
   {
+    title: <Trans>Description</Trans>,
+    sortKey: 'description',
+  },
+  {
     title: <Trans key="Balance">Balance</Trans>,
     sortKey: 'underlyingBalance',
   },
 
   {
-    title: <Trans key="APY">APY</Trans>,
+    title: <Trans key="APY">Estimated Net APY</Trans>,
     sortKey: 'supplyAPY',
   },
   {
@@ -73,6 +77,7 @@ export const ILMPositionsList = () => {
   const suppliedPositions =
     user?.userReservesData
       .filter((userReserve) => userReserve.underlyingBalance !== '0')
+      // Filter out non-ILM assets
       .filter((userReserve) => IsAllowListedForILM(userReserve.reserve.underlyingAsset))
       .map((userReserve) => ({
         ...userReserve,

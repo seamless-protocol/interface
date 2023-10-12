@@ -189,7 +189,7 @@ export const LoopModalContent = React.memo(
         />
 
         <TxModalDetails gasLimit={gasLimit} skipLoad={true} disabled={Number(amount) === 0}>
-          <MultiplierLine description={<Trans>Target Multiple</Trans>} multiplier="3x" />
+          <MultiplierLine description={<Trans>Target Multiple</Trans>} multiplier="3.0x" />
           <DetailsIncentivesLine
             incentives={poolReserve.aIncentivesData}
             symbol={poolReserve.symbol}

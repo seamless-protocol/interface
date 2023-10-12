@@ -18,10 +18,10 @@ const listHeaders = [
     title: <Trans>Asset</Trans>,
     sortKey: 'symbol',
   },
-  {
-    title: <Trans>Space Available</Trans>,
-    sortKey: 'spaceAvailable',
-  },
+  // {
+  //   title: <Trans>Space Available</Trans>,
+  //   sortKey: 'spaceAvailable',
+  // },
   {
     title: <Trans>Description</Trans>,
     sortKey: 'description',

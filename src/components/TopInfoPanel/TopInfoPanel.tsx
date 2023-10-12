@@ -30,7 +30,7 @@ export const TopInfoPanel = ({
   return (
     <Box
       sx={{
-        bgcolor: useStrategyColor ? '#2a2d3c' : 'background.header',
+        bgcolor: useStrategyColor ? '#6A0C64' : '#2a2d3c',
         pt: { xs: 10, md: 12 },
         pb: { xs: 18, md: 20, lg: '94px', xl: '92px', xxl: '96px' },
         color: '#F1F1F3',

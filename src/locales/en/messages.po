@@ -57,7 +57,6 @@ msgstr "APR"
 #: src/modules/dashboard/lists/BorrowedPositionsList/BorrowedPositionsListItem.tsx
 #: src/modules/dashboard/lists/BorrowedPositionsList/GhoBorrowedPositionsListItem.tsx
 #: src/modules/dashboard/lists/ILMPositionsList/ILMPositionsList.tsx
-#: src/modules/dashboard/lists/ILMPositionsList/ILMPositionsList.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsList.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsList.tsx
 #: src/modules/dashboard/lists/SupplyAssetsList/SupplyAssetsList.tsx
@@ -251,10 +250,6 @@ msgstr "Array parameters that should be equal length are not"
 #: src/modules/markets/Strategy/StrategyAssetsList.tsx
 msgid "Asset"
 msgstr "Asset"
-
-#: src/modules/overviews/strategy-overview/StrategyTopDetails.tsx
-msgid "Asset View"
-msgstr "Asset View"
 
 #: src/components/isolationMode/IsolatedBadge.tsx
 msgid "Asset can be only used as collateral in isolation mode with limited borrowing power. To enter isolation mode, disable all other collateral."
@@ -780,6 +775,10 @@ msgstr "Created"
 msgid "Current LTV"
 msgstr "Current LTV"
 
+#: src/modules/overviews/strategy-overview/StrategyActions.tsx
+msgid "Current Multiple"
+msgstr "Current Multiple"
+
 #: pages/governance/proposal/[proposalId].governance.tsx
 msgid "Current differential"
 msgstr "Current differential"
@@ -836,10 +835,7 @@ msgstr "Delegated power"
 msgid "Deposit"
 msgstr "Deposit"
 
-#: src/modules/overviews/strategy-overview/StrategyActions.tsx
-msgid "Deposited {0}"
-msgstr "Deposited {0}"
-
+#: src/modules/dashboard/lists/ILMPositionsList/ILMPositionsList.tsx
 #: src/modules/markets/Strategy/StrategyAssetsList.tsx
 msgid "Description"
 msgstr "Description"
@@ -958,10 +954,6 @@ msgstr "E-Mode increases your LTV for a selected category of assets up to<0/>."
 msgid "E-Mode increases your LTV for a selected category of assets, meaning that when E-mode is enabled, you will have higher borrowing power over assets of the same E-mode category which are defined by Community Governance. You can enter E-Mode from your <0>Dashboard</0>. To learn more about E-Mode and applied restrictions in <1>FAQ</1> or <2>Github</2>."
 msgstr "E-Mode increases your LTV for a selected category of assets, meaning that when E-mode is enabled, you will have higher borrowing power over assets of the same E-mode category which are defined by Community Governance. You can enter E-Mode from your <0>Dashboard</0>. To learn more about E-Mode and applied restrictions in <1>FAQ</1> or <2>Github</2>."
 
-#: src/modules/overviews/strategy-overview/StrategyActions.tsx
-msgid "Earned so far"
-msgstr "Earned so far"
-
 #: src/modules/overviews/Gho/GhoInterestRateGraph.tsx
 msgid "Effective interest rate"
 msgstr "Effective interest rate"
@@ -1025,8 +1017,8 @@ msgid "Error connecting. Try refreshing the page."
 msgstr "Error connecting. Try refreshing the page."
 
 #: src/components/transactions/FlowCommons/TxModalDetails.tsx
+#: src/modules/dashboard/lists/ILMPositionsList/ILMPositionsList.tsx
 #: src/modules/markets/Strategy/StrategyAssetsList.tsx
-#: src/modules/overviews/strategy-overview/StrategyTopDetails.tsx
 msgid "Estimated Net APY"
 msgstr "Estimated Net APY"
 
@@ -2103,11 +2095,6 @@ msgstr "Sorry, an unexpected error happened. In the meantime you may try reloadi
 msgid "Sorry, we couldn't find the page you were looking for."
 msgstr "Sorry, we couldn't find the page you were looking for."
 
-#: src/modules/markets/Strategy/StrategyAssetsList.tsx
-#: src/modules/overviews/strategy-overview/StrategyTopDetails.tsx
-msgid "Space Available"
-msgstr "Space Available"
-
 #: src/layouts/components/LanguageSwitcher.tsx
 msgid "Spanish"
 msgstr "Spanish"
@@ -2209,10 +2196,6 @@ msgstr "State"
 #: src/components/infoTooltips/FixedAPYTooltip.tsx
 msgid "Static interest rate that is determined by Community Governance. This rate may be changed over time depending on the need for the GHO supply to contract/expand. <0>Learn more</0>"
 msgstr "Static interest rate that is determined by Community Governance. This rate may be changed over time depending on the need for the GHO supply to contract/expand. <0>Learn more</0>"
-
-#: src/modules/overviews/ReserveTopDetails.tsx
-msgid "Strategy View"
-msgstr "Strategy View"
 
 #: src/modules/overviews/strategy-overview/StrategyConfigurationWrapper.tsx
 msgid "Strategy status & configuration"
@@ -2329,6 +2312,14 @@ msgstr "Switch rate"
 #: src/components/transactions/Swap/SwapModalContent.tsx
 msgid "Switch to"
 msgstr "Switch to"
+
+#: src/modules/overviews/ReserveTopDetails.tsx
+msgid "Switch to <0/>Strategy View"
+msgstr "Switch to <0/>Strategy View"
+
+#: src/modules/overviews/strategy-overview/StrategyTopDetails.tsx
+msgid "Switch to the <0/>Supply & Borrow Market"
+msgstr "Switch to the <0/>Supply & Borrow Market"
 
 #: src/components/transactions/Swap/SwapModalContent.tsx
 msgid "Switched"
@@ -2605,10 +2596,6 @@ msgstr "To submit a proposal for minor changes to the protocol, you'll need at l
 #: src/modules/governance/proposal/VotersListContainer.tsx
 msgid "Top 10 addresses"
 msgstr "Top 10 addresses"
-
-#: src/modules/overviews/strategy-overview/StrategyActions.tsx
-msgid "Total Exposure"
-msgstr "Total Exposure"
 
 #: src/modules/markets/MarketsTopPanel.tsx
 msgid "Total available"
@@ -3062,6 +3049,10 @@ msgstr "You {action} <0/> {symbol}"
 msgid "You've successfully switched borrow position."
 msgstr "You've successfully switched borrow position."
 
+#: src/modules/overviews/strategy-overview/StrategyActions.tsx
+msgid "Your Balance"
+msgstr "Your Balance"
+
 #: src/modules/dashboard/lists/ILMPositionsList/ILMPositionsList.tsx
 #: src/modules/dashboard/lists/ILMPositionsList/ILMPositionsList.tsx
 msgid "Your ILM positions"
@@ -3070,6 +3061,10 @@ msgstr "Your ILM positions"
 #: src/modules/markets/Strategy/StrategyAssetsList.tsx
 msgid "Your Position"
 msgstr "Your Position"
+
+#: src/modules/overviews/strategy-overview/StrategyActions.tsx
+msgid "Your Total Exposure"
+msgstr "Your Total Exposure"
 
 #: src/modules/dashboard/lists/BorrowedPositionsList/BorrowedPositionsList.tsx
 #: src/modules/dashboard/lists/BorrowedPositionsList/BorrowedPositionsList.tsx
@@ -3243,6 +3238,11 @@ msgstr "withdrew"
 #: src/modules/staking/GhoDiscountProgram.tsx
 msgid "{0}"
 msgstr "{0}"
+
+#: src/modules/overviews/strategy-overview/StrategyActions.tsx
+#: src/modules/overviews/strategy-overview/StrategyTopDetails.tsx
+msgid "{0} APY"
+msgstr "{0} APY"
 
 #: src/components/transactions/ClaimRewards/ClaimRewardsModalContent.tsx
 msgid "{0} Balance"

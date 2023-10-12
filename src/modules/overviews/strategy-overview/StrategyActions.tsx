@@ -251,12 +251,12 @@ const LoopAction = ({
         <Grid item marginBottom={4} sx={{ width: '175px' }}>
           <AvailableTooltip
             variant="description"
-            text={<Trans>Available to loop</Trans>}
+            text={<Trans>Current Multiple</Trans>}
             capType={CapType.borrowCap}
             event={{
               eventName: GENERAL.TOOL_TIP,
               eventParams: {
-                tooltip: 'Available to loop: your info',
+                tooltip: 'Current Multiple: your info',
                 asset: reserve.underlyingAsset,
                 assetName: reserve.name,
               },
@@ -269,14 +269,14 @@ const LoopAction = ({
             alignItems="center"
           >
             <Box>
-              <ValueWithSymbol value={value} symbol={symbol} />
-              <FormattedNumber
+              <ValueWithSymbol value={'3'} symbol={'x'} />
+              {/* <FormattedNumber
                 value={usdValue}
                 variant="subheader2"
                 color="text.muted"
                 symbolsColor="text.muted"
                 symbol="USD"
-              />
+              /> */}
             </Box>
           </Stack>
         </Grid>
@@ -284,12 +284,12 @@ const LoopAction = ({
         <Grid item>
           <AvailableTooltip
             variant="description"
-            text={<Trans>Deposited {reserve.name}</Trans>}
+            text={<Trans>{reserve.name} APY</Trans>}
             capType={CapType.borrowCap}
             event={{
               eventName: GENERAL.TOOL_TIP,
               eventParams: {
-                tooltip: 'Deposited: your info',
+                tooltip: 'cbETH: your info',
                 asset: reserve.underlyingAsset,
                 assetName: reserve.name,
               },
@@ -302,7 +302,7 @@ const LoopAction = ({
             alignItems="center"
           >
             <Box>
-              <ValueWithSymbol value={value} symbol={symbol} />
+              <ValueWithSymbol value={value} symbol={'%'} />
             </Box>
           </Stack>
         </Grid>
@@ -310,12 +310,12 @@ const LoopAction = ({
         <Grid item sx={{ width: '175px' }}>
           <AvailableTooltip
             variant="description"
-            text={<Trans>Total Exposure</Trans>}
+            text={<Trans>Your Balance</Trans>}
             capType={CapType.borrowCap}
             event={{
               eventName: GENERAL.TOOL_TIP,
               eventParams: {
-                tooltip: 'Total Exposure: your info',
+                tooltip: 'Your balance: your info',
                 asset: reserve.underlyingAsset,
                 assetName: reserve.name,
               },
@@ -336,12 +336,12 @@ const LoopAction = ({
         <Grid item>
           <AvailableTooltip
             variant="description"
-            text={<Trans>Earned so far</Trans>}
+            text={<Trans>Your Total Exposure</Trans>}
             capType={CapType.borrowCap}
             event={{
               eventName: GENERAL.TOOL_TIP,
               eventParams: {
-                tooltip: 'Earned so far: your info',
+                tooltip: 'Your Total Exposure: your info',
                 asset: reserve.underlyingAsset,
                 assetName: reserve.name,
               },
@@ -354,27 +354,61 @@ const LoopAction = ({
             alignItems="center"
           >
             <Box>
-              <ValueWithSymbol value={value} symbol={symbol} />
+              <ValueWithSymbol value={(Number(value) * 3).toString()} symbol={symbol} />
             </Box>
           </Stack>
         </Grid>
       </Grid>
-      <Button
-        sx={{
-          height: '36px',
-          backgroundColor: 'background.surface2',
-          '&:hover': {
-            backgroundColor: 'background.surface',
-          },
-        }}
-        onClick={onActionClicked}
-        disabled={disable}
-        fullWidth={true}
-        variant="contained"
-        data-cy="loopButton"
-      >
-        <Trans>Loop</Trans>
-      </Button>
+      <Divider sx={{ my: 6 }} />
+      <Stack>
+        <AvailableTooltip
+          variant="description"
+          text={<Trans>Available to loop</Trans>}
+          capType={CapType.borrowCap}
+          event={{
+            eventName: GENERAL.TOOL_TIP,
+            eventParams: {
+              tooltip: 'Available to borrow: your info',
+              asset: reserve.underlyingAsset,
+              assetName: reserve.name,
+            },
+          }}
+        />
+        <Stack
+          sx={{ height: '44px' }}
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Box>
+            <ValueWithSymbol value={value} symbol={symbol} />
+            <FormattedNumber
+              value={usdValue}
+              variant="subheader2"
+              color="text.muted"
+              symbolsColor="text.muted"
+              symbol="USD"
+            />
+          </Box>
+          <Button
+            sx={{
+              height: '36px',
+              width: '96px',
+              backgroundColor: 'background.surface2',
+              '&:hover': {
+                backgroundColor: 'background.surface',
+              },
+            }}
+            onClick={onActionClicked}
+            disabled={disable}
+            fullWidth={false}
+            variant="contained"
+            data-cy="borrowButton"
+          >
+            <Trans>Loop</Trans>
+          </Button>
+        </Stack>
+      </Stack>
     </Stack>
   );
 };

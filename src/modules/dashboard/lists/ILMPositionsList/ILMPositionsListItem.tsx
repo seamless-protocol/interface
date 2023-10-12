@@ -25,7 +25,7 @@ export const ILMPositionsListItem = ({
   const { user } = useAppDataContext();
   const { aIncentivesData, isFrozen, isActive } = reserve;
   const { currentMarketData, currentMarket } = useProtocolDataContext();
-  const { openSupply, openWithdraw, openSwap } = useModalContext();
+  const { openLoop, openWithdraw, openSwap } = useModalContext();
   const { debtCeiling } = useAssetCaps();
   const isSwapButton = isFeatureEnabled.liquiditySwap(currentMarketData);
   const trackEvent = useRootStore((store) => store.trackEvent);
@@ -55,6 +55,7 @@ export const ILMPositionsListItem = ({
       showSupplyCapTooltips
       showDebtCeilingTooltips
     >
+      <ListColumn>{reserve.name} long</ListColumn>
       <ListValueColumn
         symbol={reserve.iconSymbol}
         value={Number(underlyingBalance)}
@@ -84,7 +85,7 @@ export const ILMPositionsListItem = ({
           }}
           data-cy={`collateralStatus`}
         /> */}
-        3x
+        3.0x
       </ListColumn>
 
       <ListButtonsColumn>
@@ -126,7 +127,7 @@ export const ILMPositionsListItem = ({
           <Button
             disabled={disableSupply}
             variant="outlined"
-            onClick={() => openSupply(underlyingAsset, currentMarket, reserve.name, 'dashboard')}
+            onClick={() => openLoop(underlyingAsset, currentMarket, reserve.name, 'dashboard')}
             sx={(theme) => ({
               backgroundColor: theme.palette.background.surface,
               color: theme.palette.text.links,

@@ -1,6 +1,6 @@
 import { ExternalLinkIcon } from '@heroicons/react/outline';
 import { Trans } from '@lingui/macro';
-import { Box, Button, Skeleton, SvgIcon, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Button, Divider, Skeleton, SvgIcon, useMediaQuery, useTheme } from '@mui/material';
 import { CircleIcon } from 'src/components/CircleIcon';
 import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
 import { Link, ROUTES } from 'src/components/primitives/Link';
@@ -44,32 +44,6 @@ export const ReserveTopDetails = ({ underlyingAsset }: ReserveTopDetailsProps) =
 
   return (
     <>
-      {IsAllowListedForILM(poolReserve.underlyingAsset) && (
-        <Button
-          variant="outlined"
-          component={Link}
-          href={ROUTES.strategyOverview(poolReserve.underlyingAsset, currentMarket)}
-          onClick={() =>
-            trackEvent(RESERVE_DETAILS.SWAP_VIEWS, {
-              type: 'Button',
-              assetName: poolReserve.name,
-              asset: poolReserve.underlyingAsset,
-              market: currentMarket,
-            })
-          }
-          sx={(theme) => ({
-            mt: 1,
-            backgroundColor: theme.palette.background.surface2,
-            color: theme.palette.text.links,
-            '&:hover': {
-              backgroundColor: theme.palette.background.surface2,
-              color: theme.palette.text.links,
-            },
-          })}
-        >
-          <Trans>Strategy View</Trans>
-        </Button>
-      )}
       <TopInfoPanelItem title={<Trans>Reserve Size</Trans>} loading={loading} hideIcon>
         <FormattedNumber
           value={Math.max(Number(poolReserve?.totalLiquidityUSD), 0)}
@@ -135,6 +109,43 @@ export const ReserveTopDetails = ({ underlyingAsset }: ReserveTopDetailsProps) =
           )}
         </Box>
       </TopInfoPanelItem>
+      {IsAllowListedForILM(poolReserve.underlyingAsset) && (
+        <>
+          <Divider
+            orientation="vertical"
+            flexItem
+            sx={{ my: 1, borderColor: 'rgba(235, 235, 239, 0.08)' }}
+          />
+          <Button
+            variant="outlined"
+            component={Link}
+            href={ROUTES.strategyOverview(poolReserve.underlyingAsset, currentMarket)}
+            onClick={() =>
+              trackEvent(RESERVE_DETAILS.SWAP_VIEWS, {
+                type: 'Button',
+                assetName: poolReserve.name,
+                asset: poolReserve.underlyingAsset,
+                market: currentMarket,
+              })
+            }
+            sx={(theme) => ({
+              textAlign: 'center',
+              mt: -2,
+              backgroundColor: theme.palette.background.surface2,
+              color: theme.palette.text.links,
+              '&:hover': {
+                backgroundColor: theme.palette.background.surface2,
+                color: theme.palette.text.links,
+              },
+            })}
+          >
+            <Trans>
+              Switch to <br />
+              Strategy View
+            </Trans>
+          </Button>
+        </>
+      )}
     </>
   );
 };

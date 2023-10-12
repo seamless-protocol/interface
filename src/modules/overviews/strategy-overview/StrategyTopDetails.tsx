@@ -1,6 +1,15 @@
 import { ExternalLinkIcon } from '@heroicons/react/outline';
 import { Trans } from '@lingui/macro';
-import { Box, Button, Skeleton, SvgIcon, Typography, useMediaQuery, useTheme } from '@mui/material';
+import {
+  Box,
+  Button,
+  Divider,
+  Skeleton,
+  SvgIcon,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import { CircleIcon } from 'src/components/CircleIcon';
 import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
 import { Link, ROUTES } from 'src/components/primitives/Link';
@@ -43,30 +52,6 @@ export const StrategyTopDetails = ({ underlyingAsset }: StrategyTopDetailsProps)
 
   return (
     <>
-      <Button
-        variant="outlined"
-        component={Link}
-        href={ROUTES.reserveOverview(poolReserve.underlyingAsset, currentMarket)}
-        onClick={() =>
-          trackEvent(RESERVE_DETAILS.SWAP_VIEWS, {
-            type: 'Button',
-            assetName: poolReserve.name,
-            asset: poolReserve.underlyingAsset,
-            market: currentMarket,
-          })
-        }
-        sx={(theme) => ({
-          mt: 1,
-          backgroundColor: theme.palette.background.surface,
-          color: theme.palette.text.links,
-          '&:hover': {
-            backgroundColor: theme.palette.background.surface,
-            color: theme.palette.text.links,
-          },
-        })}
-      >
-        <Trans>Asset View</Trans>
-      </Button>
       <TopInfoPanelItem title={<Trans>Target Multiple</Trans>} loading={loading} hideIcon>
         <Typography
           variant={valueTypographyVariant}
@@ -78,11 +63,11 @@ export const StrategyTopDetails = ({ underlyingAsset }: StrategyTopDetailsProps)
           }}
           noWrap
         >
-          3x
+          3.00 x
         </Typography>
       </TopInfoPanelItem>
 
-      <TopInfoPanelItem title={<Trans>Estimated Net APY</Trans>} loading={loading} hideIcon>
+      <TopInfoPanelItem title={<Trans>{poolReserve.name} APY</Trans>} loading={loading} hideIcon>
         <FormattedNumber
           value={Math.max(Number(poolReserve?.totalLiquidityUSD), 0)}
           symbol="USD"
@@ -93,7 +78,7 @@ export const StrategyTopDetails = ({ underlyingAsset }: StrategyTopDetailsProps)
         />
       </TopInfoPanelItem>
       {/*TODO seamless pipein values*/}
-      <TopInfoPanelItem title={<Trans>Space Available</Trans>} loading={loading} hideIcon>
+      {/* <TopInfoPanelItem title={<Trans>Space Available</Trans>} loading={loading} hideIcon>
         <FormattedNumber
           value={Math.max(Number(poolReserve?.availableLiquidityUSD), 0)}
           symbol={poolReserve?.symbol}
@@ -101,7 +86,7 @@ export const StrategyTopDetails = ({ underlyingAsset }: StrategyTopDetailsProps)
           symbolsVariant={symbolsTypographyVariant}
           symbolsColor="#A5A8B6"
         />
-      </TopInfoPanelItem>
+      </TopInfoPanelItem> */}
 
       <TopInfoPanelItem title={<Trans>Oracle price</Trans>} loading={loading} hideIcon>
         <Box sx={{ display: 'inline-flex', alignItems: 'center' }}>
@@ -138,6 +123,39 @@ export const StrategyTopDetails = ({ underlyingAsset }: StrategyTopDetailsProps)
           )}
         </Box>
       </TopInfoPanelItem>
+      <Divider
+        orientation="vertical"
+        flexItem
+        sx={{ my: 1, borderColor: 'rgba(235, 235, 239, 0.08)' }}
+      />
+      <Button
+        variant="outlined"
+        component={Link}
+        href={ROUTES.reserveOverview(poolReserve.underlyingAsset, currentMarket)}
+        onClick={() =>
+          trackEvent(RESERVE_DETAILS.SWAP_VIEWS, {
+            type: 'Button',
+            assetName: poolReserve.name,
+            asset: poolReserve.underlyingAsset,
+            market: currentMarket,
+          })
+        }
+        sx={(theme) => ({
+          mt: -2,
+          textAlign: 'center',
+          backgroundColor: '#454545',
+          color: theme.palette.text.links,
+          '&:hover': {
+            backgroundColor: '#454545',
+            color: theme.palette.text.links,
+          },
+        })}
+      >
+        <Trans>
+          Switch to the <br />
+          Supply & Borrow Market
+        </Trans>
+      </Button>
     </>
   );
 };
