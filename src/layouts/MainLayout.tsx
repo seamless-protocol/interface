@@ -7,6 +7,10 @@ import { AppFooter } from './AppFooter';
 import { AppHeader } from './AppHeader';
 
 export function MainLayout({ children }: { children: ReactNode }) {
+  // const [lifiWidgetOpen, setLifiWidgetOpen] = useRootStore((state) => [
+  //   state.isLifiWidgetOpen,
+  //   state.setLifiWidget,
+  // ]);
   return (
     <>
       <AppHeader />
@@ -14,6 +18,7 @@ export function MainLayout({ children }: { children: ReactNode }) {
         {children}
       </Box>
 
+      {/* {lifiWidgetOpen && <Widget />} */}
       <AppFooter />
       {FORK_ENABLED ? null : <AnalyticsConsent />}
     </>

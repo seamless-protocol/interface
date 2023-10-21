@@ -13,6 +13,7 @@ import Box from '@mui/material/Box';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { ContentWithTooltip } from 'src/components/ContentWithTooltip';
+// import Widget from 'src/components/Swapper/Widget';
 import { useRootStore } from 'src/store/root';
 import { ENABLE_TESTNET } from 'src/utils/marketsAndNetworksConfig';
 
@@ -48,6 +49,11 @@ export function AppHeader() {
     state.mobileDrawerOpen,
     state.setMobileDrawerOpen,
   ]);
+
+  // const [lifiWidgetOpen, setLifiWidgetOpen] = useRootStore((state) => [
+  //   state.isLifiWidgetOpen,
+  //   state.setLifiWidget,
+  // ]);
 
   const [walletWidgetOpen, setWalletWidgetOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -148,7 +154,6 @@ export function AppHeader() {
         >
           <img src={uiConfig.appLogo} alt="An SVG of an eye" height={96} />
         </Box>
-
         <Box sx={{ mr: sm ? 1 : 3 }}>
           {ENABLE_TESTNET && (
             <ContentWithTooltip tooltipContent={testnetTooltip} offset={[0, -4]} withoutHover>
@@ -172,9 +177,7 @@ export function AppHeader() {
         <Box sx={{ display: { xs: 'none', md: 'block' } }}>
           <NavItems />
         </Box>
-
         <Box sx={{ flexGrow: 1 }} />
-
         {!mobileMenuOpen && (
           <WalletWidget
             open={walletWidgetOpen}
@@ -182,11 +185,10 @@ export function AppHeader() {
             headerHeight={headerHeight}
           />
         )}
-
         <Box sx={{ display: { xs: 'none', md: 'block' } }}>
           <SettingsMenu />
         </Box>
-
+        s
         {!walletWidgetOpen && (
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <MobileMenu

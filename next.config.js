@@ -28,6 +28,8 @@ module.exports = withBundleAnalyzer({
     return config;
   },
   reactStrictMode: true,
+  swcMinify: true,
+  transpilePackages: ['@lifi/widget', '@lifi/wallet-management'],
   // assetPrefix: "./",
   trailingSlash: true,
   pageExtensions,

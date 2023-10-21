@@ -1,5 +1,6 @@
 import { BookOpenIcon, CreditCardIcon, QuestionMarkCircleIcon } from '@heroicons/react/outline';
 import { t } from '@lingui/macro';
+import dynamic from 'next/dynamic';
 import { ReactNode } from 'react';
 import { ROUTES } from 'src/components/primitives/Link';
 import { ENABLE_TESTNET } from 'src/utils/marketsAndNetworksConfig';
@@ -11,7 +12,15 @@ interface Navigation {
   title: string;
   isVisible?: (data: MarketDataType) => boolean | undefined;
   dataCy?: string;
+  action?: () => void;
 }
+
+export const LiFiWidgetNext = dynamic(
+  () => import('../../components/Swapper/Widget').then((module) => module.Widget) as any,
+  {
+    ssr: false,
+  }
+);
 
 export const navigation: Navigation[] = [
   {
@@ -28,6 +37,14 @@ export const navigation: Navigation[] = [
     link: ROUTES.farms,
     title: t`Staking Farms`,
     dataCy: 'menuFarms',
+  },
+  {
+    link: '',
+    title: t`Swap on to Base`,
+    dataCy: 'swapBase',
+    action: () => {
+      window.open('https://app.seamless.finance/swap', '_blank');
+    },
   },
   {
     link: ROUTES.staking,

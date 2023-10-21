@@ -1,6 +1,7 @@
 import { Trans } from '@lingui/macro';
 import { Box, Checkbox, FormControlLabel } from '@mui/material';
 import { FaucetButton } from 'src/components/FaucetButton';
+import { LifiBridgeButton } from 'src/components/LifiBridgeButton';
 import { useRootStore } from 'src/store/root';
 import { ENABLE_TESTNET, STAGING_ENV } from 'src/utils/marketsAndNetworksConfig';
 import { DASHBOARD } from 'src/utils/mixPanelEvents';
@@ -48,7 +49,10 @@ export const DashboardListTopPanel = ({
       />
 
       {(STAGING_ENV || ENABLE_TESTNET) && <FaucetButton />}
-      {!ENABLE_TESTNET && <BridgeButton bridge={bridge} />}
+      <Box sx={{ display: 'flex', gap: 4 }}>
+        {!ENABLE_TESTNET && <LifiBridgeButton bridge={bridge} />}
+        {!ENABLE_TESTNET && <BridgeButton bridge={bridge} />}
+      </Box>
     </Box>
   );
 };

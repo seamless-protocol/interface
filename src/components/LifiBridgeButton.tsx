@@ -2,10 +2,14 @@ import { ExternalLinkIcon } from '@heroicons/react/outline';
 import { Button, SvgIcon, Typography } from '@mui/material';
 
 import { NetworkConfig } from '../ui-config/networksConfig';
-import { Link } from './primitives/Link';
 
-export const BridgeButton = ({ bridge }: Pick<NetworkConfig, 'bridge'>) => {
+export const LifiBridgeButton = ({ bridge }: Pick<NetworkConfig, 'bridge'>) => {
   if (!bridge) return null;
+
+  // const [lifiWidgetOpen, setLifiWidgetOpen] = useRootStore((state) => [
+  //   state.isLifiWidgetOpen,
+  //   state.setLifiWidget,
+  // ]);
 
   return (
     <Button
@@ -15,26 +19,25 @@ export const BridgeButton = ({ bridge }: Pick<NetworkConfig, 'bridge'>) => {
           <ExternalLinkIcon />
         </SvgIcon>
       }
-      component={Link}
+      //   onClick={() => setLifiWidgetOpen(true)}
       size="small"
       variant="outlined"
-      href={bridge.url || ''}
       sx={(theme) => ({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
         mb: '8px',
-        color: theme.palette.text.links,
-        backgroundColor: theme.palette.background.base,
+        color: 'black',
+        backgroundColor: theme.palette.background.lifi,
         borderColor: theme.palette.primary.main,
         '&:hover': {
-          color: theme.palette.text.links,
-          backgroundColor: theme.palette.background.base,
+          color: 'black',
+          backgroundColor: theme.palette.background.lifi,
           borderColor: theme.palette.primary.main,
         },
       })}
     >
-      <Typography variant="buttonS">{bridge.name}</Typography>
+      <Typography variant="buttonS">LI.FI Bridge</Typography>
     </Button>
   );
 };

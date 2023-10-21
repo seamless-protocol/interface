@@ -10,6 +10,7 @@ import { createGhoSlice, GhoSlice } from './ghoSlice';
 import { createGovernanceSlice, GovernanceSlice } from './governanceSlice';
 import { createIncentiveSlice, IncentiveSlice } from './incentiveSlice';
 import { createLayoutSlice, LayoutSlice } from './layoutSlice';
+import { createLifiSlice, LifiSlice } from './lifiSlice';
 import { createPoolSlice, PoolSlice } from './poolSlice';
 import { createProtocolDataSlice, ProtocolDataSlice } from './protocolDataSlice';
 import { createStakeSlice, StakeSlice } from './stakeSlice';
@@ -33,7 +34,8 @@ export type RootStore = StakeSlice &
   WalletDomainsSlice &
   AnalyticsSlice &
   TransactionsSlice &
-  LayoutSlice;
+  LayoutSlice &
+  LifiSlice;
 
 export const useRootStore = create<RootStore>()(
   subscribeWithSelector(
@@ -51,6 +53,7 @@ export const useRootStore = create<RootStore>()(
         ...createAnalyticsSlice(...args),
         ...createTransactionsSlice(...args),
         ...createLayoutSlice(...args),
+        ...createLifiSlice(...args),
       };
     })
   )
