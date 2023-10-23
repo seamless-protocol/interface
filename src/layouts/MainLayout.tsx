@@ -1,16 +1,14 @@
 import { Box } from '@mui/material';
 import React, { ReactNode } from 'react';
 import AnalyticsConsent from 'src/components/Analytics/AnalyticsConsent';
+import Swapper from 'src/components/Swapper';
 import { FORK_ENABLED } from 'src/utils/marketsAndNetworksConfig';
 
 import { AppFooter } from './AppFooter';
 import { AppHeader } from './AppHeader';
 
 export function MainLayout({ children }: { children: ReactNode }) {
-  // const [lifiWidgetOpen, setLifiWidgetOpen] = useRootStore((state) => [
-  //   state.isLifiWidgetOpen,
-  //   state.setLifiWidget,
-  // ]);
+  //const [lifiWidgetOpen] = useRootStore((state) => [state.isLifiWidgetOpen]);
   return (
     <>
       <AppHeader />
@@ -18,7 +16,7 @@ export function MainLayout({ children }: { children: ReactNode }) {
         {children}
       </Box>
 
-      {/* {lifiWidgetOpen && <Widget />} */}
+      {/*lifiWidgetOpen &&*/ <Swapper />}
       <AppFooter />
       {FORK_ENABLED ? null : <AnalyticsConsent />}
     </>

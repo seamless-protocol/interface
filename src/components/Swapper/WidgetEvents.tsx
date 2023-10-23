@@ -25,5 +25,5 @@ export const WidgetEvents = () => {
     return () => widgetEvents.all.clear();
   }, [widgetEvents]);
 
-  return <></>;
+  return null;
 };

@@ -2966,10 +2966,10 @@
   dependencies:
     ethers "^5.7.2"
 
-"@lifi/wallet-management@^2.3.7":
-  version "2.3.7"
-  resolved "https://registry.yarnpkg.com/@lifi/wallet-management/-/wallet-management-2.3.7.tgz#439640d275655369278f8ec63e20d51196c230eb"
-  integrity sha512-RY3X7rTASpVsBL3ukeF3NUpJglr9Ge9WhBJAkz7Q+b5Wke+twc5NaQ95YVrRtI4nV2p1lz3iCkoyjc/T2UyAQA==
+"@lifi/wallet-management@^2.4.1":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@lifi/wallet-management/-/wallet-management-2.4.1.tgz#70bee15c69a34a8ff6fcd5614b6a09cd04ae0b5d"
+  integrity sha512-qYpUHdyQ4r5tZTZN8ieM+iqFUQ0LWUKYCZEncgTBUsJZqU+H1FsqOMDeK3I6yAFnidY60Kt9eklnh8tCPRy6mw==
   dependencies:
     "@coinbase/wallet-sdk" "^3.7.2"
     "@ethersproject/abstract-signer" "^5.7.0"
@@ -2983,10 +2983,10 @@
     events "^3.3.0"
     react "^18.2.0"
 
-"@lifi/widget@^2.6.3":
-  version "2.6.3"
-  resolved "https://registry.yarnpkg.com/@lifi/widget/-/widget-2.6.3.tgz#05e07f89378f80e9a8d39d4980ae573645efc16c"
-  integrity sha512-NyzXunIxqvydsp96IoZoBPdyUMeI0Nzr+P5xDm0yDsZ4sLEKTpVMaQFv+2g7mKE+uUnmg3SaGUoAw6vRGed4PA==
+"@lifi/widget@^2.0.1":
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/@lifi/widget/-/widget-2.7.1.tgz#e6a2050348fa2c8a633667f96e28ceab2dcac185"
+  integrity sha512-7bGf6MSrMCola1mrzrr50k3UbA0/IGC07PGNTq2mD6xH3nsxtyn4z2gHRFfuWDMzHdASReH0W7I9Zn49SV3spA==
   dependencies:
     "@emotion/react" "^11.11.1"
     "@emotion/styled" "^11.11.0"
@@ -2995,14 +2995,14 @@
     "@ethersproject/experimental" "^5.7.0"
     "@ethersproject/providers" "^5.7.2"
     "@lifi/sdk" "^2.4.3"
-    "@lifi/wallet-management" "^2.3.7"
+    "@lifi/wallet-management" "^2.4.1"
     "@mui/icons-material" "^5.14.14"
     "@mui/lab" "^5.0.0-alpha.149"
     "@mui/material" "^5.14.14"
     "@tanstack/react-query" "^4.36.1"
-    "@tanstack/react-virtual" "^3.0.0-beta.65"
+    "@tanstack/react-virtual" "^3.0.0-beta.66"
     big.js "^6.2.1"
-    i18next "^23.5.1"
+    i18next "^23.6.0"
     i18next-browser-languagedetector "^7.1.0"
     microdiff "^1.3.2"
     mitt "^3.0.1"
@@ -4097,17 +4097,17 @@
     "@tanstack/query-core" "4.36.1"
     use-sync-external-store "^1.2.0"
 
-"@tanstack/react-virtual@^3.0.0-beta.65":
-  version "3.0.0-beta.65"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-virtual/-/react-virtual-3.0.0-beta.65.tgz#a29a10c761afd00c8000dc38adf60088656e0e62"
-  integrity sha512-Q21cUoE0C8Oyzy3RAMV+u4BuB+RwIf2/oQRCWksmIBp1PqLEtvXhAldh7v/wUt7WKEkislKDICZAvbYYs7EAyQ==
+"@tanstack/react-virtual@^3.0.0-beta.66":
+  version "3.0.0-beta.68"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-virtual/-/react-virtual-3.0.0-beta.68.tgz#225532329d74d7c0f82564d36ad8bf461e320ab5"
+  integrity sha512-YEFNCf+N3ZlNou2r4qnh+GscMe24foYEjTL05RS0ZHvah2RoUDPGuhnuedTv0z66dO2vIq6+Bl4TXatht5T7GQ==
   dependencies:
-    "@tanstack/virtual-core" "3.0.0-beta.65"
+    "@tanstack/virtual-core" "3.0.0-beta.68"
 
-"@tanstack/virtual-core@3.0.0-beta.65":
-  version "3.0.0-beta.65"
-  resolved "https://registry.yarnpkg.com/@tanstack/virtual-core/-/virtual-core-3.0.0-beta.65.tgz#fac199321db7787db9463082903dca23c0850c5c"
-  integrity sha512-ObP2pvXBdbivinr7BWDbGqYt4TK8wNzYsOWio+qBkDx5AJFuvqcdJxcCCYnv4dzVTe5ELA1MT4tkt8NB/tnEdA==
+"@tanstack/virtual-core@3.0.0-beta.68":
+  version "3.0.0-beta.68"
+  resolved "https://registry.yarnpkg.com/@tanstack/virtual-core/-/virtual-core-3.0.0-beta.68.tgz#e6c478b393df57861e0a98fd0fea9982b79b6e7d"
+  integrity sha512-CnvsEJWK7cugigckt13AeY80FMzH+OMdEP0j0bS3/zjs44NiRe49x8FZC6R9suRXGMVMXtUHet0zbTp/Ec9Wfg==
 
 "@testing-library/dom@^8.5.0":
   version "8.19.0"
@@ -9016,7 +9016,7 @@ i18next-browser-languagedetector@^7.1.0:
   dependencies:
     "@babel/runtime" "^7.19.4"
 
-i18next@^23.5.1:
+i18next@^23.6.0:
   version "23.6.0"
   resolved "https://registry.yarnpkg.com/i18next/-/i18next-23.6.0.tgz#c6e996cfd3fef0bf60be3b7c581c35338dba5a71"
   integrity sha512-z0Cxr0MGkt+kli306WS4nNNM++9cgt2b2VCMprY92j+AIab/oclgPxdwtTZVLP1zn5t5uo8M6uLsZmYrcjr3HA==
@@ -11242,6 +11242,13 @@ next-tick@~1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/next-tick/-/next-tick-1.0.0.tgz"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
+
+next-transpile-modules@^10.0.1:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/next-transpile-modules/-/next-transpile-modules-10.0.1.tgz#1ca2b735b14781f4792f6214f808b600574e0348"
+  integrity sha512-4VX/LCMofxIYAVV58UmD+kr8jQflpLWvas/BQ4Co0qWLWzVh06FoZkECkrX5eEZT6oJFqie6+kfbTA3EZCVtdQ==
+  dependencies:
+    enhanced-resolve "^5.10.0"
 
 next@12.1.1:
   version "12.1.1"

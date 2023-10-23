@@ -1,6 +1,5 @@
 import { BookOpenIcon, CreditCardIcon, QuestionMarkCircleIcon } from '@heroicons/react/outline';
 import { t } from '@lingui/macro';
-import dynamic from 'next/dynamic';
 import { ReactNode } from 'react';
 import { ROUTES } from 'src/components/primitives/Link';
 import { ENABLE_TESTNET } from 'src/utils/marketsAndNetworksConfig';
@@ -14,13 +13,6 @@ interface Navigation {
   dataCy?: string;
   action?: () => void;
 }
-
-export const LiFiWidgetNext = dynamic(
-  () => import('../../components/Swapper/Widget').then((module) => module.Widget) as any,
-  {
-    ssr: false,
-  }
-);
 
 export const navigation: Navigation[] = [
   {
