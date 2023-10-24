@@ -41,7 +41,8 @@
     "@emotion/styled": "11.10.4",
     "@gnosis.pm/safe-apps-web3-react": "^1.2.0",
     "@heroicons/react": "^1.0.6",
-    "@lifi/widget": "^2.0.1",
+    "@lifi/sdk": "^1.7.2",
+    "@lifi/widget": "^1.32.8",
     "@lingui/react": "^3.14.0",
     "@mui/icons-material": "^5.10.14",
     "@mui/material": "^5.10.9",
@@ -141,6 +142,7 @@
     "@web3-react/walletlink-connector/@coinbase/wallet-sdk": "3.1.0"
   },
   "contributors": [
+    "Ryan Van Valkenburg <ryan@seashell.com>",
     "Anastasia Khovaeva <anastasia@aave.com>",
     "Andrew Schmidt <andrew@aave.com>",
     "David Racero <david.k@aave.com>",

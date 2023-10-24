@@ -1,15 +1,13 @@
 import { ExternalLinkIcon } from '@heroicons/react/outline';
 import { Button, SvgIcon, Typography } from '@mui/material';
+import { useRootStore } from 'src/store/root';
 
 import { NetworkConfig } from '../ui-config/networksConfig';
 
 export const LifiBridgeButton = ({ bridge }: Pick<NetworkConfig, 'bridge'>) => {
-  if (!bridge) return null;
+  const [, setLifiWidgetOpen] = useRootStore((state) => [, state.setLifiWidget]);
 
-  // const [lifiWidgetOpen, setLifiWidgetOpen] = useRootStore((state) => [
-  //   state.isLifiWidgetOpen,
-  //   state.setLifiWidget,
-  // ]);
+  if (!bridge) return null;
 
   return (
     <Button
@@ -19,7 +17,7 @@ export const LifiBridgeButton = ({ bridge }: Pick<NetworkConfig, 'bridge'>) => {
           <ExternalLinkIcon />
         </SvgIcon>
       }
-      //   onClick={() => setLifiWidgetOpen(true)}
+      onClick={() => setLifiWidgetOpen(true)}
       size="small"
       variant="outlined"
       sx={(theme) => ({

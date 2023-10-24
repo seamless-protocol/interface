@@ -13,7 +13,6 @@ import Box from '@mui/material/Box';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { ContentWithTooltip } from 'src/components/ContentWithTooltip';
-// import Widget from 'src/components/Swapper/Widget';
 import { useRootStore } from 'src/store/root';
 import { ENABLE_TESTNET } from 'src/utils/marketsAndNetworksConfig';
 
@@ -49,11 +48,6 @@ export function AppHeader() {
     state.mobileDrawerOpen,
     state.setMobileDrawerOpen,
   ]);
-
-  // const [lifiWidgetOpen, setLifiWidgetOpen] = useRootStore((state) => [
-  //   state.isLifiWidgetOpen,
-  //   state.setLifiWidget,
-  // ]);
 
   const [walletWidgetOpen, setWalletWidgetOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

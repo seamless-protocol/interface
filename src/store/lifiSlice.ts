@@ -16,7 +16,7 @@ export const createLifiSlice: StateCreator<
   return {
     isLifiWidgetOpen: false,
     setLifiWidget(eventName: boolean) {
-      set({ analyticsConfigOpen: eventName });
+      set({ isLifiWidgetOpen: eventName });
     },
   };
 };
