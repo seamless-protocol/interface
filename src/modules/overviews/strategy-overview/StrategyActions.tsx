@@ -245,6 +245,7 @@ const LoopAction = ({
   disable,
   onActionClicked,
 }: ActionProps) => {
+  const name = reserve.name === 'Coinbase Wrapped Staked ETH' ? 'cbETH' : reserve.name;
   return (
     <Stack>
       <Grid container columns={2} columnSpacing={12} marginBottom={2}>
@@ -284,7 +285,7 @@ const LoopAction = ({
         <Grid item>
           <AvailableTooltip
             variant="description"
-            text={<Trans>{reserve.name} APY</Trans>}
+            text={<Trans>{name} APY</Trans>}
             capType={CapType.borrowCap}
             event={{
               eventName: GENERAL.TOOL_TIP,
@@ -310,7 +311,7 @@ const LoopAction = ({
         <Grid item sx={{ width: '175px' }}>
           <AvailableTooltip
             variant="description"
-            text={<Trans>Your Balance</Trans>}
+            text={<Trans>Your Active Balance</Trans>}
             capType={CapType.borrowCap}
             event={{
               eventName: GENERAL.TOOL_TIP,

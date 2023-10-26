@@ -256,7 +256,6 @@ msgid "Asset can be only used as collateral in isolation mode with limited borro
 msgstr "Asset can be only used as collateral in isolation mode with limited borrowing power. To enter isolation mode, disable all other collateral."
 
 #: src/modules/overviews/SupplyInfo.tsx
-#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "Asset can only be used as collateral in isolation mode only."
 msgstr "Asset can only be used as collateral in isolation mode only."
 
@@ -281,7 +280,6 @@ msgid "Asset cannot be migrated to {marketName} v3 Market since collateral asset
 msgstr "Asset cannot be migrated to {marketName} v3 Market since collateral asset will enable isolation mode."
 
 #: src/modules/overviews/SupplyInfo.tsx
-#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "Asset cannot be used as collateral."
 msgstr "Asset cannot be used as collateral."
 
@@ -594,7 +592,6 @@ msgstr "COPY IMAGE"
 #: src/modules/dashboard/lists/SupplyAssetsList/SupplyAssetsList.tsx
 #: src/modules/dashboard/lists/SupplyAssetsList/SupplyAssetsListMobileItem.tsx
 #: src/modules/overviews/SupplyInfo.tsx
-#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "Can be collateral"
 msgstr "Can be collateral"
 
@@ -692,9 +689,6 @@ msgstr "Collateral to repay with"
 #: src/modules/overviews/SupplyInfo.tsx
 #: src/modules/overviews/SupplyInfo.tsx
 #: src/modules/overviews/SupplyInfo.tsx
-#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
-#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
-#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "Collateral usage"
 msgstr "Collateral usage"
 
@@ -782,6 +776,11 @@ msgstr "Current Multiple"
 #: pages/governance/proposal/[proposalId].governance.tsx
 msgid "Current differential"
 msgstr "Current differential"
+
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
+msgid "Current multiple"
+msgstr "Current multiple"
 
 #: src/modules/migration/MigrationListMobileItem.tsx
 msgid "Current v2 Balance"
@@ -1298,7 +1297,6 @@ msgstr "Language"
 #: src/components/transactions/Warnings/MarketWarning.tsx
 #: src/layouts/TopBarNotify.tsx
 #: src/modules/overviews/SupplyInfo.tsx
-#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "Learn more"
 msgstr "Learn more"
 
@@ -1363,6 +1361,10 @@ msgstr "Liquidation value"
 msgid "Loading data..."
 msgstr "Loading data..."
 
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
+msgid "Loan to Value (LTV)*"
+msgstr "Loan to Value (LTV)*"
+
 #: src/components/transactions/Loop/LoopModal.tsx
 #: src/modules/history/actions/ActionDetails.tsx
 #: src/modules/overviews/strategy-overview/StrategyActions.tsx
@@ -1414,6 +1416,10 @@ msgstr "Max"
 #: src/modules/overviews/SupplyInfo.tsx
 msgid "Max LTV"
 msgstr "Max LTV"
+
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
+msgid "Max LTV before Rebalance"
+msgstr "Max LTV before Rebalance"
 
 #: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "Max Multiple before Rebalance"
@@ -2172,7 +2178,6 @@ msgid "Staking Farms"
 msgstr "Staking Farms"
 
 #: src/modules/overviews/SupplyInfo.tsx
-#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "Staking Rewards"
 msgstr "Staking Rewards"
 
@@ -2313,13 +2318,13 @@ msgstr "Switch rate"
 msgid "Switch to"
 msgstr "Switch to"
 
-#: src/modules/overviews/ReserveTopDetails.tsx
-msgid "Switch to <0/>Strategy View"
-msgstr "Switch to <0/>Strategy View"
-
 #: src/modules/overviews/strategy-overview/StrategyTopDetails.tsx
 msgid "Switch to the <0/>Supply & Borrow Market"
 msgstr "Switch to the <0/>Supply & Borrow Market"
+
+#: src/modules/overviews/ReserveTopDetails.tsx
+msgid "Switch to the<0/>Looping Strategy"
+msgstr "Switch to the<0/>Looping Strategy"
 
 #: src/components/transactions/Swap/SwapModalContent.tsx
 msgid "Switched"
@@ -2340,6 +2345,7 @@ msgstr "Switching rate"
 
 #: src/components/transactions/Loop/LoopModalContent.tsx
 #: src/modules/markets/Strategy/StrategyAssetsList.tsx
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 #: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 #: src/modules/overviews/strategy-overview/StrategyTopDetails.tsx
 msgid "Target Multiple"
@@ -2617,6 +2623,10 @@ msgstr "Total borrowed"
 msgid "Total borrows"
 msgstr "Total borrows"
 
+#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
+msgid "Total deposited"
+msgstr "Total deposited"
+
 #: src/modules/staking/StakingHeader.tsx
 msgid "Total emission per day"
 msgstr "Total emission per day"
@@ -2634,7 +2644,6 @@ msgstr "Total market size"
 #: src/modules/markets/Strategy/StrategyAssetsListMobileItem.tsx
 #: src/modules/overviews/SupplyInfo.tsx
 #: src/modules/overviews/SupplyInfo.tsx
-#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 #: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "Total supplied"
 msgstr "Total supplied"
@@ -3050,8 +3059,8 @@ msgid "You've successfully switched borrow position."
 msgstr "You've successfully switched borrow position."
 
 #: src/modules/overviews/strategy-overview/StrategyActions.tsx
-msgid "Your Balance"
-msgstr "Your Balance"
+msgid "Your Active Balance"
+msgstr "Your Active Balance"
 
 #: src/modules/dashboard/lists/ILMPositionsList/ILMPositionsList.tsx
 #: src/modules/dashboard/lists/ILMPositionsList/ILMPositionsList.tsx
@@ -3180,7 +3189,6 @@ msgid "repaid"
 msgstr "repaid"
 
 #: src/modules/overviews/SupplyInfo.tsx
-#: src/modules/overviews/strategy-overview/StrategySupplyInfo.tsx
 msgid "stETH supplied as collateral will continue to accrue staking rewards provided by daily rebases."
 msgstr "stETH supplied as collateral will continue to accrue staking rewards provided by daily rebases."
 
@@ -3239,11 +3247,6 @@ msgstr "withdrew"
 msgid "{0}"
 msgstr "{0}"
 
-#: src/modules/overviews/strategy-overview/StrategyActions.tsx
-#: src/modules/overviews/strategy-overview/StrategyTopDetails.tsx
-msgid "{0} APY"
-msgstr "{0} APY"
-
 #: src/components/transactions/ClaimRewards/ClaimRewardsModalContent.tsx
 msgid "{0} Balance"
 msgstr "{0} Balance"
@@ -3280,6 +3283,11 @@ msgstr "{h}h"
 #: src/modules/staking/StakingPanel.tsx
 msgid "{m}m"
 msgstr "{m}m"
+
+#: src/modules/overviews/strategy-overview/StrategyActions.tsx
+#: src/modules/overviews/strategy-overview/StrategyTopDetails.tsx
+msgid "{name} APY"
+msgstr "{name} APY"
 
 #: src/modules/dashboard/lists/SupplyAssetsList/SupplyAssetsList.tsx
 msgid "{networkName} Faucet"

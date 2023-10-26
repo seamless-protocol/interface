@@ -1,15 +1,11 @@
 import { valueToBigNumber } from '@aave/math-utils';
 import { Trans } from '@lingui/macro';
-import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
-import { AlertTitle, Box, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { CapsCircularStatus } from 'src/components/caps/CapsCircularStatus';
-import { DebtCeilingStatus } from 'src/components/caps/DebtCeilingStatus';
 import { IncentivesButton } from 'src/components/incentives/IncentivesButton';
 import { LiquidationThresholdTooltip } from 'src/components/infoTooltips/LiquidationThresholdTooltip';
 import { MaxLTVTooltip } from 'src/components/infoTooltips/MaxLTVTooltip';
 import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
-import { Link } from 'src/components/primitives/Link';
-import { Warning } from 'src/components/primitives/Warning';
 import { ReserveOverviewBox } from 'src/components/ReserveOverviewBox';
 import { ReserveSubheader } from 'src/components/ReserveSubheader';
 import { TextWithTooltip } from 'src/components/TextWithTooltip';
@@ -36,7 +32,6 @@ export const StrategySupplyInfo = ({
   renderCharts,
   showSupplyCapStatus,
   supplyCap,
-  debtCeiling,
 }: StrategySupplyInfoProps) => {
   return (
     <Box sx={{ flexGrow: 1, minWidth: 0, maxWidth: '100%', width: '100%' }}>
@@ -80,7 +75,7 @@ export const StrategySupplyInfo = ({
             <PanelItem
               title={
                 <Box display="flex" alignItems="center">
-                  <Trans>Total supplied</Trans>
+                  <Trans>Total deposited</Trans>
                   <TextWithTooltip
                     event={{
                       eventName: GENERAL.TOOL_TIP,
@@ -164,45 +159,11 @@ export const StrategySupplyInfo = ({
       )}
 
       <div>
-        {reserve.isIsolated ? (
-          <Box sx={{ pt: '42px', pb: '12px' }}>
-            <Typography variant="subheader1" color="text.main" paddingBottom={'12px'}>
-              <Trans>Collateral usage</Trans>
-            </Typography>
-            <Warning severity="warning">
-              <Typography variant="subheader1">
-                <Trans>Asset can only be used as collateral in isolation mode only.</Trans>
-              </Typography>
-              <Typography variant="caption">
-                In Isolation mode you cannot supply other assets as collateral for borrowing. Assets
-                used as collateral in Isolation mode can only be borrowed to a specific debt
-                ceiling.
-              </Typography>
-            </Warning>
-          </Box>
-        ) : reserve.reserveLiquidationThreshold !== '0' ? (
-          <Box
-            sx={{ display: 'inline-flex', alignItems: 'center', pt: '42px', pb: '12px' }}
-            paddingTop={'42px'}
-          >
-            <Typography variant="subheader1" color="text.main">
-              <Trans>Collateral usage</Trans>
-            </Typography>
-            <CheckRoundedIcon fontSize="small" color="success" sx={{ ml: 2 }} />
-            <Typography variant="subheader1" sx={{ color: '#46BC4B' }}>
-              <Trans>Can be collateral</Trans>
-            </Typography>
-          </Box>
-        ) : (
-          <Box sx={{ pt: '42px', pb: '12px' }}>
-            <Typography variant="subheader1" color="text.main">
-              <Trans>Collateral usage</Trans>
-            </Typography>
-            <Warning sx={{ my: '12px' }} severity="warning">
-              <Trans>Asset cannot be used as collateral.</Trans>
-            </Warning>
-          </Box>
-        )}
+        <Box sx={{ pt: '42px', pb: '12px' }}>
+          <Typography variant="subheader1" color="text.main" paddingBottom={'12px'}>
+            <Trans>Loan to Value (LTV)*</Trans>
+          </Typography>
+        </Box>
       </div>
       {reserve.reserveLiquidationThreshold !== '0' && (
         <Box
@@ -218,6 +179,66 @@ export const StrategySupplyInfo = ({
                 event={{
                   eventName: GENERAL.TOOL_TIP,
                   eventParams: {
+                    tooltip: 'Target LTV',
+                    asset: reserve.underlyingAsset,
+                    assetName: reserve.name,
+                  },
+                }}
+                variant="description"
+                text={<Trans>Target Multiple</Trans>}
+                sx={{ fontSize: '10px' }}
+              />
+            }
+          >
+            300%
+          </ReserveOverviewBox>
+
+          <ReserveOverviewBox
+            title={
+              <LiquidationThresholdTooltip
+                event={{
+                  eventName: GENERAL.TOOL_TIP,
+                  eventParams: {
+                    tooltip: 'Current LTV',
+                    asset: reserve.underlyingAsset,
+                    assetName: reserve.name,
+                  },
+                }}
+                variant="description"
+                text={<Trans>Current multiple</Trans>}
+                sx={{ fontSize: '10px' }}
+              />
+            }
+          >
+            317%
+          </ReserveOverviewBox>
+
+          <ReserveOverviewBox
+            title={
+              <LiquidationThresholdTooltip
+                event={{
+                  eventName: GENERAL.TOOL_TIP,
+                  eventParams: {
+                    tooltip: 'Max Multiple before Rebalance',
+                    asset: reserve.underlyingAsset,
+                    assetName: reserve.name,
+                  },
+                }}
+                variant="description"
+                text={<Trans>Max LTV before Rebalance</Trans>}
+                sx={{ fontSize: '10px' }}
+              />
+            }
+          >
+            400%
+          </ReserveOverviewBox>
+
+          <ReserveOverviewBox
+            title={
+              <MaxLTVTooltip
+                event={{
+                  eventName: GENERAL.TOOL_TIP,
+                  eventParams: {
                     tooltip: 'Target Multiple',
                     asset: reserve.underlyingAsset,
                     assetName: reserve.name,
@@ -225,7 +246,7 @@ export const StrategySupplyInfo = ({
                 }}
                 variant="description"
                 text={<Trans>Target Multiple</Trans>}
-                sx={{ fontSize: '12px' }}
+                sx={{ fontSize: '10px' }}
               />
             }
           >
@@ -244,66 +265,33 @@ export const StrategySupplyInfo = ({
                   },
                 }}
                 variant="description"
-                text={<Trans>Max Multiple before Rebalance</Trans>}
-                sx={{ fontSize: '12px' }}
+                text={<Trans>Current multiple</Trans>}
+                sx={{ fontSize: '10px' }}
               />
             }
           >
-            4.0x
+            3.17x
           </ReserveOverviewBox>
 
-          {/* <ReserveOverviewBox
+          <ReserveOverviewBox
             title={
-              <LiquidationPenaltyTooltip
+              <LiquidationThresholdTooltip
                 event={{
                   eventName: GENERAL.TOOL_TIP,
                   eventParams: {
-                    tooltip: 'Liquidation penalty',
+                    tooltip: 'Max Multiple before Rebalance',
                     asset: reserve.underlyingAsset,
                     assetName: reserve.name,
                   },
                 }}
                 variant="description"
-                text={<Trans>Liquidation penalty</Trans>}
+                text={<Trans>Max Multiple before Rebalance</Trans>}
+                sx={{ fontSize: '10px' }}
               />
             }
           >
-            <FormattedNumber
-              value={reserve.formattedReserveLiquidationBonus}
-              percent
-              variant="secondary14"
-              visibleDecimals={2}
-            />
-          </ReserveOverviewBox> */}
-
-          {reserve.isIsolated && (
-            <ReserveOverviewBox fullWidth>
-              <DebtCeilingStatus
-                debt={reserve.isolationModeTotalDebtUSD}
-                ceiling={reserve.debtCeilingUSD}
-                usageData={debtCeiling}
-              />
-            </ReserveOverviewBox>
-          )}
-        </Box>
-      )}
-      {reserve.symbol == 'stETH' && (
-        <Box>
-          <Warning severity="info">
-            <AlertTitle>
-              <Trans>Staking Rewards</Trans>
-            </AlertTitle>
-            <Trans>
-              stETH supplied as collateral will continue to accrue staking rewards provided by daily
-              rebases.
-            </Trans>{' '}
-            <Link
-              href="https://blog.lido.fi/aave-integrates-lidos-steth-as-collateral/"
-              underline="always"
-            >
-              <Trans>Learn more</Trans>
-            </Link>
-          </Warning>
+            4.0x
+          </ReserveOverviewBox>
         </Box>
       )}
     </Box>

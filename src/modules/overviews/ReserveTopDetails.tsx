@@ -131,17 +131,18 @@ export const ReserveTopDetails = ({ underlyingAsset }: ReserveTopDetailsProps) =
             sx={(theme) => ({
               textAlign: 'center',
               mt: -2,
-              backgroundColor: theme.palette.background.surface2,
+              backgroundColor: '#690d64',
               color: theme.palette.text.links,
               '&:hover': {
-                backgroundColor: theme.palette.background.surface2,
+                backgroundColor: '#690d64',
                 color: theme.palette.text.links,
               },
             })}
           >
             <Trans>
-              Switch to <br />
-              Strategy View
+              Switch to the
+              <br />
+              Looping Strategy
             </Trans>
           </Button>
         </>

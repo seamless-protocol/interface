@@ -50,6 +50,8 @@ export const StrategyTopDetails = ({ underlyingAsset }: StrategyTopDetailsProps)
     cursor: 'pointer',
   };
 
+  const name = poolReserve?.name === 'Coinbase Wrapped Staked ETH' ? 'cbETH' : poolReserve?.name;
+
   return (
     <>
       <TopInfoPanelItem title={<Trans>Target Multiple</Trans>} loading={loading} hideIcon>
@@ -67,7 +69,7 @@ export const StrategyTopDetails = ({ underlyingAsset }: StrategyTopDetailsProps)
         </Typography>
       </TopInfoPanelItem>
 
-      <TopInfoPanelItem title={<Trans>{poolReserve.name} APY</Trans>} loading={loading} hideIcon>
+      <TopInfoPanelItem title={<Trans>{name} APY</Trans>} loading={loading} hideIcon>
         <FormattedNumber
           value={Math.max(Number(poolReserve?.totalLiquidityUSD), 0)}
           symbol="USD"

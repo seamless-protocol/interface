@@ -1,5 +1,6 @@
 import { Trans } from '@lingui/macro';
 import { Box, Divider } from '@mui/material';
+import Image from 'next/image';
 import { getFrozenProposalLink } from 'src/components/infoTooltips/FrozenTooltip';
 import { Link } from 'src/components/primitives/Link';
 import { Warning } from 'src/components/primitives/Warning';
@@ -100,6 +101,21 @@ export const StrategyConfiguration: React.FC<StrategyConfigurationProps> = ({ re
           which purchase more {reserve.symbol} to achieve the targeted multiple.
         </Box>
       </PanelRow>
+
+      <Divider sx={{ my: { xs: 6, sm: 10 } }} />
+
+      <div>
+        <PanelTitle>Looping Process</PanelTitle>
+        <Box sx={{ flexGrow: 1, minWidth: 0, maxWidth: '100%', width: '100%' }}>
+          <Image
+            src="/cbeth-strategy.webp"
+            alt="strategy image"
+            priority
+            height={600}
+            width={900}
+          />
+        </Box>
+      </div>
     </>
   );
 };
