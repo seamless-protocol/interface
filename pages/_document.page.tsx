@@ -1,5 +1,6 @@
 import createEmotionServer from '@emotion/server/create-instance';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
+import Script from 'next/script';
 import * as React from 'react';
 import { Meta } from 'src/components/Meta';
 
@@ -25,6 +26,18 @@ export default class MyDocument extends Document {
             (this.props as any).emotionStyleTags
           }
         </Head>
+        <div className="container">
+          <Script src={'https://www.googletagmanager.com/gtag/js?id=G-LPNNND6R3G'} />
+          <Script id="google-analytics">
+            {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag(‘config’, ‘G-LPNNND6R3G’);
+        `}
+          </Script>
+        </div>
         <body>
           <Main />
           <NextScript />
