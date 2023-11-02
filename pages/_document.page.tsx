@@ -26,21 +26,13 @@ export default class MyDocument extends Document {
             (this.props as any).emotionStyleTags
           }
         </Head>
-        <div className="container">
-          <Script src={'https://www.googletagmanager.com/gtag/js?id=G-LPNNND6R3G'} />
-          <Script id="google-analytics">
-            {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
- 
-          gtag(‘config’, ‘G-LPNNND6R3G’);
-        `}
-          </Script>
-        </div>
         <body>
           <Main />
           <NextScript />
+          <Script
+            src="https://broadcase.coinbase.com/subscribe-button.js"
+            strategy="beforeInteractive"
+          />
         </body>
       </Html>
     );
