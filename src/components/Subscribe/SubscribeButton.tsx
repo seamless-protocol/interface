@@ -51,34 +51,30 @@ export function SubscribeButton() {
   const { ethereum } = window;
 
   if (!ethereum?.providers) {
-    return true;
+    return null;
   }
 
   const provider = ethereum.providers.find(
     ({ isCoinbaseWallet, isCoinbaseBrowser }) => isCoinbaseWallet || isCoinbaseBrowser
   );
 
-  return (
-    provider?.isCoinbaseWallet ||
-    (provider?.isCoinbaseBrowser ? (
-      <Button
-        onClick={handleSubscribe}
-        sx={(theme) => ({
-          backgroundColor: theme.palette.background.subscribe,
+  return provider?.isCoinbaseWallet || provider?.isCoinbaseBrowser ? (
+    <Button
+      onClick={handleSubscribe}
+      sx={(theme) => ({
+        backgroundColor: theme.palette.background.subscribe,
+        color: theme.palette.text.links,
+        borderColor: theme.palette.primary.main,
+        '&:hover': {
           color: theme.palette.text.links,
-
+          backgroundColor: theme.palette.background.subscribe,
           borderColor: theme.palette.primary.main,
-          '&:hover': {
-            color: theme.palette.text.links,
-            backgroundColor: theme.palette.background.subscribe,
-            borderColor: theme.palette.primary.main,
-          },
-        })}
-      >
-        {subscribeButtonText}
-      </Button>
-    ) : (
-      <span />
-    ))
+        },
+      })}
+    >
+      {subscribeButtonText}
+    </Button>
+  ) : (
+    <span />
   );
 }
