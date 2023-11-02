@@ -9,6 +9,7 @@ import { providers } from 'ethers';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import { GoogleAnalytics } from 'nextjs-google-analytics';
 import { ReactNode } from 'react';
 import { AddressBlocked } from 'src/components/AddressBlocked';
 import { Meta } from 'src/components/Meta';
@@ -63,6 +64,7 @@ export default function MyApp(props: MyAppProps) {
 
   return (
     <CacheProvider value={emotionCache}>
+      <GoogleAnalytics trackPageViews gaMeasurementId="G-LPNNND6R3G" />
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
