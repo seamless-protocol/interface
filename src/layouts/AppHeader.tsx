@@ -13,7 +13,7 @@ import Box from '@mui/material/Box';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { ContentWithTooltip } from 'src/components/ContentWithTooltip';
-import { SubscribeButton } from 'src/components/Subscribe/SubscribeButton';
+import DynamicSubscribe from 'src/components/Subscribe/DynamicSubscribe';
 import { useRootStore } from 'src/store/root';
 import { ENABLE_TESTNET } from 'src/utils/marketsAndNetworksConfig';
 
@@ -176,7 +176,7 @@ export function AppHeader() {
 
         <Box sx={{ flexGrow: 1 }} />
         <Box sx={{ gap: 2, display: 'flex' }}>
-          <SubscribeButton />
+          {typeof window !== 'undefined' && <DynamicSubscribe />}
           {!mobileMenuOpen && (
             <WalletWidget
               open={walletWidgetOpen}
