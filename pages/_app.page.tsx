@@ -64,7 +64,7 @@ export default function MyApp(props: MyAppProps) {
 
   return (
     <CacheProvider value={emotionCache}>
-      <GoogleAnalytics trackPageViews gaMeasurementId="G-LPNNND6R3G" />
+      <GoogleAnalytics trackPageViews gaMeasurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
