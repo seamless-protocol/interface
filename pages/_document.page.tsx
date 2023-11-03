@@ -11,6 +11,10 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <Script
+            src="https://broadcase.coinbase.com/subscribe-button.js"
+            strategy="beforeInteractive"
+          />
           <meta name="theme-color" content="#1B2030" />
           <link rel="shortcut icon" href="/favicon.ico" />
           <link rel="manifest" href="/manifest.json" />
@@ -29,10 +33,6 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <Script
-            src="https://broadcase.coinbase.com/subscribe-button.js"
-            strategy="beforeInteractive"
-          />
         </body>
       </Html>
     );

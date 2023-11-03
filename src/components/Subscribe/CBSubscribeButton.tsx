@@ -23,22 +23,27 @@ declare global {
 }
 
 export function CBSubscribeButton() {
-  const [isSubscribed, setISubscribed] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [isCB, setIsCB] = useState<boolean>(false);
+  const [isSubscribed, setISubscribed] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [, setProvider] = useState<
+    { isCoinbaseWallet: boolean; isCoinbaseBrowser: boolean } | undefined
+  >(undefined);
+
+  const isBrowser = () => typeof window !== 'undefined';
+
   const subscribeButtonText = useMemo(() => {
     if (isLoading) return 'Loading...';
     return isSubscribed ? 'Unsubscribe' : 'Subscribe';
   }, [isLoading, isSubscribed]);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.CBWSubscribe) {
+    if (isBrowser()) {
       window.CBWSubscribe.createSubscriptionUI({
         partnerAddress: '0xaf2b090C37f4556BD86E3Cd74740FF0098fad3c6',
         partnerName: 'Seamless Protocol',
         modalTitle: 'Subscribe to Seamless Protocol',
-        onSubscriptionChange: setISubscribed,
-        onLoading: setIsLoading,
+        onSubscriptionChange: () => setISubscribed,
+        onLoading: () => setIsLoading(false),
       });
     } else {
       console.error('window.CBWSubscribe is not defined');
@@ -46,12 +51,12 @@ export function CBSubscribeButton() {
   }, []);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.ethereum.providers) {
-      const provider = window.ethereum.providers.find(
-        ({ isCoinbaseWallet, isCoinbaseBrowser }) => isCoinbaseWallet || isCoinbaseBrowser
+    if (isBrowser()) {
+      setProvider(
+        window.ethereum.providers.find(
+          ({ isCoinbaseWallet, isCoinbaseBrowser }) => isCoinbaseWallet || isCoinbaseBrowser
+        )
       );
-      console.log('provider', provider);
-      setIsCB(!!provider);
     } else {
       console.error('window.ethereum is not defined');
     }
