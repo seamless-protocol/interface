@@ -22,8 +22,8 @@ declare global {
 
 export function CBSubscribeButton() {
   const { provider } = useWeb3Context();
-  const [isSubscribed /*setISubscribed*/] = useState(false);
-  const [isLoading /*setIsLoading*/] = useState(true);
+  const [isSubscribed, setISubscribed] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const isBrowserAndConnected = () =>
     typeof window !== 'undefined' && window.ethereum.isConnected();
@@ -36,15 +36,14 @@ export function CBSubscribeButton() {
   }, [isLoading, isSubscribed]);
 
   useEffect(() => {
-    if (isBrowserAndConnected()) {
-      console.log('window', window);
-      // window.CBWSubscribe.createSubscriptionUI({
-      //   partnerAddress: '0xaf2b090C37f4556BD86E3Cd74740FF0098fad3c6',
-      //   partnerName: 'Seamless Protocol',
-      //   modalTitle: 'Subscribe to Seamless Protocol',
-      //   onSubscriptionChange: () => setISubscribed,
-      //   onLoading: () => setIsLoading(false),
-      // });
+    if (isBrowserAndConnected() && window.CBWSubscribe) {
+      window.CBWSubscribe.createSubscriptionUI({
+        partnerAddress: '0xaf2b090C37f4556BD86E3Cd74740FF0098fad3c6',
+        partnerName: 'Seamless Protocol',
+        modalTitle: 'Subscribe to Seamless Protocol',
+        onSubscriptionChange: () => setISubscribed,
+        onLoading: () => setIsLoading(false),
+      });
     } else {
       console.error('window.CBWSubscribe is not defined');
     }
