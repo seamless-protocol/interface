@@ -1,5 +1,6 @@
 import { Button } from '@mui/material';
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 
 declare global {
   interface Window {
@@ -14,22 +15,20 @@ declare global {
       toggleSubscription: () => void;
     };
     ethereum: {
-      providers: {
-        isCoinbaseWallet: boolean;
-        isCoinbaseBrowser: boolean;
-      }[];
+      isConnected: () => boolean;
     };
   }
 }
 
 export function CBSubscribeButton() {
-  const [isSubscribed, setISubscribed] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [, setProvider] = useState<
-    { isCoinbaseWallet: boolean; isCoinbaseBrowser: boolean } | undefined
-  >(undefined);
+  const { provider } = useWeb3Context();
+  const [isSubscribed /*setISubscribed*/] = useState(false);
+  const [isLoading /*setIsLoading*/] = useState(true);
 
-  const isBrowser = () => typeof window !== 'undefined';
+  const isBrowserAndConnected = () =>
+    typeof window !== 'undefined' && window.ethereum.isConnected();
+
+  const isCB = provider?.connection.url.includes('coinbase');
 
   const subscribeButtonText = useMemo(() => {
     if (isLoading) return 'Loading...';
@@ -37,28 +36,17 @@ export function CBSubscribeButton() {
   }, [isLoading, isSubscribed]);
 
   useEffect(() => {
-    if (isBrowser()) {
-      window.CBWSubscribe.createSubscriptionUI({
-        partnerAddress: '0xaf2b090C37f4556BD86E3Cd74740FF0098fad3c6',
-        partnerName: 'Seamless Protocol',
-        modalTitle: 'Subscribe to Seamless Protocol',
-        onSubscriptionChange: () => setISubscribed,
-        onLoading: () => setIsLoading(false),
-      });
+    if (isBrowserAndConnected()) {
+      console.log('window', window);
+      // window.CBWSubscribe.createSubscriptionUI({
+      //   partnerAddress: '0xaf2b090C37f4556BD86E3Cd74740FF0098fad3c6',
+      //   partnerName: 'Seamless Protocol',
+      //   modalTitle: 'Subscribe to Seamless Protocol',
+      //   onSubscriptionChange: () => setISubscribed,
+      //   onLoading: () => setIsLoading(false),
+      // });
     } else {
       console.error('window.CBWSubscribe is not defined');
-    }
-  }, []);
-
-  useEffect(() => {
-    if (isBrowser()) {
-      setProvider(
-        window.ethereum.providers.find(
-          ({ isCoinbaseWallet, isCoinbaseBrowser }) => isCoinbaseWallet || isCoinbaseBrowser
-        )
-      );
-    } else {
-      console.error('window.ethereum is not defined');
     }
   }, []);
 
@@ -68,7 +56,7 @@ export function CBSubscribeButton() {
     }
   }, []);
 
-  return (
+  return isCB ? (
     <Button
       onClick={handleSubscribe}
       sx={(theme) => ({
@@ -84,5 +72,7 @@ export function CBSubscribeButton() {
     >
       {subscribeButtonText}
     </Button>
+  ) : (
+    <></>
   );
 }
