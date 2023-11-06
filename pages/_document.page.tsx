@@ -1,6 +1,5 @@
 import createEmotionServer from '@emotion/server/create-instance';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
-import Script from 'next/script';
 import * as React from 'react';
 import { Meta } from 'src/components/Meta';
 
@@ -29,10 +28,7 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <Script
-            src="https://broadcast.coinbase.com/subscribe-button.js"
-            strategy="beforeInteractive"
-          />
+          <script src="https://broadcast.coinbase.com/subscribe-button.js" async defer />
         </body>
       </Html>
     );
