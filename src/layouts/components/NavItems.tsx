@@ -20,12 +20,10 @@ export const NavItems = ({ setOpen }: NavItemsProps) => {
   const { breakpoints } = useTheme();
   const md = useMediaQuery(breakpoints.down('md'));
   const trackEvent = useRootStore((store) => store.trackEvent);
-  const [_, setLifiWidgetOpen] = useRootStore((state) => [
+  const [isLifiWidgetOpen, setLifiWidgetOpen] = useRootStore((state) => [
     state.isLifiWidgetOpen,
     state.setLifiWidget,
   ]);
-
-  console.log('is?', _);
 
   const handleClick = (title: string, isMd: boolean) => {
     if (isMd && setOpen) {
@@ -75,6 +73,7 @@ export const NavItems = ({ setOpen }: NavItemsProps) => {
                     ? setLifiWidgetOpen(true)
                     : handleClick(item.title, false);
                 }}
+                disabled={item.dataCy === 'swapBase' && isLifiWidgetOpen ? true : false}
                 href={item.link}
                 sx={(theme) => ({
                   color: '#F1F1F3',

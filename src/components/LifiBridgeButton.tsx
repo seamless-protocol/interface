@@ -5,7 +5,10 @@ import { useRootStore } from 'src/store/root';
 import { NetworkConfig } from '../ui-config/networksConfig';
 
 export const LifiBridgeButton = ({ bridge }: Pick<NetworkConfig, 'bridge'>) => {
-  const [, setLifiWidgetOpen] = useRootStore((state) => [, state.setLifiWidget]);
+  const [isLifiWidgetOpen, setLifiWidgetOpen] = useRootStore((state) => [
+    state.isLifiWidgetOpen,
+    state.setLifiWidget,
+  ]);
 
   if (!bridge) return null;
 
@@ -20,6 +23,7 @@ export const LifiBridgeButton = ({ bridge }: Pick<NetworkConfig, 'bridge'>) => {
       onClick={() => setLifiWidgetOpen(true)}
       size="small"
       variant="outlined"
+      disabled={isLifiWidgetOpen}
       sx={(theme) => ({
         display: 'flex',
         flexDirection: 'row',

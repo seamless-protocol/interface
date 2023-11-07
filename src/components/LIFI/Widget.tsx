@@ -16,6 +16,7 @@ export const Widget = () => {
       //BASE ChainID
       toChain: 8453,
       toToken: '0x0000000000000000000000000000000000000000',
+      apiKey: process.env.NEXT_PUBLIC_LIFI_API_KEY || '',
     }),
     []
   );
