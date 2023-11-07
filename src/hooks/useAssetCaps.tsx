@@ -1,4 +1,5 @@
 import { valueToBigNumber } from '@aave/math-utils';
+import { SxProps, Theme } from '@mui/material';
 import { createContext, ReactNode, useContext } from 'react';
 import { BorrowCapMaxedTooltip } from 'src/components/infoTooltips/BorrowCapMaxedTooltip';
 import { DebtCeilingMaxedTooltip } from 'src/components/infoTooltips/DebtCeilingMaxedTooltip';
@@ -14,6 +15,7 @@ type WarningDisplayProps = {
   borrowCap?: AssetCapData;
   debtCeiling?: AssetCapData;
   icon?: boolean;
+  sx?: SxProps<Theme>;
 };
 
 export type AssetCapData = {
