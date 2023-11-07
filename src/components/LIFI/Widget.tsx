@@ -1,6 +1,6 @@
 'use client';
-import { LiFiWidget, WidgetConfig } from '@lifi/widget';
-import { useMemo } from 'react';
+import { LiFiWidget, WidgetConfig, WidgetDrawer } from '@lifi/widget';
+import { useMemo, useRef } from 'react';
 
 import { WidgetEvents } from './WidgetEvents';
 
@@ -15,15 +15,17 @@ export const Widget = () => {
       variant: 'drawer',
       //BASE ChainID
       toChain: 8453,
-      toToken: '0x4200000000000000000000000000000000000006',
+      toToken: '0x0000000000000000000000000000000000000000',
     }),
     []
   );
 
+  const drawerRef = useRef<WidgetDrawer>(null);
+
   return (
     <>
       <WidgetEvents />
-      <LiFiWidget integrator="seamless" config={widgetConfig} />
+      <LiFiWidget integrator="seamless" config={widgetConfig} open ref={drawerRef} />
     </>
   );
 };
