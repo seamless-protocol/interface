@@ -36,9 +36,6 @@ export const navigation: Navigation[] = [
     title: t`Swap on to Base`,
     dataCy: 'swapBase',
     disabled: false,
-    action: () => {
-      window.open('https://app.seamless.finance/swap', '_blank');
-    },
   },
   {
     link: ROUTES.staking,
