@@ -182,7 +182,6 @@ export function AppHeader() {
         <Box sx={{ display: { xs: 'none', md: 'block' } }}>
           <SettingsMenu />
         </Box>
-        s
         {!walletWidgetOpen && (
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <MobileMenu
