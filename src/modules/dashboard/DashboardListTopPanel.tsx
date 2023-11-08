@@ -50,7 +50,7 @@ export const DashboardListTopPanel = ({
 
       {(STAGING_ENV || ENABLE_TESTNET) && <FaucetButton />}
       <Box sx={{ display: 'flex', gap: 4 }}>
-        {!ENABLE_TESTNET && <LifiBridgeButton bridge={bridge} />}
+        {!ENABLE_TESTNET && <LifiBridgeButton />}
         {!ENABLE_TESTNET && <BridgeButton bridge={bridge} />}
       </Box>
     </Box>
