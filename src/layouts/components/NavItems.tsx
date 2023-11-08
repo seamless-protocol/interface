@@ -22,7 +22,7 @@ export const NavItems = ({ setOpen }: NavItemsProps) => {
   const trackEvent = useRootStore((store) => store.trackEvent);
   const [isLifiWidgetOpen, setLifiWidgetOpen] = useRootStore((state) => [
     state.isLifiWidgetOpen,
-    state.setLifiWidget,
+    state.setLifiWidgetOpen,
   ]);
 
   const handleClick = (title: string, isMd: boolean) => {

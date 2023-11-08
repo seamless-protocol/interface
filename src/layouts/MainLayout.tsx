@@ -9,12 +9,12 @@ import { AppFooter } from './AppFooter';
 import { AppHeader } from './AppHeader';
 
 export function MainLayout({ children }: { children: ReactNode }) {
-  const [lifiWidgetOpen] = useRootStore((state) => [state.isLifiWidgetOpen]);
+  const isLifiWidgetOpen = useRootStore((state) => state.isLifiWidgetOpen);
   return (
     <>
       <AppHeader />
       <Box component="main" sx={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
-        {lifiWidgetOpen && <DynamicLifi />}
+        {isLifiWidgetOpen && <DynamicLifi />}
         {children}
       </Box>
 

@@ -4,7 +4,7 @@ import { RootStore } from './root';
 
 export type LifiSlice = {
   isLifiWidgetOpen: boolean;
-  setLifiWidget: (eventName: boolean) => void;
+  setLifiWidgetOpen: (open: boolean) => void;
 };
 
 export const createLifiSlice: StateCreator<
@@ -15,8 +15,8 @@ export const createLifiSlice: StateCreator<
 > = (set) => {
   return {
     isLifiWidgetOpen: false,
-    setLifiWidget(eventName: boolean) {
-      set({ isLifiWidgetOpen: eventName });
+    setLifiWidgetOpen(open: boolean) {
+      set({ isLifiWidgetOpen: open });
     },
   };
 };
