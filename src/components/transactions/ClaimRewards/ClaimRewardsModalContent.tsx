@@ -11,6 +11,7 @@ import { useAppDataContext } from 'src/hooks/app-data-provider/useAppDataProvide
 import { useModalContext } from 'src/hooks/useModal';
 import { useProtocolDataContext } from 'src/hooks/useProtocolDataContext';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
+import { ERC20TokenType } from 'src/libs/web3-data-provider/Web3Provider';
 import { getNetworkConfig } from 'src/utils/marketsAndNetworksConfig';
 
 import { TxErrorView } from '../FlowCommons/Error';
@@ -125,6 +126,13 @@ export const ClaimRewardsModalContent = () => {
     }
   };
 
+  const addToken: ERC20TokenType = {
+    address: '0x5607718c64334eb5174CB2226af891a6ED82c7C6',
+    symbol: 'OG Points',
+    decimals: 18,
+    aToken: false,
+  };
+
   // is Network mismatched
   const isWrongNetwork = currentChainId !== connectedChainId;
   const selectedReward =
@@ -136,7 +144,14 @@ export const ClaimRewardsModalContent = () => {
     return <TxErrorView txError={txError} />;
   }
   if (claimRewardsTxState.success)
-    return <TxSuccessView action={<Trans>Claimed</Trans>} amount={selectedReward?.balanceUsd} />;
+    return (
+      <TxSuccessView
+        action={<Trans>Claimed</Trans>}
+        amount={selectedReward?.balanceUsd}
+        symbol="OG Points"
+        addToken={addToken}
+      />
+    );
 
   return (
     <>

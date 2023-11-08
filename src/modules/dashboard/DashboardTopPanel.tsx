@@ -23,13 +23,21 @@ import { NoData } from '../../components/primitives/NoData';
 import { TopInfoPanel } from '../../components/TopInfoPanel/TopInfoPanel';
 import { TopInfoPanelItem } from '../../components/TopInfoPanel/TopInfoPanelItem';
 import { useAppDataContext } from '../../hooks/app-data-provider/useAppDataProvider';
+import { AddTokenDropdown } from '../reserve-overview/AddTokenDropdown';
 import { LiquidationRiskParametresInfoModal } from './LiquidationRiskParametresModal/LiquidationRiskParametresModal';
 
 export const DashboardTopPanel = () => {
-  const { currentNetworkConfig, currentMarketData, currentMarket } = useProtocolDataContext();
+  const { currentNetworkConfig, currentMarketData, currentMarket, currentChainId } =
+    useProtocolDataContext();
   const { market } = getMarketInfoById(currentMarket);
   const { user, reserves, loading } = useAppDataContext();
-  const { currentAccount } = useWeb3Context();
+  const {
+    currentAccount,
+    addERC20Token,
+    switchNetwork,
+    chainId: connectedChainId,
+    connected,
+  } = useWeb3Context();
   const [open, setOpen] = useState(false);
   const { openClaimRewards } = useModalContext();
   const trackEvent = useRootStore((store) => store.trackEvent);
@@ -237,6 +245,23 @@ export const DashboardTopPanel = () => {
               >
                 <Trans>Claim</Trans>
               </Button>
+              {connected && (
+                <AddTokenDropdown
+                  poolReserve={{
+                    ...reserves[1],
+                    symbol: 'OG Points',
+                    underlyingAsset: '0x5607718c64334eb5174CB2226af891a6ED82c7C6',
+                    aTokenAddress: '0x5607718c64334eb5174CB2226af891a6ED82c7C6',
+                    iconSymbol: 'OG Points',
+                  }}
+                  downToSM={downToSM}
+                  switchNetwork={switchNetwork}
+                  addERC20Token={addERC20Token}
+                  currentChainId={currentChainId}
+                  connectedChainId={connectedChainId}
+                  hideAToken={true}
+                />
+              )}
             </Box>
           </TopInfoPanelItem>
         )}
