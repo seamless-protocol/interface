@@ -249,7 +249,7 @@ export const DashboardTopPanel = () => {
                 <AddTokenDropdown
                   poolReserve={{
                     ...reserves[1],
-                    symbol: 'OG Points',
+                    symbol: reserves[1].symbol,
                     underlyingAsset: '0x5607718c64334eb5174CB2226af891a6ED82c7C6',
                     aTokenAddress: '0x5607718c64334eb5174CB2226af891a6ED82c7C6',
                     iconSymbol: 'OG Points',

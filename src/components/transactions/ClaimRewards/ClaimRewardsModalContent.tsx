@@ -126,13 +126,6 @@ export const ClaimRewardsModalContent = () => {
     }
   };
 
-  const addToken: ERC20TokenType = {
-    address: '0x5607718c64334eb5174CB2226af891a6ED82c7C6',
-    symbol: 'OG Points',
-    decimals: 18,
-    aToken: false,
-  };
-
   // is Network mismatched
   const isWrongNetwork = currentChainId !== connectedChainId;
   const selectedReward =
@@ -140,15 +133,25 @@ export const ClaimRewardsModalContent = () => {
       ? allReward
       : rewards.find((r) => r.symbol === selectedRewardSymbol);
 
+  const addToken: ERC20TokenType = {
+    address: selectedReward?.rewardTokenAddress ?? '',
+    symbol: selectedReward?.symbol ?? '',
+
+    //not sure dynamically
+    decimals: 18,
+    aToken: false,
+  };
+
   if (txError && txError.blocking) {
     return <TxErrorView txError={txError} />;
   }
+
   if (claimRewardsTxState.success)
     return (
       <TxSuccessView
         action={<Trans>Claimed</Trans>}
         amount={selectedReward?.balanceUsd}
-        symbol="OG Points"
+        symbol={selectedReward?.symbol}
         addToken={addToken}
       />
     );
