@@ -1,5 +1,5 @@
 import { valueToBigNumber } from '@aave/math-utils';
-import { SxProps, Theme } from '@mui/system';
+import { SxProps, Theme } from '@mui/material';
 import { createContext, ReactNode, useContext } from 'react';
 import { BorrowCapMaxedTooltip } from 'src/components/infoTooltips/BorrowCapMaxedTooltip';
 import { DebtCeilingMaxedTooltip } from 'src/components/infoTooltips/DebtCeilingMaxedTooltip';
