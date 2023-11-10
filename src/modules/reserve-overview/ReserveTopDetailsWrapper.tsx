@@ -134,7 +134,7 @@ export const ReserveTopDetailsWrapper = ({ underlyingAsset }: ReserveTopDetailsP
                       <TokenLinkDropdown
                         poolReserve={poolReserve}
                         downToSM={downToSM}
-                        hideAToken={isGho}
+                        hideSToken={isGho}
                       />
                       {connected && (
                         <AddTokenDropdown
@@ -144,7 +144,7 @@ export const ReserveTopDetailsWrapper = ({ underlyingAsset }: ReserveTopDetailsP
                           addERC20Token={addERC20Token}
                           currentChainId={currentChainId}
                           connectedChainId={connectedChainId}
-                          hideAToken={isGho}
+                          hideSToken={isGho}
                         />
                       )}
                     </Box>
@@ -171,7 +171,7 @@ export const ReserveTopDetailsWrapper = ({ underlyingAsset }: ReserveTopDetailsP
                 <TokenLinkDropdown
                   poolReserve={poolReserve}
                   downToSM={downToSM}
-                  hideAToken={isGho}
+                  hideSToken={isGho}
                 />
                 {connected && (
                   <AddTokenDropdown
@@ -181,7 +181,7 @@ export const ReserveTopDetailsWrapper = ({ underlyingAsset }: ReserveTopDetailsP
                     addERC20Token={addERC20Token}
                     currentChainId={currentChainId}
                     connectedChainId={connectedChainId}
-                    hideAToken={isGho}
+                    hideSToken={isGho}
                   />
                 )}
               </Box>

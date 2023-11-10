@@ -84,6 +84,7 @@ export const ClaimRewardsModalContent = () => {
           symbol: incentive.rewardTokenSymbol,
           balance: rewardBalance,
           balanceUsd: rewardBalanceUsd.toString(),
+          decimals: incentive.rewardTokenDecimals,
           rewardTokenAddress,
         });
 
@@ -136,10 +137,8 @@ export const ClaimRewardsModalContent = () => {
   const addToken: ERC20TokenType = {
     address: selectedReward?.rewardTokenAddress ?? '',
     symbol: selectedReward?.symbol ?? '',
-
-    //not sure dynamically
-    decimals: 18,
-    aToken: false,
+    decimals: selectedReward?.decimals ?? 18,
+    sToken: false,
   };
 
   if (txError && txError.blocking) {

@@ -11,6 +11,7 @@ export type Reward = {
   balance: string;
   balanceUsd: string;
   rewardTokenAddress: string;
+  decimals?: number;
 };
 
 export type EmodeCategory = {

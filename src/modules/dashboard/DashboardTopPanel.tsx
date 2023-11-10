@@ -22,7 +22,10 @@ import { FormattedNumber } from '../../components/primitives/FormattedNumber';
 import { NoData } from '../../components/primitives/NoData';
 import { TopInfoPanel } from '../../components/TopInfoPanel/TopInfoPanel';
 import { TopInfoPanelItem } from '../../components/TopInfoPanel/TopInfoPanelItem';
-import { useAppDataContext } from '../../hooks/app-data-provider/useAppDataProvider';
+import {
+  ComputedReserveData,
+  useAppDataContext,
+} from '../../hooks/app-data-provider/useAppDataProvider';
 import { AddTokenDropdown } from '../reserve-overview/AddTokenDropdown';
 import { LiquidationRiskParametresInfoModal } from './LiquidationRiskParametresModal/LiquidationRiskParametresModal';
 
@@ -150,7 +153,6 @@ export const DashboardTopPanel = () => {
             <NoData variant={noDataTypographyVariant} sx={{ opacity: '0.7' }} />
           )}
         </TopInfoPanelItem>
-
         <TopInfoPanelItem
           title={
             <div style={{ display: 'flex' }}>
@@ -180,7 +182,6 @@ export const DashboardTopPanel = () => {
             <NoData variant={noDataTypographyVariant} sx={{ opacity: '0.7' }} />
           )}
         </TopInfoPanelItem>
-
         {currentAccount && user?.healthFactor !== '-1' && (
           <TopInfoPanelItem
             title={
@@ -247,19 +248,20 @@ export const DashboardTopPanel = () => {
               </Button>
               {connected && (
                 <AddTokenDropdown
-                  poolReserve={{
-                    ...reserves[1],
-                    symbol: 'OG Points',
-                    underlyingAsset: '0x5607718c64334eb5174CB2226af891a6ED82c7C6',
-                    aTokenAddress: '0x5607718c64334eb5174CB2226af891a6ED82c7C6',
-                    iconSymbol: 'OG Points',
-                  }}
+                  poolReserve={
+                    {
+                      symbol: 'OG Points',
+                      underlyingAsset: '0x5607718c64334eb5174CB2226af891a6ED82c7C6',
+                      aTokenAddress: '0x5607718c64334eb5174CB2226af891a6ED82c7C6',
+                      iconSymbol: 'OG Points',
+                    } as ComputedReserveData
+                  }
                   downToSM={downToSM}
                   switchNetwork={switchNetwork}
                   addERC20Token={addERC20Token}
                   currentChainId={currentChainId}
                   connectedChainId={connectedChainId}
-                  hideAToken={true}
+                  hideSToken={true}
                 />
               )}
             </Box>
