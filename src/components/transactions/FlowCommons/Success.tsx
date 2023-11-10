@@ -135,12 +135,12 @@ export const TxSuccessView = ({
             >
               <TokenIcon
                 symbol={addToken.symbol}
-                aToken={addToken && addToken.aToken ? true : false}
+                aToken={addToken && addToken.sToken ? true : false}
                 sx={{ fontSize: '32px', mt: '12px', mb: '8px' }}
               />
               <Typography variant="description" color="text.primary" sx={{ mx: '24px' }}>
                 <Trans>
-                  Add {addToken && addToken.aToken ? 'sToken ' : 'token '} to wallet to track your
+                  Add {addToken && addToken.sToken ? 'sToken ' : 'token '} to wallet to track your
                   balance.
                 </Trans>
               </Typography>
@@ -149,7 +149,7 @@ export const TxSuccessView = ({
                   addERC20Token({
                     address: addToken.address,
                     decimals: addToken.decimals,
-                    symbol: addToken.aToken ? `s${addToken.symbol}` : addToken.symbol,
+                    symbol: addToken.sToken ? `s${addToken.symbol}` : addToken.symbol,
                     image: !/_/.test(addToken.symbol) ? base64 : undefined,
                   });
                 }}
@@ -161,7 +161,7 @@ export const TxSuccessView = ({
                   <Base64Token
                     symbol={addToken.symbol}
                     onImageGenerated={setBase64}
-                    aToken={addToken.aToken}
+                    aToken={addToken.sToken}
                   />
                 )}
                 <WalletIcon sx={{ width: '20px', height: '20px' }} />
