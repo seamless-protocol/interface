@@ -32,7 +32,6 @@ module.exports = withTM(
       return config;
     },
     reactStrictMode: true,
-    swcMinify: true,
     // assetPrefix: "./",
     trailingSlash: true,
     pageExtensions,
