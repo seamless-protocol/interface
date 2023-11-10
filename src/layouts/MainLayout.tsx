@@ -1,6 +1,7 @@
 import { Box } from '@mui/material';
 import React, { ReactNode } from 'react';
 import AnalyticsConsent from 'src/components/Analytics/AnalyticsConsent';
+import DynamicLifi from 'src/components/Swap/DynamicLifi';
 import { FORK_ENABLED } from 'src/utils/marketsAndNetworksConfig';
 
 import { AppFooter } from './AppFooter';
@@ -11,6 +12,7 @@ export function MainLayout({ children }: { children: ReactNode }) {
     <>
       <AppHeader />
       <Box component="main" sx={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+        <DynamicLifi />
         {children}
       </Box>
 
