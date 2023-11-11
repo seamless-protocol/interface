@@ -32,7 +32,6 @@ export const useAddressAllowed = (address: string): AddressAllowedResult => {
         });
 
         if (response.ok) {
-          console.log('ok');
           const data: { isSanctioned: boolean } = await response.json();
           setIsAllowed(!data.isSanctioned);
         } else {

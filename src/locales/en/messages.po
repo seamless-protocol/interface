@@ -2173,6 +2173,10 @@ msgstr "Supplying your"
 msgid "Supplying {symbol}"
 msgstr "Supplying {symbol}"
 
+#: src/ui-config/menu-items/index.tsx
+msgid "Swap on to Base"
+msgstr "Swap on to Base"
+
 #: src/components/transactions/DebtSwitch/DebtSwitchActions.tsx
 #: src/components/transactions/DebtSwitch/DebtSwitchActions.tsx
 #: src/components/transactions/Swap/SwapActions.tsx
@@ -2966,8 +2970,8 @@ msgid "Your voting power is based on your AAVE/stkAAVE balance and received dele
 msgstr "Your voting power is based on your AAVE/stkAAVE balance and received delegations."
 
 #: src/modules/dashboard/lists/SupplyAssetsList/WalletEmptyInfo.tsx
-msgid "Your {name} wallet is empty. Purchase or transfer assets or use <0>{0}</0> to transfer your {network} assets."
-msgstr "Your {name} wallet is empty. Purchase or transfer assets or use <0>{0}</0> to transfer your {network} assets."
+msgid "Your {name} wallet is empty. <0>Purchase or transfer assets</0> or use <1>{0}</1> to transfer your {network} assets."
+msgstr "Your {name} wallet is empty. <0>Purchase or transfer assets</0> or use <1>{0}</1> to transfer your {network} assets."
 
 #: src/modules/dashboard/lists/SupplyAssetsList/WalletEmptyInfo.tsx
 msgid "Your {name} wallet is empty. Purchase or transfer assets."
