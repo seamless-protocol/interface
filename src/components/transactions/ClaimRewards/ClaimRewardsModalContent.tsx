@@ -135,8 +135,8 @@ export const ClaimRewardsModalContent = () => {
   if (txError && txError.blocking) {
     return <TxErrorView txError={txError} />;
   }
-  if (claimRewardsTxState.success)
-    return <TxSuccessView action={<Trans>Claimed</Trans>} amount={selectedReward?.balanceUsd} />;
+
+  if (claimRewardsTxState.success) return <TxSuccessView action={<Trans>Claimed</Trans>} />;
 
   return (
     <>

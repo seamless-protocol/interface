@@ -11,6 +11,8 @@ interface Navigation {
   title: string;
   isVisible?: (data: MarketDataType) => boolean | undefined;
   dataCy?: string;
+  action?: () => void;
+  disabled?: boolean;
 }
 
 export const navigation: Navigation[] = [
@@ -28,6 +30,12 @@ export const navigation: Navigation[] = [
     link: ROUTES.farms,
     title: t`Staking Farms`,
     dataCy: 'menuFarms',
+  },
+  {
+    link: '',
+    title: t`Swap on to Base`,
+    dataCy: 'swapBase',
+    disabled: false,
   },
   {
     link: ROUTES.staking,

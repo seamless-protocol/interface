@@ -20,6 +20,11 @@ export const NavItems = ({ setOpen }: NavItemsProps) => {
   const { breakpoints } = useTheme();
   const md = useMediaQuery(breakpoints.down('md'));
   const trackEvent = useRootStore((store) => store.trackEvent);
+  const [isLifiWidgetOpen, setLifiWidgetOpen] = useRootStore((state) => [
+    state.isLifiWidgetOpen,
+    state.setLifiWidgetOpen,
+  ]);
+
   const handleClick = (title: string, isMd: boolean) => {
     if (isMd && setOpen) {
       trackEvent(NAV_BAR.MAIN_MENU, { nav_link: title });
@@ -63,7 +68,12 @@ export const NavItems = ({ setOpen }: NavItemsProps) => {
             ) : (
               <Button
                 component={Link}
-                onClick={() => handleClick(item.title, false)}
+                onClick={() => {
+                  item.dataCy === 'swapBase'
+                    ? setLifiWidgetOpen(true)
+                    : handleClick(item.title, false);
+                }}
+                disabled={item.dataCy === 'swapBase' && isLifiWidgetOpen ? true : false}
                 href={item.link}
                 sx={(theme) => ({
                   color: '#F1F1F3',
