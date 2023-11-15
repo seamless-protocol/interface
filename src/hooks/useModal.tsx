@@ -18,6 +18,7 @@ export enum ModalType {
   StakeCooldown,
   StakeRewardClaim,
   ClaimRewards,
+  Claim,
   Emode,
   Faucet,
   Swap,
@@ -36,6 +37,7 @@ export interface ModalArgsType {
   power?: string;
   icon?: string;
   stakeAssetName?: string;
+  claimAssetName?: string;
   currentRateMode?: InterestRate;
   emode?: EmodeModalType;
   isFrozen?: boolean;
@@ -91,6 +93,7 @@ export interface ModalContextType<T extends ModalArgsType> {
   openStakeRewardsClaim: (stakeAssetName: string, icon: string) => void;
   openStakeRewardsRestakeClaim: (stakeAssetName: string, icon: string) => void;
   openClaimRewards: () => void;
+  openClaim: (claimAssetName: string, icon: string) => void;
   openEmode: (mode: EmodeModalType) => void;
   openFaucet: (underlyingAsset: string) => void;
   openSwap: (underlyingAsset: string) => void;
@@ -246,7 +249,7 @@ export const ModalContextProvider: React.FC = ({ children }) => {
         },
         openStakeRewardsRestakeClaim: (stakeAssetName, icon) => {
           trackEvent(GENERAL.OPEN_MODAL, {
-            modal: 'Restatke Stake Rewards',
+            modal: 'Restake Stake Rewards',
             assetName: stakeAssetName,
           });
           setType(ModalType.StakeRewardsClaimRestake);
@@ -255,6 +258,11 @@ export const ModalContextProvider: React.FC = ({ children }) => {
         openClaimRewards: () => {
           trackEvent(GENERAL.OPEN_MODAL, { modal: 'Claim' });
           setType(ModalType.ClaimRewards);
+        },
+        openClaim: (claimAssetName, icon) => {
+          trackEvent(GENERAL.OPEN_MODAL, { modal: 'Claim Airdrop', assetName: claimAssetName });
+          setType(ModalType.Claim);
+          setArgs({ claimAssetName, icon });
         },
         openEmode: (mode) => {
           trackEvent(GENERAL.OPEN_MODAL, { modal: 'eMode' });

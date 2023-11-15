@@ -120,6 +120,7 @@ export const ROUTES = {
   governance: '/governance',
   faucet: '/faucet',
   migrationTool: '/v3-migration',
+  claim: '/claim',
   prerenderedProposal: (proposalId: number) => `/governance/proposal/${proposalId}`,
   dynamicRenderedProposal: (proposalId: number) => `/governance/proposal?proposalId=${proposalId}`,
   reserveOverview: (underlyingAsset: string, marketName: CustomMarket) =>

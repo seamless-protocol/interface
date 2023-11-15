@@ -27,9 +27,9 @@ export const navigation: Navigation[] = [
     dataCy: 'menuMarkets',
   },
   {
-    link: ROUTES.farms,
-    title: t`Staking Farms`,
-    dataCy: 'menuFarms',
+    link: ROUTES.claim,
+    title: t`Claim`,
+    dataCy: 'menuClaim',
   },
   {
     link: '',
@@ -76,6 +76,11 @@ const moreMenuItems: MoreMenuItem[] = [
   {
     link: 'https://github.com/seamless-protocol/interface',
     title: t`Developers`,
+    icon: <BookOpenIcon />,
+  },
+  {
+    link: ROUTES.farms,
+    title: t`Staking Farms`,
     icon: <BookOpenIcon />,
   },
 ];

@@ -71,6 +71,10 @@ export const STAKE = {
   STAKE_TOKEN: 'Stake Action',
 };
 
+export const CLAIM_AIRDROP = {
+  CLAIM_AIRDROP: 'Claim Airdrop',
+};
+
 export const GOVERNANCE_PAGE = {
   FILTER: 'Filter governance page', // done
   SEARCH_GOVERNANCE_PAGE: 'Search governance page: Term = ', //not sure how to do this

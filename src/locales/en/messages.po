@@ -342,6 +342,10 @@ msgstr "Available"
 msgid "Available assets"
 msgstr "Available assets"
 
+#: src/components/Claim/ClaimModalContent.tsx
+msgid "Available claim"
+msgstr "Available claim"
+
 #: src/modules/reserve-overview/ReserveTopDetails.tsx
 msgid "Available liquidity"
 msgstr "Available liquidity"
@@ -594,10 +598,16 @@ msgstr "Choose how much voting/proposition power to give to someone else by dele
 msgid "Choose one of the on-ramp services"
 msgstr "Choose one of the on-ramp services"
 
+#: src/components/Claim/ClaimActions.tsx
 #: src/modules/dashboard/DashboardTopPanel.tsx
 #: src/modules/staking/StakingPanel.tsx
+#: src/ui-config/menu-items/index.tsx
 msgid "Claim"
 msgstr "Claim"
+
+#: src/modules/claim/ClaimTopPanel.tsx
+msgid "Claim SEAM Airdrop"
+msgstr "Claim SEAM Airdrop"
 
 #: src/components/transactions/ClaimRewards/ClaimRewardsActions.tsx
 msgid "Claim all"
@@ -620,6 +630,7 @@ msgstr "Claim {symbol}"
 msgid "Claimable OG Points"
 msgstr "Claimable OG Points"
 
+#: src/components/Claim/ClaimModalContent.tsx
 #: src/components/transactions/ClaimRewards/ClaimRewardsModalContent.tsx
 #: src/components/transactions/StakeRewardClaim/StakeRewardClaimModalContent.tsx
 msgid "Claimed"
@@ -628,6 +639,10 @@ msgstr "Claimed"
 #: src/components/transactions/ClaimRewards/ClaimRewardsActions.tsx
 msgid "Claiming"
 msgstr "Claiming"
+
+#: src/components/Claim/ClaimModalContent.tsx
+msgid "Claiming SEAM"
+msgstr "Claiming SEAM"
 
 #: src/components/transactions/StakeRewardClaim/StakeRewardClaimActions.tsx
 msgid "Claiming {symbol}"
@@ -2066,6 +2081,7 @@ msgstr "Stake cooldown activated"
 msgid "Staked"
 msgstr "Staked"
 
+#: src/components/Claim/ClaimActions.tsx
 #: src/components/transactions/Stake/StakeActions.tsx
 #: src/modules/staking/StakingHeader.tsx
 msgid "Staking"
@@ -2510,6 +2526,7 @@ msgstr "Total emission per day"
 msgid "Total interest accrued"
 msgstr "Total interest accrued"
 
+#: src/modules/claim/ClaimTopPanel.tsx
 #: src/modules/markets/MarketsTopPanel.tsx
 msgid "Total market size"
 msgstr "Total market size"
@@ -2925,6 +2942,10 @@ msgstr "You {action} <0/> {symbol}"
 #: src/components/transactions/DebtSwitch/DebtSwitchModalContent.tsx
 msgid "You've successfully switched borrow position."
 msgstr "You've successfully switched borrow position."
+
+#: src/modules/claim/ClaimTopPanel.tsx
+msgid "Your Available Claim"
+msgstr "Your Available Claim"
 
 #: src/modules/dashboard/lists/BorrowedPositionsList/BorrowedPositionsList.tsx
 #: src/modules/dashboard/lists/BorrowedPositionsList/BorrowedPositionsList.tsx
