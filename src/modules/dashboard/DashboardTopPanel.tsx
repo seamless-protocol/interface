@@ -22,14 +22,25 @@ import { FormattedNumber } from '../../components/primitives/FormattedNumber';
 import { NoData } from '../../components/primitives/NoData';
 import { TopInfoPanel } from '../../components/TopInfoPanel/TopInfoPanel';
 import { TopInfoPanelItem } from '../../components/TopInfoPanel/TopInfoPanelItem';
-import { useAppDataContext } from '../../hooks/app-data-provider/useAppDataProvider';
+import {
+  ComputedReserveData,
+  useAppDataContext,
+} from '../../hooks/app-data-provider/useAppDataProvider';
+import { AddTokenDropdown } from '../reserve-overview/AddTokenDropdown';
 import { LiquidationRiskParametresInfoModal } from './LiquidationRiskParametresModal/LiquidationRiskParametresModal';
 
 export const DashboardTopPanel = () => {
-  const { currentNetworkConfig, currentMarketData, currentMarket } = useProtocolDataContext();
+  const { currentNetworkConfig, currentMarketData, currentMarket, currentChainId } =
+    useProtocolDataContext();
   const { market } = getMarketInfoById(currentMarket);
   const { user, reserves, loading } = useAppDataContext();
-  const { currentAccount } = useWeb3Context();
+  const {
+    currentAccount,
+    addERC20Token,
+    switchNetwork,
+    chainId: connectedChainId,
+    connected,
+  } = useWeb3Context();
   const [open, setOpen] = useState(false);
   const { openClaimRewards } = useModalContext();
   const trackEvent = useRootStore((store) => store.trackEvent);
@@ -38,8 +49,9 @@ export const DashboardTopPanel = () => {
     isMigrateToV3Available && currentAccount !== '' && Number(user.totalLiquidityUSD) > 0;
   const theme = useTheme();
   const downToSM = useMediaQuery(theme.breakpoints.down('sm'));
-
-  const { claimableRewardsUsd } = Object.keys(user.calculatedUserIncentives).reduce(
+  const { claimableRewardsUsd, symbols, claimAddresses } = Object.keys(
+    user.calculatedUserIncentives
+  ).reduce(
     (acc, rewardTokenAddress) => {
       const incentive: UserIncentiveData = user.calculatedUserIncentives[rewardTokenAddress];
       const rewardBalance = normalize(incentive.claimableRewards, incentive.rewardTokenDecimals);
@@ -64,8 +76,9 @@ export const DashboardTopPanel = () => {
       const rewardBalanceUsd = Number(rewardBalance) * tokenPrice;
 
       if (rewardBalanceUsd > 0) {
-        if (acc.assets.indexOf(incentive.rewardTokenSymbol) === -1) {
-          acc.assets.push(incentive.rewardTokenSymbol);
+        if (acc.symbols.indexOf(incentive.rewardTokenSymbol) === -1 && rewardTokenAddress) {
+          acc.symbols.push(incentive.rewardTokenSymbol);
+          acc.claimAddresses.push(rewardTokenAddress);
         }
 
         acc.claimableRewardsUsd += Number(rewardBalanceUsd);
@@ -73,7 +86,11 @@ export const DashboardTopPanel = () => {
 
       return acc;
     },
-    { claimableRewardsUsd: 0, assets: [] } as { claimableRewardsUsd: number; assets: string[] }
+    { claimableRewardsUsd: 0, symbols: [], claimAddresses: [] } as {
+      claimableRewardsUsd: number;
+      symbols: string[];
+      claimAddresses: string[];
+    }
   );
 
   const loanToValue =
@@ -142,7 +159,6 @@ export const DashboardTopPanel = () => {
             <NoData variant={noDataTypographyVariant} sx={{ opacity: '0.7' }} />
           )}
         </TopInfoPanelItem>
-
         <TopInfoPanelItem
           title={
             <div style={{ display: 'flex' }}>
@@ -172,7 +188,6 @@ export const DashboardTopPanel = () => {
             <NoData variant={noDataTypographyVariant} sx={{ opacity: '0.7' }} />
           )}
         </TopInfoPanelItem>
-
         {currentAccount && user?.healthFactor !== '-1' && (
           <TopInfoPanelItem
             title={
@@ -237,6 +252,23 @@ export const DashboardTopPanel = () => {
               >
                 <Trans>Claim</Trans>
               </Button>
+              {connected && (
+                <AddTokenDropdown
+                  poolReserve={
+                    {
+                      symbol: symbols[0],
+                      underlyingAsset: claimAddresses[0],
+                      iconSymbol: symbols[0],
+                    } as ComputedReserveData
+                  }
+                  downToSM={downToSM}
+                  switchNetwork={switchNetwork}
+                  addERC20Token={addERC20Token}
+                  currentChainId={currentChainId}
+                  connectedChainId={connectedChainId}
+                  hideSToken={true}
+                />
+              )}
             </Box>
           </TopInfoPanelItem>
         )}

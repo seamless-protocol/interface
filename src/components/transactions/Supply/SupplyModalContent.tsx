@@ -156,7 +156,7 @@ export const SupplyModalContent = React.memo(
       address: poolReserve.aTokenAddress,
       symbol: poolReserve.iconSymbol,
       decimals: poolReserve.decimals,
-      aToken: true,
+      sToken: true,
     };
 
     // collateralization state

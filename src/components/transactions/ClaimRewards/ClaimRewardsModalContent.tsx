@@ -11,6 +11,7 @@ import { useAppDataContext } from 'src/hooks/app-data-provider/useAppDataProvide
 import { useModalContext } from 'src/hooks/useModal';
 import { useProtocolDataContext } from 'src/hooks/useProtocolDataContext';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
+import { ERC20TokenType } from 'src/libs/web3-data-provider/Web3Provider';
 import { getNetworkConfig } from 'src/utils/marketsAndNetworksConfig';
 
 import { TxErrorView } from '../FlowCommons/Error';
@@ -83,6 +84,7 @@ export const ClaimRewardsModalContent = () => {
           symbol: incentive.rewardTokenSymbol,
           balance: rewardBalance,
           balanceUsd: rewardBalanceUsd.toString(),
+          decimals: incentive.rewardTokenDecimals,
           rewardTokenAddress,
         });
 
@@ -132,11 +134,26 @@ export const ClaimRewardsModalContent = () => {
       ? allReward
       : rewards.find((r) => r.symbol === selectedRewardSymbol);
 
+  const addToken: ERC20TokenType = {
+    address: selectedReward?.rewardTokenAddress ?? '',
+    symbol: selectedReward?.symbol ?? '',
+    decimals: selectedReward?.decimals ?? 18,
+    sToken: false,
+  };
+
   if (txError && txError.blocking) {
     return <TxErrorView txError={txError} />;
   }
 
-  if (claimRewardsTxState.success) return <TxSuccessView action={<Trans>Claimed</Trans>} />;
+  if (claimRewardsTxState.success)
+    return (
+      <TxSuccessView
+        action={<Trans>Claimed</Trans>}
+        amount={selectedReward?.balanceUsd}
+        symbol={selectedReward?.symbol}
+        addToken={addToken}
+      />
+    );
 
   return (
     <>
