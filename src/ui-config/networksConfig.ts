@@ -247,11 +247,9 @@ export const networkConfigs: Record<string, BaseNetworkConfig> = {
   },
   [ChainId.base]: {
     name: 'Base',
-    publicJsonRPCUrl: [
-      'https://mainnet.base.org',
-      'https://base-mainnet.g.alchemy.com/v2/cmOQkZesrPx6CW_f1TnZWzODwtDIf1f1',
-    ],
+    publicJsonRPCUrl: ['https://mainnet.base.org'],
     publicJsonRPCWSUrl: 'wss://base-mainnet.g.alchemy.com/v2/cmOQkZesrPx6CW_f1TnZWzODwtDIf1f1',
+    privateJsonRPCUrl: 'https://base-mainnet.g.alchemy.com/v2/cmOQkZesrPx6CW_f1TnZWzODwtDIf1f1',
     // protocolDataUrl: '',
     baseUniswapAdapter: '0x0',
     baseAssetSymbol: 'ETH',

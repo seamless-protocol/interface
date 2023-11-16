@@ -77,19 +77,20 @@ export const DashboardTopPanel = () => {
       const rewardBalanceUsd = Number(rewardBalance) * tokenPrice;
 
       if (rewardBalanceUsd > 0) {
-        if (acc.assets.indexOf(incentive.rewardTokenSymbol) === -1) {
+        if (acc.assets.indexOf(incentive.rewardTokenSymbol) === -1 && rewardTokenAddress) {
           acc.assets.push(incentive.rewardTokenSymbol);
+          acc.claimAddress.push(rewardTokenAddress);
         }
-        acc.claimAddress = rewardTokenAddress;
+
         acc.claimableRewardsUsd += Number(rewardBalanceUsd);
       }
 
       return acc;
     },
-    { claimableRewardsUsd: 0, assets: [], claimAddress: '' } as {
+    { claimableRewardsUsd: 0, assets: [], claimAddress: [] } as {
       claimableRewardsUsd: number;
       assets: string[];
-      claimAddress: string;
+      claimAddress: string[];
     }
   );
 
@@ -257,8 +258,7 @@ export const DashboardTopPanel = () => {
                   poolReserve={
                     {
                       symbol: assets[0],
-                      //underlyingAsset: '0x5607718c64334eb5174CB2226af891a6ED82c7C6',
-                      underlyingAsset: claimAddress,
+                      underlyingAsset: claimAddress[0],
                       iconSymbol: assets[0],
                     } as ComputedReserveData
                   }
