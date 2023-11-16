@@ -49,7 +49,7 @@ export const DashboardTopPanel = () => {
     isMigrateToV3Available && currentAccount !== '' && Number(user.totalLiquidityUSD) > 0;
   const theme = useTheme();
   const downToSM = useMediaQuery(theme.breakpoints.down('sm'));
-  const { claimableRewardsUsd, symbols, claimAddresses } = Object.keys(
+  const { claimableRewardsUsd, symbols, claimAddresses, decimals } = Object.keys(
     user.calculatedUserIncentives
   ).reduce(
     (acc, rewardTokenAddress) => {
@@ -79,6 +79,7 @@ export const DashboardTopPanel = () => {
         if (acc.symbols.indexOf(incentive.rewardTokenSymbol) === -1 && rewardTokenAddress) {
           acc.symbols.push(incentive.rewardTokenSymbol);
           acc.claimAddresses.push(rewardTokenAddress);
+          acc.decimals.push(incentive.rewardTokenDecimals);
         }
 
         acc.claimableRewardsUsd += Number(rewardBalanceUsd);
@@ -86,13 +87,13 @@ export const DashboardTopPanel = () => {
 
       return acc;
     },
-    { claimableRewardsUsd: 0, symbols: [], claimAddresses: [] } as {
+    { claimableRewardsUsd: 0, symbols: [], claimAddresses: [], decimals: [] } as {
       claimableRewardsUsd: number;
       symbols: string[];
       claimAddresses: string[];
+      decimals: number[];
     }
   );
-
   const loanToValue =
     user?.totalCollateralMarketReferenceCurrency === '0'
       ? '0'
@@ -259,6 +260,7 @@ export const DashboardTopPanel = () => {
                       symbol: symbols[0],
                       underlyingAsset: claimAddresses[0],
                       iconSymbol: symbols[0],
+                      decimals: decimals[0],
                     } as ComputedReserveData
                   }
                   downToSM={downToSM}
