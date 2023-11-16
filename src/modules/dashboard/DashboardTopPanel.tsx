@@ -49,8 +49,7 @@ export const DashboardTopPanel = () => {
     isMigrateToV3Available && currentAccount !== '' && Number(user.totalLiquidityUSD) > 0;
   const theme = useTheme();
   const downToSM = useMediaQuery(theme.breakpoints.down('sm'));
-
-  const { claimableRewardsUsd, assets, claimAddress } = Object.keys(
+  const { claimableRewardsUsd, symbols, claimAddresses } = Object.keys(
     user.calculatedUserIncentives
   ).reduce(
     (acc, rewardTokenAddress) => {
@@ -77,9 +76,9 @@ export const DashboardTopPanel = () => {
       const rewardBalanceUsd = Number(rewardBalance) * tokenPrice;
 
       if (rewardBalanceUsd > 0) {
-        if (acc.assets.indexOf(incentive.rewardTokenSymbol) === -1 && rewardTokenAddress) {
-          acc.assets.push(incentive.rewardTokenSymbol);
-          acc.claimAddress.push(rewardTokenAddress);
+        if (acc.symbols.indexOf(incentive.rewardTokenSymbol) === -1 && rewardTokenAddress) {
+          acc.symbols.push(incentive.rewardTokenSymbol);
+          acc.claimAddresses.push(rewardTokenAddress);
         }
 
         acc.claimableRewardsUsd += Number(rewardBalanceUsd);
@@ -87,10 +86,10 @@ export const DashboardTopPanel = () => {
 
       return acc;
     },
-    { claimableRewardsUsd: 0, assets: [], claimAddress: [] } as {
+    { claimableRewardsUsd: 0, symbols: [], claimAddresses: [] } as {
       claimableRewardsUsd: number;
-      assets: string[];
-      claimAddress: string[];
+      symbols: string[];
+      claimAddresses: string[];
     }
   );
 
@@ -257,9 +256,9 @@ export const DashboardTopPanel = () => {
                 <AddTokenDropdown
                   poolReserve={
                     {
-                      symbol: assets[0],
-                      underlyingAsset: claimAddress[0],
-                      iconSymbol: assets[0],
+                      symbol: symbols[0],
+                      underlyingAsset: claimAddresses[0],
+                      iconSymbol: symbols[0],
                     } as ComputedReserveData
                   }
                   downToSM={downToSM}
