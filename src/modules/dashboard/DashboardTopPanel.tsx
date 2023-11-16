@@ -50,7 +50,9 @@ export const DashboardTopPanel = () => {
   const theme = useTheme();
   const downToSM = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const { claimableRewardsUsd } = Object.keys(user.calculatedUserIncentives).reduce(
+  const { claimableRewardsUsd, assets, claimAddress } = Object.keys(
+    user.calculatedUserIncentives
+  ).reduce(
     (acc, rewardTokenAddress) => {
       const incentive: UserIncentiveData = user.calculatedUserIncentives[rewardTokenAddress];
       const rewardBalance = normalize(incentive.claimableRewards, incentive.rewardTokenDecimals);
@@ -78,13 +80,17 @@ export const DashboardTopPanel = () => {
         if (acc.assets.indexOf(incentive.rewardTokenSymbol) === -1) {
           acc.assets.push(incentive.rewardTokenSymbol);
         }
-
+        acc.claimAddress = rewardTokenAddress;
         acc.claimableRewardsUsd += Number(rewardBalanceUsd);
       }
 
       return acc;
     },
-    { claimableRewardsUsd: 0, assets: [] } as { claimableRewardsUsd: number; assets: string[] }
+    { claimableRewardsUsd: 0, assets: [], claimAddress: '' } as {
+      claimableRewardsUsd: number;
+      assets: string[];
+      claimAddress: string;
+    }
   );
 
   const loanToValue =
@@ -250,10 +256,10 @@ export const DashboardTopPanel = () => {
                 <AddTokenDropdown
                   poolReserve={
                     {
-                      symbol: 'OG Points',
-                      underlyingAsset: '0x5607718c64334eb5174CB2226af891a6ED82c7C6',
-                      aTokenAddress: '0x5607718c64334eb5174CB2226af891a6ED82c7C6',
-                      iconSymbol: 'OG Points',
+                      symbol: assets[0],
+                      //underlyingAsset: '0x5607718c64334eb5174CB2226af891a6ED82c7C6',
+                      underlyingAsset: claimAddress,
+                      iconSymbol: assets[0],
                     } as ComputedReserveData
                   }
                   downToSM={downToSM}

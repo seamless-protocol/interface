@@ -248,8 +248,8 @@ export const networkConfigs: Record<string, BaseNetworkConfig> = {
   [ChainId.base]: {
     name: 'Base',
     publicJsonRPCUrl: [
-      'https://base-mainnet.g.alchemy.com/v2/cmOQkZesrPx6CW_f1TnZWzODwtDIf1f1',
       'https://mainnet.base.org',
+      'https://base-mainnet.g.alchemy.com/v2/cmOQkZesrPx6CW_f1TnZWzODwtDIf1f1',
     ],
     publicJsonRPCWSUrl: 'wss://base-mainnet.g.alchemy.com/v2/cmOQkZesrPx6CW_f1TnZWzODwtDIf1f1',
     // protocolDataUrl: '',
