@@ -25,11 +25,11 @@ export const BridgeButton = ({ bridge }: Pick<NetworkConfig, 'bridge'>) => {
         justifyContent: 'center',
         mb: '8px',
         color: theme.palette.text.links,
-        backgroundColor: theme.palette.background.surface2,
+        backgroundColor: theme.palette.background.base,
         borderColor: theme.palette.primary.main,
         '&:hover': {
           color: theme.palette.text.links,
-          backgroundColor: theme.palette.background.surface2,
+          backgroundColor: theme.palette.background.base,
           borderColor: theme.palette.primary.main,
         },
       })}

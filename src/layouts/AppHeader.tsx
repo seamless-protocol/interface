@@ -149,7 +149,6 @@ export function AppHeader() {
         >
           <img src={uiConfig.appLogo} alt="An SVG of an eye" height={96} />
         </Box>
-
         <Box sx={{ mr: sm ? 1 : 3 }}>
           {ENABLE_TESTNET && (
             <ContentWithTooltip tooltipContent={testnetTooltip} offset={[0, -4]} withoutHover>
@@ -173,7 +172,6 @@ export function AppHeader() {
         <Box sx={{ display: { xs: 'none', md: 'block' } }}>
           <NavItems />
         </Box>
-
         <Box sx={{ flexGrow: 1 }} />
         <Box sx={{ gap: 2, display: 'flex' }}>
           {typeof window !== 'undefined' && <DynamicSubscribe />}
@@ -185,11 +183,9 @@ export function AppHeader() {
             />
           )}
         </Box>
-
         <Box sx={{ display: { xs: 'none', md: 'block' } }}>
           <SettingsMenu />
         </Box>
-
         {!walletWidgetOpen && (
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <MobileMenu

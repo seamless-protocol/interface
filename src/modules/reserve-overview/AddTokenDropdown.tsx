@@ -17,7 +17,7 @@ interface AddTokenDropdownProps {
   addERC20Token: (args: ERC20TokenType) => Promise<boolean>;
   currentChainId: number;
   connectedChainId: number;
-  hideAToken?: boolean;
+  hideSToken?: boolean;
 }
 
 export const AddTokenDropdown = ({
@@ -27,7 +27,7 @@ export const AddTokenDropdown = ({
   addERC20Token,
   currentChainId,
   connectedChainId,
-  hideAToken,
+  hideSToken,
 }: AddTokenDropdownProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [changingNetwork, setChangingNetwork] = useState(false);
@@ -80,7 +80,7 @@ export const AddTokenDropdown = ({
             onImageGenerated={setUnderlyingBase64}
             aToken={false}
           />
-          {!hideAToken && (
+          {!hideSToken && (
             <Base64Token
               symbol={poolReserve.iconSymbol}
               onImageGenerated={setATokenBase64}
@@ -159,7 +159,7 @@ export const AddTokenDropdown = ({
             {poolReserve.symbol}
           </Typography>
         </MenuItem>
-        {!hideAToken && (
+        {!hideSToken && (
           <Box>
             <Box sx={{ px: 4, pt: 3, pb: 2 }}>
               <Typography variant="secondary12" color="text.secondary">

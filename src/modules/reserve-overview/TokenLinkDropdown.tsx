@@ -14,13 +14,13 @@ import { RESERVE_DETAILS } from '../../utils/mixPanelEvents';
 interface TokenLinkDropdownProps {
   poolReserve: ComputedReserveData;
   downToSM: boolean;
-  hideAToken?: boolean;
+  hideSToken?: boolean;
 }
 
 export const TokenLinkDropdown = ({
   poolReserve,
   downToSM,
-  hideAToken,
+  hideSToken,
 }: TokenLinkDropdownProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -106,7 +106,7 @@ export const TokenLinkDropdown = ({
           </Typography>
         </MenuItem>
 
-        {!hideAToken && (
+        {!hideSToken && (
           <Box>
             <Box sx={{ px: 4, pt: 3, pb: 2 }}>
               <Typography variant="secondary12" color="text.secondary">
