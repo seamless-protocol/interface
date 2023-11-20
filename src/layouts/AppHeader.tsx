@@ -174,7 +174,7 @@ export function AppHeader() {
         </Box>
         <Box sx={{ flexGrow: 1 }} />
         <Box sx={{ gap: 2, display: 'flex' }}>
-          {typeof window !== 'undefined' && <DynamicSubscribe />}
+          {typeof window !== undefined && <DynamicSubscribe />}
           {!mobileMenuOpen && (
             <WalletWidget
               open={walletWidgetOpen}

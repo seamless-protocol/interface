@@ -9,6 +9,7 @@ declare global {
         partnerAddress: string;
         partnerName: string;
         modalTitle: string;
+        modalBody: string;
         onSubscriptionChange: (isSubscribed: boolean) => void;
         onLoading: (isLoading: boolean) => void;
       }) => void;
@@ -25,8 +26,12 @@ export function CBSubscribeButton() {
   const [isSubscribed, setISubscribed] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const isBrowserAndConnected = () =>
-    typeof window !== 'undefined' && window.ethereum.isConnected();
+  const isBrowserAndConnected = () => {
+    if (typeof window !== 'undefined' && window.ethereum) {
+      return true;
+    }
+    return false;
+  };
 
   const isCB = provider?.connection.url.includes('coinbase');
 
@@ -41,6 +46,7 @@ export function CBSubscribeButton() {
         partnerAddress: '0xaf2b090C37f4556BD86E3Cd74740FF0098fad3c6',
         partnerName: 'Seamless Protocol',
         modalTitle: 'Subscribe to Seamless Protocol',
+        modalBody: 'Hi, I am a modal body!',
         onSubscriptionChange: () => setISubscribed,
         onLoading: () => setIsLoading(false),
       });
