@@ -27,9 +27,6 @@ declare global {
   }
 }
 
-const MODAL_BODY_TEXT = `Receive the latest updates, promotions, and alerts directly in your wallet!
-Powered by Coinbase`;
-
 export function CBSubscribeButton() {
   const { provider, connected, readOnlyMode } = useWeb3Context();
   const [isSubscribed, setISubscribed] = useState(false);
@@ -45,14 +42,14 @@ export function CBSubscribeButton() {
         partnerAddress: '0x1503f06d951440fbfA211341D3399Beb3C642414',
         partnerName: 'Seamless Protocol',
         modalTitle: 'Subscribe to Seamless updates',
-        modalBody: MODAL_BODY_TEXT,
+        modalBody: 'Receive the latest updates, promotions, and alerts directly in your wallet!<br><br>Powered by Coinbase',
         onSubscriptionChange: () => setISubscribed,
         onLoading: () => setIsLoading(false),
       });
     } else {
       console.error('window.CBWSubscribe is not defined');
     }
-  }, [provider, connected, readOnlyMode]);
+  }, [provider, connected, readOnlyMode, window.CBWSubscribe]);
 
   const handleSubscribe = useCallback(() => {
     if (window && window.CBWSubscribe) {
