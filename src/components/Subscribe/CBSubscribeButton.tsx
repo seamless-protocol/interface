@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 
 declare global {
@@ -14,6 +14,15 @@ declare global {
         onLoading: (isLoading: boolean) => void;
       }) => void;
       toggleSubscription: () => void;
+    };
+    ethereum: {
+      isConnected: () => boolean;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      providers: any;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      setSelectedProvider: any;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      request: any;
     };
   }
 }
