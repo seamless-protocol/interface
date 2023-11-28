@@ -13,6 +13,7 @@ import Box from '@mui/material/Box';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { ContentWithTooltip } from 'src/components/ContentWithTooltip';
+import DynamicSubscribe from 'src/components/Subscribe/DynamicSubscribe';
 import { useRootStore } from 'src/store/root';
 import { ENABLE_TESTNET } from 'src/utils/marketsAndNetworksConfig';
 
@@ -172,13 +173,16 @@ export function AppHeader() {
           <NavItems />
         </Box>
         <Box sx={{ flexGrow: 1 }} />
-        {!mobileMenuOpen && (
-          <WalletWidget
-            open={walletWidgetOpen}
-            setOpen={toggleWalletWigit}
-            headerHeight={headerHeight}
-          />
-        )}
+        <Box sx={{ gap: 2, display: 'flex' }}>
+          {typeof window !== undefined && <DynamicSubscribe />}
+          {!mobileMenuOpen && (
+            <WalletWidget
+              open={walletWidgetOpen}
+              setOpen={toggleWalletWigit}
+              headerHeight={headerHeight}
+            />
+          )}
+        </Box>
         <Box sx={{ display: { xs: 'none', md: 'block' } }}>
           <SettingsMenu />
         </Box>

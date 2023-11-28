@@ -28,6 +28,7 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <script src="https://broadcast.coinbase.com/subscribe-button.js" async defer />
         </body>
       </Html>
     );
