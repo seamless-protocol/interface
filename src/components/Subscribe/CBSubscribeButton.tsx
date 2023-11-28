@@ -43,8 +43,8 @@ export function CBSubscribeButton() {
         partnerName: 'Seamless Protocol',
         modalTitle: 'Subscribe to Seamless updates',
         modalBody: 'Receive the latest updates, promotions, and alerts directly in your wallet!<br><br>Powered by Coinbase',
-        onSubscriptionChange: () => setISubscribed,
-        onLoading: () => setIsLoading(false),
+        onSubscriptionChange: setISubscribed,
+        onLoading: setIsLoading,
       });
     } else {
       console.error('window.CBWSubscribe is not defined');
