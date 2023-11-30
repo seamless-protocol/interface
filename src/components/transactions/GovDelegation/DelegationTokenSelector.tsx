@@ -20,8 +20,8 @@ export type DelegationToken = {
 
 export enum DelegationTokenType {
   BOTH = 0,
-  AAVE,
-  STKAAVE,
+  SEAM,
+  esSEAM,
 }
 
 export type DelegationTokenSelectorProps = {
@@ -87,7 +87,7 @@ export const DelegationTokenSelector = ({
   filter,
 }: DelegationTokenSelectorProps) => {
   const {
-    data: { aave, stkAave },
+    data: { seam, esSEAM },
   } = useGovernanceTokens();
 
   const filteredTokens = filter ? filterTokens(delegationTokens, delegationType) : delegationTokens;
@@ -113,22 +113,22 @@ export const DelegationTokenSelector = ({
           value={DelegationTokenType.BOTH}
           control={<Radio size="small" />}
           componentsProps={{ typography: { width: '100%' } }}
-          label={<TokenRow symbol={['AAVE', 'stkAAVE']} amount={Number(aave) + Number(stkAave)} />}
+          label={<TokenRow symbol={['SEAM', 'esSEAM']} amount={Number(seam) + Number(esSEAM)} />}
           data-cy={`delegate-token-both`}
         />
         <FormControlLabel
-          value={DelegationTokenType.AAVE}
+          value={DelegationTokenType.SEAM}
           control={<Radio size="small" />}
           componentsProps={{ typography: { width: '100%' } }}
-          label={<TokenRow symbol="AAVE" amount={aave} />}
-          data-cy={`delegate-token-AAVE`}
+          label={<TokenRow symbol="SEAM" amount={seam} />}
+          data-cy={`delegate-token-SEAM`}
         />
         <FormControlLabel
-          value={DelegationTokenType.STKAAVE}
+          value={DelegationTokenType.esSEAM}
           control={<Radio size="small" />}
           componentsProps={{ typography: { width: '100%' } }}
-          label={<TokenRow symbol="stkAAVE" amount={stkAave} />}
-          data-cy={`delegate-token-stkAAVE`}
+          label={<TokenRow symbol="esSEAM" amount={esSEAM} />}
+          data-cy={`delegate-token-esSEAM`}
         />
       </RadioGroup>
     </FormControl>

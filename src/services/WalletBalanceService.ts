@@ -9,9 +9,8 @@ type BatchBalanceOfArgs = {
 };
 
 interface GovernanceTokensBalance {
-  aave: string;
-  stkAave: string;
-  aAave: string;
+  seam: string;
+  esSEAM: string;
 }
 
 type GetPoolWalletBalances = {
@@ -42,15 +41,13 @@ export class WalletBalanceService implements Hashable {
     const balances = await this.walletBalanceService.batchBalanceOf(
       [user],
       [
-        governanceConfig.aaveTokenAddress,
-        governanceConfig.aAaveTokenAddress,
-        governanceConfig.stkAaveTokenAddress,
+        governanceConfig.seamTokenAddress,
+        governanceConfig.esSEAMTokenAddress,
       ]
     );
     return {
-      aave: normalize(balances[0].toString(), 18),
-      aAave: normalize(balances[1].toString(), 18),
-      stkAave: normalize(balances[2].toString(), 18),
+      seam: normalize(balances[0].toString(), 18),
+      esSEAM: normalize(balances[1].toString(), 18),
     };
   }
 

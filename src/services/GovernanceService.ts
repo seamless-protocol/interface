@@ -1,24 +1,23 @@
-import {
-  AaveGovernanceService,
-  GovGetVoteOnProposal,
-  GovGetVotingAtBlockType,
-  Power,
-  tEthereumAddress,
-} from '@aave/contract-helpers';
+import { GovGetVoteOnProposal, Power, tEthereumAddress } from '@aave/contract-helpers';
 import { normalize, valueToBigNumber } from '@aave/math-utils';
 import { Provider } from '@ethersproject/providers';
 import { governanceConfig } from 'src/ui-config/governanceConfig';
 import { Hashable } from 'src/utils/types';
+import {
+  IERC5805,
+  IERC5805__factory,
+  Multicall,
+  Multicall__factory,
+  IGovernor,
+  IGovernor__factory,
+} from 'src/services/types';
+import { Multicall3 } from 'src/services/types/Multicall';
+import { BigNumber } from 'ethers';
 
 interface Powers {
   votingPower: string;
-  aaveTokenPower: Power;
-  stkAaveTokenPower: Power;
-  propositionPower: string;
-  aaveVotingDelegatee: string;
-  aavePropositionDelegatee: string;
-  stkAaveVotingDelegatee: string;
-  stkAavePropositionDelegatee: string;
+  seamVotingDelegatee: string;
+  esSEAMVotingDelegatee: string;
 }
 
 interface VoteOnProposalData {
@@ -26,68 +25,84 @@ interface VoteOnProposalData {
   support: boolean;
 }
 
-interface GetPowersArgs {
-  user: string;
-}
-
 const checkIfDelegateeIsUser = (delegatee: tEthereumAddress, userAddress: tEthereumAddress) =>
   delegatee.toLocaleLowerCase() === userAddress.toLocaleLowerCase() ? '' : delegatee;
 
 export class GovernanceService implements Hashable {
-  private readonly governanceService: AaveGovernanceService;
+  readonly provider: Provider;
+  readonly multicall: Multicall;
+  readonly governor: IGovernor;
+  readonly seam: IERC5805;
+  readonly esSEAM: IERC5805;
 
   constructor(provider: Provider, public readonly chainId: number) {
-    this.governanceService = new AaveGovernanceService(provider, {
-      GOVERNANCE_ADDRESS: governanceConfig.addresses.AAVE_GOVERNANCE_V2,
-      GOVERNANCE_HELPER_ADDRESS: governanceConfig.addresses.AAVE_GOVERNANCE_V2_HELPER,
-      ipfsGateway: governanceConfig.ipfsGateway,
-    });
+    this.provider = provider;
+    this.multicall = Multicall__factory.connect(
+      governanceConfig.addresses.MULTICALL_ADDRESS,
+      this.provider
+    );
+    this.governor = IGovernor__factory.connect(governanceConfig.addresses.GOVERNOR_SHORT, this.provider);
+    this.seam = IERC5805__factory.connect(governanceConfig.seamTokenAddress, this.provider);
+    this.esSEAM = IERC5805__factory.connect(governanceConfig.esSEAMTokenAddress, this.provider);
   }
 
-  async getVotingPowerAt(request: GovGetVotingAtBlockType) {
-    return this.governanceService.getVotingPowerAt(request);
+  async getVotingPowerAt(account: string, timestamp: number) {
+    return this.governor.getVotes(account, timestamp);
   }
   async getVoteOnProposal(request: GovGetVoteOnProposal): Promise<VoteOnProposalData> {
-    const { votingPower, support } = await this.governanceService.getVoteOnProposal(request);
-    return {
-      votingPower: normalize(votingPower.toString(), 18),
-      support,
-    };
+    console.error('Cannot obtain past vote value'); // TODO
+    throw new Error('getVoteOnProposal: not implemented');
   }
-  async getPowers({ user }: GetPowersArgs): Promise<Powers> {
-    const { aaveTokenAddress, stkAaveTokenAddress } = governanceConfig;
-    const [aaveTokenPower, stkAaveTokenPower] = await this.governanceService.getTokensPower({
-      user: user,
-      tokens: [aaveTokenAddress, stkAaveTokenAddress],
-    });
+  async getPowers(user: string): Promise<Powers> {
+    const calls: Multicall3.CallStruct[] = [
+      {
+        target: this.seam.address,
+        callData: this.seam.interface.encodeFunctionData('getVotes', [user]),
+      },
+      {
+        target: this.seam.address,
+        callData: this.seam.interface.encodeFunctionData('delegates', [user]),
+      },
+      {
+        target: this.esSEAM.address,
+        callData: this.esSEAM.interface.encodeFunctionData('getVotes', [user]),
+      },
+      {
+        target: this.esSEAM.address,
+        callData: this.esSEAM.interface.encodeFunctionData('delegates', [user]),
+      },
+    ];
+
+    const { returnData } = await this.multicall.callStatic.aggregate(calls);
+
+    console.log("getPowers - returnData: ", returnData);
+
+    const seamTokenPower: BigNumber = this.seam.interface.decodeFunctionResult(
+      'getVotes',
+      returnData[0]
+    )[0];
+    const seamDelegatee: string = this.seam.interface.decodeFunctionResult(
+      'delegates',
+      returnData[1]
+    )[0];
+    const esSEAMTokenPower: BigNumber = this.seam.interface.decodeFunctionResult(
+      'getVotes',
+      returnData[2]
+    )[0];
+    const esSEAMDelegatee: string = this.seam.interface.decodeFunctionResult(
+      'delegates',
+      returnData[3]
+    )[0];
+
     const powers = {
       votingPower: normalize(
-        valueToBigNumber(aaveTokenPower.votingPower.toString())
-          .plus(stkAaveTokenPower.votingPower.toString())
-          .toString(),
+        valueToBigNumber(seamTokenPower.toString()).plus(esSEAMTokenPower.toString()).toString(),
         18
       ),
-      aaveTokenPower,
-      stkAaveTokenPower,
-      propositionPower: normalize(
-        valueToBigNumber(aaveTokenPower.propositionPower.toString())
-          .plus(stkAaveTokenPower.propositionPower.toString())
-          .toString(),
-        18
-      ),
-      aaveVotingDelegatee: checkIfDelegateeIsUser(aaveTokenPower.delegatedAddressVotingPower, user),
-      aavePropositionDelegatee: checkIfDelegateeIsUser(
-        aaveTokenPower.delegatedAddressPropositionPower,
-        user
-      ),
-      stkAaveVotingDelegatee: checkIfDelegateeIsUser(
-        stkAaveTokenPower.delegatedAddressVotingPower,
-        user
-      ),
-      stkAavePropositionDelegatee: checkIfDelegateeIsUser(
-        stkAaveTokenPower.delegatedAddressPropositionPower,
-        user
-      ),
+      seamTokenPower,
+      esSEAMTokenPower,
+      seamVotingDelegatee: checkIfDelegateeIsUser(seamDelegatee, user),
+      esSEAMVotingDelegatee: checkIfDelegateeIsUser(esSEAMDelegatee, user),
     };
     return powers;
   }

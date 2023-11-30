@@ -587,8 +587,8 @@ msgid "Cannot disable E-Mode"
 msgstr "Cannot disable E-Mode"
 
 #: src/components/transactions/GovDelegation/GovDelegationModalContent.tsx
-msgid "Choose how much voting/proposition power to give to someone else by delegating some of your AAVE or stkAAVE balance. Your tokens will remain in your account, but your delegate will be able to vote or propose on your behalf. If your AAVE or stkAAVE balance changes, your delegate's voting/proposition power will be automatically adjusted."
-msgstr "Choose how much voting/proposition power to give to someone else by delegating some of your AAVE or stkAAVE balance. Your tokens will remain in your account, but your delegate will be able to vote or propose on your behalf. If your AAVE or stkAAVE balance changes, your delegate's voting/proposition power will be automatically adjusted."
+msgid "Choose how much voting/proposition power to give to someone else by delegating some of your SEAM or esSEAM balance. Your tokens will remain in your account, but your delegate will be able to vote or propose on your behalf. If your SEAM or esSEAM balance changes, your delegate's voting/proposition power will be automatically adjusted."
+msgstr "Choose how much voting/proposition power to give to someone else by delegating some of your SEAM or esSEAM balance. Your tokens will remain in your account, but your delegate will be able to vote or propose on your behalf. If your SEAM or esSEAM balance changes, your delegate's voting/proposition power will be automatically adjusted."
 
 #: src/modules/staking/BuyWithFiatModal.tsx
 msgid "Choose one of the on-ramp services"
@@ -962,8 +962,8 @@ msgid "English"
 msgstr "English"
 
 #: src/components/transactions/GovDelegation/GovDelegationModalContent.tsx
-msgid "Enter ETH address"
-msgstr "Enter ETH address"
+msgid "Enter address"
+msgstr "Enter address"
 
 #: src/components/transactions/TxActionsWrapper.tsx
 msgid "Enter an amount"
@@ -1659,7 +1659,6 @@ msgstr "Proposal details"
 msgid "Proposal overview"
 msgstr "Proposal overview"
 
-#: pages/governance/index.governance.tsx
 #: src/modules/governance/ProposalListHeader.tsx
 #: src/modules/governance/ProposalListHeader.tsx
 msgid "Proposals"
@@ -1884,8 +1883,8 @@ msgid "Seamless debt token"
 msgstr "Seamless debt token"
 
 #: src/modules/governance/GovernanceTopPanel.tsx
-msgid "Seamless is a fully decentralized, community governed protocol by the OG Points token-holders. OG Points token-holders collectively discuss, propose, and vote on upgrades to the protocol. OG Points token-holders (Ethereum network only) can either vote themselves on new proposals or delagate to an address of choice."
-msgstr "Seamless is a fully decentralized, community governed protocol by the OG Points token-holders. OG Points token-holders collectively discuss, propose, and vote on upgrades to the protocol. OG Points token-holders (Ethereum network only) can either vote themselves on new proposals or delagate to an address of choice."
+msgid "Seamless is a fully decentralized, community governed protocol by the SEAM token-holders. SEAM token-holders collectively discuss, propose, and vote on upgrades to the protocol. SEAM token-holders (Base network only) can either vote themselves on new proposals or delagate to an address of choice."
+msgstr "Seamless is a fully decentralized, community governed protocol by the SEAM token-holders. SEAM token-holders collectively discuss, propose, and vote on upgrades to the protocol. SEAM token-holders (Base network only) can either vote themselves on new proposals or delagate to an address of choice."
 
 #: src/modules/reserve-overview/AddTokenDropdown.tsx
 #: src/modules/reserve-overview/TokenLinkDropdown.tsx
@@ -2475,10 +2474,6 @@ msgstr "To repay on behalf of a user an explicit amount to repay is needed"
 msgid "To request access for this permissioned market, please visit: <0>Acces Provider Name</0>"
 msgstr "To request access for this permissioned market, please visit: <0>Acces Provider Name</0>"
 
-#: src/modules/governance/VotingPowerInfoPanel.tsx
-msgid "To submit a proposal for minor changes to the protocol, you'll need at least 80.00K power. If you want to change the core code base, you'll need 320k power."
-msgstr "To submit a proposal for minor changes to the protocol, you'll need at least 80.00K power. If you want to change the core code base, you'll need 320k power."
-
 #: src/modules/governance/proposal/VotersListContainer.tsx
 msgid "Top 10 addresses"
 msgstr "Top 10 addresses"
@@ -2611,8 +2606,8 @@ msgid "Use it to vote for or against active proposals."
 msgstr "Use it to vote for or against active proposals."
 
 #: src/modules/governance/DelegatedInfoPanel.tsx
-msgid "Use your AAVE and stkAAVE balance to delegate your voting and proposition powers. You will not be sending any tokens, only the rights to vote and propose changes to the protocol. You can re-delegate or revoke power to self at any time."
-msgstr "Use your AAVE and stkAAVE balance to delegate your voting and proposition powers. You will not be sending any tokens, only the rights to vote and propose changes to the protocol. You can re-delegate or revoke power to self at any time."
+msgid "Use your SEAM and esSEAM balance to delegate your voting power. You will not be sending any tokens, only the rights to vote and propose changes to the protocol. You can re-delegate at any time."
+msgstr "Use your SEAM and esSEAM balance to delegate your voting power. You will not be sending any tokens, only the rights to vote and propose changes to the protocol. You can re-delegate at any time."
 
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsListMobileItem.tsx
 msgid "Used as collateral"
@@ -2886,8 +2881,8 @@ msgid "You don’t have enough funds in your wallet to repay the full amount. If
 msgstr "You don’t have enough funds in your wallet to repay the full amount. If you proceed to repay with your current amount of funds, you will still have a small borrowing position in your dashboard."
 
 #: src/modules/governance/DelegatedInfoPanel.tsx
-msgid "You have no AAVE/stkAAVE balance to delegate."
-msgstr "You have no AAVE/stkAAVE balance to delegate."
+msgid "You have no SEAM/esSEAM balance to delegate."
+msgstr "You have no SEAM/esSEAM balance to delegate."
 
 #: src/components/transactions/RateSwitch/RateSwitchModalContent.tsx
 msgid "You have not borrow yet using this currency"
@@ -2948,10 +2943,6 @@ msgstr "Your health factor and loan to value determine the assurance of your col
 msgid "Your info"
 msgstr "Your info"
 
-#: src/modules/governance/VotingPowerInfoPanel.tsx
-msgid "Your proposition power is based on your AAVE/stkAAVE balance and received delegations."
-msgstr "Your proposition power is based on your AAVE/stkAAVE balance and received delegations."
-
 #: src/components/transactions/ClaimRewards/ClaimRewardsModalContent.tsx
 msgid "Your reward balance is 0"
 msgstr "Your reward balance is 0"
@@ -2966,8 +2957,8 @@ msgid "Your voting info"
 msgstr "Your voting info"
 
 #: src/modules/governance/VotingPowerInfoPanel.tsx
-msgid "Your voting power is based on your AAVE/stkAAVE balance and received delegations."
-msgstr "Your voting power is based on your AAVE/stkAAVE balance and received delegations."
+msgid "Your voting power is based on the amount of SEAM + esSEAM that has been delegated to you (you must delegate to yourself to vote with your balance)."
+msgstr "Your voting power is based on the amount of SEAM + esSEAM that has been delegated to you (you must delegate to yourself to vote with your balance)."
 
 #: src/modules/dashboard/lists/SupplyAssetsList/WalletEmptyInfo.tsx
 msgid "Your {name} wallet is empty. <0>Purchase or transfer assets</0> or use <1>{0}</1> to transfer your {network} assets."
@@ -3086,7 +3077,6 @@ msgstr "withdrew"
 #: src/components/transactions/DelegationTxsWrapper.tsx
 #: src/components/transactions/FlowCommons/ApprovalMethodToggleButton.tsx
 #: src/components/transactions/FlowCommons/ApprovalMethodToggleButton.tsx
-#: src/components/transactions/GovDelegation/GovDelegationModalContent.tsx
 #: src/components/transactions/GovDelegation/GovDelegationModalContent.tsx
 #: src/components/transactions/StakeCooldown/StakeCooldownModalContent.tsx
 #: src/components/transactions/StakeCooldown/StakeCooldownModalContent.tsx

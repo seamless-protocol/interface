@@ -44,12 +44,12 @@ export const UserNameText: React.FC<UserNameTextProps> = ({
         {domainName ? domainName : address}
       </CompactableTypography>
       {link && (
-        <DarkTooltip title="View on Etherscan">
+        <DarkTooltip title="View on Basescan">
           <Link
             href={link}
             target="_blank"
             sx={{ display: 'flex' }}
-            onClick={() => trackEvent(GENERAL.EXTERNAL_LINK, { funnel: funnel, Link: 'Etherscan' })}
+            onClick={() => trackEvent(GENERAL.EXTERNAL_LINK, { funnel: funnel, Link: 'Basescan' })}
           >
             <SvgIcon sx={{ fontSize: iconSize }}>
               <ExternalLinkIcon />

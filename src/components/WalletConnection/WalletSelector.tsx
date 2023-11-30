@@ -173,6 +173,7 @@ export const WalletSelector = () => {
       // Check if address could be valid ENS before trying to resolve
       if (inputMockWalletAddress.slice(-4) === '.eth') {
         // Attempt to resolve ENS name and use resolved address if valid
+        console.log("testnetwork: ", mainnetProvider.getNetwork())
         const resolvedAddress = await mainnetProvider.resolveName(inputMockWalletAddress);
         if (resolvedAddress && utils.isAddress(resolvedAddress)) {
           connectReadOnlyMode(resolvedAddress);

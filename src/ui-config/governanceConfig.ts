@@ -4,43 +4,33 @@ export interface GovernanceConfig {
   chainId: ChainId;
   walletBalanceProvider: string;
   votingAssetName: string;
-  averageNetworkBlockTime: number;
-  queryGovernanceDataUrl: string;
-  wsGovernanceDataUrl: string;
-  aaveTokenAddress: string;
-  aAaveTokenAddress: string;
-  stkAaveTokenAddress: string;
+  seamTokenAddress: string;
+  esSEAMTokenAddress: string;
   governanceForumLink: string;
   governanceSnapshotLink: string;
   governanceFAQLink: string;
   addresses: {
-    AAVE_GOVERNANCE_V2: string;
-    AAVE_GOVERNANCE_V2_EXECUTOR_SHORT: string;
-    AAVE_GOVERNANCE_V2_EXECUTOR_LONG: string;
-    AAVE_GOVERNANCE_V2_HELPER: string;
+    GOVERNOR_SHORT: string,
+    GOVERNOR_LONG: string,
+    MULTICALL_ADDRESS: string,
   };
   ipfsGateway: string;
   fallbackIpfsGateway: string;
 }
 
 export const governanceConfig: GovernanceConfig = {
-  chainId: ChainId.mainnet,
-  votingAssetName: 'AAVE + stkAAVE',
-  averageNetworkBlockTime: 13.5,
-  queryGovernanceDataUrl: 'https://api.thegraph.com/subgraphs/name/aave/governance-v2',
-  wsGovernanceDataUrl: 'wss://api.thegraph.com/subgraphs/name/aave/governance-v2',
-  aaveTokenAddress: '0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9',
-  aAaveTokenAddress: '0xDa5E8e1C3596D3Cc11a4dd5aD66b8f03B5410F8C',
-  stkAaveTokenAddress: '0x4da27a545c0c5b758a6ba100e3a049001de870f5',
-  governanceForumLink: 'https://governance.aave.com',
-  governanceFAQLink: 'https://docs.aave.com/faq/governance',
-  walletBalanceProvider: '0x8E8dAd5409E0263a51C0aB5055dA66Be28cFF922',
-  governanceSnapshotLink: 'https://snapshot.org/#/aave.eth',
-  addresses: {
-    AAVE_GOVERNANCE_V2: '0xEC568fffba86c094cf06b22134B23074DFE2252c',
-    AAVE_GOVERNANCE_V2_EXECUTOR_SHORT: '0x61910EcD7e8e942136CE7Fe7943f956cea1CC2f7',
-    AAVE_GOVERNANCE_V2_EXECUTOR_LONG: '0xEE56e2B3D491590B5b31738cC34d5232F378a8D5',
-    AAVE_GOVERNANCE_V2_HELPER: '0xBb7baf0534423e3108E1D03c259104cDba2C1cB7',
+  chainId: 84531 as ChainId,
+  votingAssetName: 'SEAM + esSEAM',
+  seamTokenAddress: '0x8c0dE778f20e7D25E6E2AAc23d5Bee1d19Deb491', //mainnet: '0x1C7a460413dD4e964f96D8dFC56E7223cE88CD85',
+  esSEAMTokenAddress: '0x6B3D691C6E826f10f17e0be1cCf9694b6B22136E', // TODO mainnet
+  governanceForumLink: 'https://seamlessprotocol.discourse.group',
+  governanceFAQLink: '',  // TODO: TBD
+  walletBalanceProvider: '0x78B73CB97cC961DE49129240C15cdA96c7f1F9cc', // mainnet: '0xDb0f02421f830398d7b59dae8d385e2Cd5ed5CF7',
+  governanceSnapshotLink: 'https://snapshot.org/#/seamlessprotocol.eth',
+  addresses: {  // TODO
+    GOVERNOR_SHORT: '0xB054EeCDab00C0014C88403A933F6625a8b66eeB', //TODO mainnet
+    GOVERNOR_LONG: '0x4A8d272ce2248f18c0EDe5969e365172C452EdbF', // TODO mainnet
+    MULTICALL_ADDRESS: '0xca11bde05977b3631167028862be2a173976ca11', // mainnet: '0xca11bde05977b3631167028862be2a173976ca11'
   },
   ipfsGateway: 'https://cloudflare-ipfs.com/ipfs',
   fallbackIpfsGateway: 'https://ipfs.io/ipfs',

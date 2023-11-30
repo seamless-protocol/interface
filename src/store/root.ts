@@ -13,7 +13,6 @@ import { createLayoutSlice, LayoutSlice } from './layoutSlice';
 import { createLifiSlice, LifiSlice } from './lifiSlice';
 import { createPoolSlice, PoolSlice } from './poolSlice';
 import { createProtocolDataSlice, ProtocolDataSlice } from './protocolDataSlice';
-import { createStakeSlice, StakeSlice } from './stakeSlice';
 import { createTransactionsSlice, TransactionsSlice } from './transactionsSlice';
 import { createSingletonSubscriber } from './utils/createSingletonSubscriber';
 import { getQueryParameter } from './utils/queryParams';
@@ -23,8 +22,7 @@ import { createWalletSlice, WalletSlice } from './walletSlice';
 
 enableMapSet();
 
-export type RootStore = StakeSlice &
-  ProtocolDataSlice &
+export type RootStore = ProtocolDataSlice &
   WalletSlice &
   PoolSlice &
   IncentiveSlice &
@@ -41,7 +39,6 @@ export const useRootStore = create<RootStore>()(
   subscribeWithSelector(
     devtools((...args) => {
       return {
-        ...createStakeSlice(...args),
         ...createProtocolDataSlice(...args),
         ...createWalletSlice(...args),
         ...createPoolSlice(...args),

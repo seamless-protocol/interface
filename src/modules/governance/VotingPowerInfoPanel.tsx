@@ -49,8 +49,7 @@ export function VotingPowerInfoPanel() {
               <>
                 <Typography variant="subheader2">
                   <Trans>
-                    Your voting power is based on your AAVE/stkAAVE balance and received
-                    delegations.
+                    Your voting power is based on the amount of SEAM + esSEAM that has been delegated to you (you must delegate to yourself to vote with your balance).
                   </Trans>
                 </Typography>
                 <Typography variant="subheader2" mt={4}>
@@ -61,42 +60,6 @@ export function VotingPowerInfoPanel() {
             <FormattedNumber
               data-cy={`voting-power`}
               value={powers?.votingPower || 0}
-              variant="h2"
-              visibleDecimals={2}
-            />
-          </Box>
-          <Box>
-            <TextWithTooltip
-              text="Proposition power"
-              variant="description"
-              textColor="text.secondary"
-              event={{
-                eventName: GENERAL.TOOL_TIP,
-                eventParams: {
-                  tooltip: 'Proposition Power',
-                  funnel: 'Governance Page',
-                },
-              }}
-            >
-              <>
-                <Typography variant="subheader2">
-                  <Trans>
-                    Your proposition power is based on your AAVE/stkAAVE balance and received
-                    delegations.
-                  </Trans>
-                </Typography>
-                <Typography variant="subheader2" mt={4}>
-                  <Trans>
-                    To submit a proposal for minor changes to the protocol, you&apos;ll need at
-                    least 80.00K power. If you want to change the core code base, you&apos;ll need
-                    320k power.
-                  </Trans>
-                </Typography>
-              </>
-            </TextWithTooltip>
-            <FormattedNumber
-              data-cy={`proposition-power`}
-              value={powers?.propositionPower || 0}
               variant="h2"
               visibleDecimals={2}
             />

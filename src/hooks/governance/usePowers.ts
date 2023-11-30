@@ -7,7 +7,7 @@ export const usePowers = () => {
   const { governanceService } = useSharedDependencies();
   const user = useRootStore((store) => store.account);
   return useQuery({
-    queryFn: () => governanceService.getPowers({ user }),
+    queryFn: () => governanceService.getPowers(user),
     queryKey: [QueryKeys.POWERS, user, governanceService.toHash()],
     enabled: !!user,
     refetchInterval: POLLING_INTERVAL,

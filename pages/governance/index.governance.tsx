@@ -76,11 +76,6 @@ export default function Governance(props: GovernancePageProps) {
             display: { xs: 'flex', lg: 'none' },
           }}
         >
-          <StyledToggleButton value={Tabs.PROPOSALS} disabled={mode === Tabs.PROPOSALS}>
-            <Typography variant="subheader1">
-              <Trans>Proposals</Trans>
-            </Typography>
-          </StyledToggleButton>
           <StyledToggleButton value={Tabs.INFORMATION} disabled={mode === Tabs.INFORMATION}>
             <Typography variant="subheader1">
               <Trans>Your info</Trans>
@@ -88,16 +83,9 @@ export default function Governance(props: GovernancePageProps) {
           </StyledToggleButton>
         </StyledToggleButtonGroup>
         {isMobile ? (
-          mode === Tabs.PROPOSALS ? (
-            <ProposalsList {...props} />
-          ) : (
-            <UserGovernanceInfo />
-          )
+          <UserGovernanceInfo />
         ) : (
           <Grid container spacing={4}>
-            <Grid item md={8}>
-              <ProposalsList {...props} />
-            </Grid>
             <Grid item md={4}>
               <UserGovernanceInfo />
             </Grid>

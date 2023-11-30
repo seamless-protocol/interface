@@ -12,7 +12,7 @@ export const useVotingPowerAt = ({ strategy, block }: UseVotingPowerAtArgs) => {
   const { governanceService } = useSharedDependencies();
   const user = useRootStore((store) => store.account);
   return useQuery({
-    queryFn: () => governanceService.getVotingPowerAt({ user, strategy, block }),
+    queryFn: () => governanceService.getVotingPowerAt(user, block),
     queryKey: [QueryKeys.VOTING_POWER_AT, user, strategy, block, governanceService.toHash()],
     enabled: !!user,
   });

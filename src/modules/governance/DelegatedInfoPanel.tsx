@@ -13,25 +13,25 @@ import { useRootStore } from 'src/store/root';
 
 type DelegatedPowerProps = {
   user: string;
-  aavePower: string;
-  stkAavePower: string;
-  aaveDelegatee: string;
-  stkAaveDelegatee: string;
+  seamPower: string;
+  esSEAMPower: string;
+  seamDelegatee: string;
+  esSEAMDelegatee: string;
   title: string;
 };
 
 const DelegatedPower: React.FC<DelegatedPowerProps> = ({
   user,
-  aavePower,
-  stkAavePower,
-  aaveDelegatee,
-  stkAaveDelegatee,
+  seamPower,
+  esSEAMPower,
+  seamDelegatee,
+  esSEAMDelegatee,
   title,
 }) => {
-  const isAaveSelfDelegated = !aaveDelegatee || user === aaveDelegatee;
-  const isStkAaveSelfDelegated = !stkAaveDelegatee || user === stkAaveDelegatee;
+  const isSEAMSelfDelegated = !seamPower || user === seamDelegatee;
+  const isEsSEAMSelfDelegated = !esSEAMPower || user === esSEAMDelegatee;
 
-  if (isAaveSelfDelegated && isStkAaveSelfDelegated) return null;
+  if (isSEAMSelfDelegated && isEsSEAMSelfDelegated) return null;
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', mt: 6, mb: 2 }}>
@@ -39,60 +39,60 @@ const DelegatedPower: React.FC<DelegatedPowerProps> = ({
         <Trans>{title}</Trans>
       </Typography>
       <Box sx={{ display: 'flex', gap: 4, flexDirection: 'column' }}>
-        {aaveDelegatee === stkAaveDelegatee ? (
+        {seamDelegatee === esSEAMDelegatee ? (
           <Row
             align="flex-start"
             caption={
               <ExternalUserDisplay
                 avatarProps={{ size: AvatarSize.XS }}
                 titleProps={{ variant: 'subheader1' }}
-                address={aaveDelegatee}
+                address={seamDelegatee}
               />
             }
           >
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
               <FormattedNumber
-                value={Number(aavePower) + Number(stkAavePower)}
+                value={Number(seamPower) + Number(esSEAMPower)}
                 variant="subheader1"
               />
               <Typography variant="helperText" color="text.secondary">
-                AAVE + stkAAVE
+                SEAM + esSEAM
               </Typography>
             </Box>
           </Row>
         ) : (
           <>
-            {!isAaveSelfDelegated && (
+            {!isSEAMSelfDelegated && (
               <Row
                 align="flex-start"
                 caption={
                   <ExternalUserDisplay
                     avatarProps={{ size: AvatarSize.XS }}
                     titleProps={{ variant: 'subheader1' }}
-                    address={aaveDelegatee}
+                    address={seamDelegatee}
                   />
                 }
               >
                 <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-                  <TokenIcon symbol="AAVE" sx={{ width: 16, height: 16 }} />
-                  <FormattedNumber value={aavePower} variant="subheader1" />
+                  <TokenIcon symbol="SEAM" sx={{ width: 16, height: 16 }} />
+                  <FormattedNumber value={seamPower} variant="subheader1" />
                 </Box>
               </Row>
             )}
-            {!isStkAaveSelfDelegated && (
+            {!isEsSEAMSelfDelegated && (
               <Row
                 align="flex-start"
                 caption={
                   <ExternalUserDisplay
                     avatarProps={{ size: AvatarSize.XS }}
                     titleProps={{ variant: 'subheader1' }}
-                    address={stkAaveDelegatee}
+                    address={esSEAMDelegatee}
                   />
                 }
               >
                 <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-                  <TokenIcon symbol="stkAAVE" sx={{ width: 16, height: 16 }} />
-                  <FormattedNumber value={stkAavePower} variant="subheader1" />
+                  <TokenIcon symbol="esSEAM" sx={{ width: 16, height: 16 }} />
+                  <FormattedNumber value={esSEAMPower} variant="subheader1" />
                 </Box>
               </Row>
             )}
@@ -106,26 +106,25 @@ const DelegatedPower: React.FC<DelegatedPowerProps> = ({
 export const DelegatedInfoPanel = () => {
   const address = useRootStore((store) => store.account);
   const {
-    data: { aave, stkAave },
+    data: { seam, esSEAM },
   } = useGovernanceTokens();
+
+  console.log("DelegatedInfoPanel - seam: ", seam, ", esSEAM:", esSEAM);
+
   const { data: powers } = usePowers();
   const { openGovDelegation, openRevokeGovDelegation } = useModalContext();
 
   if (!powers || !address) return null;
 
   const disableButton =
-    Number(aave) <= 0 &&
-    Number(stkAave) <= 0 &&
-    powers.aavePropositionDelegatee === '' &&
-    powers.aaveVotingDelegatee === '' &&
-    powers.stkAavePropositionDelegatee === '' &&
-    powers.stkAaveVotingDelegatee === '';
+    Number(seam) <= 0 &&
+    Number(esSEAM) <= 0 &&
+    powers.seamVotingDelegatee === '' &&
+    powers.esSEAMVotingDelegatee === '';
 
   const showRevokeButton =
-    powers.aavePropositionDelegatee !== '' ||
-    powers.aaveVotingDelegatee !== '' ||
-    powers.stkAavePropositionDelegatee !== '' ||
-    powers.stkAaveVotingDelegatee !== '';
+    powers.seamVotingDelegatee !== '' ||
+    powers.esSEAMVotingDelegatee !== '';
 
   return (
     <Paper sx={{ mt: 2 }}>
@@ -135,32 +134,24 @@ export const DelegatedInfoPanel = () => {
         </Typography>
         <Typography typography="description" sx={{ mt: 1 }} color="text.secondary">
           <Trans>
-            Use your AAVE and stkAAVE balance to delegate your voting and proposition powers. You
+            Use your SEAM and esSEAM balance to delegate your voting power. You
             will not be sending any tokens, only the rights to vote and propose changes to the
-            protocol. You can re-delegate or revoke power to self at any time.
+            protocol. You can re-delegate at any time.
           </Trans>
         </Typography>
         {disableButton ? (
           <Typography variant="description" color="text.muted" mt={6}>
-            <Trans>You have no AAVE/stkAAVE balance to delegate.</Trans>
+            <Trans>You have no SEAM/esSEAM balance to delegate.</Trans>
           </Typography>
         ) : (
           <>
             <DelegatedPower
-              aavePower={aave}
-              stkAavePower={stkAave}
-              aaveDelegatee={powers.aaveVotingDelegatee}
-              stkAaveDelegatee={powers.stkAaveVotingDelegatee}
+              seamPower={seam}
+              esSEAMPower={esSEAM}
+              seamDelegatee={powers.seamVotingDelegatee}
+              esSEAMDelegatee={powers.esSEAMVotingDelegatee}
               user={address}
               title="Voting power"
-            />
-            <DelegatedPower
-              aavePower={aave}
-              stkAavePower={stkAave}
-              aaveDelegatee={powers.aavePropositionDelegatee}
-              stkAaveDelegatee={powers.stkAavePropositionDelegatee}
-              user={address}
-              title="Proposition power"
             />
           </>
         )}

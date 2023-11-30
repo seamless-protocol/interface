@@ -57,7 +57,7 @@ export const UserDisplay: React.FC<UserDisplayProps> = ({
               loading={loading}
               domainName={defaultDomain.name}
               variant="h4"
-              link={withLink ? `https://etherscan.io/address/${account}` : undefined}
+              link={withLink ? `https://basescan.org/address/${account}` : undefined}
               funnel={funnel}
               {...titleProps}
             />
@@ -74,7 +74,7 @@ export const UserDisplay: React.FC<UserDisplayProps> = ({
             domainName={defaultDomain?.name}
             loading={loading}
             variant="h4"
-            link={withLink ? `https://etherscan.io/address/${account}` : undefined}
+            link={withLink ? `https://basescan.org/address/${account}` : undefined}
             funnel={funnel}
             {...titleProps}
           />
@@ -105,7 +105,7 @@ export const ExternalUserDisplay: React.FC<ExternalUserDisplayProps> = ({
         variant="h4"
         address={address}
         domainName={name}
-        link={`https://etherscan.io/address/${address}`}
+        link={`https://basescan.org/address/${address}`}
         iconSize={14}
         {...titleProps}
         funnel={'Delegation power panel: Governance'}

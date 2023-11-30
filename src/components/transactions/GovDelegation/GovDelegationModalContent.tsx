@@ -46,7 +46,7 @@ export const GovDelegationModalContent: React.FC<GovDelegationModalContentProps>
   const { gasLimit, mainTxState: txState, txError } = useModalContext();
   const { currentNetworkConfig, currentChainId } = useProtocolDataContext();
   const {
-    data: { aave, stkAave },
+    data: { seam, esSEAM },
   } = useGovernanceTokens();
   const { data: powers, refetch } = usePowers();
   // error states
@@ -61,12 +61,11 @@ export const GovDelegationModalContent: React.FC<GovDelegationModalContentProps>
   const onlyOnePowerToRevoke =
     isRevokeModal &&
     !!powers &&
-    ((powers.aaveVotingDelegatee === '' && powers.stkAaveVotingDelegatee === '') ||
-      (powers.aavePropositionDelegatee === '' && powers.stkAavePropositionDelegatee === ''));
+    (powers.seamVotingDelegatee === '' && powers.esSEAMVotingDelegatee === '');
 
   useEffect(() => {
     if (onlyOnePowerToRevoke) {
-      if (powers.aaveVotingDelegatee === '' && powers.stkAaveVotingDelegatee === '')
+      if (powers.seamVotingDelegatee === '' && powers.esSEAMVotingDelegatee === '')
         setDelegationType(DelegationType.PROPOSITION_POWER);
       else setDelegationType(DelegationType.VOTING);
     }
@@ -78,22 +77,20 @@ export const GovDelegationModalContent: React.FC<GovDelegationModalContentProps>
 
   const tokens = [
     {
-      address: governanceConfig.stkAaveTokenAddress,
-      symbol: 'stkAAVE',
-      name: 'Staked AAVE',
-      amount: stkAave,
-      votingDelegatee: powers?.stkAaveVotingDelegatee,
-      propositionDelegatee: powers?.stkAavePropositionDelegatee,
-      type: DelegationTokenType.STKAAVE,
+      address: governanceConfig.esSEAMTokenAddress,
+      symbol: 'esSEAM',
+      name: 'Escrow SEAM',
+      amount: esSEAM,
+      votingDelegatee: powers?.esSEAMVotingDelegatee,
+      type: DelegationTokenType.esSEAM,
     },
     {
-      address: governanceConfig.aaveTokenAddress,
-      symbol: 'AAVE',
-      name: 'AAVE',
-      amount: aave,
-      votingDelegatee: powers?.aaveVotingDelegatee,
-      propositionDelegatee: powers?.aavePropositionDelegatee,
-      type: DelegationTokenType.AAVE,
+      address: governanceConfig.seamTokenAddress,
+      symbol: 'SEAM',
+      name: 'Seamless',
+      amount: seam,
+      votingDelegatee: powers?.seamVotingDelegatee,
+      type: DelegationTokenType.SEAM,
     },
   ];
 
@@ -141,21 +138,6 @@ export const GovDelegationModalContent: React.FC<GovDelegationModalContentProps>
       {isWrongNetwork && !readOnlyModeAddress && (
         <ChangeNetworkWarning networkName={networkConfig.name} chainId={govChain} />
       )}
-      {(isRevokeModal &&
-        !!powers &&
-        ((powers.aaveVotingDelegatee === '' && powers.stkAaveVotingDelegatee === '') ||
-          (powers.aavePropositionDelegatee === '' &&
-            powers.stkAavePropositionDelegatee === ''))) || (
-        <>
-          <Typography variant="description" color="text.secondary" sx={{ mb: 1 }}>
-            <Trans>{isRevokeModal ? 'Power to revoke' : 'Power to delegate'}</Trans>
-          </Typography>
-          <DelegationTypeSelector
-            delegationType={delegationType}
-            setDelegationType={setDelegationType}
-          />
-        </>
-      )}
 
       {isRevokeModal ? (
         <Typography variant="description" color="text.secondary" sx={{ mt: 6, mb: 2 }}>
@@ -177,8 +159,8 @@ export const GovDelegationModalContent: React.FC<GovDelegationModalContentProps>
         >
           <Trans>
             Choose how much voting/proposition power to give to someone else by delegating some of
-            your AAVE or stkAAVE balance. Your tokens will remain in your account, but your delegate
-            will be able to vote or propose on your behalf. If your AAVE or stkAAVE balance changes,
+            your SEAM or esSEAM balance. Your tokens will remain in your account, but your delegate
+            will be able to vote or propose on your behalf. If your SEAM or esSEAM balance changes,
             your delegate&apos;s voting/proposition power will be automatically adjusted.
           </Trans>
         </TextWithTooltip>
@@ -206,7 +188,7 @@ export const GovDelegationModalContent: React.FC<GovDelegationModalContentProps>
               fullWidth
               value={delegate}
               onChange={(e) => setDelegate(e.target.value)}
-              placeholder={t`Enter ETH address`}
+              placeholder={t`Enter address`}
               error={delegateAddressBlockingError !== undefined}
               helperText={handleDelegateAddressError()}
               data-cy={`delegationAddress`}
