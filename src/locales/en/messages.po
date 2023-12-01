@@ -2943,6 +2943,10 @@ msgstr "Your health factor and loan to value determine the assurance of your col
 msgid "Your info"
 msgstr "Your info"
 
+#: src/modules/governance/VotingPowerInfoPanel.tsx
+msgid "Your proposition power is based on your SEAM/esSEAM balance and received delegations."
+msgstr "Your proposition power is based on your SEAM/esSEAM balance and received delegations."
+
 #: src/components/transactions/ClaimRewards/ClaimRewardsModalContent.tsx
 msgid "Your reward balance is 0"
 msgstr "Your reward balance is 0"

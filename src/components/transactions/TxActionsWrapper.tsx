@@ -57,32 +57,46 @@ export const TxActionsWrapper = ({
   ...rest
 }: TxActionsWrapperProps) => {
   const { txError } = useModalContext();
+  console.log(txError);
   const { readOnlyModeAddress } = useWeb3Context();
   const hasApprovalError =
     requiresApproval && txError?.txAction === TxAction.APPROVAL && txError?.actionBlocked;
   const isAmountMissing = requiresAmount && requiresAmount && Number(amount) === 0;
 
   function getMainParams() {
+    console.log(actionText);
+    console.log('1');
     if (blocked) return { disabled: true, content: actionText };
+    console.log('2');
     if (
       (txError?.txAction === TxAction.GAS_ESTIMATION ||
         txError?.txAction === TxAction.MAIN_ACTION) &&
       txError?.actionBlocked
     ) {
+      console.log('3');
       if (errorParams) return errorParams;
+      console.log('4');
       return { loading: false, disabled: true, content: actionText };
     }
+    console.log('5');
     if (isWrongNetwork) return { disabled: true, content: <Trans>Wrong Network</Trans> };
+    console.log('6');
     if (fetchingData) return { disabled: true, content: <Trans>Fetching data...</Trans> };
+    console.log('7');
     if (isAmountMissing) return { disabled: true, content: <Trans>Enter an amount</Trans> };
+    console.log('8');
     if (preparingTransactions) return { disabled: true, loading: true };
+    console.log('9');
     // if (hasApprovalError && handleRetry)
     //   return { content: <Trans>Retry with approval</Trans>, handleClick: handleRetry };
     if (mainTxState?.loading)
       return { loading: true, disabled: true, content: actionInProgressText };
+    console.log('10');
     if (requiresApproval && !approvalTxState?.success)
       return { disabled: true, content: actionText };
+    console.log('11');
     return { content: actionText, handleClick: handleAction };
+    console.log('12');
   }
 
   function getApprovalParams() {
@@ -123,8 +137,12 @@ export const TxActionsWrapper = ({
     };
   }
 
-  const { content, disabled, loading, handleClick } = getMainParams();
+  let { content, disabled, loading, handleClick } = getMainParams();
   const approvalParams = getApprovalParams();
+
+  disabled = false;
+
+  console.log(handleClick);
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', mt: 12, ...sx }} {...rest}>
       {requiresApproval && !readOnlyModeAddress && (

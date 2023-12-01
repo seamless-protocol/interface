@@ -48,6 +48,7 @@ export const useTransactionHandler = ({
   deps = [],
   eventTxInfo,
 }: UseTransactionHandlerProps) => {
+  console.log('th1');
   const {
     approvalTxState,
     setApprovalTxState,
@@ -63,6 +64,7 @@ export const useTransactionHandler = ({
   const [signatures, setSignatures] = useState<SignatureLike[]>([]);
   const [signatureDeadline, setSignatureDeadline] = useState<string>();
 
+  console.log('th2');
   const [
     signPoolERC20Approval,
     walletApprovalMethodPreference,
@@ -80,12 +82,14 @@ export const useTransactionHandler = ({
     state.signStakingApproval,
     state.currentMarketData,
   ]);
+  console.log('th3');
 
   const [approvalTxes, setApprovalTxes] = useState<EthereumTransactionTypeExtended[] | undefined>();
   const [actionTx, setActionTx] = useState<EthereumTransactionTypeExtended | undefined>();
   const [usePermit, setUsePermit] = useState(false);
   const mounted = useRef(false);
 
+  console.log('th4');
   useEffect(() => {
     mounted.current = true; // Will set it to true on mount ...
     return () => {

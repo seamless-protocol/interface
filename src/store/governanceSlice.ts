@@ -13,6 +13,7 @@ import {
 import { governanceConfig } from 'src/ui-config/governanceConfig';
 import { getProvider } from 'src/utils/marketsAndNetworksConfig';
 import { StateCreator } from 'zustand';
+import { IEscrowSeam__factory, IGovernor__factory, IGovernorInterface } from 'src/services/types';
 
 import { RootStore } from './root';
 
@@ -91,6 +92,13 @@ export const createGovernanceSlice: StateCreator<
         ipfsGateway: governanceConfig.ipfsGateway,
       });
       return governanceService.delegateTokensByTypeBySig(args);
+    },
+    claimSeam: async (args: string) => {
+      const escrowSeamContract = IEscrowSeam__factory.connect(
+        governanceConfig.esSEAMTokenAddress,
+        getCorrectProvider()
+      );
+      return escrowSeamContract.claim(args);
     },
   };
 };

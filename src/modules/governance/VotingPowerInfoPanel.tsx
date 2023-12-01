@@ -1,9 +1,10 @@
 import { Trans } from '@lingui/macro';
-import { Box, Paper, Typography } from '@mui/material';
+import { Box, Button, Paper, Typography } from '@mui/material';
 import { AvatarSize } from 'src/components/Avatar';
 import { CompactMode } from 'src/components/CompactableTypography';
 import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
 import { TextWithTooltip } from 'src/components/TextWithTooltip';
+import { SeamClaimModal } from 'src/components/transactions/SeamClaim/SeamClaimModal';
 import { UserDisplay } from 'src/components/UserDisplay';
 import { usePowers } from 'src/hooks/governance/usePowers';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
@@ -33,7 +34,7 @@ export function VotingPowerInfoPanel() {
       />
       {currentAccount && (
         <Box sx={{ display: 'flex', mt: 6 }}>
-          <Box sx={{ display: 'flex', flexDirection: 'column', mr: '25%' }}>
+          <Box sx={{ display: 'flex', flex: '1 0 33.33%', flexDirection: 'column' }}>
             <TextWithTooltip
               text="Voting power"
               variant="description"
@@ -49,7 +50,8 @@ export function VotingPowerInfoPanel() {
               <>
                 <Typography variant="subheader2">
                   <Trans>
-                    Your voting power is based on the amount of SEAM + esSEAM that has been delegated to you (you must delegate to yourself to vote with your balance).
+                    Your voting power is based on the amount of SEAM + esSEAM that has been
+                    delegated to you (you must delegate to yourself to vote with your balance).
                   </Trans>
                 </Typography>
                 <Typography variant="subheader2" mt={4}>
@@ -63,6 +65,46 @@ export function VotingPowerInfoPanel() {
               variant="h2"
               visibleDecimals={2}
             />
+          </Box>
+          <Box sx={{ display: 'flex', flex: '1 0 33.33%', flexDirection: 'column' }}>
+            <TextWithTooltip
+              text="Vested SEAM balance"
+              variant="description"
+              textColor="text.secondary"
+              event={{
+                eventName: GENERAL.TOOL_TIP,
+                eventParams: {
+                  tooltip: 'Vested SEAM balance',
+                  funnel: 'Governance Page',
+                },
+              }}
+            >
+              <>
+                <Typography variant="subheader2">
+                  <Trans>
+                    Your proposition power is based on your SEAM/esSEAM balance and received
+                    delegations.
+                  </Trans>
+                </Typography>
+              </>
+            </TextWithTooltip>
+            <FormattedNumber
+              data-cy={`proposition-power`}
+              value={powers?.votingPower || 0}
+              variant="h2"
+              visibleDecimals={2}
+            />
+          </Box>
+          <Box
+            sx={{
+              display: 'flex',
+              flex: '1 0 33.33%',
+              flexDirection: 'column',
+              alignItems: 'center',
+              marginTop: '5px',
+            }}
+          >
+            <SeamClaimModal />
           </Box>
         </Box>
       )}

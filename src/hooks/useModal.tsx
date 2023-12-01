@@ -27,6 +27,7 @@ export enum ModalType {
   V3Migration,
   RevokeGovDelegation,
   StakeRewardsClaimRestake,
+  SeamClaim,
 }
 
 export interface ModalArgsType {

@@ -2,5 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 export { IERC5805__factory } from "./IERC5805__factory";
+export { IEscrowSeam__factory } from "./IEscrowSeam__factory";
 export { IGovernor__factory } from "./IGovernor__factory";
 export { Multicall__factory } from "./Multicall__factory";

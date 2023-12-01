@@ -85,8 +85,8 @@ export default function Governance(props: GovernancePageProps) {
         {isMobile ? (
           <UserGovernanceInfo />
         ) : (
-          <Grid container spacing={4}>
-            <Grid item md={4}>
+          <Grid container spacing={6}>
+            <Grid item md={6}>
               <UserGovernanceInfo />
             </Grid>
           </Grid>
