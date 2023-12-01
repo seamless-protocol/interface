@@ -6,10 +6,10 @@ import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
 import { Row } from 'src/components/primitives/Row';
 import { TokenIcon } from 'src/components/primitives/TokenIcon';
 import { ExternalUserDisplay } from 'src/components/UserDisplay';
-import { useGovernanceTokens } from 'src/hooks/governance/useGovernanceTokens';
 import { usePowers } from 'src/hooks/governance/usePowers';
 import { useModalContext } from 'src/hooks/useModal';
 import { useRootStore } from 'src/store/root';
+import { constants } from "ethers";
 
 type DelegatedPowerProps = {
   user: string;
@@ -21,17 +21,16 @@ type DelegatedPowerProps = {
 };
 
 const DelegatedPower: React.FC<DelegatedPowerProps> = ({
-  user,
   seamPower,
   esSEAMPower,
   seamDelegatee,
   esSEAMDelegatee,
   title,
 }) => {
-  const isSEAMSelfDelegated = !seamPower || user === seamDelegatee;
-  const isEsSEAMSelfDelegated = !esSEAMPower || user === esSEAMDelegatee;
+  const isSEAMDelegated = seamDelegatee !== constants.AddressZero;
+  const isEsSEAMDelegated = esSEAMDelegatee !== constants.AddressZero;
 
-  if (isSEAMSelfDelegated && isEsSEAMSelfDelegated) return null;
+  if (!isSEAMDelegated && !isEsSEAMDelegated) return null;
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', mt: 6, mb: 2 }}>
@@ -39,7 +38,7 @@ const DelegatedPower: React.FC<DelegatedPowerProps> = ({
         <Trans>{title}</Trans>
       </Typography>
       <Box sx={{ display: 'flex', gap: 4, flexDirection: 'column' }}>
-        {seamDelegatee === esSEAMDelegatee ? (
+        {seamDelegatee === esSEAMDelegatee && isSEAMDelegated ? (
           <Row
             align="flex-start"
             caption={
@@ -62,7 +61,7 @@ const DelegatedPower: React.FC<DelegatedPowerProps> = ({
           </Row>
         ) : (
           <>
-            {!isSEAMSelfDelegated && (
+            {isSEAMDelegated && (
               <Row
                 align="flex-start"
                 caption={
@@ -79,7 +78,7 @@ const DelegatedPower: React.FC<DelegatedPowerProps> = ({
                 </Box>
               </Row>
             )}
-            {!isEsSEAMSelfDelegated && (
+            {isEsSEAMDelegated && (
               <Row
                 align="flex-start"
                 caption={
@@ -105,20 +104,14 @@ const DelegatedPower: React.FC<DelegatedPowerProps> = ({
 
 export const DelegatedInfoPanel = () => {
   const address = useRootStore((store) => store.account);
-  const {
-    data: { seam, esSEAM },
-  } = useGovernanceTokens();
-
-  console.log("DelegatedInfoPanel - seam: ", seam, ", esSEAM:", esSEAM);
-
   const { data: powers } = usePowers();
   const { openGovDelegation, openRevokeGovDelegation } = useModalContext();
 
   if (!powers || !address) return null;
 
   const disableButton =
-    Number(seam) <= 0 &&
-    Number(esSEAM) <= 0 &&
+    Number(powers.seamTokenPower) <= 0 &&
+    Number(powers.esSEAMTokenPower) <= 0 &&
     powers.seamVotingDelegatee === '' &&
     powers.esSEAMVotingDelegatee === '';
 
@@ -146,8 +139,8 @@ export const DelegatedInfoPanel = () => {
         ) : (
           <>
             <DelegatedPower
-              seamPower={seam}
-              esSEAMPower={esSEAM}
+              seamPower={powers.seamTokenPower}
+              esSEAMPower={powers.esSEAMTokenPower}
               seamDelegatee={powers.seamVotingDelegatee}
               esSEAMDelegatee={powers.esSEAMVotingDelegatee}
               user={address}

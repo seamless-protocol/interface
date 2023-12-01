@@ -1,21 +1,39 @@
-import { GovGetVoteOnProposal, Power, tEthereumAddress } from '@aave/contract-helpers';
+import {
+  GovGetVoteOnProposal,
+  GovDelegate,
+  EthereumTransactionTypeExtended,
+  transactionType,
+  TransactionGenerationMethod,
+  GasResponse,
+  eEthereumTxType,
+  ProtocolAction,
+  gasLimitRecommendations,
+  DEFAULT_NULL_VALUE_ON_TX,
+  GovDelegateTokensBySig,
+  GovPrepareDelegateSig,
+} from '@aave/contract-helpers';
+import { estimateGasByNetwork } from '@aave/contract-helpers/dist/cjs/commons/gasStation';
 import { normalize, valueToBigNumber } from '@aave/math-utils';
 import { Provider } from '@ethersproject/providers';
 import { governanceConfig } from 'src/ui-config/governanceConfig';
 import { Hashable } from 'src/utils/types';
 import {
-  IERC5805,
-  IERC5805__factory,
+  SEAM,
+  SEAM__factory,
+  EscrowSEAM,
+  EscrowSEAM__factory,
   Multicall,
   Multicall__factory,
   IGovernor,
   IGovernor__factory,
 } from 'src/services/types';
 import { Multicall3 } from 'src/services/types/Multicall';
-import { BigNumber } from 'ethers';
+import { BigNumber, PopulatedTransaction } from 'ethers';
 
 interface Powers {
   votingPower: string;
+  seamTokenPower: string;
+  esSEAMTokenPower: string;
   seamVotingDelegatee: string;
   esSEAMVotingDelegatee: string;
 }
@@ -24,16 +42,12 @@ interface VoteOnProposalData {
   votingPower: string;
   support: boolean;
 }
-
-const checkIfDelegateeIsUser = (delegatee: tEthereumAddress, userAddress: tEthereumAddress) =>
-  delegatee.toLocaleLowerCase() === userAddress.toLocaleLowerCase() ? '' : delegatee;
-
 export class GovernanceService implements Hashable {
   readonly provider: Provider;
   readonly multicall: Multicall;
   readonly governor: IGovernor;
-  readonly seam: IERC5805;
-  readonly esSEAM: IERC5805;
+  readonly seam: SEAM;
+  readonly esSEAM: EscrowSEAM;
 
   constructor(provider: Provider, public readonly chainId: number) {
     this.provider = provider;
@@ -41,9 +55,12 @@ export class GovernanceService implements Hashable {
       governanceConfig.addresses.MULTICALL_ADDRESS,
       this.provider
     );
-    this.governor = IGovernor__factory.connect(governanceConfig.addresses.GOVERNOR_SHORT, this.provider);
-    this.seam = IERC5805__factory.connect(governanceConfig.seamTokenAddress, this.provider);
-    this.esSEAM = IERC5805__factory.connect(governanceConfig.esSEAMTokenAddress, this.provider);
+    this.governor = IGovernor__factory.connect(
+      governanceConfig.addresses.GOVERNOR_SHORT,
+      this.provider
+    );
+    this.seam = SEAM__factory.connect(governanceConfig.seamTokenAddress, this.provider);
+    this.esSEAM = EscrowSEAM__factory.connect(governanceConfig.esSEAMTokenAddress, this.provider);
   }
 
   async getVotingPowerAt(account: string, timestamp: number) {
@@ -75,7 +92,7 @@ export class GovernanceService implements Hashable {
 
     const { returnData } = await this.multicall.callStatic.aggregate(calls);
 
-    console.log("getPowers - returnData: ", returnData);
+    console.log('getPowers - returnData: ', returnData);
 
     const seamTokenPower: BigNumber = this.seam.interface.decodeFunctionResult(
       'getVotes',
@@ -99,14 +116,197 @@ export class GovernanceService implements Hashable {
         valueToBigNumber(seamTokenPower.toString()).plus(esSEAMTokenPower.toString()).toString(),
         18
       ),
-      seamTokenPower,
-      esSEAMTokenPower,
-      seamVotingDelegatee: checkIfDelegateeIsUser(seamDelegatee, user),
-      esSEAMVotingDelegatee: checkIfDelegateeIsUser(esSEAMDelegatee, user),
+      seamTokenPower: normalize(valueToBigNumber(seamTokenPower.toString()), 18),
+      esSEAMTokenPower: normalize(valueToBigNumber(esSEAMTokenPower.toString()), 18),
+      seamVotingDelegatee: seamDelegatee,
+      esSEAMVotingDelegatee: esSEAMDelegatee,
     };
     return powers;
   }
+  async prepareDelegateSignature({
+    delegatee,
+    governanceToken,
+    nonce,
+    expiry,
+  }: GovPrepareDelegateSig) {
+    const delegateeAddress: string = await this.getDelegateeAddress(delegatee);
+
+    const governanceDelegationToken =
+      governanceToken.toLocaleLowerCase() === this.seam.address.toLocaleLowerCase()
+        ? this.seam
+        : this.esSEAM;
+
+    const [, name, version, chainId, verifyingContract, , ] = await governanceDelegationToken.eip712Domain();
+
+    const typeData = {
+      primaryType: 'Delegation',
+      types: {
+        EIP712Domain: [
+          { name: 'name', type: 'string' },
+          { name: 'version', type: 'string' },
+          { name: 'chainId', type: 'uint256' },
+          { name: 'verifyingContract', type: 'address' },
+        ],
+        Delegation: [
+          { name: 'delegatee', type: 'address' },
+          { name: 'nonce', type: 'uint256' },
+          { name: 'expiry', type: 'uint256' },
+        ],
+      },
+      domain: {
+        name: name,
+        version: version,
+        chainId: chainId.toNumber(),
+        verifyingContract: verifyingContract,
+      },
+      message: {
+        delegatee: delegateeAddress,
+        nonce,
+        expiry,
+      },
+    };
+
+    return JSON.stringify(typeData);
+  }
+  async delegateTokensBySig({ user, tokens, data }: GovDelegateTokensBySig) {
+    const calls: Multicall3.CallStruct[] = [];
+
+    for (let i = 0; i < tokens.length; i++) {
+      const token = tokens[i].toLocaleLowerCase();
+      const { delegatee, nonce, expiry, v, r, s } = data[i];
+      if (token === this.seam.address.toLocaleLowerCase()) {
+        calls.push({
+          target: this.seam.address,
+          callData: this.seam.interface.encodeFunctionData('delegateBySig', [
+            delegatee,
+            nonce,
+            expiry,
+            v,
+            r,
+            s,
+          ]),
+        });
+      } else if (token === this.esSEAM.address.toLocaleLowerCase()) {
+        calls.push({
+          target: this.esSEAM.address,
+          callData: this.esSEAM.interface.encodeFunctionData('delegateBySig', [
+            delegatee,
+            nonce,
+            expiry,
+            v,
+            r,
+            s,
+          ]),
+        });
+      }
+    }
+
+    const txCallback: () => Promise<transactionType> = this.generateTxCallback({
+      rawTxMethod: async () => this.multicall.populateTransaction.aggregate(calls),
+      from: user,
+    });
+    return [
+      {
+        tx: txCallback,
+        txType: eEthereumTxType.GOV_DELEGATION_ACTION,
+        gas: this.generateTxPriceEstimation([], txCallback),
+      },
+    ];
+  }
+  async delegate({ user, delegatee, governanceToken }: GovDelegate) {
+    const txs: EthereumTransactionTypeExtended[] = [];
+    const governanceDelegationToken =
+      governanceToken.toLocaleLowerCase() === this.seam.address.toLocaleLowerCase()
+        ? this.seam
+        : this.esSEAM;
+
+    const delegateeAddress: string = await this.getDelegateeAddress(delegatee);
+
+    const txCallback: () => Promise<transactionType> = this.generateTxCallback({
+      rawTxMethod: async () =>
+        governanceDelegationToken.populateTransaction.delegate(delegateeAddress),
+      from: user,
+    });
+
+    txs.push({
+      tx: txCallback,
+      txType: eEthereumTxType.GOV_DELEGATION_ACTION,
+      gas: this.generateTxPriceEstimation(txs, txCallback),
+    });
+
+    return txs;
+  }
+  async getDelegateeAddress(delegatee: string): Promise<string> {
+    if (canBeEnsAddress(delegatee)) {
+      const delegateeAddress = await this.provider.resolveName(delegatee);
+      if (!delegateeAddress) throw new Error(`Address: ${delegatee} is not a valid ENS address`);
+
+      return delegateeAddress;
+    }
+
+    return delegatee;
+  }
+  readonly generateTxCallback =
+    ({
+      rawTxMethod,
+      from,
+      value,
+      gasSurplus,
+      action,
+    }: TransactionGenerationMethod): (() => Promise<transactionType>) =>
+    async () => {
+      const txRaw: PopulatedTransaction = await rawTxMethod();
+
+      const tx: transactionType = {
+        ...txRaw,
+        from,
+        value: value ?? DEFAULT_NULL_VALUE_ON_TX,
+      };
+
+      tx.gasLimit = await estimateGasByNetwork(tx, this.provider, gasSurplus);
+
+      if (
+        action &&
+        gasLimitRecommendations[action] &&
+        tx.gasLimit.lte(BigNumber.from(gasLimitRecommendations[action].limit))
+      ) {
+        tx.gasLimit = BigNumber.from(gasLimitRecommendations[action].recommended);
+      }
+
+      return tx;
+    };
+  readonly generateTxPriceEstimation =
+    (
+      txs: EthereumTransactionTypeExtended[],
+      txCallback: () => Promise<transactionType>,
+      action: string = ProtocolAction.default
+    ): GasResponse =>
+    async (force = false) => {
+      const gasPrice = await this.provider.getGasPrice();
+      const hasPendingApprovals = txs.find((tx) => tx.txType === eEthereumTxType.ERC20_APPROVAL);
+      if (!hasPendingApprovals || force) {
+        const { gasLimit, gasPrice: gasPriceProv }: transactionType = await txCallback();
+        if (!gasLimit) {
+          // If we don't receive the correct gas we throw an error
+          throw new Error('Transaction calculation error');
+        }
+
+        return {
+          gasLimit: gasLimit.toString(),
+          gasPrice: gasPriceProv ? gasPriceProv.toString() : gasPrice.toString(),
+        };
+      }
+
+      return {
+        gasLimit: gasLimitRecommendations[action].recommended,
+        gasPrice: gasPrice.toString(),
+      };
+    };
   public toHash() {
     return this.chainId.toString();
   }
 }
+
+export const canBeEnsAddress = (ensAddress: string): boolean => {
+  return ensAddress.toLowerCase().endsWith('.eth');
+};

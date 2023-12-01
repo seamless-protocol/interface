@@ -1,11 +1,10 @@
 import { canBeEnsAddress } from '@aave/contract-helpers';
 import { t, Trans } from '@lingui/macro';
 import { FormControl, TextField, Typography } from '@mui/material';
-import { utils } from 'ethers';
+import { utils, constants } from 'ethers';
 import { parseUnits } from 'ethers/lib/utils';
 import { useEffect, useState } from 'react';
 import { TextWithTooltip } from 'src/components/TextWithTooltip';
-import { DelegationType } from 'src/helpers/types';
 import { useGovernanceTokens } from 'src/hooks/governance/useGovernanceTokens';
 import { usePowers } from 'src/hooks/governance/usePowers';
 import { ModalType, useModalContext } from 'src/hooks/useModal';
@@ -22,7 +21,6 @@ import { TxModalTitle } from '../FlowCommons/TxModalTitle';
 import { GasStation } from '../GasStation/GasStation';
 import { ChangeNetworkWarning } from '../Warnings/ChangeNetworkWarning';
 import { DelegationTokenSelector, DelegationTokenType } from './DelegationTokenSelector';
-import { DelegationTypeSelector } from './DelegationTypeSelector';
 import { GovDelegationActions } from './GovDelegationActions';
 
 export interface Asset {
@@ -53,26 +51,12 @@ export const GovDelegationModalContent: React.FC<GovDelegationModalContentProps>
 
   // selector states
   const [delegationTokenType, setDelegationTokenType] = useState(DelegationTokenType.BOTH);
-  const [delegationType, setDelegationType] = useState(DelegationType.BOTH);
   const [delegate, setDelegate] = useState('');
 
   const isRevokeModal = type === ModalType.RevokeGovDelegation;
 
-  const onlyOnePowerToRevoke =
-    isRevokeModal &&
-    !!powers &&
-    (powers.seamVotingDelegatee === '' && powers.esSEAMVotingDelegatee === '');
-
   useEffect(() => {
-    if (onlyOnePowerToRevoke) {
-      if (powers.seamVotingDelegatee === '' && powers.esSEAMVotingDelegatee === '')
-        setDelegationType(DelegationType.PROPOSITION_POWER);
-      else setDelegationType(DelegationType.VOTING);
-    }
-  }, [onlyOnePowerToRevoke, powers]);
-
-  useEffect(() => {
-    setDelegate(isRevokeModal ? currentAccount : '');
+    setDelegate(isRevokeModal ? constants.AddressZero : '');
   }, [isRevokeModal, setDelegate, currentAccount]);
 
   const tokens = [
@@ -170,7 +154,6 @@ export const GovDelegationModalContent: React.FC<GovDelegationModalContentProps>
         setDelegationTokenType={setDelegationTokenType}
         delegationTokenType={delegationTokenType}
         delegationTokens={tokens}
-        delegationType={delegationType}
         filter={isRevokeModal}
       />
       {!isRevokeModal && (
@@ -201,11 +184,10 @@ export const GovDelegationModalContent: React.FC<GovDelegationModalContentProps>
       {txError && <GasEstimationError txError={txError} />}
 
       <GovDelegationActions
-        delegationType={delegationType}
         delegationTokenType={delegationTokenType}
         delegatee={delegate}
         isWrongNetwork={isWrongNetwork}
-        blocked={delegateAddressBlockingError !== undefined || delegate === '' || !delegationType}
+        blocked={delegateAddressBlockingError !== undefined || delegate === ''}
         isRevoke={isRevokeModal}
       />
     </>

@@ -3,7 +3,6 @@ import FormControl from '@mui/material/FormControl';
 import { useEffect } from 'react';
 import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
 import { Row } from 'src/components/primitives/Row';
-import { DelegationType } from 'src/helpers/types';
 import { useGovernanceTokens } from 'src/hooks/governance/useGovernanceTokens';
 
 import { TokenIcon } from '../../primitives/TokenIcon';
@@ -28,7 +27,6 @@ export type DelegationTokenSelectorProps = {
   delegationTokens: DelegationToken[];
   setDelegationTokenType: (type: DelegationTokenType) => void;
   delegationTokenType: DelegationTokenType;
-  delegationType: DelegationType;
   filter: boolean;
 };
 
@@ -67,13 +65,7 @@ export const TokenRow: React.FC<TokenRowProps> = ({ symbol, amount }) => {
 
 const filterTokens = (
   tokens: DelegationToken[],
-  delegationType: DelegationType
 ): DelegationToken[] => {
-  if (delegationType === DelegationType.VOTING) {
-    return tokens.filter((token) => token.votingDelegatee !== '');
-  } else if (delegationType === DelegationType.PROPOSITION_POWER) {
-    return tokens.filter((token) => token.propositionDelegatee !== '');
-  }
   return tokens.filter(
     (token) => token.propositionDelegatee !== '' || token.votingDelegatee !== ''
   );
@@ -83,14 +75,13 @@ export const DelegationTokenSelector = ({
   delegationTokens,
   setDelegationTokenType,
   delegationTokenType,
-  delegationType,
   filter,
 }: DelegationTokenSelectorProps) => {
   const {
     data: { seam, esSEAM },
   } = useGovernanceTokens();
 
-  const filteredTokens = filter ? filterTokens(delegationTokens, delegationType) : delegationTokens;
+  const filteredTokens = filter ? filterTokens(delegationTokens) : delegationTokens;
   const isOneLiner = filter && filteredTokens.length === 1;
 
   useEffect(() => {
