@@ -280,10 +280,14 @@ export const useTransactionHandler = ({
   };
 
   const action = async () => {
+    console.log('uso u action1');
     if (usePermit && handleGetPermitTxns) {
       if (!signatures.length || !signatureDeadline) throw new Error('signature needed');
       try {
+        console.log('uso u action2');
+
         setMainTxState({ ...mainTxState, loading: true });
+        console.log('uso u action3');
         const txns = await handleGetPermitTxns(signatures, signatureDeadline);
         const params = await txns[0].tx();
         delete params.gasPrice;
@@ -316,11 +320,20 @@ export const useTransactionHandler = ({
         });
       }
     }
+    console.log('====================================');
+    console.log(usePermit);
+    console.log(approvalTxes);
+    console.log(actionTx);
+    console.log('====================================');
     if ((!usePermit || !approvalTxes) && actionTx) {
+      console.log('uso u action4');
       try {
+        console.log('uso u action5');
         setMainTxState({ ...mainTxState, loading: true });
         const params = await actionTx.tx();
+        console.log('uso u action6');
         delete params.gasPrice;
+        console.log('uso u action7');
         return processTx({
           tx: () => sendTx(params),
           successCallback: (txnResponse: TransactionResponse) => {

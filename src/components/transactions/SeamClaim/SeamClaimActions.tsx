@@ -6,32 +6,51 @@ import { useRootStore } from 'src/store/root';
 import { useTransactionHandler } from 'src/helpers/useTransactionHandler';
 import { useModalContext } from 'src/hooks/useModal';
 import { TransactionResponse } from '@ethersproject/providers';
-import { ProtocolAction } from '@aave/contract-helpers';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
-import { TxAction, getErrorTextFromError } from 'src/ui-config/errorMapping';
+import { governanceConfig } from 'src/ui-config/governanceConfig';
+import { TxAction, TxErrorType, getErrorTextFromError } from 'src/ui-config/errorMapping';
 
 export const SeamClaimActions = () => {
-  const { claimSeam } = useRootStore();
-  console.log('claimSeam');
-  console.log(claimSeam);
+  const { currentAccount, sendTx } = useWeb3Context();
+  const { setMainTxState, setTxError } = useModalContext();
+  const { claimSeam, estimateGasLimit } = useRootStore();
 
-  const { action, loadingTxns, mainTxState } = useTransactionHandler({
+  const { loadingTxns, mainTxState } = useTransactionHandler({
     tryPermit: false,
     handleGetTxns: async () => {
-      return claimSeam({});
+      return claimSeam();
     },
   });
 
-  console.log('action');
-  console.log(action);
+  const action = async () => {
+    try {
+      setMainTxState({ ...mainTxState, loading: true });
 
-  /*
-  return (
-    <Button variant="contained" sx={{ width: '80%' }}>
-      Claim SEAM
-    </Button>
-  );
-  */
+      const encodedFunctionCall = claimSeam();
+      let supplyTxData = {
+        ...encodedFunctionCall,
+        from: currentAccount,
+        to: governanceConfig.esSEAMTokenAddress,
+      };
+      supplyTxData = await estimateGasLimit(supplyTxData);
+
+      const response: TransactionResponse = await sendTx(supplyTxData);
+      await response.wait(1);
+
+      setMainTxState({
+        txHash: response.hash,
+        loading: false,
+        success: true,
+      });
+    } catch (error) {
+      const parsedError = getErrorTextFromError(error, TxAction.GAS_ESTIMATION, false);
+      setTxError(parsedError);
+      setMainTxState({
+        txHash: undefined,
+        loading: false,
+      });
+    }
+  };
 
   return (
     <TxActionsWrapper
@@ -43,7 +62,7 @@ export const SeamClaimActions = () => {
       actionInProgressText="Claiming SEAM"
       mainTxState={mainTxState}
       isWrongNetwork={false}
-      sx={{ width: '80%' }}
+      sx={{ width: '80%', textAlign: 'center' }}
     ></TxActionsWrapper>
   );
 };

@@ -249,7 +249,7 @@ export const networkConfigs: Record<string, BaseNetworkConfig> = {
     name: 'Base',
     publicJsonRPCUrl: ['https://mainnet.base.org'],
     publicJsonRPCWSUrl: 'wss://base-mainnet.g.alchemy.com/v2/cmOQkZesrPx6CW_f1TnZWzODwtDIf1f1',
-    privateJsonRPCUrl: 'https://base-mainnet.g.alchemy.com/v2/cmOQkZesrPx6CW_f1TnZWzODwtDIf1f1',
+    privateJsonRPCUrl: 'https://rpc.tenderly.co/fork/c1626274-17a0-4b7e-9b8b-54a493cea145',
     // protocolDataUrl: '',
     baseUniswapAdapter: '0x0',
     baseAssetSymbol: 'ETH',

@@ -748,9 +748,14 @@ export const createPoolSlice: StateCreator<
     },
     estimateGasLimit: async (tx: PopulatedTransaction) => {
       const provider = get().jsonRpcProvider();
+      console.log(provider);
+      console.log('Pool slice !!!!');
       const defaultGasLimit: BigNumber = tx.gasLimit ? tx.gasLimit : BigNumber.from('0');
+      console.log('Pool slice 1');
       delete tx.gasLimit;
+      console.log(tx);
       let estimatedGas = await provider.estimateGas(tx);
+      console.log('Pool slice 2');
       estimatedGas = estimatedGas.mul(115).div(100); // Add 15% buffer
       // use the max of the 2 values, airing on the side of caution to prioritize having enough gas vs submitting w/ most efficient gas limit
       tx.gasLimit = estimatedGas.gt(defaultGasLimit) ? estimatedGas : defaultGasLimit;

@@ -68,6 +68,7 @@ export const TxActionsWrapper = ({
     console.log('1');
     if (blocked) return { disabled: true, content: actionText };
     console.log('2');
+    /*
     if (
       (txError?.txAction === TxAction.GAS_ESTIMATION ||
         txError?.txAction === TxAction.MAIN_ACTION) &&
@@ -78,6 +79,7 @@ export const TxActionsWrapper = ({
       console.log('4');
       return { loading: false, disabled: true, content: actionText };
     }
+    */
     console.log('5');
     if (isWrongNetwork) return { disabled: true, content: <Trans>Wrong Network</Trans> };
     console.log('6');
@@ -96,7 +98,6 @@ export const TxActionsWrapper = ({
       return { disabled: true, content: actionText };
     console.log('11');
     return { content: actionText, handleClick: handleAction };
-    console.log('12');
   }
 
   function getApprovalParams() {
@@ -142,7 +143,6 @@ export const TxActionsWrapper = ({
 
   disabled = false;
 
-  console.log(handleClick);
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', mt: 12, ...sx }} {...rest}>
       {requiresApproval && !readOnlyModeAddress && (

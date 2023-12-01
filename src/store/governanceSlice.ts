@@ -93,12 +93,21 @@ export const createGovernanceSlice: StateCreator<
       });
       return governanceService.delegateTokensByTypeBySig(args);
     },
-    claimSeam: async (args: string) => {
+    claimSeam: () => {
+      const provider = getCorrectProvider();
+      const account = get().account;
       const escrowSeamContract = IEscrowSeam__factory.connect(
         governanceConfig.esSEAMTokenAddress,
-        getCorrectProvider()
+        provider
       );
-      return escrowSeamContract.claim(args);
+
+      const txData = escrowSeamContract.interface.encodeFunctionData('claim', [account]);
+      const actionTx = {
+        to: governanceConfig.esSEAMTokenAddress,
+        from: account,
+        data: txData,
+      };
+      return actionTx;
     },
   };
 };

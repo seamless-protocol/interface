@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/macro';
-import { Box, Button, Paper, Typography } from '@mui/material';
+import { Box, Paper, Typography } from '@mui/material';
 import { AvatarSize } from 'src/components/Avatar';
 import { CompactMode } from 'src/components/CompactableTypography';
 import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
@@ -7,12 +7,15 @@ import { TextWithTooltip } from 'src/components/TextWithTooltip';
 import { SeamClaimModal } from 'src/components/transactions/SeamClaim/SeamClaimModal';
 import { UserDisplay } from 'src/components/UserDisplay';
 import { usePowers } from 'src/hooks/governance/usePowers';
+import { useVestedSeamBalance } from 'src/hooks/governance/useVestedSeamBalance';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 import { GENERAL } from 'src/utils/mixPanelEvents';
 
 export function VotingPowerInfoPanel() {
   const { currentAccount } = useWeb3Context();
   const { data: powers } = usePowers();
+  const { data: vestedSeamBalance } = useVestedSeamBalance();
+
   return (
     <Paper sx={{ px: 6, pb: 6, pt: 4 }}>
       <Typography
@@ -90,7 +93,7 @@ export function VotingPowerInfoPanel() {
             </TextWithTooltip>
             <FormattedNumber
               data-cy={`proposition-power`}
-              value={powers?.votingPower || 0}
+              value={Number(vestedSeamBalance) || 0}
               variant="h2"
               visibleDecimals={2}
             />

@@ -10,6 +10,8 @@ import {
   Multicall__factory,
   IGovernor,
   IGovernor__factory,
+  IEscrowSeam,
+  IEscrowSeam__factory,
 } from 'src/services/types';
 import { Multicall3 } from 'src/services/types/Multicall';
 import { BigNumber } from 'ethers';
@@ -33,7 +35,7 @@ export class GovernanceService implements Hashable {
   readonly multicall: Multicall;
   readonly governor: IGovernor;
   readonly seam: IERC5805;
-  readonly esSEAM: IERC5805;
+  readonly esSEAM: IEscrowSeam;
 
   constructor(provider: Provider, public readonly chainId: number) {
     this.provider = provider;
@@ -41,19 +43,28 @@ export class GovernanceService implements Hashable {
       governanceConfig.addresses.MULTICALL_ADDRESS,
       this.provider
     );
-    this.governor = IGovernor__factory.connect(governanceConfig.addresses.GOVERNOR_SHORT, this.provider);
+    this.governor = IGovernor__factory.connect(
+      governanceConfig.addresses.GOVERNOR_SHORT,
+      this.provider
+    );
     this.seam = IERC5805__factory.connect(governanceConfig.seamTokenAddress, this.provider);
-    this.esSEAM = IERC5805__factory.connect(governanceConfig.esSEAMTokenAddress, this.provider);
+    this.esSEAM = IEscrowSeam__factory.connect(governanceConfig.esSEAMTokenAddress, this.provider);
   }
 
   async getVotingPowerAt(account: string, timestamp: number) {
+    console.log('getVotingPowerAt!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
     return this.governor.getVotes(account, timestamp);
   }
   async getVoteOnProposal(request: GovGetVoteOnProposal): Promise<VoteOnProposalData> {
     console.error('Cannot obtain past vote value'); // TODO
     throw new Error('getVoteOnProposal: not implemented');
   }
+  async getVestedSeamBalance(user: string): Promise<BigNumber> {
+    console.log('bravoooo');
+    return await this.esSEAM.getClaimableAmount(user);
+  }
   async getPowers(user: string): Promise<Powers> {
+    console.log('Uso u powers');
     const calls: Multicall3.CallStruct[] = [
       {
         target: this.seam.address,
@@ -75,7 +86,7 @@ export class GovernanceService implements Hashable {
 
     const { returnData } = await this.multicall.callStatic.aggregate(calls);
 
-    console.log("getPowers - returnData: ", returnData);
+    console.log('getPowers - returnData: ', returnData);
 
     const seamTokenPower: BigNumber = this.seam.interface.decodeFunctionResult(
       'getVotes',
@@ -93,6 +104,12 @@ export class GovernanceService implements Hashable {
       'delegates',
       returnData[3]
     )[0];
+
+    return {
+      votingPower: '1000',
+      seamVotingDelegatee: '',
+      esSEAMVotingDelegatee: '',
+    };
 
     const powers = {
       votingPower: normalize(
