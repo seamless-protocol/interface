@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/macro';
-import { Box, Grid, Paper, Typography, Button, Divider } from '@mui/material';
+import { Box, Grid, Paper, Typography, Divider } from '@mui/material';
 import { AvatarSize } from 'src/components/Avatar';
 import { CompactMode } from 'src/components/CompactableTypography';
 import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
