@@ -1,7 +1,7 @@
 import { canBeEnsAddress } from '@aave/contract-helpers';
 import { t, Trans } from '@lingui/macro';
 import { FormControl, TextField, Typography } from '@mui/material';
-import { utils, constants } from 'ethers';
+import { constants, utils } from 'ethers';
 import { parseUnits } from 'ethers/lib/utils';
 import { useEffect, useState } from 'react';
 import { TextWithTooltip } from 'src/components/TextWithTooltip';

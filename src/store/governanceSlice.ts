@@ -2,24 +2,23 @@ import {
   ERC20_2612Service,
   EthereumTransactionTypeExtended,
   GovDelegate,
-  AaveGovernanceService,
-  GovernancePowerDelegationTokenService,
   GovDelegateTokensBySig,
   GovPrepareDelegateSig,
 } from '@aave/contract-helpers';
+import { GovernanceService } from 'src/services/GovernanceService';
 import { governanceConfig } from 'src/ui-config/governanceConfig';
 import { getProvider } from 'src/utils/marketsAndNetworksConfig';
 import { StateCreator } from 'zustand';
-import { GovernanceService } from 'src/services/GovernanceService';
 
 import { RootStore } from './root';
 
 export interface GovernanceSlice {
   delegate: (args: Omit<GovDelegate, 'user'>) => Promise<EthereumTransactionTypeExtended[]>;
   prepareDelegateSignature: (args: GovPrepareDelegateSig) => Promise<string>;
-  submitVote: (args: any) => void;
+  submitVote: () => void;
   getTokenNonce: (user: string, token: string) => Promise<number>;
   delegateTokensBySig: (args: GovDelegateTokensBySig) => Promise<EthereumTransactionTypeExtended[]>;
+  claimVestedEsSEAM: (user: string) => Promise<EthereumTransactionTypeExtended[]>;
 }
 
 export const createGovernanceSlice: StateCreator<
@@ -52,9 +51,9 @@ export const createGovernanceSlice: StateCreator<
       const user = get().account;
       return governanceService.delegate({ ...args, user });
     },
-    submitVote: (args: any) => {
-      console.error("submitVote not implemented");
-      throw new Error("not implemented");
+    submitVote: (/*args: any*/) => {
+      console.error('submitVote not implemented');
+      throw new Error('not implemented');
     },
     getTokenNonce: async (user: string, token: string) => {
       const service = new ERC20_2612Service(getCorrectProvider());
@@ -64,6 +63,10 @@ export const createGovernanceSlice: StateCreator<
     delegateTokensBySig: async (args) => {
       const governanceService = new GovernanceService(getCorrectProvider(), getChainId());
       return governanceService.delegateTokensBySig(args);
+    },
+    claimVestedEsSEAM: (user: string) => {
+      const governanceService = new GovernanceService(getCorrectProvider(), getChainId());
+      return governanceService.claimVestedEsSEAM(user);
     },
   };
 };

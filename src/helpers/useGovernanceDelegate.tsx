@@ -85,28 +85,28 @@ export const useGovernanceDelegate = (
       const { v: v1, r: r1, s: s1 } = utils.splitSignature(signatures[0]);
       const { v: v2, r: r2, s: s2 } = utils.splitSignature(signatures[1]);
       let txs: EthereumTransactionTypeExtended[] = [];
-        txs = await delegateTokensBySig({
-          user,
-          tokens: [governanceConfig.seamTokenAddress, governanceConfig.esSEAMTokenAddress],
-          data: [
-            {
-              delegatee,
-              nonce: seamNonce,
-              expiry: deadline,
-              v: v1,
-              r: r1,
-              s: s1,
-            },
-            {
-              delegatee,
-              nonce: esSEAMNonce,
-              expiry: deadline,
-              v: v2,
-              r: r2,
-              s: s2,
-            },
-          ],
-        });
+      txs = await delegateTokensBySig({
+        user,
+        tokens: [governanceConfig.seamTokenAddress, governanceConfig.esSEAMTokenAddress],
+        data: [
+          {
+            delegatee,
+            nonce: seamNonce,
+            expiry: deadline,
+            v: v1,
+            r: r1,
+            s: s1,
+          },
+          {
+            delegatee,
+            nonce: esSEAMNonce,
+            expiry: deadline,
+            v: v2,
+            r: r2,
+            s: s2,
+          },
+        ],
+      });
       const params = await txs[0].tx();
       delete params.gasPrice;
       return processTx({
@@ -230,13 +230,13 @@ export const useGovernanceDelegate = (
         setLoadingTxns(false);
       } else {
         let txs: EthereumTransactionTypeExtended[] = [];
-          txs = await delegate({
-            delegatee,
-            governanceToken:
-              delegationTokenType === DelegationTokenType.SEAM
-                ? governanceConfig.seamTokenAddress
-                : governanceConfig.esSEAMTokenAddress,
-          });
+        txs = await delegate({
+          delegatee,
+          governanceToken:
+            delegationTokenType === DelegationTokenType.SEAM
+              ? governanceConfig.seamTokenAddress
+              : governanceConfig.esSEAMTokenAddress,
+        });
         setActionTx(txs[0]);
         setMainTxState({ txHash: undefined });
         setTxError(undefined);

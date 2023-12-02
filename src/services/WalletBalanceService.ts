@@ -40,10 +40,7 @@ export class WalletBalanceService implements Hashable {
   async getGovernanceTokensBalance({ user }: BatchBalanceOfArgs): Promise<GovernanceTokensBalance> {
     const balances = await this.walletBalanceService.batchBalanceOf(
       [user],
-      [
-        governanceConfig.seamTokenAddress,
-        governanceConfig.esSEAMTokenAddress,
-      ]
+      [governanceConfig.seamTokenAddress, governanceConfig.esSEAMTokenAddress]
     );
     return {
       seam: normalize(balances[0].toString(), 18),

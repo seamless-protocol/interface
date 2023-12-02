@@ -63,9 +63,7 @@ export const TokenRow: React.FC<TokenRowProps> = ({ symbol, amount }) => {
   );
 };
 
-const filterTokens = (
-  tokens: DelegationToken[],
-): DelegationToken[] => {
+const filterTokens = (tokens: DelegationToken[]): DelegationToken[] => {
   return tokens.filter(
     (token) => token.propositionDelegatee !== '' || token.votingDelegatee !== ''
   );

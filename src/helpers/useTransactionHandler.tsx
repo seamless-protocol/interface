@@ -69,7 +69,7 @@ export const useTransactionHandler = ({
     generateCreditDelegationSignatureRequest,
     generatePermitPayloadForMigrationSupplyAsset,
     addTransaction,
-    signStakingApproval,
+    // signStakingApproval,
     currentMarketData,
   ] = useRootStore((state) => [
     state.signERC20Approval,
@@ -77,7 +77,7 @@ export const useTransactionHandler = ({
     state.generateCreditDelegationSignatureRequest,
     state.generatePermitPayloadForMigrationSupplyAsset,
     state.addTransaction,
-    state.signStakingApproval,
+    // state.signStakingApproval,
     state.currentMarketData,
   ]);
 
@@ -184,15 +184,16 @@ export const useTransactionHandler = ({
                   spender: currentMarketData.addresses.V3_MIGRATOR || '',
                 })
               );
-            } else if (approval.permitType === 'STAKE') {
-              unsignedPromisePayloads.push(
-                signStakingApproval({
-                  token: approval.underlyingAsset,
-                  amount: approval.amount,
-                  deadline,
-                })
-              );
             }
+            // } else if (approval.permitType === 'STAKE') {
+            //   unsignedPromisePayloads.push(
+            //     signStakingApproval({
+            //       token: approval.underlyingAsset,
+            //       amount: approval.amount,
+            //       deadline,
+            //     })
+            //   );
+            // }
           }
           try {
             const signatures: SignatureLike[] = [];
@@ -312,6 +313,7 @@ export const useTransactionHandler = ({
         });
       }
     }
+
     if ((!usePermit || !approvalTxes) && actionTx) {
       try {
         setMainTxState({ ...mainTxState, loading: true });
@@ -394,6 +396,7 @@ export const useTransactionHandler = ({
                     'GOV_DELEGATION_ACTION',
                     'GOVERNANCE_ACTION',
                     'V3_MIGRATION_ACTION',
+                    'CLAIM_VESTED_ESSEAM',
                   ].includes(tx.txType)
                 )
               );

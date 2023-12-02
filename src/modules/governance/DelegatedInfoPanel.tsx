@@ -1,6 +1,7 @@
 import { Trans } from '@lingui/macro';
 import { Button, Divider, Paper, Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import { constants } from 'ethers';
 import { AvatarSize } from 'src/components/Avatar';
 import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
 import { Row } from 'src/components/primitives/Row';
@@ -9,7 +10,6 @@ import { ExternalUserDisplay } from 'src/components/UserDisplay';
 import { usePowers } from 'src/hooks/governance/usePowers';
 import { useModalContext } from 'src/hooks/useModal';
 import { useRootStore } from 'src/store/root';
-import { constants } from "ethers";
 
 type DelegatedPowerProps = {
   user: string;
@@ -115,21 +115,19 @@ export const DelegatedInfoPanel = () => {
     powers.seamVotingDelegatee === '' &&
     powers.esSEAMVotingDelegatee === '';
 
-  const showRevokeButton =
-    powers.seamVotingDelegatee !== '' ||
-    powers.esSEAMVotingDelegatee !== '';
+  const showRevokeButton = powers.seamVotingDelegatee !== '' || powers.esSEAMVotingDelegatee !== '';
 
   return (
-    <Paper sx={{ mt: 2 }}>
+    <Paper>
       <Box sx={{ px: 6, pb: 6, pt: 4 }}>
         <Typography typography="h3">
           <Trans>Delegated power</Trans>
         </Typography>
         <Typography typography="description" sx={{ mt: 1 }} color="text.secondary">
           <Trans>
-            Use your SEAM and esSEAM balance to delegate your voting power. You
-            will not be sending any tokens, only the rights to vote and propose changes to the
-            protocol. You can re-delegate at any time.
+            Use your SEAM and esSEAM balance to delegate your voting power. You will not be sending
+            any tokens, only the rights to vote and propose changes to the protocol. You can
+            re-delegate at any time.
           </Trans>
         </Typography>
         {disableButton ? (

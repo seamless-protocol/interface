@@ -14,7 +14,7 @@ import {
 import BigNumber from 'bignumber.js';
 import React, { ReactNode, useState } from 'react';
 import { WalletIcon } from 'src/components/icons/WalletIcon';
-import { getMarketInfoById } from 'src/components/MarketSwitcher';
+// import { getMarketInfoById } from 'src/components/MarketSwitcher';
 import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
 import { Warning } from 'src/components/primitives/Warning';
 import { StyledTxModalToggleButton } from 'src/components/StyledToggleButton';
@@ -29,7 +29,7 @@ import { useModalContext } from 'src/hooks/useModal';
 import { usePermissions } from 'src/hooks/usePermissions';
 import { useProtocolDataContext } from 'src/hooks/useProtocolDataContext';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
-import { BuyWithFiat } from 'src/modules/staking/BuyWithFiat';
+// import { BuyWithFiat } from 'src/modules/staking/BuyWithFiat';
 import { useRootStore } from 'src/store/root';
 import {
   getMaxAmountAvailableToBorrow,
@@ -146,7 +146,7 @@ export const ReserveActions = ({ reserve }: ReserveActionsProps) => {
     }
   };
 
-  const { market } = getMarketInfoById(currentMarket);
+  // const { market } = getMarketInfoById(currentMarket);
 
   return (
     <PaperWrapper>
@@ -163,7 +163,7 @@ export const ReserveActions = ({ reserve }: ReserveActionsProps) => {
       <WalletBalance
         balance={balance.amount}
         symbol={selectedAsset}
-        marketTitle={market.marketTitle}
+        // marketTitle={market.marketTitle}
       />
       {reserve.isFrozen || reserve.isPaused ? (
         <Box sx={{ mt: 3 }}>{reserve.isPaused ? <PauseWarning /> : <FrozenWarning />}</Box>
@@ -471,9 +471,9 @@ const ValueWithSymbol = ({ value, symbol, children }: ValueWithSymbolProps) => {
 interface WalletBalanceProps {
   balance: string;
   symbol: string;
-  marketTitle: string;
+  // marketTitle: string;
 }
-const WalletBalance = ({ balance, symbol, marketTitle }: WalletBalanceProps) => {
+const WalletBalance = ({ balance, symbol }: WalletBalanceProps) => {
   return (
     <Stack direction="row" gap={3}>
       <Box
@@ -495,9 +495,9 @@ const WalletBalance = ({ balance, symbol, marketTitle }: WalletBalanceProps) => 
           Wallet balance
         </Typography>
         <ValueWithSymbol value={balance} symbol={symbol}>
-          <Box sx={{ ml: 2 }}>
+          {/* <Box sx={{ ml: 2 }}>
             <BuyWithFiat cryptoSymbol={symbol} networkMarketName={marketTitle} />
-          </Box>
+          </Box> */}
         </ValueWithSymbol>
       </Box>
     </Stack>

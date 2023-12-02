@@ -1,34 +1,34 @@
 import {
-  GovGetVoteOnProposal,
-  GovDelegate,
-  EthereumTransactionTypeExtended,
-  transactionType,
-  TransactionGenerationMethod,
-  GasResponse,
-  eEthereumTxType,
-  ProtocolAction,
-  gasLimitRecommendations,
   DEFAULT_NULL_VALUE_ON_TX,
+  eEthereumTxType,
+  EthereumTransactionTypeExtended,
+  gasLimitRecommendations,
+  GasResponse,
+  // GovGetVoteOnProposal,
+  GovDelegate,
   GovDelegateTokensBySig,
   GovPrepareDelegateSig,
+  ProtocolAction,
+  TransactionGenerationMethod,
+  transactionType,
 } from '@aave/contract-helpers';
 import { estimateGasByNetwork } from '@aave/contract-helpers/dist/cjs/commons/gasStation';
 import { normalize, valueToBigNumber } from '@aave/math-utils';
 import { Provider } from '@ethersproject/providers';
-import { governanceConfig } from 'src/ui-config/governanceConfig';
-import { Hashable } from 'src/utils/types';
+import { BigNumber, PopulatedTransaction } from 'ethers';
 import {
-  SEAM,
-  SEAM__factory,
   EscrowSEAM,
   EscrowSEAM__factory,
-  Multicall,
-  Multicall__factory,
   IGovernor,
   IGovernor__factory,
+  Multicall,
+  Multicall__factory,
+  SEAM,
+  SEAM__factory,
 } from 'src/services/types';
 import { Multicall3 } from 'src/services/types/Multicall';
-import { BigNumber, PopulatedTransaction } from 'ethers';
+import { governanceConfig } from 'src/ui-config/governanceConfig';
+import { Hashable } from 'src/utils/types';
 
 interface Powers {
   votingPower: string;
@@ -66,9 +66,12 @@ export class GovernanceService implements Hashable {
   async getVotingPowerAt(account: string, timestamp: number) {
     return this.governor.getVotes(account, timestamp);
   }
-  async getVoteOnProposal(request: GovGetVoteOnProposal): Promise<VoteOnProposalData> {
-    console.error('Cannot obtain past vote value'); // TODO
+  async getVoteOnProposal(/*request: GovGetVoteOnProposal*/): Promise<VoteOnProposalData> {
+    console.error('Cannot obtain past vote value');
     throw new Error('getVoteOnProposal: not implemented');
+  }
+  async getVestedEsSEAM(user: string): Promise<BigNumber> {
+    return this.esSEAM.getClaimableAmount(user);
   }
   async getPowers(user: string): Promise<Powers> {
     const calls: Multicall3.CallStruct[] = [
@@ -91,8 +94,6 @@ export class GovernanceService implements Hashable {
     ];
 
     const { returnData } = await this.multicall.callStatic.aggregate(calls);
-
-    console.log('getPowers - returnData: ', returnData);
 
     const seamTokenPower: BigNumber = this.seam.interface.decodeFunctionResult(
       'getVotes',
@@ -136,7 +137,8 @@ export class GovernanceService implements Hashable {
         ? this.seam
         : this.esSEAM;
 
-    const [, name, version, chainId, verifyingContract, , ] = await governanceDelegationToken.eip712Domain();
+    const [, name, version, chainId, verifyingContract, ,] =
+      await governanceDelegationToken.eip712Domain();
 
     const typeData = {
       primaryType: 'Delegation',
@@ -212,6 +214,21 @@ export class GovernanceService implements Hashable {
         gas: this.generateTxPriceEstimation([], txCallback),
       },
     ];
+  }
+  async claimVestedEsSEAM(user: string) {
+    const txs: EthereumTransactionTypeExtended[] = [];
+    const txCallback: () => Promise<transactionType> = this.generateTxCallback({
+      rawTxMethod: async () => this.esSEAM.populateTransaction.claim(user),
+      from: user,
+    });
+
+    txs.push({
+      tx: txCallback,
+      txType: 'CLAIM_VESTED_ESSEAM' as eEthereumTxType,
+      gas: this.generateTxPriceEstimation(txs, txCallback),
+    });
+
+    return txs;
   }
   async delegate({ user, delegatee, governanceToken }: GovDelegate) {
     const txs: EthereumTransactionTypeExtended[] = [];
