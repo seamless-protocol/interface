@@ -19,8 +19,6 @@ import { BigNumber, PopulatedTransaction } from 'ethers';
 import {
   EscrowSEAM,
   EscrowSEAM__factory,
-  IGovernor,
-  IGovernor__factory,
   Multicall,
   Multicall__factory,
   SEAM,
@@ -45,7 +43,6 @@ interface VoteOnProposalData {
 export class GovernanceService implements Hashable {
   readonly provider: Provider;
   readonly multicall: Multicall;
-  readonly governor: IGovernor;
   readonly seam: SEAM;
   readonly esSEAM: EscrowSEAM;
 
@@ -55,16 +52,8 @@ export class GovernanceService implements Hashable {
       governanceConfig.addresses.MULTICALL_ADDRESS,
       this.provider
     );
-    this.governor = IGovernor__factory.connect(
-      governanceConfig.addresses.GOVERNOR_SHORT,
-      this.provider
-    );
     this.seam = SEAM__factory.connect(governanceConfig.seamTokenAddress, this.provider);
     this.esSEAM = EscrowSEAM__factory.connect(governanceConfig.esSEAMTokenAddress, this.provider);
-  }
-
-  async getVotingPowerAt(account: string, timestamp: number) {
-    return this.governor.getVotes(account, timestamp);
   }
   async getVoteOnProposal(/*request: GovGetVoteOnProposal*/): Promise<VoteOnProposalData> {
     console.error('Cannot obtain past vote value');
