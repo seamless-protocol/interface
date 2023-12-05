@@ -7,8 +7,8 @@ import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
 import { Row } from 'src/components/primitives/Row';
 import { TokenIcon } from 'src/components/primitives/TokenIcon';
 import { ExternalUserDisplay } from 'src/components/UserDisplay';
-import { usePowers } from 'src/hooks/governance/usePowers';
 import { useGovernanceTokens } from 'src/hooks/governance/useGovernanceTokens';
+import { usePowers } from 'src/hooks/governance/usePowers';
 import { useModalContext } from 'src/hooks/useModal';
 import { useRootStore } from 'src/store/root';
 
@@ -134,9 +134,9 @@ export const DelegatedInfoPanel = () => {
         </Typography>
         <Typography typography="description" sx={{ mt: 1 }} color="text.secondary">
           <Trans>
-            Use your SEAM and esSEAM to delegate your voting power. You will not be sending
-            any tokens, only the rights to vote and propose changes to the protocol. You can
-            re-delegate at any time.
+            Use your SEAM and esSEAM to delegate your voting power. You will not be sending any
+            tokens, only the rights to vote and propose changes to the protocol. You can re-delegate
+            at any time.
           </Trans>
         </Typography>
         {disableButton ? (
@@ -165,11 +165,7 @@ export const DelegatedInfoPanel = () => {
           disabled={disableButton}
           onClick={() => openGovDelegation()}
         >
-          {hasDelegated ? (
-            <Trans>Change delegation</Trans>
-          ) : (
-            <Trans>Set up delegation</Trans>
-          )}
+          {hasDelegated ? <Trans>Change delegation</Trans> : <Trans>Set up delegation</Trans>}
         </Button>
         {hasDelegated && (
           <Button

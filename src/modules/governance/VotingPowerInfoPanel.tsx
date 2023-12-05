@@ -1,18 +1,18 @@
 import { Trans } from '@lingui/macro';
-import { Box, Grid, Paper, Typography, Divider } from '@mui/material';
+import { Box, Divider, Grid, Paper, Typography } from '@mui/material';
+import { useEffect } from 'react';
 import { AvatarSize } from 'src/components/Avatar';
 import { CompactMode } from 'src/components/CompactableTypography';
 import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
 import { TextWithTooltip } from 'src/components/TextWithTooltip';
+import { VestedEsSEAMClaimActions } from 'src/components/transactions/VestedEsSEAMClaim/VestedEsSEAMClaimActions';
 import { UserDisplay } from 'src/components/UserDisplay';
 import { useGovernanceTokens } from 'src/hooks/governance/useGovernanceTokens';
+import { usePowers } from 'src/hooks/governance/usePowers';
 import { useVestedEsSEAM } from 'src/hooks/governance/useVestedEsSEAM';
 import { useModalContext } from 'src/hooks/useModal';
-import { usePowers } from 'src/hooks/governance/usePowers';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
-import { VestedEsSEAMClaimActions } from 'src/components/transactions/VestedEsSEAMClaim/VestedEsSEAMClaimActions';
 import { GENERAL } from 'src/utils/mixPanelEvents';
-import { useEffect } from 'react';
 
 export function VotingPowerInfoPanel() {
   const { currentAccount } = useWeb3Context();
@@ -23,7 +23,7 @@ export function VotingPowerInfoPanel() {
   const { data: vestedEsSEAM, refetch: refetchVestedEsSEAM } = useVestedEsSEAM();
   const { data: powers, refetch: refetchPowers } = usePowers();
 
-  const disableButton = vestedEsSEAM === "0" || type !== undefined;
+  const disableButton = vestedEsSEAM === '0' || type !== undefined;
 
   useEffect(() => {
     if (txState.success) {
@@ -35,9 +35,7 @@ export function VotingPowerInfoPanel() {
   return (
     <Paper>
       <Box sx={{ px: 6, pb: 6, pt: 4 }}>
-        <Typography
-          variant="h3"
-        >
+        <Typography variant="h3">
           <Trans>Your info</Trans>
         </Typography>
         <UserDisplay
@@ -57,7 +55,7 @@ export function VotingPowerInfoPanel() {
         {currentAccount && (
           <>
             <Grid container spacing={8}>
-            <Grid item md={4}>
+              <Grid item md={4}>
                 <TextWithTooltip
                   text="Voting power"
                   variant="description"

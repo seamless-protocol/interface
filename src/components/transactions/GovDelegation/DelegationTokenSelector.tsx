@@ -1,12 +1,12 @@
 import { Box, FormControlLabel, Radio, RadioGroup, Typography } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
+import { constants } from 'ethers';
 import { useEffect } from 'react';
 import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
 import { Row } from 'src/components/primitives/Row';
 import { useGovernanceTokens } from 'src/hooks/governance/useGovernanceTokens';
 
 import { TokenIcon } from '../../primitives/TokenIcon';
-import { constants } from 'ethers';
 
 export type DelegationToken = {
   address: string;
@@ -64,9 +64,7 @@ export const TokenRow: React.FC<TokenRowProps> = ({ symbol, amount }) => {
 };
 
 const filterTokens = (tokens: DelegationToken[]): DelegationToken[] => {
-  return tokens.filter(
-    (token) => token.votingDelegatee !== constants.AddressZero
-  );
+  return tokens.filter((token) => token.votingDelegatee !== constants.AddressZero);
 };
 
 export const DelegationTokenSelector = ({

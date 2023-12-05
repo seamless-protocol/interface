@@ -12,6 +12,6 @@ export const useVestedEsSEAM = () => {
     queryKey: [QueryKeys.VESTED_ESSEAM_BALANCE, user, governanceService.toHash()],
     enabled: !!user,
     refetchInterval: POLLING_INTERVAL,
-    initialData: "0",
+    initialData: '0',
   });
 };
