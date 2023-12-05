@@ -122,7 +122,7 @@ export const DelegatedInfoPanel = () => {
 
   const disableButton = Number(seam) <= 0 && Number(esSEAM) <= 0;
 
-  const showRevokeButton =
+  const hasDelegated =
     powers.seamVotingDelegatee !== constants.AddressZero ||
     powers.esSEAMVotingDelegatee !== constants.AddressZero;
 
@@ -134,14 +134,14 @@ export const DelegatedInfoPanel = () => {
         </Typography>
         <Typography typography="description" sx={{ mt: 1 }} color="text.secondary">
           <Trans>
-            Use your SEAM and esSEAM balance to delegate your voting power. You will not be sending
+            Use your SEAM and esSEAM to delegate your voting power. You will not be sending
             any tokens, only the rights to vote and propose changes to the protocol. You can
             re-delegate at any time.
           </Trans>
         </Typography>
         {disableButton ? (
           <Typography variant="description" color="text.muted" mt={6}>
-            <Trans>You have no SEAM/esSEAM balance to delegate.</Trans>
+            <Trans>You have no SEAM/esSEAM to delegate.</Trans>
           </Typography>
         ) : (
           <>
@@ -165,9 +165,13 @@ export const DelegatedInfoPanel = () => {
           disabled={disableButton}
           onClick={() => openGovDelegation()}
         >
-          <Trans>Set up delegation</Trans>
+          {hasDelegated ? (
+            <Trans>Change delegation</Trans>
+          ) : (
+            <Trans>Set up delegation</Trans>
+          )}
         </Button>
-        {showRevokeButton && (
+        {hasDelegated && (
           <Button
             size="large"
             sx={(theme) => ({

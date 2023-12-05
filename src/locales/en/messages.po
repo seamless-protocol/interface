@@ -530,6 +530,10 @@ msgstr "Cancel"
 msgid "Cannot disable E-Mode"
 msgstr "Cannot disable E-Mode"
 
+#: src/modules/governance/DelegatedInfoPanel.tsx
+msgid "Change delegation"
+msgstr "Change delegation"
+
 #: src/components/transactions/GovDelegation/GovDelegationModalContent.tsx
 msgid "Choose how much voting/proposition power to give to someone else by delegating some of your SEAM or esSEAM balance. Your tokens will remain in your account, but your delegate will be able to vote or propose on your behalf. If your SEAM or esSEAM balance changes, your delegate's voting/proposition power will be automatically adjusted."
 msgstr "Choose how much voting/proposition power to give to someone else by delegating some of your SEAM or esSEAM balance. Your tokens will remain in your account, but your delegate will be able to vote or propose on your behalf. If your SEAM or esSEAM balance changes, your delegate's voting/proposition power will be automatically adjusted."
@@ -1628,8 +1632,8 @@ msgid "Seamless debt token"
 msgstr "Seamless debt token"
 
 #: src/modules/governance/GovernanceTopPanel.tsx
-msgid "Seamless is a fully decentralized, community governed protocol by the SEAM token-holders. SEAM token-holders collectively discuss, propose, and vote on upgrades to the protocol. SEAM token-holders (Base network only) can either vote themselves on new proposals or delagate to an address of choice."
-msgstr "Seamless is a fully decentralized, community governed protocol by the SEAM token-holders. SEAM token-holders collectively discuss, propose, and vote on upgrades to the protocol. SEAM token-holders (Base network only) can either vote themselves on new proposals or delagate to an address of choice."
+msgid "Seamless is a fully decentralized, community governed protocol by the SEAM token-holders. SEAM token-holders collectively discuss, propose, and vote on upgrades to the protocol. SEAM token-holders (Base network only) can either vote themselves on new proposals or delegate to an address of choice."
+msgstr "Seamless is a fully decentralized, community governed protocol by the SEAM token-holders. SEAM token-holders collectively discuss, propose, and vote on upgrades to the protocol. SEAM token-holders (Base network only) can either vote themselves on new proposals or delegate to an address of choice."
 
 #: src/modules/reserve-overview/AddTokenDropdown.tsx
 #: src/modules/reserve-overview/TokenLinkDropdown.tsx
@@ -2238,8 +2242,8 @@ msgid "Use it to vote for or against active proposals."
 msgstr "Use it to vote for or against active proposals."
 
 #: src/modules/governance/DelegatedInfoPanel.tsx
-msgid "Use your SEAM and esSEAM balance to delegate your voting power. You will not be sending any tokens, only the rights to vote and propose changes to the protocol. You can re-delegate at any time."
-msgstr "Use your SEAM and esSEAM balance to delegate your voting power. You will not be sending any tokens, only the rights to vote and propose changes to the protocol. You can re-delegate at any time."
+msgid "Use your SEAM and esSEAM to delegate your voting power. You will not be sending any tokens, only the rights to vote and propose changes to the protocol. You can re-delegate at any time."
+msgstr "Use your SEAM and esSEAM to delegate your voting power. You will not be sending any tokens, only the rights to vote and propose changes to the protocol. You can re-delegate at any time."
 
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsListMobileItem.tsx
 msgid "Used as collateral"
@@ -2436,8 +2440,8 @@ msgid "You don’t have enough funds in your wallet to repay the full amount. If
 msgstr "You don’t have enough funds in your wallet to repay the full amount. If you proceed to repay with your current amount of funds, you will still have a small borrowing position in your dashboard."
 
 #: src/modules/governance/DelegatedInfoPanel.tsx
-msgid "You have no SEAM/esSEAM balance to delegate."
-msgstr "You have no SEAM/esSEAM balance to delegate."
+msgid "You have no SEAM/esSEAM to delegate."
+msgstr "You have no SEAM/esSEAM to delegate."
 
 #: src/components/transactions/RateSwitch/RateSwitchModalContent.tsx
 msgid "You have not borrow yet using this currency"

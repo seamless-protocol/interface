@@ -55,6 +55,10 @@ export const GovDelegationModalContent: React.FC<GovDelegationModalContentProps>
 
   const isRevokeModal = type === ModalType.RevokeGovDelegation;
 
+  const hasDelegated =
+    powers.seamVotingDelegatee !== constants.AddressZero ||
+    powers.esSEAMVotingDelegatee !== constants.AddressZero;
+
   useEffect(() => {
     setDelegate(isRevokeModal ? constants.AddressZero : '');
   }, [isRevokeModal, setDelegate, currentAccount]);
@@ -118,7 +122,11 @@ export const GovDelegationModalContent: React.FC<GovDelegationModalContentProps>
     return <TxSuccessView action={<Trans>{isRevokeModal ? 'Revoke' : 'Delegation'}</Trans>} />;
   return (
     <>
-      <TxModalTitle title={isRevokeModal ? 'Revoke power' : 'Set up delegation'} />
+      <TxModalTitle
+        title={
+          isRevokeModal ? 'Revoke power' : hasDelegated ? 'Change delegation' : 'Set up delegation'
+        }
+      />
       {isWrongNetwork && !readOnlyModeAddress && (
         <ChangeNetworkWarning networkName={networkConfig.name} chainId={govChain} />
       )}

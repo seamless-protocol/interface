@@ -6,6 +6,7 @@ import { Row } from 'src/components/primitives/Row';
 import { useGovernanceTokens } from 'src/hooks/governance/useGovernanceTokens';
 
 import { TokenIcon } from '../../primitives/TokenIcon';
+import { constants } from 'ethers';
 
 export type DelegationToken = {
   address: string;
@@ -13,7 +14,6 @@ export type DelegationToken = {
   amount: string;
   symbol: string;
   votingDelegatee?: string;
-  propositionDelegatee?: string;
   type: DelegationTokenType;
 };
 
@@ -65,7 +65,7 @@ export const TokenRow: React.FC<TokenRowProps> = ({ symbol, amount }) => {
 
 const filterTokens = (tokens: DelegationToken[]): DelegationToken[] => {
   return tokens.filter(
-    (token) => token.propositionDelegatee !== '' || token.votingDelegatee !== ''
+    (token) => token.votingDelegatee !== constants.AddressZero
   );
 };
 
@@ -105,7 +105,7 @@ export const DelegationTokenSelector = ({
           label={<TokenRow symbol={['SEAM', 'esSEAM']} amount={Number(seam) + Number(esSEAM)} />}
           data-cy={`delegate-token-both`}
         />
-        <FormControlLabel
+        {/* <FormControlLabel
           value={DelegationTokenType.SEAM}
           control={<Radio size="small" />}
           componentsProps={{ typography: { width: '100%' } }}
@@ -118,7 +118,7 @@ export const DelegationTokenSelector = ({
           componentsProps={{ typography: { width: '100%' } }}
           label={<TokenRow symbol="esSEAM" amount={esSEAM} />}
           data-cy={`delegate-token-esSEAM`}
-        />
+        /> */}
       </RadioGroup>
     </FormControl>
   );

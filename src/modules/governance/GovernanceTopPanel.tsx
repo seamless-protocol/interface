@@ -66,7 +66,7 @@ export const GovernanceTopPanel = () => {
               Seamless is a fully decentralized, community governed protocol by the SEAM
               token-holders. SEAM token-holders collectively discuss, propose, and vote on upgrades
               to the protocol. SEAM token-holders (Base network only) can either vote themselves on
-              new proposals or delagate to an address of choice.
+              new proposals or delegate to an address of choice.
             </Trans>
           </Typography>
         </Box>
