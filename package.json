@@ -13,6 +13,7 @@
     "cache:update": "yarn build:populate-cache && CACHE_PATH=../src/static-build node scripts/populate-cache.js",
     "serve:static": "npx serve out",
     "export": "next export",
+    "generate-types": "typechain --target=ethers-v5 --out-dir ./src/services/types './src/services/abi/*.json'",
     "start": "next start",
     "lint:code": "next lint --dir src --dir pages",
     "lint:code:fix": "next lint --dir src --dir pages --fix",
@@ -110,6 +111,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
+    "@typechain/ethers-v5": "^11.1.2",
     "@types/d3-array": "^3.0.3",
     "@types/d3-time-format": "^4.0.0",
     "@types/lodash": "^4.14.189",
@@ -137,6 +139,7 @@
     "jest-environment-jsdom": "^29.2.0",
     "lint-staged": "^13.0.3",
     "prettier": "^2.8.1",
+    "typechain": "^8.3.2",
     "typescript": "^4.9.4"
   },
   "resolutions": {

@@ -12,9 +12,8 @@ export const useGovernanceTokens = () => {
     enabled: !!user,
     refetchInterval: POLLING_INTERVAL,
     initialData: {
-      aave: '0',
-      stkAave: '0',
-      aAave: '0',
+      seam: '0',
+      esSEAM: '0',
     },
   });
 };

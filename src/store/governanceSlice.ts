@@ -1,15 +1,11 @@
 import {
-  AaveGovernanceService,
   ERC20_2612Service,
   EthereumTransactionTypeExtended,
   GovDelegate,
-  GovDelegateByType,
   GovDelegateTokensBySig,
-  GovDelegateTokensByTypeBySig,
-  GovernancePowerDelegationTokenService,
   GovPrepareDelegateSig,
-  GovPrepareDelegateSigByType,
 } from '@aave/contract-helpers';
+import { GovernanceService } from 'src/services/GovernanceService';
 import { governanceConfig } from 'src/ui-config/governanceConfig';
 import { getProvider } from 'src/utils/marketsAndNetworksConfig';
 import { StateCreator } from 'zustand';
@@ -19,16 +15,10 @@ import { RootStore } from './root';
 export interface GovernanceSlice {
   delegate: (args: Omit<GovDelegate, 'user'>) => Promise<EthereumTransactionTypeExtended[]>;
   prepareDelegateSignature: (args: GovPrepareDelegateSig) => Promise<string>;
-  prepareDelegateByTypeSignature: (args: GovPrepareDelegateSigByType) => Promise<string>;
-  delegateByType: (
-    args: Omit<GovDelegateByType, 'user'>
-  ) => Promise<EthereumTransactionTypeExtended[]>;
-  submitVote: AaveGovernanceService['submitVote'];
+  submitVote: () => void;
   getTokenNonce: (user: string, token: string) => Promise<number>;
   delegateTokensBySig: (args: GovDelegateTokensBySig) => Promise<EthereumTransactionTypeExtended[]>;
-  delegateTokensByTypeBySig: (
-    args: GovDelegateTokensByTypeBySig
-  ) => Promise<EthereumTransactionTypeExtended[]>;
+  claimVestedEsSEAM: (user: string) => Promise<EthereumTransactionTypeExtended[]>;
 }
 
 export const createGovernanceSlice: StateCreator<
@@ -37,6 +27,13 @@ export const createGovernanceSlice: StateCreator<
   [],
   GovernanceSlice
 > = (_, get) => {
+  function getChainId() {
+    const currentNetworkConfig = get().currentNetworkConfig;
+    const isStakeFork =
+      currentNetworkConfig.isFork &&
+      currentNetworkConfig.underlyingChainId === governanceConfig?.chainId;
+    return isStakeFork ? get().currentChainId : governanceConfig.chainId;
+  }
   function getCorrectProvider() {
     const currentNetworkConfig = get().currentNetworkConfig;
     const isStakeFork =
@@ -45,31 +42,18 @@ export const createGovernanceSlice: StateCreator<
     return isStakeFork ? get().jsonRpcProvider() : getProvider(governanceConfig.chainId);
   }
   return {
-    delegateByType: (args) => {
-      const service = new GovernancePowerDelegationTokenService(getCorrectProvider());
-      const user = get().account;
-      return service.delegateByType({ ...args, user });
-    },
-    prepareDelegateByTypeSignature: (args) => {
-      const service = new GovernancePowerDelegationTokenService(getCorrectProvider());
-      return service.prepareDelegateByTypeSignature(args);
-    },
     prepareDelegateSignature: (args) => {
-      const service = new GovernancePowerDelegationTokenService(getCorrectProvider());
+      const service = new GovernanceService(getCorrectProvider(), getChainId());
       return service.prepareDelegateSignature(args);
     },
     delegate: (args) => {
-      const service = new GovernancePowerDelegationTokenService(getCorrectProvider());
+      const governanceService = new GovernanceService(getCorrectProvider(), getChainId());
       const user = get().account;
-      return service.delegate({ ...args, user });
+      return governanceService.delegate({ ...args, user });
     },
-    submitVote: (args) => {
-      const governanceService = new AaveGovernanceService(getCorrectProvider(), {
-        GOVERNANCE_ADDRESS: governanceConfig.addresses.AAVE_GOVERNANCE_V2,
-        GOVERNANCE_HELPER_ADDRESS: governanceConfig.addresses.AAVE_GOVERNANCE_V2_HELPER,
-        ipfsGateway: governanceConfig.ipfsGateway,
-      });
-      return governanceService.submitVote(args);
+    submitVote: (/*args: any*/) => {
+      console.error('submitVote not implemented');
+      throw new Error('not implemented');
     },
     getTokenNonce: async (user: string, token: string) => {
       const service = new ERC20_2612Service(getCorrectProvider());
@@ -77,20 +61,12 @@ export const createGovernanceSlice: StateCreator<
       return nonce || 0;
     },
     delegateTokensBySig: async (args) => {
-      const governanceService = new AaveGovernanceService(getCorrectProvider(), {
-        GOVERNANCE_ADDRESS: governanceConfig.addresses.AAVE_GOVERNANCE_V2,
-        GOVERNANCE_HELPER_ADDRESS: governanceConfig.addresses.AAVE_GOVERNANCE_V2_HELPER,
-        ipfsGateway: governanceConfig.ipfsGateway,
-      });
+      const governanceService = new GovernanceService(getCorrectProvider(), getChainId());
       return governanceService.delegateTokensBySig(args);
     },
-    delegateTokensByTypeBySig: async (args) => {
-      const governanceService = new AaveGovernanceService(getCorrectProvider(), {
-        GOVERNANCE_ADDRESS: governanceConfig.addresses.AAVE_GOVERNANCE_V2,
-        GOVERNANCE_HELPER_ADDRESS: governanceConfig.addresses.AAVE_GOVERNANCE_V2_HELPER,
-        ipfsGateway: governanceConfig.ipfsGateway,
-      });
-      return governanceService.delegateTokensByTypeBySig(args);
+    claimVestedEsSEAM: (user: string) => {
+      const governanceService = new GovernanceService(getCorrectProvider(), getChainId());
+      return governanceService.claimVestedEsSEAM(user);
     },
   };
 };

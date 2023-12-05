@@ -1,9 +1,9 @@
 import { Box, FormControlLabel, Radio, RadioGroup, Typography } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
+import { constants } from 'ethers';
 import { useEffect } from 'react';
 import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
 import { Row } from 'src/components/primitives/Row';
-import { DelegationType } from 'src/helpers/types';
 import { useGovernanceTokens } from 'src/hooks/governance/useGovernanceTokens';
 
 import { TokenIcon } from '../../primitives/TokenIcon';
@@ -14,21 +14,19 @@ export type DelegationToken = {
   amount: string;
   symbol: string;
   votingDelegatee?: string;
-  propositionDelegatee?: string;
   type: DelegationTokenType;
 };
 
 export enum DelegationTokenType {
   BOTH = 0,
-  AAVE,
-  STKAAVE,
+  SEAM,
+  esSEAM,
 }
 
 export type DelegationTokenSelectorProps = {
   delegationTokens: DelegationToken[];
   setDelegationTokenType: (type: DelegationTokenType) => void;
   delegationTokenType: DelegationTokenType;
-  delegationType: DelegationType;
   filter: boolean;
 };
 
@@ -65,32 +63,21 @@ export const TokenRow: React.FC<TokenRowProps> = ({ symbol, amount }) => {
   );
 };
 
-const filterTokens = (
-  tokens: DelegationToken[],
-  delegationType: DelegationType
-): DelegationToken[] => {
-  if (delegationType === DelegationType.VOTING) {
-    return tokens.filter((token) => token.votingDelegatee !== '');
-  } else if (delegationType === DelegationType.PROPOSITION_POWER) {
-    return tokens.filter((token) => token.propositionDelegatee !== '');
-  }
-  return tokens.filter(
-    (token) => token.propositionDelegatee !== '' || token.votingDelegatee !== ''
-  );
+const filterTokens = (tokens: DelegationToken[]): DelegationToken[] => {
+  return tokens.filter((token) => token.votingDelegatee !== constants.AddressZero);
 };
 
 export const DelegationTokenSelector = ({
   delegationTokens,
   setDelegationTokenType,
   delegationTokenType,
-  delegationType,
   filter,
 }: DelegationTokenSelectorProps) => {
   const {
-    data: { aave, stkAave },
+    data: { seam, esSEAM },
   } = useGovernanceTokens();
 
-  const filteredTokens = filter ? filterTokens(delegationTokens, delegationType) : delegationTokens;
+  const filteredTokens = filter ? filterTokens(delegationTokens) : delegationTokens;
   const isOneLiner = filter && filteredTokens.length === 1;
 
   useEffect(() => {
@@ -113,23 +100,23 @@ export const DelegationTokenSelector = ({
           value={DelegationTokenType.BOTH}
           control={<Radio size="small" />}
           componentsProps={{ typography: { width: '100%' } }}
-          label={<TokenRow symbol={['AAVE', 'stkAAVE']} amount={Number(aave) + Number(stkAave)} />}
+          label={<TokenRow symbol={['SEAM', 'esSEAM']} amount={Number(seam) + Number(esSEAM)} />}
           data-cy={`delegate-token-both`}
         />
-        <FormControlLabel
-          value={DelegationTokenType.AAVE}
+        {/* <FormControlLabel
+          value={DelegationTokenType.SEAM}
           control={<Radio size="small" />}
           componentsProps={{ typography: { width: '100%' } }}
-          label={<TokenRow symbol="AAVE" amount={aave} />}
-          data-cy={`delegate-token-AAVE`}
+          label={<TokenRow symbol="SEAM" amount={seam} />}
+          data-cy={`delegate-token-SEAM`}
         />
         <FormControlLabel
-          value={DelegationTokenType.STKAAVE}
+          value={DelegationTokenType.esSEAM}
           control={<Radio size="small" />}
           componentsProps={{ typography: { width: '100%' } }}
-          label={<TokenRow symbol="stkAAVE" amount={stkAave} />}
-          data-cy={`delegate-token-stkAAVE`}
-        />
+          label={<TokenRow symbol="esSEAM" amount={esSEAM} />}
+          data-cy={`delegate-token-esSEAM`}
+        /> */}
       </RadioGroup>
     </FormControl>
   );

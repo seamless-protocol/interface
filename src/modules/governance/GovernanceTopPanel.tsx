@@ -1,4 +1,3 @@
-import { ChainId } from '@aave/contract-helpers';
 import { ExternalLinkIcon } from '@heroicons/react/outline';
 import { Trans } from '@lingui/macro';
 import { Box, Button, SvgIcon, Typography, useMediaQuery, useTheme } from '@mui/material';
@@ -6,7 +5,10 @@ import * as React from 'react';
 import { ChainAvailabilityText } from 'src/components/ChainAvailabilityText';
 import { Link } from 'src/components/primitives/Link';
 import { useRootStore } from 'src/store/root';
+import { governanceConfig } from 'src/ui-config/governanceConfig';
 import { GENERAL } from 'src/utils/mixPanelEvents';
+
+import Logo from '/public/logo-seamless.svg';
 
 import { TopInfoPanel } from '../../components/TopInfoPanel/TopInfoPanel';
 
@@ -48,15 +50,9 @@ export const GovernanceTopPanel = () => {
     <TopInfoPanel
       titleComponent={
         <Box mb={4}>
-          <ChainAvailabilityText wrapperSx={{ mb: 4 }} chainId={ChainId.mainnet} />
+          <ChainAvailabilityText wrapperSx={{ mb: 4 }} chainId={governanceConfig.chainId} />
           <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
-            <img
-              src={`/logo_seamless.svg`}
-              width="32px"
-              height="32px"
-              alt=""
-              style={{ color: 'white' }}
-            />
+            <Logo width="32px" height="32px" alt="" style={{ color: 'white' }} />
             <Typography
               variant={downToXSM ? 'h2' : upToLG ? 'display1' : 'h1'}
               sx={{ ml: 2, mr: 3 }}
@@ -65,12 +61,12 @@ export const GovernanceTopPanel = () => {
             </Typography>
           </Box>
 
-          <Typography sx={{ color: '#8E92A3', maxWidth: '824px' }}>
+          <Typography sx={{ color: '#F1F1F3', maxWidth: '824px' }}>
             <Trans>
-              Seamless is a fully decentralized, community governed protocol by the OG Points
-              token-holders. OG Points token-holders collectively discuss, propose, and vote on
-              upgrades to the protocol. OG Points token-holders (Ethereum network only) can either
-              vote themselves on new proposals or delagate to an address of choice.
+              Seamless is a fully decentralized, community governed protocol by the SEAM
+              token-holders. SEAM token-holders collectively discuss, propose, and vote on upgrades
+              to the protocol. SEAM token-holders (Base network only) can either vote themselves on
+              new proposals or delegate to an address of choice.
             </Trans>
           </Typography>
         </Box>
@@ -85,9 +81,10 @@ export const GovernanceTopPanel = () => {
           maxWidth: 'sm',
         }}
       >
-        <ExternalLink text="SNAPSHOTS" href="" />
-        <ExternalLink text="FORUM" href="" />
-        <ExternalLink text="FAQ" href="" />
+        <ExternalLink text="TALLY" href={governanceConfig.governanceTallyLink} />
+        <ExternalLink text="SNAPSHOTS" href={governanceConfig.governanceSnapshotLink} />
+        <ExternalLink text="FORUM" href={governanceConfig.governanceForumLink} />
+        <ExternalLink text="FAQ" href={governanceConfig.governanceFAQLink} />
       </Box>
     </TopInfoPanel>
   );

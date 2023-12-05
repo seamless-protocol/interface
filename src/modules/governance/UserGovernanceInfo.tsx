@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/macro';
-import { Paper, Typography } from '@mui/material';
+import { Grid, Paper, Typography } from '@mui/material';
 import { ConnectWalletButton } from 'src/components/WalletConnection/ConnectWalletButton';
 import { useRootStore } from 'src/store/root';
 
@@ -11,8 +11,12 @@ export const UserGovernanceInfo = () => {
 
   return account ? (
     <>
-      <VotingPowerInfoPanel />
-      <DelegatedInfoPanel />
+      <Grid item md={6}>
+        <VotingPowerInfoPanel />
+      </Grid>
+      <Grid item md={6}>
+        <DelegatedInfoPanel />
+      </Grid>
     </>
   ) : (
     <Paper sx={{ p: 6 }}>
