@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import { BigNumber } from 'ethers';
 import { useRootStore } from 'src/store/root';
 import { POLLING_INTERVAL, QueryKeys } from 'src/ui-config/queries';
 import { useSharedDependencies } from 'src/ui-config/SharedDependenciesProvider';
@@ -13,6 +12,6 @@ export const useVestedEsSEAM = () => {
     queryKey: [QueryKeys.VESTED_ESSEAM_BALANCE, user, governanceService.toHash()],
     enabled: !!user,
     refetchInterval: POLLING_INTERVAL,
-    initialData: BigNumber.from(0),
+    initialData: "0",
   });
 };

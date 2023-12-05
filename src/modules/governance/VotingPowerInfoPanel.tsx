@@ -16,14 +16,14 @@ import { useEffect } from 'react';
 
 export function VotingPowerInfoPanel() {
   const { currentAccount } = useWeb3Context();
-  const { mainTxState: txState } = useModalContext();
+  const { mainTxState: txState, type } = useModalContext();
   const {
     data: { seam, esSEAM },
   } = useGovernanceTokens();
   const { data: vestedEsSEAM, refetch: refetchVestedEsSEAM } = useVestedEsSEAM();
   const { data: powers, refetch: refetchPowers } = usePowers();
 
-  const disableButton = vestedEsSEAM?.lte(0);
+  const disableButton = vestedEsSEAM === "0" || type !== undefined;
 
   useEffect(() => {
     if (txState.success) {
@@ -134,8 +134,8 @@ export function VotingPowerInfoPanel() {
                   </>
                 </TextWithTooltip>
                 <FormattedNumber
-                  data-cy={`voting-power`}
-                  value={vestedEsSEAM.toString() || 0}
+                  data-cy={`claimable-SEAM`}
+                  value={vestedEsSEAM || 0}
                   variant="h2"
                   visibleDecimals={2}
                 />

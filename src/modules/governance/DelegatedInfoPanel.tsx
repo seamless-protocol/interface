@@ -8,6 +8,7 @@ import { Row } from 'src/components/primitives/Row';
 import { TokenIcon } from 'src/components/primitives/TokenIcon';
 import { ExternalUserDisplay } from 'src/components/UserDisplay';
 import { usePowers } from 'src/hooks/governance/usePowers';
+import { useGovernanceTokens } from 'src/hooks/governance/useGovernanceTokens';
 import { useModalContext } from 'src/hooks/useModal';
 import { useRootStore } from 'src/store/root';
 
@@ -33,7 +34,7 @@ const DelegatedPower: React.FC<DelegatedPowerProps> = ({
   if (!isSEAMDelegated && !isEsSEAMDelegated) return null;
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', mt: 6, mb: 2 }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', mt: 6 }}>
       <Typography typography="caption" sx={{ mb: 5 }} color="text.secondary">
         <Trans>{title}</Trans>
       </Typography>
@@ -49,7 +50,8 @@ const DelegatedPower: React.FC<DelegatedPowerProps> = ({
               />
             }
           >
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+            <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+              <TokenIcon symbol="SEAM" sx={{ width: 16, height: 16 }} />
               <FormattedNumber
                 value={Number(seamPower) + Number(esSEAMPower)}
                 variant="subheader1"
@@ -75,6 +77,9 @@ const DelegatedPower: React.FC<DelegatedPowerProps> = ({
                 <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
                   <TokenIcon symbol="SEAM" sx={{ width: 16, height: 16 }} />
                   <FormattedNumber value={seamPower} variant="subheader1" />
+                  <Typography variant="helperText" color="text.secondary">
+                    SEAM
+                  </Typography>
                 </Box>
               </Row>
             )}
@@ -92,6 +97,9 @@ const DelegatedPower: React.FC<DelegatedPowerProps> = ({
                 <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
                   <TokenIcon symbol="esSEAM" sx={{ width: 16, height: 16 }} />
                   <FormattedNumber value={esSEAMPower} variant="subheader1" />
+                  <Typography variant="helperText" color="text.secondary">
+                    esSEAM
+                  </Typography>
                 </Box>
               </Row>
             )}
@@ -104,18 +112,19 @@ const DelegatedPower: React.FC<DelegatedPowerProps> = ({
 
 export const DelegatedInfoPanel = () => {
   const address = useRootStore((store) => store.account);
+  const {
+    data: { seam, esSEAM },
+  } = useGovernanceTokens();
   const { data: powers } = usePowers();
   const { openGovDelegation, openRevokeGovDelegation } = useModalContext();
 
   if (!powers || !address) return null;
 
-  const disableButton =
-    Number(powers.seamTokenPower) <= 0 &&
-    Number(powers.esSEAMTokenPower) <= 0 &&
-    powers.seamVotingDelegatee === '' &&
-    powers.esSEAMVotingDelegatee === '';
+  const disableButton = Number(seam) <= 0 && Number(esSEAM) <= 0;
 
-  const showRevokeButton = powers.seamVotingDelegatee !== '' || powers.esSEAMVotingDelegatee !== '';
+  const showRevokeButton =
+    powers.seamVotingDelegatee !== constants.AddressZero ||
+    powers.esSEAMVotingDelegatee !== constants.AddressZero;
 
   return (
     <Paper>
@@ -137,8 +146,8 @@ export const DelegatedInfoPanel = () => {
         ) : (
           <>
             <DelegatedPower
-              seamPower={powers.seamTokenPower}
-              esSEAMPower={powers.esSEAMTokenPower}
+              seamPower={seam}
+              esSEAMPower={esSEAM}
               seamDelegatee={powers.seamVotingDelegatee}
               esSEAMDelegatee={powers.esSEAMVotingDelegatee}
               user={address}
@@ -161,7 +170,12 @@ export const DelegatedInfoPanel = () => {
         {showRevokeButton && (
           <Button
             size="large"
-            sx={{ width: '100%' }}
+            sx={(theme) => ({
+              width: '100%',
+              backgroundColor: theme.palette.background.surface,
+              color: theme.palette.text.links,
+              '&:hover': { backgroundColor: theme.palette.background.surface },
+            })}
             variant="outlined"
             disabled={disableButton}
             onClick={() => openRevokeGovDelegation()}

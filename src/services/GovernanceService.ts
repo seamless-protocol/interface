@@ -59,11 +59,12 @@ export class GovernanceService implements Hashable {
     console.error('Cannot obtain past vote value');
     throw new Error('getVoteOnProposal: not implemented');
   }
-  async getVestedEsSEAM(user: string): Promise<BigNumber> {
-    return this.esSEAM.getClaimableAmount(user);
+  async getVestedEsSEAM(user: string): Promise<string> {
+    const amount = await this.esSEAM.getClaimableAmount(user);
+    return normalize(valueToBigNumber(amount.toString()), 18);
   }
   async getPowers(user: string): Promise<Powers> {
-    const calls: Multicall3.CallStruct[] = [
+    const getDelegatesAndSelfCalls: Multicall3.CallStruct[] = [
       {
         target: this.seam.address,
         callData: this.seam.interface.encodeFunctionData('getVotes', [user]),
@@ -82,23 +83,24 @@ export class GovernanceService implements Hashable {
       },
     ];
 
-    const { returnData } = await this.multicall.callStatic.aggregate(calls);
+    const { returnData: getDelegatesAndSelfCallsReturnData } =
+      await this.multicall.callStatic.aggregate(getDelegatesAndSelfCalls);
 
     const seamTokenPower: BigNumber = this.seam.interface.decodeFunctionResult(
       'getVotes',
-      returnData[0]
+      getDelegatesAndSelfCallsReturnData[0]
     )[0];
     const seamDelegatee: string = this.seam.interface.decodeFunctionResult(
       'delegates',
-      returnData[1]
+      getDelegatesAndSelfCallsReturnData[1]
     )[0];
     const esSEAMTokenPower: BigNumber = this.seam.interface.decodeFunctionResult(
       'getVotes',
-      returnData[2]
+      getDelegatesAndSelfCallsReturnData[2]
     )[0];
     const esSEAMDelegatee: string = this.seam.interface.decodeFunctionResult(
       'delegates',
-      returnData[3]
+      getDelegatesAndSelfCallsReturnData[3]
     )[0];
 
     const powers = {
