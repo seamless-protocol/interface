@@ -83,7 +83,7 @@ const DelegatedPower: React.FC<DelegatedPowerProps> = ({
                 </Box>
               </Row>
             )}
-            {isEsSEAMDelegated && (
+            {/* {isEsSEAMDelegated && (
               <Row
                 align="flex-start"
                 caption={
@@ -102,7 +102,7 @@ const DelegatedPower: React.FC<DelegatedPowerProps> = ({
                   </Typography>
                 </Box>
               </Row>
-            )}
+            )} */}
           </>
         )}
       </Box>
@@ -134,14 +134,14 @@ export const DelegatedInfoPanel = () => {
         </Typography>
         <Typography typography="description" sx={{ mt: 1 }} color="text.secondary">
           <Trans>
-            Use your SEAM and esSEAM to delegate your voting power. You will not be sending any
+            Use your SEAM to delegate your voting power. You will not be sending any
             tokens, only the rights to vote and propose changes to the protocol. You can re-delegate
-            at any time.
+            at any time. Some active community members have shared their delegate profiles <a href="https://seamlessprotocol.discourse.group/t/seamless-community-representatives/42">here</a>.
           </Trans>
         </Typography>
         {disableButton ? (
           <Typography variant="description" color="text.muted" mt={6}>
-            <Trans>You have no SEAM/esSEAM to delegate.</Trans>
+            <Trans>You have no SEAM to delegate.</Trans>
           </Typography>
         ) : (
           <>

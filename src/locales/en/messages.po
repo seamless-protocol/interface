@@ -189,10 +189,6 @@ msgstr "Amount"
 msgid "Amount must be greater than 0"
 msgstr "Amount must be greater than 0"
 
-#: src/modules/governance/VotingPowerInfoPanel.tsx
-msgid "Amount of esSEAM that has vested and is claimable as SEAM."
-msgstr "Amount of esSEAM that has vested and is claimable as SEAM."
-
 #: src/components/transactions/TxActionsWrapper.tsx
 msgid "Approve Confirmed"
 msgstr "Approve Confirmed"
@@ -2289,8 +2285,8 @@ msgid "Use it to vote for or against active proposals."
 msgstr "Use it to vote for or against active proposals."
 
 #: src/modules/governance/DelegatedInfoPanel.tsx
-msgid "Use your SEAM and esSEAM to delegate your voting power. You will not be sending any tokens, only the rights to vote and propose changes to the protocol. You can re-delegate at any time."
-msgstr "Use your SEAM and esSEAM to delegate your voting power. You will not be sending any tokens, only the rights to vote and propose changes to the protocol. You can re-delegate at any time."
+msgid "Use your SEAM to delegate your voting power. You will not be sending any tokens, only the rights to vote and propose changes to the protocol. You can re-delegate at any time. Some active community members have shared their delegate profiles <0>here</0>."
+msgstr "Use your SEAM to delegate your voting power. You will not be sending any tokens, only the rights to vote and propose changes to the protocol. You can re-delegate at any time. Some active community members have shared their delegate profiles <0>here</0>."
 
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsListMobileItem.tsx
 msgid "Used as collateral"
@@ -2495,8 +2491,8 @@ msgid "You have already cast your vote on this proposal"
 msgstr "You have already cast your vote on this proposal"
 
 #: src/modules/governance/DelegatedInfoPanel.tsx
-msgid "You have no SEAM/esSEAM to delegate."
-msgstr "You have no SEAM/esSEAM to delegate."
+msgid "You have no SEAM to delegate."
+msgstr "You have no SEAM to delegate."
 
 #: src/components/transactions/RateSwitch/RateSwitchModalContent.tsx
 msgid "You have not borrow yet using this currency"
@@ -2596,10 +2592,6 @@ msgstr "disabled"
 #: src/modules/history/actions/ActionDetails.tsx
 msgid "enabled"
 msgstr "enabled"
-
-#: src/modules/governance/VotingPowerInfoPanel.tsx
-msgid "esSEAM"
-msgstr "esSEAM"
 
 #: src/modules/history/actions/ActionDetails.tsx
 #: src/modules/history/actions/ActionDetails.tsx
