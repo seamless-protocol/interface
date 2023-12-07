@@ -13,10 +13,19 @@ import type {
   PopulatedTransaction,
   Signer,
   utils,
-} from 'ethers';
-import type { FunctionFragment, Result, EventFragment } from '@ethersproject/abi';
-import type { Listener, Provider } from '@ethersproject/providers';
-import type { TypedEventFilter, TypedEvent, TypedListener, OnEvent } from './common';
+} from "ethers";
+import type {
+  FunctionFragment,
+  Result,
+  EventFragment,
+} from "@ethersproject/abi";
+import type { Listener, Provider } from "@ethersproject/providers";
+import type {
+  TypedEventFilter,
+  TypedEvent,
+  TypedListener,
+  OnEvent,
+} from "./common";
 
 export declare namespace Checkpoints {
   export type Checkpoint208Struct = {
@@ -32,182 +41,291 @@ export declare namespace Checkpoints {
 
 export interface EscrowSEAMInterface extends utils.Interface {
   functions: {
-    'CLOCK_MODE()': FunctionFragment;
-    'UPGRADE_INTERFACE_VERSION()': FunctionFragment;
-    'allowance(address,address)': FunctionFragment;
-    'approve(address,uint256)': FunctionFragment;
-    'balanceOf(address)': FunctionFragment;
-    'checkpoints(address,uint32)': FunctionFragment;
-    'claim(address)': FunctionFragment;
-    'clock()': FunctionFragment;
-    'decimals()': FunctionFragment;
-    'delegate(address)': FunctionFragment;
-    'delegateBySig(address,uint256,uint256,uint8,bytes32,bytes32)': FunctionFragment;
-    'delegates(address)': FunctionFragment;
-    'deposit(address,uint256)': FunctionFragment;
-    'eip712Domain()': FunctionFragment;
-    'getClaimableAmount(address)': FunctionFragment;
-    'getPastTotalSupply(uint256)': FunctionFragment;
-    'getPastVotes(address,uint256)': FunctionFragment;
-    'getVotes(address)': FunctionFragment;
-    'initialize(address,uint256,address)': FunctionFragment;
-    'name()': FunctionFragment;
-    'nonces(address)': FunctionFragment;
-    'numCheckpoints(address)': FunctionFragment;
-    'owner()': FunctionFragment;
-    'proxiableUUID()': FunctionFragment;
-    'renounceOwnership()': FunctionFragment;
-    'seam()': FunctionFragment;
-    'symbol()': FunctionFragment;
-    'totalSupply()': FunctionFragment;
-    'transfer(address,uint256)': FunctionFragment;
-    'transferFrom(address,address,uint256)': FunctionFragment;
-    'transferOwnership(address)': FunctionFragment;
-    'upgradeToAndCall(address,bytes)': FunctionFragment;
-    'vestingDuration()': FunctionFragment;
-    'vestingInfo(address)': FunctionFragment;
+    "CLOCK_MODE()": FunctionFragment;
+    "UPGRADE_INTERFACE_VERSION()": FunctionFragment;
+    "allowance(address,address)": FunctionFragment;
+    "approve(address,uint256)": FunctionFragment;
+    "balanceOf(address)": FunctionFragment;
+    "checkpoints(address,uint32)": FunctionFragment;
+    "claim(address)": FunctionFragment;
+    "clock()": FunctionFragment;
+    "decimals()": FunctionFragment;
+    "delegate(address)": FunctionFragment;
+    "delegateBySig(address,uint256,uint256,uint8,bytes32,bytes32)": FunctionFragment;
+    "delegates(address)": FunctionFragment;
+    "deposit(address,uint256)": FunctionFragment;
+    "eip712Domain()": FunctionFragment;
+    "getClaimableAmount(address)": FunctionFragment;
+    "getPastTotalSupply(uint256)": FunctionFragment;
+    "getPastVotes(address,uint256)": FunctionFragment;
+    "getVotes(address)": FunctionFragment;
+    "initialize(address,uint256,address)": FunctionFragment;
+    "name()": FunctionFragment;
+    "nonces(address)": FunctionFragment;
+    "numCheckpoints(address)": FunctionFragment;
+    "owner()": FunctionFragment;
+    "proxiableUUID()": FunctionFragment;
+    "renounceOwnership()": FunctionFragment;
+    "seam()": FunctionFragment;
+    "symbol()": FunctionFragment;
+    "totalSupply()": FunctionFragment;
+    "transfer(address,uint256)": FunctionFragment;
+    "transferFrom(address,address,uint256)": FunctionFragment;
+    "transferOwnership(address)": FunctionFragment;
+    "upgradeToAndCall(address,bytes)": FunctionFragment;
+    "vestingDuration()": FunctionFragment;
+    "vestingInfo(address)": FunctionFragment;
   };
 
   getFunction(
     nameOrSignatureOrTopic:
-      | 'CLOCK_MODE'
-      | 'UPGRADE_INTERFACE_VERSION'
-      | 'allowance'
-      | 'approve'
-      | 'balanceOf'
-      | 'checkpoints'
-      | 'claim'
-      | 'clock'
-      | 'decimals'
-      | 'delegate'
-      | 'delegateBySig'
-      | 'delegates'
-      | 'deposit'
-      | 'eip712Domain'
-      | 'getClaimableAmount'
-      | 'getPastTotalSupply'
-      | 'getPastVotes'
-      | 'getVotes'
-      | 'initialize'
-      | 'name'
-      | 'nonces'
-      | 'numCheckpoints'
-      | 'owner'
-      | 'proxiableUUID'
-      | 'renounceOwnership'
-      | 'seam'
-      | 'symbol'
-      | 'totalSupply'
-      | 'transfer'
-      | 'transferFrom'
-      | 'transferOwnership'
-      | 'upgradeToAndCall'
-      | 'vestingDuration'
-      | 'vestingInfo'
+      | "CLOCK_MODE"
+      | "UPGRADE_INTERFACE_VERSION"
+      | "allowance"
+      | "approve"
+      | "balanceOf"
+      | "checkpoints"
+      | "claim"
+      | "clock"
+      | "decimals"
+      | "delegate"
+      | "delegateBySig"
+      | "delegates"
+      | "deposit"
+      | "eip712Domain"
+      | "getClaimableAmount"
+      | "getPastTotalSupply"
+      | "getPastVotes"
+      | "getVotes"
+      | "initialize"
+      | "name"
+      | "nonces"
+      | "numCheckpoints"
+      | "owner"
+      | "proxiableUUID"
+      | "renounceOwnership"
+      | "seam"
+      | "symbol"
+      | "totalSupply"
+      | "transfer"
+      | "transferFrom"
+      | "transferOwnership"
+      | "upgradeToAndCall"
+      | "vestingDuration"
+      | "vestingInfo"
   ): FunctionFragment;
 
-  encodeFunctionData(functionFragment: 'CLOCK_MODE', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'UPGRADE_INTERFACE_VERSION', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'allowance', values: [string, string]): string;
-  encodeFunctionData(functionFragment: 'approve', values: [string, BigNumberish]): string;
-  encodeFunctionData(functionFragment: 'balanceOf', values: [string]): string;
-  encodeFunctionData(functionFragment: 'checkpoints', values: [string, BigNumberish]): string;
-  encodeFunctionData(functionFragment: 'claim', values: [string]): string;
-  encodeFunctionData(functionFragment: 'clock', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'decimals', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'delegate', values: [string]): string;
   encodeFunctionData(
-    functionFragment: 'delegateBySig',
-    values: [string, BigNumberish, BigNumberish, BigNumberish, BytesLike, BytesLike]
+    functionFragment: "CLOCK_MODE",
+    values?: undefined
   ): string;
-  encodeFunctionData(functionFragment: 'delegates', values: [string]): string;
-  encodeFunctionData(functionFragment: 'deposit', values: [string, BigNumberish]): string;
-  encodeFunctionData(functionFragment: 'eip712Domain', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'getClaimableAmount', values: [string]): string;
-  encodeFunctionData(functionFragment: 'getPastTotalSupply', values: [BigNumberish]): string;
-  encodeFunctionData(functionFragment: 'getPastVotes', values: [string, BigNumberish]): string;
-  encodeFunctionData(functionFragment: 'getVotes', values: [string]): string;
   encodeFunctionData(
-    functionFragment: 'initialize',
+    functionFragment: "UPGRADE_INTERFACE_VERSION",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "allowance",
+    values: [string, string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "approve",
+    values: [string, BigNumberish]
+  ): string;
+  encodeFunctionData(functionFragment: "balanceOf", values: [string]): string;
+  encodeFunctionData(
+    functionFragment: "checkpoints",
+    values: [string, BigNumberish]
+  ): string;
+  encodeFunctionData(functionFragment: "claim", values: [string]): string;
+  encodeFunctionData(functionFragment: "clock", values?: undefined): string;
+  encodeFunctionData(functionFragment: "decimals", values?: undefined): string;
+  encodeFunctionData(functionFragment: "delegate", values: [string]): string;
+  encodeFunctionData(
+    functionFragment: "delegateBySig",
+    values: [
+      string,
+      BigNumberish,
+      BigNumberish,
+      BigNumberish,
+      BytesLike,
+      BytesLike
+    ]
+  ): string;
+  encodeFunctionData(functionFragment: "delegates", values: [string]): string;
+  encodeFunctionData(
+    functionFragment: "deposit",
+    values: [string, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "eip712Domain",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getClaimableAmount",
+    values: [string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getPastTotalSupply",
+    values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getPastVotes",
+    values: [string, BigNumberish]
+  ): string;
+  encodeFunctionData(functionFragment: "getVotes", values: [string]): string;
+  encodeFunctionData(
+    functionFragment: "initialize",
     values: [string, BigNumberish, string]
   ): string;
-  encodeFunctionData(functionFragment: 'name', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'nonces', values: [string]): string;
-  encodeFunctionData(functionFragment: 'numCheckpoints', values: [string]): string;
-  encodeFunctionData(functionFragment: 'owner', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'proxiableUUID', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'renounceOwnership', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'seam', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'symbol', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'totalSupply', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'transfer', values: [string, BigNumberish]): string;
+  encodeFunctionData(functionFragment: "name", values?: undefined): string;
+  encodeFunctionData(functionFragment: "nonces", values: [string]): string;
   encodeFunctionData(
-    functionFragment: 'transferFrom',
+    functionFragment: "numCheckpoints",
+    values: [string]
+  ): string;
+  encodeFunctionData(functionFragment: "owner", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "proxiableUUID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "renounceOwnership",
+    values?: undefined
+  ): string;
+  encodeFunctionData(functionFragment: "seam", values?: undefined): string;
+  encodeFunctionData(functionFragment: "symbol", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "totalSupply",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "transfer",
+    values: [string, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "transferFrom",
     values: [string, string, BigNumberish]
   ): string;
-  encodeFunctionData(functionFragment: 'transferOwnership', values: [string]): string;
-  encodeFunctionData(functionFragment: 'upgradeToAndCall', values: [string, BytesLike]): string;
-  encodeFunctionData(functionFragment: 'vestingDuration', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'vestingInfo', values: [string]): string;
+  encodeFunctionData(
+    functionFragment: "transferOwnership",
+    values: [string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "upgradeToAndCall",
+    values: [string, BytesLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "vestingDuration",
+    values?: undefined
+  ): string;
+  encodeFunctionData(functionFragment: "vestingInfo", values: [string]): string;
 
-  decodeFunctionResult(functionFragment: 'CLOCK_MODE', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'UPGRADE_INTERFACE_VERSION', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'allowance', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'approve', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'balanceOf', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'checkpoints', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'claim', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'clock', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'decimals', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'delegate', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'delegateBySig', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'delegates', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'deposit', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'eip712Domain', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'getClaimableAmount', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'getPastTotalSupply', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'getPastVotes', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'getVotes', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'initialize', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'name', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'nonces', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'numCheckpoints', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'owner', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'proxiableUUID', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'renounceOwnership', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'seam', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'symbol', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'totalSupply', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'transfer', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'transferFrom', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'transferOwnership', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'upgradeToAndCall', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'vestingDuration', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'vestingInfo', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "CLOCK_MODE", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "UPGRADE_INTERFACE_VERSION",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "allowance", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "approve", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "checkpoints",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "claim", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "clock", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "decimals", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "delegate", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "delegateBySig",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "delegates", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "deposit", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "eip712Domain",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getClaimableAmount",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getPastTotalSupply",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getPastVotes",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "getVotes", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "initialize", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "nonces", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "numCheckpoints",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "proxiableUUID",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "renounceOwnership",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "seam", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "symbol", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "totalSupply",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "transfer", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "transferFrom",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "transferOwnership",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "upgradeToAndCall",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "vestingDuration",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "vestingInfo",
+    data: BytesLike
+  ): Result;
 
   events: {
-    'Approval(address,address,uint256)': EventFragment;
-    'Claim(address,uint256)': EventFragment;
-    'DelegateChanged(address,address,address)': EventFragment;
-    'DelegateVotesChanged(address,uint256,uint256)': EventFragment;
-    'Deposit(address,address,uint256)': EventFragment;
-    'EIP712DomainChanged()': EventFragment;
-    'Initialized(uint64)': EventFragment;
-    'OwnershipTransferred(address,address)': EventFragment;
-    'Transfer(address,address,uint256)': EventFragment;
-    'Upgraded(address)': EventFragment;
+    "Approval(address,address,uint256)": EventFragment;
+    "Claim(address,uint256)": EventFragment;
+    "DelegateChanged(address,address,address)": EventFragment;
+    "DelegateVotesChanged(address,uint256,uint256)": EventFragment;
+    "Deposit(address,address,uint256)": EventFragment;
+    "EIP712DomainChanged()": EventFragment;
+    "Initialized(uint64)": EventFragment;
+    "OwnershipTransferred(address,address)": EventFragment;
+    "Transfer(address,address,uint256)": EventFragment;
+    "Upgraded(address)": EventFragment;
   };
 
-  getEvent(nameOrSignatureOrTopic: 'Approval'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'Claim'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'DelegateChanged'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'DelegateVotesChanged'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'Deposit'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'EIP712DomainChanged'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'Initialized'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'OwnershipTransferred'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'Transfer'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'Upgraded'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Approval"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Claim"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "DelegateChanged"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "DelegateVotesChanged"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Deposit"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "EIP712DomainChanged"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Initialized"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Transfer"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Upgraded"): EventFragment;
 }
 
 export interface ApprovalEventObject {
@@ -215,7 +333,10 @@ export interface ApprovalEventObject {
   spender: string;
   value: BigNumber;
 }
-export type ApprovalEvent = TypedEvent<[string, string, BigNumber], ApprovalEventObject>;
+export type ApprovalEvent = TypedEvent<
+  [string, string, BigNumber],
+  ApprovalEventObject
+>;
 
 export type ApprovalEventFilter = TypedEventFilter<ApprovalEvent>;
 
@@ -232,7 +353,10 @@ export interface DelegateChangedEventObject {
   fromDelegate: string;
   toDelegate: string;
 }
-export type DelegateChangedEvent = TypedEvent<[string, string, string], DelegateChangedEventObject>;
+export type DelegateChangedEvent = TypedEvent<
+  [string, string, string],
+  DelegateChangedEventObject
+>;
 
 export type DelegateChangedEventFilter = TypedEventFilter<DelegateChangedEvent>;
 
@@ -246,21 +370,29 @@ export type DelegateVotesChangedEvent = TypedEvent<
   DelegateVotesChangedEventObject
 >;
 
-export type DelegateVotesChangedEventFilter = TypedEventFilter<DelegateVotesChangedEvent>;
+export type DelegateVotesChangedEventFilter =
+  TypedEventFilter<DelegateVotesChangedEvent>;
 
 export interface DepositEventObject {
   from: string;
   onBehalfOf: string;
   amount: BigNumber;
 }
-export type DepositEvent = TypedEvent<[string, string, BigNumber], DepositEventObject>;
+export type DepositEvent = TypedEvent<
+  [string, string, BigNumber],
+  DepositEventObject
+>;
 
 export type DepositEventFilter = TypedEventFilter<DepositEvent>;
 
 export interface EIP712DomainChangedEventObject {}
-export type EIP712DomainChangedEvent = TypedEvent<[], EIP712DomainChangedEventObject>;
+export type EIP712DomainChangedEvent = TypedEvent<
+  [],
+  EIP712DomainChangedEventObject
+>;
 
-export type EIP712DomainChangedEventFilter = TypedEventFilter<EIP712DomainChangedEvent>;
+export type EIP712DomainChangedEventFilter =
+  TypedEventFilter<EIP712DomainChangedEvent>;
 
 export interface InitializedEventObject {
   version: BigNumber;
@@ -278,14 +410,18 @@ export type OwnershipTransferredEvent = TypedEvent<
   OwnershipTransferredEventObject
 >;
 
-export type OwnershipTransferredEventFilter = TypedEventFilter<OwnershipTransferredEvent>;
+export type OwnershipTransferredEventFilter =
+  TypedEventFilter<OwnershipTransferredEvent>;
 
 export interface TransferEventObject {
   from: string;
   to: string;
   value: BigNumber;
 }
-export type TransferEvent = TypedEvent<[string, string, BigNumber], TransferEventObject>;
+export type TransferEvent = TypedEvent<
+  [string, string, BigNumber],
+  TransferEventObject
+>;
 
 export type TransferEventFilter = TypedEventFilter<TransferEvent>;
 
@@ -313,7 +449,9 @@ export interface EscrowSEAM extends BaseContract {
     eventFilter?: TypedEventFilter<TEvent>
   ): Array<TypedListener<TEvent>>;
   listeners(eventName?: string): Array<Listener>;
-  removeAllListeners<TEvent extends TypedEvent>(eventFilter: TypedEventFilter<TEvent>): this;
+  removeAllListeners<TEvent extends TypedEvent>(
+    eventFilter: TypedEventFilter<TEvent>
+  ): this;
   removeAllListeners(eventName?: string): this;
   off: OnEvent<this>;
   on: OnEvent<this>;
@@ -325,7 +463,11 @@ export interface EscrowSEAM extends BaseContract {
 
     UPGRADE_INTERFACE_VERSION(overrides?: CallOverrides): Promise<[string]>;
 
-    allowance(owner: string, spender: string, overrides?: CallOverrides): Promise<[BigNumber]>;
+    allowance(
+      owner: string,
+      spender: string,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
 
     approve(
       spender: string,
@@ -341,7 +483,10 @@ export interface EscrowSEAM extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[Checkpoints.Checkpoint208StructOutput]>;
 
-    claim(account: string, overrides?: Overrides & { from?: string }): Promise<ContractTransaction>;
+    claim(
+      account: string,
+      overrides?: Overrides & { from?: string }
+    ): Promise<ContractTransaction>;
 
     clock(overrides?: CallOverrides): Promise<[number]>;
 
@@ -370,7 +515,9 @@ export interface EscrowSEAM extends BaseContract {
       overrides?: Overrides & { from?: string }
     ): Promise<ContractTransaction>;
 
-    eip712Domain(overrides?: CallOverrides): Promise<
+    eip712Domain(
+      overrides?: CallOverrides
+    ): Promise<
       [string, string, string, BigNumber, string, string, BigNumber[]] & {
         fields: string;
         name: string;
@@ -382,9 +529,15 @@ export interface EscrowSEAM extends BaseContract {
       }
     >;
 
-    getClaimableAmount(account: string, overrides?: CallOverrides): Promise<[BigNumber]>;
+    getClaimableAmount(
+      account: string,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
 
-    getPastTotalSupply(timepoint: BigNumberish, overrides?: CallOverrides): Promise<[BigNumber]>;
+    getPastTotalSupply(
+      timepoint: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
 
     getPastVotes(
       account: string,
@@ -405,13 +558,18 @@ export interface EscrowSEAM extends BaseContract {
 
     nonces(owner: string, overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    numCheckpoints(account: string, overrides?: CallOverrides): Promise<[number]>;
+    numCheckpoints(
+      account: string,
+      overrides?: CallOverrides
+    ): Promise<[number]>;
 
     owner(overrides?: CallOverrides): Promise<[string]>;
 
     proxiableUUID(overrides?: CallOverrides): Promise<[string]>;
 
-    renounceOwnership(overrides?: Overrides & { from?: string }): Promise<ContractTransaction>;
+    renounceOwnership(
+      overrides?: Overrides & { from?: string }
+    ): Promise<ContractTransaction>;
 
     seam(overrides?: CallOverrides): Promise<[string]>;
 
@@ -419,7 +577,11 @@ export interface EscrowSEAM extends BaseContract {
 
     totalSupply(overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    transfer(arg0: string, arg1: BigNumberish, overrides?: CallOverrides): Promise<[boolean]>;
+    transfer(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
 
     transferFrom(
       arg0: string,
@@ -451,7 +613,11 @@ export interface EscrowSEAM extends BaseContract {
 
   UPGRADE_INTERFACE_VERSION(overrides?: CallOverrides): Promise<string>;
 
-  allowance(owner: string, spender: string, overrides?: CallOverrides): Promise<BigNumber>;
+  allowance(
+    owner: string,
+    spender: string,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
 
   approve(
     spender: string,
@@ -467,7 +633,10 @@ export interface EscrowSEAM extends BaseContract {
     overrides?: CallOverrides
   ): Promise<Checkpoints.Checkpoint208StructOutput>;
 
-  claim(account: string, overrides?: Overrides & { from?: string }): Promise<ContractTransaction>;
+  claim(
+    account: string,
+    overrides?: Overrides & { from?: string }
+  ): Promise<ContractTransaction>;
 
   clock(overrides?: CallOverrides): Promise<number>;
 
@@ -496,7 +665,9 @@ export interface EscrowSEAM extends BaseContract {
     overrides?: Overrides & { from?: string }
   ): Promise<ContractTransaction>;
 
-  eip712Domain(overrides?: CallOverrides): Promise<
+  eip712Domain(
+    overrides?: CallOverrides
+  ): Promise<
     [string, string, string, BigNumber, string, string, BigNumber[]] & {
       fields: string;
       name: string;
@@ -508,9 +679,15 @@ export interface EscrowSEAM extends BaseContract {
     }
   >;
 
-  getClaimableAmount(account: string, overrides?: CallOverrides): Promise<BigNumber>;
+  getClaimableAmount(
+    account: string,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
 
-  getPastTotalSupply(timepoint: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+  getPastTotalSupply(
+    timepoint: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
 
   getPastVotes(
     account: string,
@@ -537,7 +714,9 @@ export interface EscrowSEAM extends BaseContract {
 
   proxiableUUID(overrides?: CallOverrides): Promise<string>;
 
-  renounceOwnership(overrides?: Overrides & { from?: string }): Promise<ContractTransaction>;
+  renounceOwnership(
+    overrides?: Overrides & { from?: string }
+  ): Promise<ContractTransaction>;
 
   seam(overrides?: CallOverrides): Promise<string>;
 
@@ -545,7 +724,11 @@ export interface EscrowSEAM extends BaseContract {
 
   totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
 
-  transfer(arg0: string, arg1: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
+  transfer(
+    arg0: string,
+    arg1: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<boolean>;
 
   transferFrom(
     arg0: string,
@@ -577,9 +760,17 @@ export interface EscrowSEAM extends BaseContract {
 
     UPGRADE_INTERFACE_VERSION(overrides?: CallOverrides): Promise<string>;
 
-    allowance(owner: string, spender: string, overrides?: CallOverrides): Promise<BigNumber>;
+    allowance(
+      owner: string,
+      spender: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
-    approve(spender: string, value: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
+    approve(
+      spender: string,
+      value: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
 
     balanceOf(account: string, overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -609,9 +800,15 @@ export interface EscrowSEAM extends BaseContract {
 
     delegates(account: string, overrides?: CallOverrides): Promise<string>;
 
-    deposit(onBehalfOf: string, amount: BigNumberish, overrides?: CallOverrides): Promise<void>;
+    deposit(
+      onBehalfOf: string,
+      amount: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
 
-    eip712Domain(overrides?: CallOverrides): Promise<
+    eip712Domain(
+      overrides?: CallOverrides
+    ): Promise<
       [string, string, string, BigNumber, string, string, BigNumber[]] & {
         fields: string;
         name: string;
@@ -623,9 +820,15 @@ export interface EscrowSEAM extends BaseContract {
       }
     >;
 
-    getClaimableAmount(account: string, overrides?: CallOverrides): Promise<BigNumber>;
+    getClaimableAmount(
+      account: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
-    getPastTotalSupply(timepoint: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+    getPastTotalSupply(
+      timepoint: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     getPastVotes(
       account: string,
@@ -660,7 +863,11 @@ export interface EscrowSEAM extends BaseContract {
 
     totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
 
-    transfer(arg0: string, arg1: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
+    transfer(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
 
     transferFrom(
       arg0: string,
@@ -669,7 +876,10 @@ export interface EscrowSEAM extends BaseContract {
       overrides?: CallOverrides
     ): Promise<boolean>;
 
-    transferOwnership(newOwner: string, overrides?: CallOverrides): Promise<void>;
+    transferOwnership(
+      newOwner: string,
+      overrides?: CallOverrides
+    ): Promise<void>;
 
     upgradeToAndCall(
       newImplementation: string,
@@ -686,17 +896,24 @@ export interface EscrowSEAM extends BaseContract {
   };
 
   filters: {
-    'Approval(address,address,uint256)'(
+    "Approval(address,address,uint256)"(
       owner?: string | null,
       spender?: string | null,
       value?: null
     ): ApprovalEventFilter;
-    Approval(owner?: string | null, spender?: string | null, value?: null): ApprovalEventFilter;
+    Approval(
+      owner?: string | null,
+      spender?: string | null,
+      value?: null
+    ): ApprovalEventFilter;
 
-    'Claim(address,uint256)'(user?: string | null, amount?: null): ClaimEventFilter;
+    "Claim(address,uint256)"(
+      user?: string | null,
+      amount?: null
+    ): ClaimEventFilter;
     Claim(user?: string | null, amount?: null): ClaimEventFilter;
 
-    'DelegateChanged(address,address,address)'(
+    "DelegateChanged(address,address,address)"(
       delegator?: string | null,
       fromDelegate?: string | null,
       toDelegate?: string | null
@@ -707,7 +924,7 @@ export interface EscrowSEAM extends BaseContract {
       toDelegate?: string | null
     ): DelegateChangedEventFilter;
 
-    'DelegateVotesChanged(address,uint256,uint256)'(
+    "DelegateVotesChanged(address,uint256,uint256)"(
       delegate?: string | null,
       previousVotes?: null,
       newVotes?: null
@@ -718,20 +935,24 @@ export interface EscrowSEAM extends BaseContract {
       newVotes?: null
     ): DelegateVotesChangedEventFilter;
 
-    'Deposit(address,address,uint256)'(
+    "Deposit(address,address,uint256)"(
       from?: string | null,
       onBehalfOf?: string | null,
       amount?: null
     ): DepositEventFilter;
-    Deposit(from?: string | null, onBehalfOf?: string | null, amount?: null): DepositEventFilter;
+    Deposit(
+      from?: string | null,
+      onBehalfOf?: string | null,
+      amount?: null
+    ): DepositEventFilter;
 
-    'EIP712DomainChanged()'(): EIP712DomainChangedEventFilter;
+    "EIP712DomainChanged()"(): EIP712DomainChangedEventFilter;
     EIP712DomainChanged(): EIP712DomainChangedEventFilter;
 
-    'Initialized(uint64)'(version?: null): InitializedEventFilter;
+    "Initialized(uint64)"(version?: null): InitializedEventFilter;
     Initialized(version?: null): InitializedEventFilter;
 
-    'OwnershipTransferred(address,address)'(
+    "OwnershipTransferred(address,address)"(
       previousOwner?: string | null,
       newOwner?: string | null
     ): OwnershipTransferredEventFilter;
@@ -740,14 +961,18 @@ export interface EscrowSEAM extends BaseContract {
       newOwner?: string | null
     ): OwnershipTransferredEventFilter;
 
-    'Transfer(address,address,uint256)'(
+    "Transfer(address,address,uint256)"(
       from?: string | null,
       to?: string | null,
       value?: null
     ): TransferEventFilter;
-    Transfer(from?: string | null, to?: string | null, value?: null): TransferEventFilter;
+    Transfer(
+      from?: string | null,
+      to?: string | null,
+      value?: null
+    ): TransferEventFilter;
 
-    'Upgraded(address)'(implementation?: string | null): UpgradedEventFilter;
+    "Upgraded(address)"(implementation?: string | null): UpgradedEventFilter;
     Upgraded(implementation?: string | null): UpgradedEventFilter;
   };
 
@@ -756,7 +981,11 @@ export interface EscrowSEAM extends BaseContract {
 
     UPGRADE_INTERFACE_VERSION(overrides?: CallOverrides): Promise<BigNumber>;
 
-    allowance(owner: string, spender: string, overrides?: CallOverrides): Promise<BigNumber>;
+    allowance(
+      owner: string,
+      spender: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     approve(
       spender: string,
@@ -766,15 +995,25 @@ export interface EscrowSEAM extends BaseContract {
 
     balanceOf(account: string, overrides?: CallOverrides): Promise<BigNumber>;
 
-    checkpoints(account: string, pos: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+    checkpoints(
+      account: string,
+      pos: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
-    claim(account: string, overrides?: Overrides & { from?: string }): Promise<BigNumber>;
+    claim(
+      account: string,
+      overrides?: Overrides & { from?: string }
+    ): Promise<BigNumber>;
 
     clock(overrides?: CallOverrides): Promise<BigNumber>;
 
     decimals(overrides?: CallOverrides): Promise<BigNumber>;
 
-    delegate(delegatee: string, overrides?: Overrides & { from?: string }): Promise<BigNumber>;
+    delegate(
+      delegatee: string,
+      overrides?: Overrides & { from?: string }
+    ): Promise<BigNumber>;
 
     delegateBySig(
       delegatee: string,
@@ -796,9 +1035,15 @@ export interface EscrowSEAM extends BaseContract {
 
     eip712Domain(overrides?: CallOverrides): Promise<BigNumber>;
 
-    getClaimableAmount(account: string, overrides?: CallOverrides): Promise<BigNumber>;
+    getClaimableAmount(
+      account: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
-    getPastTotalSupply(timepoint: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+    getPastTotalSupply(
+      timepoint: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     getPastVotes(
       account: string,
@@ -819,13 +1064,18 @@ export interface EscrowSEAM extends BaseContract {
 
     nonces(owner: string, overrides?: CallOverrides): Promise<BigNumber>;
 
-    numCheckpoints(account: string, overrides?: CallOverrides): Promise<BigNumber>;
+    numCheckpoints(
+      account: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     owner(overrides?: CallOverrides): Promise<BigNumber>;
 
     proxiableUUID(overrides?: CallOverrides): Promise<BigNumber>;
 
-    renounceOwnership(overrides?: Overrides & { from?: string }): Promise<BigNumber>;
+    renounceOwnership(
+      overrides?: Overrides & { from?: string }
+    ): Promise<BigNumber>;
 
     seam(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -833,7 +1083,11 @@ export interface EscrowSEAM extends BaseContract {
 
     totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
 
-    transfer(arg0: string, arg1: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+    transfer(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     transferFrom(
       arg0: string,
@@ -861,7 +1115,9 @@ export interface EscrowSEAM extends BaseContract {
   populateTransaction: {
     CLOCK_MODE(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    UPGRADE_INTERFACE_VERSION(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    UPGRADE_INTERFACE_VERSION(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
 
     allowance(
       owner: string,
@@ -875,7 +1131,10 @@ export interface EscrowSEAM extends BaseContract {
       overrides?: Overrides & { from?: string }
     ): Promise<PopulatedTransaction>;
 
-    balanceOf(account: string, overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    balanceOf(
+      account: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
 
     checkpoints(
       account: string,
@@ -907,7 +1166,10 @@ export interface EscrowSEAM extends BaseContract {
       overrides?: Overrides & { from?: string }
     ): Promise<PopulatedTransaction>;
 
-    delegates(account: string, overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    delegates(
+      account: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
 
     deposit(
       onBehalfOf: string,
@@ -917,7 +1179,10 @@ export interface EscrowSEAM extends BaseContract {
 
     eip712Domain(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    getClaimableAmount(account: string, overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    getClaimableAmount(
+      account: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
 
     getPastTotalSupply(
       timepoint: BigNumberish,
@@ -930,7 +1195,10 @@ export interface EscrowSEAM extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    getVotes(account: string, overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    getVotes(
+      account: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
 
     initialize(
       _seam: string,
@@ -941,15 +1209,23 @@ export interface EscrowSEAM extends BaseContract {
 
     name(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    nonces(owner: string, overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    nonces(
+      owner: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
 
-    numCheckpoints(account: string, overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    numCheckpoints(
+      account: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
 
     owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     proxiableUUID(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    renounceOwnership(overrides?: Overrides & { from?: string }): Promise<PopulatedTransaction>;
+    renounceOwnership(
+      overrides?: Overrides & { from?: string }
+    ): Promise<PopulatedTransaction>;
 
     seam(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
@@ -983,6 +1259,9 @@ export interface EscrowSEAM extends BaseContract {
 
     vestingDuration(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    vestingInfo(account: string, overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    vestingInfo(
+      account: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
   };
 }
