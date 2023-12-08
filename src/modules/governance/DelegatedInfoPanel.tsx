@@ -142,7 +142,7 @@ export const DelegatedInfoPanel = () => {
             <a href="https://seamlessprotocol.discourse.group/t/seamless-community-representatives/42">
               here
             </a>
-            ..
+            .
           </Trans>
         </Typography>
         {disableButton ? (

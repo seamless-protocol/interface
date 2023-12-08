@@ -157,8 +157,8 @@ msgid "All Assets"
 msgstr "All Assets"
 
 #: src/modules/governance/DelegatedInfoPanel.tsx
-msgid "All SEAM tokens have voting power, but in order to activate this voting power, SEAM must first be delegated. Note: Delegation does not transfer token ownership, it only grants “Voting Power” to the delegated address. You can either self-delegate or delegate this voting power to others and you can change your delegation at anytime. To view active community members who are interested in receiving delegation, click <0>here</0>.."
-msgstr "All SEAM tokens have voting power, but in order to activate this voting power, SEAM must first be delegated. Note: Delegation does not transfer token ownership, it only grants “Voting Power” to the delegated address. You can either self-delegate or delegate this voting power to others and you can change your delegation at anytime. To view active community members who are interested in receiving delegation, click <0>here</0>.."
+msgid "All SEAM tokens have voting power, but in order to activate this voting power, SEAM must first be delegated. Note: Delegation does not transfer token ownership, it only grants “Voting Power” to the delegated address. You can either self-delegate or delegate this voting power to others and you can change your delegation at anytime. To view active community members who are interested in receiving delegation, click <0>here</0>."
+msgstr "All SEAM tokens have voting power, but in order to activate this voting power, SEAM must first be delegated. Note: Delegation does not transfer token ownership, it only grants “Voting Power” to the delegated address. You can either self-delegate or delegate this voting power to others and you can change your delegation at anytime. To view active community members who are interested in receiving delegation, click <0>here</0>."
 
 #: src/components/transactions/Borrow/GhoBorrowSuccessView.tsx
 #: src/components/transactions/FlowCommons/Success.tsx
