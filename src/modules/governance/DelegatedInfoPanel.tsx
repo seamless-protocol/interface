@@ -134,9 +134,9 @@ export const DelegatedInfoPanel = () => {
         </Typography>
         <Typography typography="description" sx={{ mt: 1 }} color="text.secondary">
           <Trans>
-            Use your SEAM to delegate your voting power. You will not be sending any
-            tokens, only the rights to vote and propose changes to the protocol. You can re-delegate
-            at any time. Some active community members have shared their delegate profiles <a href="https://seamlessprotocol.discourse.group/t/seamless-community-representatives/42">here</a>.
+            All SEAM tokens have voting power, but in order to activate this voting power, SEAM must first be delegated.
+            Note: Delegation does not transfer token ownership, it only grants “Voting Power” to the delegated address.
+            You can either self-delegate or delegate this voting power to others and you can change your delegation at anytime. To view active community members who are interested in receiving delegation, click <a href="https://seamlessprotocol.discourse.group/t/seamless-community-representatives/42">here</a>..
           </Trans>
         </Typography>
         {disableButton ? (
