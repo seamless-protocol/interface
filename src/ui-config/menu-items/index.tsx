@@ -32,8 +32,13 @@ export const navigation: Navigation[] = [
     dataCy: 'menuFarms',
   },
   {
+    link: ROUTES.gov,
+    title: t`Governance`,
+    dataCy: 'gov',
+  },
+  {
     link: '',
-    title: t`Swap on to Base`,
+    title: t`Swap onto Base`,
     dataCy: 'swapBase',
     disabled: false,
   },

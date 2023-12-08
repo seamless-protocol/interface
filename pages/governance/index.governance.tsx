@@ -1,57 +1,60 @@
 // import { Trans } from '@lingui/macro';
-import { Grid } from '@mui/material';
-import { useEffect } from 'react';
+import { Trans } from '@lingui/react';
+import { Grid, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { useEffect, useState } from 'react';
+import StyledToggleButton from 'src/components/StyledToggleButton';
+import StyledToggleButtonGroup from 'src/components/StyledToggleButtonGroup';
 // import StyledToggleButton from 'src/components/StyledToggleButton';
 // import StyledToggleButtonGroup from 'src/components/StyledToggleButtonGroup';
 import { GovDelegationModal } from 'src/components/transactions/GovDelegation/GovDelegationModal';
 import { MainLayout } from 'src/layouts/MainLayout';
 import { GovernanceTopPanel } from 'src/modules/governance/GovernanceTopPanel';
 import { UserGovernanceInfo } from 'src/modules/governance/UserGovernanceInfo';
-//import { Ipfs, IpfsType } from 'src/static-build/ipfs';
-//import { CustomProposalType, Proposal } from 'src/static-build/proposal';
 import { useRootStore } from 'src/store/root';
 
 import { ContentContainer } from '../../src/components/ContentContainer';
+import { Ipfs, IpfsType } from '../../src/static-build/ipfs';
+import { CustomProposalType, Proposal } from '../../src/static-build/proposal';
 
-// export const getStaticProps = async () => {
-//   const IpfsFetcher = new Ipfs();
-//   const ProposalFetcher = new Proposal();
+export const getStaticProps = async () => {
+  const IpfsFetcher = new Ipfs();
+  const ProposalFetcher = new Proposal();
 
-//   const proposals = [...Array(ProposalFetcher.count()).keys()].map((id) => {
-//     const ipfs = IpfsFetcher.get(id);
-//     const proposal = ProposalFetcher.get(id);
-//     return {
-//       ipfs: {
-//         title: ipfs.title,
-//         id: ipfs.id,
-//         originalHash: ipfs.originalHash,
-//         shortDescription: ipfs.shortDescription || '',
-//       },
-//       proposal,
-//       prerendered: true,
-//     };
-//   });
+  const proposals = [...Array(ProposalFetcher.count()).keys()].map((id) => {
+    const ipfs = IpfsFetcher.get(id);
+    const proposal = ProposalFetcher.get(id);
+    return {
+      ipfs: {
+        title: ipfs.title,
+        id: ipfs.id,
+        originalHash: ipfs.originalHash,
+        shortDescription: ipfs.shortDescription || '',
+      },
+      proposal,
+      prerendered: true,
+    };
+  });
 
-//   return { props: { proposals: proposals.slice().reverse() } };
-// };
+  return { props: { proposals: proposals.slice().reverse() } };
+};
 
-// enum Tabs {
-//   PROPOSALS,
-//   INFORMATION,
-// }
+enum Tabs {
+  PROPOSALS,
+  INFORMATION,
+}
+interface GovernancePageProps {
+  proposals: {
+    ipfs: Pick<IpfsType, 'title' | 'id' | 'originalHash' | 'shortDescription'>;
+    proposal: CustomProposalType;
+    prerendered: boolean;
+  }[];
+}
 
-// export type GovernancePageProps = {
-//   proposals: {
-//     ipfs: Pick<IpfsType, 'title' | 'id' | 'originalHash' | 'shortDescription'>;
-//     proposal: CustomProposalType;
-//     prerendered: boolean;
-//   }[];
-// };
-
-export default function Governance(/*props: GovernancePageProps*/) {
-  // const { breakpoints } = useTheme();
-  // const isMobile = useMediaQuery(breakpoints.down('lg'));
-  // const [mode, setMode] = useState(Tabs.INFORMATION);
+export default function Governance(props: GovernancePageProps) {
+  const [queryParams, setQueryParams] = useState({});
+  const { breakpoints } = useTheme();
+  const isMobile = useMediaQuery(breakpoints.down('lg'));
+  const [mode, setMode] = useState(Tabs.INFORMATION);
   const trackEvent = useRootStore((store) => store.trackEvent);
 
   useEffect(() => {
@@ -63,7 +66,7 @@ export default function Governance(/*props: GovernancePageProps*/) {
     <>
       <GovernanceTopPanel />
       <ContentContainer>
-        {/* <StyledToggleButtonGroup
+        <StyledToggleButtonGroup
           color="primary"
           value={mode}
           exclusive
@@ -77,19 +80,19 @@ export default function Governance(/*props: GovernancePageProps*/) {
         >
           <StyledToggleButton value={Tabs.INFORMATION} disabled={mode === Tabs.INFORMATION}>
             <Typography variant="subheader1">
-              <Trans>Your info</Trans>
+              <Trans id={''}>Your info</Trans>
             </Typography>
           </StyledToggleButton>
         </StyledToggleButtonGroup>
         {isMobile ? (
           <UserGovernanceInfo />
-        ) : ( */}
-        <Grid container spacing={6}>
-          {/* <Grid item md={4}> */}
-          <UserGovernanceInfo />
-          {/* </Grid> */}
-        </Grid>
-        {/* )} */}
+        ) : (
+          <Grid container spacing={6}>
+            {/* <Grid item md={4}> */}
+            <UserGovernanceInfo />
+            {/* </Grid> */}
+          </Grid>
+        )}
       </ContentContainer>
     </>
   );
