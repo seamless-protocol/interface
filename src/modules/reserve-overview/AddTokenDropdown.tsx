@@ -18,6 +18,7 @@ interface AddTokenDropdownProps {
   currentChainId: number;
   connectedChainId: number;
   hideSToken?: boolean;
+  isReward?: boolean;
 }
 
 export const AddTokenDropdown = ({
@@ -28,6 +29,7 @@ export const AddTokenDropdown = ({
   currentChainId,
   connectedChainId,
   hideSToken,
+  isReward,
 }: AddTokenDropdownProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [changingNetwork, setChangingNetwork] = useState(false);
@@ -124,7 +126,7 @@ export const AddTokenDropdown = ({
       >
         <Box sx={{ px: 4, pt: 3, pb: 2 }}>
           <Typography variant="secondary12" color="text.secondary">
-            <Trans>Underlying token</Trans>
+            <Trans>{isReward ? "Reward token" : "Underlying token"}</Trans>
           </Typography>
         </Box>
 

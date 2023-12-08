@@ -53,10 +53,7 @@ export const IncentivesTooltipContent = ({
       <Typography variant="caption" color="text.secondary" mb={3}>
         <Trans>
           Participating in this {symbol} reserve gives annualized rewards. APY refers solely to the
-          annualized rate of earning OG Points for your participation in the Seamless ecosystem. OG
-          Points have no monetary value, cannot be traded or transferred among holders, and cannot
-          be exchanged for cash or any other type of monetary value. No other rewards are offered
-          hereby.
+          annualized rate of earning reward tokens for your participation in the Seamless ecosystem.
         </Trans>
       </Typography>
 
