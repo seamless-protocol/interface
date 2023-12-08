@@ -9,7 +9,7 @@ import { TextWithTooltip } from 'src/components/TextWithTooltip';
 import { UserDisplay } from 'src/components/UserDisplay';
 import { useGovernanceTokens } from 'src/hooks/governance/useGovernanceTokens';
 import { usePowers } from 'src/hooks/governance/usePowers';
-//import { useVestedEsSEAM } from 'src/hooks/governance/useVestedEsSEAM';
+// import { useVestedEsSEAM } from 'src/hooks/governance/useVestedEsSEAM';
 import { useModalContext } from 'src/hooks/useModal';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 import { GENERAL } from 'src/utils/mixPanelEvents';

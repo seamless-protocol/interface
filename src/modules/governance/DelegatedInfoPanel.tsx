@@ -128,7 +128,7 @@ export const DelegatedInfoPanel = () => {
 
   return (
     <Paper>
-      <Box sx={{ px: 6, pb: 6, pt: 4 }}>
+      <Box sx={{ px: 6, pb: 4, pt: 4 }}>
         <Typography typography="h3">
           <Trans>Delegated power</Trans>
         </Typography>
@@ -157,7 +157,7 @@ export const DelegatedInfoPanel = () => {
         )}
       </Box>
       <Divider />
-      <Box sx={{ p: 6, display: 'flex', flexDirection: 'column', gap: 2 }}>
+      <Box sx={{ py: 4, px: 6, display: 'flex', flexDirection: 'column', gap: 2 }}>
         <Button
           size="large"
           sx={{ width: '100%' }}

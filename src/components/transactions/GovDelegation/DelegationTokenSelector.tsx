@@ -74,7 +74,7 @@ export const DelegationTokenSelector = ({
   filter,
 }: DelegationTokenSelectorProps) => {
   const {
-    data: { seam, esSEAM },
+    data: { seam, /*esSEAM*/ },
   } = useGovernanceTokens();
 
   const filteredTokens = filter ? filterTokens(delegationTokens) : delegationTokens;
