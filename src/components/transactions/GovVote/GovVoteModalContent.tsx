@@ -6,7 +6,6 @@ import {
   Radio,
   RadioGroup,
   TextField,
-  Typography,
 } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
