@@ -51,7 +51,7 @@ export enum ProposalState {
   Succeeded,
   Queued,
   Expired,
-  Executed
+  Executed,
 }
 
 export class GovernanceService implements Hashable {

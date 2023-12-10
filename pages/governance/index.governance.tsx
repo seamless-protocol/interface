@@ -1,10 +1,14 @@
 // import { Trans } from '@lingui/macro';
 import { Grid } from '@mui/material';
+import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 // import StyledToggleButton from 'src/components/StyledToggleButton';
 // import StyledToggleButtonGroup from 'src/components/StyledToggleButtonGroup';
 import { GovDelegationModal } from 'src/components/transactions/GovDelegation/GovDelegationModal';
+import { GovVoteModal } from 'src/components/transactions/GovVote/GovVoteModal';
+import { useModalContext } from 'src/hooks/useModal';
 import { MainLayout } from 'src/layouts/MainLayout';
+import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 import { GovernanceTopPanel } from 'src/modules/governance/GovernanceTopPanel';
 import { UserGovernanceInfo } from 'src/modules/governance/UserGovernanceInfo';
 //import { Ipfs, IpfsType } from 'src/static-build/ipfs';
@@ -52,6 +56,19 @@ export default function Governance(/*props: GovernancePageProps*/) {
   // const { breakpoints } = useTheme();
   // const isMobile = useMediaQuery(breakpoints.down('lg'));
   // const [mode, setMode] = useState(Tabs.INFORMATION);
+  const { query } = useRouter();
+  const { openGovVote } = useModalContext();
+  const { connected } = useWeb3Context();
+
+  const proposalId = query['proposalId']?.[0];
+  const governorAddress = query['governorAddress']?.[0];
+
+  useEffect(() => {
+    if (connected && proposalId && proposalId !== '' && governorAddress && governorAddress !== '') {
+      openGovVote();
+    }
+  }, [proposalId, governorAddress]);
+
   const trackEvent = useRootStore((store) => store.trackEvent);
 
   useEffect(() => {
@@ -100,6 +117,7 @@ Governance.getLayout = function getLayout(page: React.ReactElement) {
     <MainLayout>
       {page}
       <GovDelegationModal />
+      <GovVoteModal />
     </MainLayout>
   );
 };

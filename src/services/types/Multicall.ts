@@ -12,15 +12,10 @@ import type {
   PopulatedTransaction,
   Signer,
   utils,
-} from "ethers";
-import type { FunctionFragment, Result } from "@ethersproject/abi";
-import type { Listener, Provider } from "@ethersproject/providers";
-import type {
-  TypedEventFilter,
-  TypedEvent,
-  TypedListener,
-  OnEvent,
-} from "./common";
+} from 'ethers';
+import type { FunctionFragment, Result } from '@ethersproject/abi';
+import type { Listener, Provider } from '@ethersproject/providers';
+import type { TypedEventFilter, TypedEvent, TypedListener, OnEvent } from './common';
 
 export declare namespace Multicall3 {
   export type CallStruct = { target: string; callData: BytesLike };
@@ -66,161 +61,89 @@ export declare namespace Multicall3 {
 
 export interface MulticallInterface extends utils.Interface {
   functions: {
-    "aggregate((address,bytes)[])": FunctionFragment;
-    "aggregate3((address,bool,bytes)[])": FunctionFragment;
-    "aggregate3Value((address,bool,uint256,bytes)[])": FunctionFragment;
-    "blockAndAggregate((address,bytes)[])": FunctionFragment;
-    "getBasefee()": FunctionFragment;
-    "getBlockHash(uint256)": FunctionFragment;
-    "getBlockNumber()": FunctionFragment;
-    "getChainId()": FunctionFragment;
-    "getCurrentBlockCoinbase()": FunctionFragment;
-    "getCurrentBlockDifficulty()": FunctionFragment;
-    "getCurrentBlockGasLimit()": FunctionFragment;
-    "getCurrentBlockTimestamp()": FunctionFragment;
-    "getEthBalance(address)": FunctionFragment;
-    "getLastBlockHash()": FunctionFragment;
-    "tryAggregate(bool,(address,bytes)[])": FunctionFragment;
-    "tryBlockAndAggregate(bool,(address,bytes)[])": FunctionFragment;
+    'aggregate((address,bytes)[])': FunctionFragment;
+    'aggregate3((address,bool,bytes)[])': FunctionFragment;
+    'aggregate3Value((address,bool,uint256,bytes)[])': FunctionFragment;
+    'blockAndAggregate((address,bytes)[])': FunctionFragment;
+    'getBasefee()': FunctionFragment;
+    'getBlockHash(uint256)': FunctionFragment;
+    'getBlockNumber()': FunctionFragment;
+    'getChainId()': FunctionFragment;
+    'getCurrentBlockCoinbase()': FunctionFragment;
+    'getCurrentBlockDifficulty()': FunctionFragment;
+    'getCurrentBlockGasLimit()': FunctionFragment;
+    'getCurrentBlockTimestamp()': FunctionFragment;
+    'getEthBalance(address)': FunctionFragment;
+    'getLastBlockHash()': FunctionFragment;
+    'tryAggregate(bool,(address,bytes)[])': FunctionFragment;
+    'tryBlockAndAggregate(bool,(address,bytes)[])': FunctionFragment;
   };
 
   getFunction(
     nameOrSignatureOrTopic:
-      | "aggregate"
-      | "aggregate3"
-      | "aggregate3Value"
-      | "blockAndAggregate"
-      | "getBasefee"
-      | "getBlockHash"
-      | "getBlockNumber"
-      | "getChainId"
-      | "getCurrentBlockCoinbase"
-      | "getCurrentBlockDifficulty"
-      | "getCurrentBlockGasLimit"
-      | "getCurrentBlockTimestamp"
-      | "getEthBalance"
-      | "getLastBlockHash"
-      | "tryAggregate"
-      | "tryBlockAndAggregate"
+      | 'aggregate'
+      | 'aggregate3'
+      | 'aggregate3Value'
+      | 'blockAndAggregate'
+      | 'getBasefee'
+      | 'getBlockHash'
+      | 'getBlockNumber'
+      | 'getChainId'
+      | 'getCurrentBlockCoinbase'
+      | 'getCurrentBlockDifficulty'
+      | 'getCurrentBlockGasLimit'
+      | 'getCurrentBlockTimestamp'
+      | 'getEthBalance'
+      | 'getLastBlockHash'
+      | 'tryAggregate'
+      | 'tryBlockAndAggregate'
   ): FunctionFragment;
 
+  encodeFunctionData(functionFragment: 'aggregate', values: [Multicall3.CallStruct[]]): string;
+  encodeFunctionData(functionFragment: 'aggregate3', values: [Multicall3.Call3Struct[]]): string;
   encodeFunctionData(
-    functionFragment: "aggregate",
-    values: [Multicall3.CallStruct[]]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "aggregate3",
-    values: [Multicall3.Call3Struct[]]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "aggregate3Value",
+    functionFragment: 'aggregate3Value',
     values: [Multicall3.Call3ValueStruct[]]
   ): string;
   encodeFunctionData(
-    functionFragment: "blockAndAggregate",
+    functionFragment: 'blockAndAggregate',
     values: [Multicall3.CallStruct[]]
   ): string;
+  encodeFunctionData(functionFragment: 'getBasefee', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'getBlockHash', values: [BigNumberish]): string;
+  encodeFunctionData(functionFragment: 'getBlockNumber', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'getChainId', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'getCurrentBlockCoinbase', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'getCurrentBlockDifficulty', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'getCurrentBlockGasLimit', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'getCurrentBlockTimestamp', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'getEthBalance', values: [string]): string;
+  encodeFunctionData(functionFragment: 'getLastBlockHash', values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "getBasefee",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getBlockHash",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getBlockNumber",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getChainId",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getCurrentBlockCoinbase",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getCurrentBlockDifficulty",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getCurrentBlockGasLimit",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getCurrentBlockTimestamp",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getEthBalance",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getLastBlockHash",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "tryAggregate",
+    functionFragment: 'tryAggregate',
     values: [boolean, Multicall3.CallStruct[]]
   ): string;
   encodeFunctionData(
-    functionFragment: "tryBlockAndAggregate",
+    functionFragment: 'tryBlockAndAggregate',
     values: [boolean, Multicall3.CallStruct[]]
   ): string;
 
-  decodeFunctionResult(functionFragment: "aggregate", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "aggregate3", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "aggregate3Value",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "blockAndAggregate",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "getBasefee", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getBlockHash",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getBlockNumber",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "getChainId", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getCurrentBlockCoinbase",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getCurrentBlockDifficulty",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getCurrentBlockGasLimit",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getCurrentBlockTimestamp",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getEthBalance",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getLastBlockHash",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "tryAggregate",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "tryBlockAndAggregate",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: 'aggregate', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'aggregate3', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'aggregate3Value', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'blockAndAggregate', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'getBasefee', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'getBlockHash', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'getBlockNumber', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'getChainId', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'getCurrentBlockCoinbase', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'getCurrentBlockDifficulty', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'getCurrentBlockGasLimit', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'getCurrentBlockTimestamp', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'getEthBalance', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'getLastBlockHash', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'tryAggregate', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'tryBlockAndAggregate', data: BytesLike): Result;
 
   events: {};
 }
@@ -242,9 +165,7 @@ export interface Multicall extends BaseContract {
     eventFilter?: TypedEventFilter<TEvent>
   ): Array<TypedListener<TEvent>>;
   listeners(eventName?: string): Array<Listener>;
-  removeAllListeners<TEvent extends TypedEvent>(
-    eventFilter: TypedEventFilter<TEvent>
-  ): this;
+  removeAllListeners<TEvent extends TypedEvent>(eventFilter: TypedEventFilter<TEvent>): this;
   removeAllListeners(eventName?: string): this;
   off: OnEvent<this>;
   on: OnEvent<this>;
@@ -272,26 +193,18 @@ export interface Multicall extends BaseContract {
       overrides?: PayableOverrides & { from?: string }
     ): Promise<ContractTransaction>;
 
-    getBasefee(
-      overrides?: CallOverrides
-    ): Promise<[BigNumber] & { basefee: BigNumber }>;
+    getBasefee(overrides?: CallOverrides): Promise<[BigNumber] & { basefee: BigNumber }>;
 
     getBlockHash(
       blockNumber: BigNumberish,
       overrides?: CallOverrides
     ): Promise<[string] & { blockHash: string }>;
 
-    getBlockNumber(
-      overrides?: CallOverrides
-    ): Promise<[BigNumber] & { blockNumber: BigNumber }>;
+    getBlockNumber(overrides?: CallOverrides): Promise<[BigNumber] & { blockNumber: BigNumber }>;
 
-    getChainId(
-      overrides?: CallOverrides
-    ): Promise<[BigNumber] & { chainid: BigNumber }>;
+    getChainId(overrides?: CallOverrides): Promise<[BigNumber] & { chainid: BigNumber }>;
 
-    getCurrentBlockCoinbase(
-      overrides?: CallOverrides
-    ): Promise<[string] & { coinbase: string }>;
+    getCurrentBlockCoinbase(overrides?: CallOverrides): Promise<[string] & { coinbase: string }>;
 
     getCurrentBlockDifficulty(
       overrides?: CallOverrides
@@ -310,9 +223,7 @@ export interface Multicall extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[BigNumber] & { balance: BigNumber }>;
 
-    getLastBlockHash(
-      overrides?: CallOverrides
-    ): Promise<[string] & { blockHash: string }>;
+    getLastBlockHash(overrides?: CallOverrides): Promise<[string] & { blockHash: string }>;
 
     tryAggregate(
       requireSuccess: boolean,
@@ -349,10 +260,7 @@ export interface Multicall extends BaseContract {
 
   getBasefee(overrides?: CallOverrides): Promise<BigNumber>;
 
-  getBlockHash(
-    blockNumber: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<string>;
+  getBlockHash(blockNumber: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
   getBlockNumber(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -386,9 +294,7 @@ export interface Multicall extends BaseContract {
     aggregate(
       calls: Multicall3.CallStruct[],
       overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, string[]] & { blockNumber: BigNumber; returnData: string[] }
-    >;
+    ): Promise<[BigNumber, string[]] & { blockNumber: BigNumber; returnData: string[] }>;
 
     aggregate3(
       calls: Multicall3.Call3Struct[],
@@ -413,10 +319,7 @@ export interface Multicall extends BaseContract {
 
     getBasefee(overrides?: CallOverrides): Promise<BigNumber>;
 
-    getBlockHash(
-      blockNumber: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<string>;
+    getBlockHash(blockNumber: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
     getBlockNumber(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -478,10 +381,7 @@ export interface Multicall extends BaseContract {
 
     getBasefee(overrides?: CallOverrides): Promise<BigNumber>;
 
-    getBlockHash(
-      blockNumber: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getBlockHash(blockNumber: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
     getBlockNumber(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -544,26 +444,15 @@ export interface Multicall extends BaseContract {
 
     getChainId(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    getCurrentBlockCoinbase(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getCurrentBlockCoinbase(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    getCurrentBlockDifficulty(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getCurrentBlockDifficulty(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    getCurrentBlockGasLimit(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getCurrentBlockGasLimit(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    getCurrentBlockTimestamp(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getCurrentBlockTimestamp(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    getEthBalance(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getEthBalance(addr: string, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     getLastBlockHash(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 

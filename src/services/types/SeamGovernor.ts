@@ -13,19 +13,10 @@ import type {
   PopulatedTransaction,
   Signer,
   utils,
-} from "ethers";
-import type {
-  FunctionFragment,
-  Result,
-  EventFragment,
-} from "@ethersproject/abi";
-import type { Listener, Provider } from "@ethersproject/providers";
-import type {
-  TypedEventFilter,
-  TypedEvent,
-  TypedListener,
-  OnEvent,
-} from "./common";
+} from 'ethers';
+import type { FunctionFragment, Result, EventFragment } from '@ethersproject/abi';
+import type { Listener, Provider } from '@ethersproject/providers';
+import type { TypedEventFilter, TypedEvent, TypedListener, OnEvent } from './common';
 
 export declare namespace SeamGovernor {
   export type InitParamsStruct = {
@@ -68,637 +59,372 @@ export declare namespace SeamGovernor {
 
 export interface SeamGovernorInterface extends utils.Interface {
   functions: {
-    "BALLOT_TYPEHASH()": FunctionFragment;
-    "CLOCK_MODE()": FunctionFragment;
-    "COUNTING_MODE()": FunctionFragment;
-    "EXTENDED_BALLOT_TYPEHASH()": FunctionFragment;
-    "UPGRADE_INTERFACE_VERSION()": FunctionFragment;
-    "cancel(uint256)": FunctionFragment;
-    "cancel(address[],uint256[],bytes[],bytes32)": FunctionFragment;
-    "castVote(uint256,uint8)": FunctionFragment;
-    "castVoteBySig(uint256,uint8,address,bytes)": FunctionFragment;
-    "castVoteWithReason(uint256,uint8,string)": FunctionFragment;
-    "castVoteWithReasonAndParams(uint256,uint8,string,bytes)": FunctionFragment;
-    "castVoteWithReasonAndParamsBySig(uint256,uint8,address,string,bytes,bytes)": FunctionFragment;
-    "clock()": FunctionFragment;
-    "eip712Domain()": FunctionFragment;
-    "execute(address[],uint256[],bytes[],bytes32)": FunctionFragment;
-    "execute(uint256)": FunctionFragment;
-    "getVotes(address,uint256)": FunctionFragment;
-    "getVotesWithParams(address,uint256,bytes)": FunctionFragment;
-    "hasVoted(uint256,address)": FunctionFragment;
-    "hashProposal(address[],uint256[],bytes[],bytes32)": FunctionFragment;
-    "initialize((string,uint48,uint32,uint256,uint256,uint256,address,address,address,address))": FunctionFragment;
-    "name()": FunctionFragment;
-    "nonces(address)": FunctionFragment;
-    "onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)": FunctionFragment;
-    "onERC1155Received(address,address,uint256,uint256,bytes)": FunctionFragment;
-    "onERC721Received(address,address,uint256,bytes)": FunctionFragment;
-    "owner()": FunctionFragment;
-    "proposalCount()": FunctionFragment;
-    "proposalDeadline(uint256)": FunctionFragment;
-    "proposalDetails(uint256)": FunctionFragment;
-    "proposalDetailsAt(uint256)": FunctionFragment;
-    "proposalEta(uint256)": FunctionFragment;
-    "proposalNeedsQueuing(uint256)": FunctionFragment;
-    "proposalProposer(uint256)": FunctionFragment;
-    "proposalSnapshot(uint256)": FunctionFragment;
-    "proposalThreshold()": FunctionFragment;
-    "proposalVotes(uint256)": FunctionFragment;
-    "propose(address[],uint256[],bytes[],string)": FunctionFragment;
-    "proxiableUUID()": FunctionFragment;
-    "queue(address[],uint256[],bytes[],bytes32)": FunctionFragment;
-    "queue(uint256)": FunctionFragment;
-    "quorum(uint256)": FunctionFragment;
-    "quorumDenominator()": FunctionFragment;
-    "quorumNumerator(uint256)": FunctionFragment;
-    "quorumNumerator()": FunctionFragment;
-    "relay(address,uint256,bytes)": FunctionFragment;
-    "renounceOwnership()": FunctionFragment;
-    "setProposalThreshold(uint256)": FunctionFragment;
-    "setVotingDelay(uint48)": FunctionFragment;
-    "setVotingPeriod(uint32)": FunctionFragment;
-    "state(uint256)": FunctionFragment;
-    "supportsInterface(bytes4)": FunctionFragment;
-    "timelock()": FunctionFragment;
-    "token()": FunctionFragment;
-    "transferOwnership(address)": FunctionFragment;
-    "updateQuorumNumerator(uint256)": FunctionFragment;
-    "updateTimelock(address)": FunctionFragment;
-    "updateVoteCountNumerator(uint256)": FunctionFragment;
-    "upgradeToAndCall(address,bytes)": FunctionFragment;
-    "version()": FunctionFragment;
-    "voteCountDenominator()": FunctionFragment;
-    "voteCountNumerator()": FunctionFragment;
-    "voteCountNumerator(uint256)": FunctionFragment;
-    "votingDelay()": FunctionFragment;
-    "votingPeriod()": FunctionFragment;
+    'BALLOT_TYPEHASH()': FunctionFragment;
+    'CLOCK_MODE()': FunctionFragment;
+    'COUNTING_MODE()': FunctionFragment;
+    'EXTENDED_BALLOT_TYPEHASH()': FunctionFragment;
+    'UPGRADE_INTERFACE_VERSION()': FunctionFragment;
+    'cancel(uint256)': FunctionFragment;
+    'cancel(address[],uint256[],bytes[],bytes32)': FunctionFragment;
+    'castVote(uint256,uint8)': FunctionFragment;
+    'castVoteBySig(uint256,uint8,address,bytes)': FunctionFragment;
+    'castVoteWithReason(uint256,uint8,string)': FunctionFragment;
+    'castVoteWithReasonAndParams(uint256,uint8,string,bytes)': FunctionFragment;
+    'castVoteWithReasonAndParamsBySig(uint256,uint8,address,string,bytes,bytes)': FunctionFragment;
+    'clock()': FunctionFragment;
+    'eip712Domain()': FunctionFragment;
+    'execute(address[],uint256[],bytes[],bytes32)': FunctionFragment;
+    'execute(uint256)': FunctionFragment;
+    'getVotes(address,uint256)': FunctionFragment;
+    'getVotesWithParams(address,uint256,bytes)': FunctionFragment;
+    'hasVoted(uint256,address)': FunctionFragment;
+    'hashProposal(address[],uint256[],bytes[],bytes32)': FunctionFragment;
+    'initialize((string,uint48,uint32,uint256,uint256,uint256,address,address,address,address))': FunctionFragment;
+    'name()': FunctionFragment;
+    'nonces(address)': FunctionFragment;
+    'onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)': FunctionFragment;
+    'onERC1155Received(address,address,uint256,uint256,bytes)': FunctionFragment;
+    'onERC721Received(address,address,uint256,bytes)': FunctionFragment;
+    'owner()': FunctionFragment;
+    'proposalCount()': FunctionFragment;
+    'proposalDeadline(uint256)': FunctionFragment;
+    'proposalDetails(uint256)': FunctionFragment;
+    'proposalDetailsAt(uint256)': FunctionFragment;
+    'proposalEta(uint256)': FunctionFragment;
+    'proposalNeedsQueuing(uint256)': FunctionFragment;
+    'proposalProposer(uint256)': FunctionFragment;
+    'proposalSnapshot(uint256)': FunctionFragment;
+    'proposalThreshold()': FunctionFragment;
+    'proposalVotes(uint256)': FunctionFragment;
+    'propose(address[],uint256[],bytes[],string)': FunctionFragment;
+    'proxiableUUID()': FunctionFragment;
+    'queue(address[],uint256[],bytes[],bytes32)': FunctionFragment;
+    'queue(uint256)': FunctionFragment;
+    'quorum(uint256)': FunctionFragment;
+    'quorumDenominator()': FunctionFragment;
+    'quorumNumerator(uint256)': FunctionFragment;
+    'quorumNumerator()': FunctionFragment;
+    'relay(address,uint256,bytes)': FunctionFragment;
+    'renounceOwnership()': FunctionFragment;
+    'setProposalThreshold(uint256)': FunctionFragment;
+    'setVotingDelay(uint48)': FunctionFragment;
+    'setVotingPeriod(uint32)': FunctionFragment;
+    'state(uint256)': FunctionFragment;
+    'supportsInterface(bytes4)': FunctionFragment;
+    'timelock()': FunctionFragment;
+    'token()': FunctionFragment;
+    'transferOwnership(address)': FunctionFragment;
+    'updateQuorumNumerator(uint256)': FunctionFragment;
+    'updateTimelock(address)': FunctionFragment;
+    'updateVoteCountNumerator(uint256)': FunctionFragment;
+    'upgradeToAndCall(address,bytes)': FunctionFragment;
+    'version()': FunctionFragment;
+    'voteCountDenominator()': FunctionFragment;
+    'voteCountNumerator()': FunctionFragment;
+    'voteCountNumerator(uint256)': FunctionFragment;
+    'votingDelay()': FunctionFragment;
+    'votingPeriod()': FunctionFragment;
   };
 
   getFunction(
     nameOrSignatureOrTopic:
-      | "BALLOT_TYPEHASH"
-      | "CLOCK_MODE"
-      | "COUNTING_MODE"
-      | "EXTENDED_BALLOT_TYPEHASH"
-      | "UPGRADE_INTERFACE_VERSION"
-      | "cancel(uint256)"
-      | "cancel(address[],uint256[],bytes[],bytes32)"
-      | "castVote"
-      | "castVoteBySig"
-      | "castVoteWithReason"
-      | "castVoteWithReasonAndParams"
-      | "castVoteWithReasonAndParamsBySig"
-      | "clock"
-      | "eip712Domain"
-      | "execute(address[],uint256[],bytes[],bytes32)"
-      | "execute(uint256)"
-      | "getVotes"
-      | "getVotesWithParams"
-      | "hasVoted"
-      | "hashProposal"
-      | "initialize"
-      | "name"
-      | "nonces"
-      | "onERC1155BatchReceived"
-      | "onERC1155Received"
-      | "onERC721Received"
-      | "owner"
-      | "proposalCount"
-      | "proposalDeadline"
-      | "proposalDetails"
-      | "proposalDetailsAt"
-      | "proposalEta"
-      | "proposalNeedsQueuing"
-      | "proposalProposer"
-      | "proposalSnapshot"
-      | "proposalThreshold"
-      | "proposalVotes"
-      | "propose"
-      | "proxiableUUID"
-      | "queue(address[],uint256[],bytes[],bytes32)"
-      | "queue(uint256)"
-      | "quorum"
-      | "quorumDenominator"
-      | "quorumNumerator(uint256)"
-      | "quorumNumerator()"
-      | "relay"
-      | "renounceOwnership"
-      | "setProposalThreshold"
-      | "setVotingDelay"
-      | "setVotingPeriod"
-      | "state"
-      | "supportsInterface"
-      | "timelock"
-      | "token"
-      | "transferOwnership"
-      | "updateQuorumNumerator"
-      | "updateTimelock"
-      | "updateVoteCountNumerator"
-      | "upgradeToAndCall"
-      | "version"
-      | "voteCountDenominator"
-      | "voteCountNumerator()"
-      | "voteCountNumerator(uint256)"
-      | "votingDelay"
-      | "votingPeriod"
+      | 'BALLOT_TYPEHASH'
+      | 'CLOCK_MODE'
+      | 'COUNTING_MODE'
+      | 'EXTENDED_BALLOT_TYPEHASH'
+      | 'UPGRADE_INTERFACE_VERSION'
+      | 'cancel(uint256)'
+      | 'cancel(address[],uint256[],bytes[],bytes32)'
+      | 'castVote'
+      | 'castVoteBySig'
+      | 'castVoteWithReason'
+      | 'castVoteWithReasonAndParams'
+      | 'castVoteWithReasonAndParamsBySig'
+      | 'clock'
+      | 'eip712Domain'
+      | 'execute(address[],uint256[],bytes[],bytes32)'
+      | 'execute(uint256)'
+      | 'getVotes'
+      | 'getVotesWithParams'
+      | 'hasVoted'
+      | 'hashProposal'
+      | 'initialize'
+      | 'name'
+      | 'nonces'
+      | 'onERC1155BatchReceived'
+      | 'onERC1155Received'
+      | 'onERC721Received'
+      | 'owner'
+      | 'proposalCount'
+      | 'proposalDeadline'
+      | 'proposalDetails'
+      | 'proposalDetailsAt'
+      | 'proposalEta'
+      | 'proposalNeedsQueuing'
+      | 'proposalProposer'
+      | 'proposalSnapshot'
+      | 'proposalThreshold'
+      | 'proposalVotes'
+      | 'propose'
+      | 'proxiableUUID'
+      | 'queue(address[],uint256[],bytes[],bytes32)'
+      | 'queue(uint256)'
+      | 'quorum'
+      | 'quorumDenominator'
+      | 'quorumNumerator(uint256)'
+      | 'quorumNumerator()'
+      | 'relay'
+      | 'renounceOwnership'
+      | 'setProposalThreshold'
+      | 'setVotingDelay'
+      | 'setVotingPeriod'
+      | 'state'
+      | 'supportsInterface'
+      | 'timelock'
+      | 'token'
+      | 'transferOwnership'
+      | 'updateQuorumNumerator'
+      | 'updateTimelock'
+      | 'updateVoteCountNumerator'
+      | 'upgradeToAndCall'
+      | 'version'
+      | 'voteCountDenominator'
+      | 'voteCountNumerator()'
+      | 'voteCountNumerator(uint256)'
+      | 'votingDelay'
+      | 'votingPeriod'
   ): FunctionFragment;
 
+  encodeFunctionData(functionFragment: 'BALLOT_TYPEHASH', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'CLOCK_MODE', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'COUNTING_MODE', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'EXTENDED_BALLOT_TYPEHASH', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'UPGRADE_INTERFACE_VERSION', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'cancel(uint256)', values: [BigNumberish]): string;
   encodeFunctionData(
-    functionFragment: "BALLOT_TYPEHASH",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "CLOCK_MODE",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "COUNTING_MODE",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "EXTENDED_BALLOT_TYPEHASH",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "UPGRADE_INTERFACE_VERSION",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "cancel(uint256)",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "cancel(address[],uint256[],bytes[],bytes32)",
+    functionFragment: 'cancel(address[],uint256[],bytes[],bytes32)',
     values: [string[], BigNumberish[], BytesLike[], BytesLike]
   ): string;
+  encodeFunctionData(functionFragment: 'castVote', values: [BigNumberish, BigNumberish]): string;
   encodeFunctionData(
-    functionFragment: "castVote",
-    values: [BigNumberish, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "castVoteBySig",
+    functionFragment: 'castVoteBySig',
     values: [BigNumberish, BigNumberish, string, BytesLike]
   ): string;
   encodeFunctionData(
-    functionFragment: "castVoteWithReason",
+    functionFragment: 'castVoteWithReason',
     values: [BigNumberish, BigNumberish, string]
   ): string;
   encodeFunctionData(
-    functionFragment: "castVoteWithReasonAndParams",
+    functionFragment: 'castVoteWithReasonAndParams',
     values: [BigNumberish, BigNumberish, string, BytesLike]
   ): string;
   encodeFunctionData(
-    functionFragment: "castVoteWithReasonAndParamsBySig",
+    functionFragment: 'castVoteWithReasonAndParamsBySig',
     values: [BigNumberish, BigNumberish, string, string, BytesLike, BytesLike]
   ): string;
-  encodeFunctionData(functionFragment: "clock", values?: undefined): string;
+  encodeFunctionData(functionFragment: 'clock', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'eip712Domain', values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "eip712Domain",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "execute(address[],uint256[],bytes[],bytes32)",
+    functionFragment: 'execute(address[],uint256[],bytes[],bytes32)',
     values: [string[], BigNumberish[], BytesLike[], BytesLike]
   ): string;
+  encodeFunctionData(functionFragment: 'execute(uint256)', values: [BigNumberish]): string;
+  encodeFunctionData(functionFragment: 'getVotes', values: [string, BigNumberish]): string;
   encodeFunctionData(
-    functionFragment: "execute(uint256)",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getVotes",
-    values: [string, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getVotesWithParams",
+    functionFragment: 'getVotesWithParams',
     values: [string, BigNumberish, BytesLike]
   ): string;
+  encodeFunctionData(functionFragment: 'hasVoted', values: [BigNumberish, string]): string;
   encodeFunctionData(
-    functionFragment: "hasVoted",
-    values: [BigNumberish, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "hashProposal",
+    functionFragment: 'hashProposal',
     values: [string[], BigNumberish[], BytesLike[], BytesLike]
   ): string;
   encodeFunctionData(
-    functionFragment: "initialize",
+    functionFragment: 'initialize',
     values: [SeamGovernor.InitParamsStruct]
   ): string;
-  encodeFunctionData(functionFragment: "name", values?: undefined): string;
-  encodeFunctionData(functionFragment: "nonces", values: [string]): string;
+  encodeFunctionData(functionFragment: 'name', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'nonces', values: [string]): string;
   encodeFunctionData(
-    functionFragment: "onERC1155BatchReceived",
+    functionFragment: 'onERC1155BatchReceived',
     values: [string, string, BigNumberish[], BigNumberish[], BytesLike]
   ): string;
   encodeFunctionData(
-    functionFragment: "onERC1155Received",
+    functionFragment: 'onERC1155Received',
     values: [string, string, BigNumberish, BigNumberish, BytesLike]
   ): string;
   encodeFunctionData(
-    functionFragment: "onERC721Received",
+    functionFragment: 'onERC721Received',
     values: [string, string, BigNumberish, BytesLike]
   ): string;
-  encodeFunctionData(functionFragment: "owner", values?: undefined): string;
+  encodeFunctionData(functionFragment: 'owner', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'proposalCount', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'proposalDeadline', values: [BigNumberish]): string;
+  encodeFunctionData(functionFragment: 'proposalDetails', values: [BigNumberish]): string;
+  encodeFunctionData(functionFragment: 'proposalDetailsAt', values: [BigNumberish]): string;
+  encodeFunctionData(functionFragment: 'proposalEta', values: [BigNumberish]): string;
+  encodeFunctionData(functionFragment: 'proposalNeedsQueuing', values: [BigNumberish]): string;
+  encodeFunctionData(functionFragment: 'proposalProposer', values: [BigNumberish]): string;
+  encodeFunctionData(functionFragment: 'proposalSnapshot', values: [BigNumberish]): string;
+  encodeFunctionData(functionFragment: 'proposalThreshold', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'proposalVotes', values: [BigNumberish]): string;
   encodeFunctionData(
-    functionFragment: "proposalCount",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "proposalDeadline",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "proposalDetails",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "proposalDetailsAt",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "proposalEta",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "proposalNeedsQueuing",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "proposalProposer",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "proposalSnapshot",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "proposalThreshold",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "proposalVotes",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "propose",
+    functionFragment: 'propose',
     values: [string[], BigNumberish[], BytesLike[], string]
   ): string;
+  encodeFunctionData(functionFragment: 'proxiableUUID', values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "proxiableUUID",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "queue(address[],uint256[],bytes[],bytes32)",
+    functionFragment: 'queue(address[],uint256[],bytes[],bytes32)',
     values: [string[], BigNumberish[], BytesLike[], BytesLike]
   ): string;
+  encodeFunctionData(functionFragment: 'queue(uint256)', values: [BigNumberish]): string;
+  encodeFunctionData(functionFragment: 'quorum', values: [BigNumberish]): string;
+  encodeFunctionData(functionFragment: 'quorumDenominator', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'quorumNumerator(uint256)', values: [BigNumberish]): string;
+  encodeFunctionData(functionFragment: 'quorumNumerator()', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'relay', values: [string, BigNumberish, BytesLike]): string;
+  encodeFunctionData(functionFragment: 'renounceOwnership', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'setProposalThreshold', values: [BigNumberish]): string;
+  encodeFunctionData(functionFragment: 'setVotingDelay', values: [BigNumberish]): string;
+  encodeFunctionData(functionFragment: 'setVotingPeriod', values: [BigNumberish]): string;
+  encodeFunctionData(functionFragment: 'state', values: [BigNumberish]): string;
+  encodeFunctionData(functionFragment: 'supportsInterface', values: [BytesLike]): string;
+  encodeFunctionData(functionFragment: 'timelock', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'token', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'transferOwnership', values: [string]): string;
+  encodeFunctionData(functionFragment: 'updateQuorumNumerator', values: [BigNumberish]): string;
+  encodeFunctionData(functionFragment: 'updateTimelock', values: [string]): string;
+  encodeFunctionData(functionFragment: 'updateVoteCountNumerator', values: [BigNumberish]): string;
+  encodeFunctionData(functionFragment: 'upgradeToAndCall', values: [string, BytesLike]): string;
+  encodeFunctionData(functionFragment: 'version', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'voteCountDenominator', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'voteCountNumerator()', values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "queue(uint256)",
+    functionFragment: 'voteCountNumerator(uint256)',
     values: [BigNumberish]
   ): string;
-  encodeFunctionData(
-    functionFragment: "quorum",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "quorumDenominator",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "quorumNumerator(uint256)",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "quorumNumerator()",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "relay",
-    values: [string, BigNumberish, BytesLike]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "renounceOwnership",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setProposalThreshold",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setVotingDelay",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setVotingPeriod",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(functionFragment: "state", values: [BigNumberish]): string;
-  encodeFunctionData(
-    functionFragment: "supportsInterface",
-    values: [BytesLike]
-  ): string;
-  encodeFunctionData(functionFragment: "timelock", values?: undefined): string;
-  encodeFunctionData(functionFragment: "token", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "transferOwnership",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "updateQuorumNumerator",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "updateTimelock",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "updateVoteCountNumerator",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "upgradeToAndCall",
-    values: [string, BytesLike]
-  ): string;
-  encodeFunctionData(functionFragment: "version", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "voteCountDenominator",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "voteCountNumerator()",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "voteCountNumerator(uint256)",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "votingDelay",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "votingPeriod",
-    values?: undefined
-  ): string;
+  encodeFunctionData(functionFragment: 'votingDelay', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'votingPeriod', values?: undefined): string;
 
+  decodeFunctionResult(functionFragment: 'BALLOT_TYPEHASH', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'CLOCK_MODE', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'COUNTING_MODE', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'EXTENDED_BALLOT_TYPEHASH', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'UPGRADE_INTERFACE_VERSION', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'cancel(uint256)', data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "BALLOT_TYPEHASH",
+    functionFragment: 'cancel(address[],uint256[],bytes[],bytes32)',
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "CLOCK_MODE", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'castVote', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'castVoteBySig', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'castVoteWithReason', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'castVoteWithReasonAndParams', data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "COUNTING_MODE",
+    functionFragment: 'castVoteWithReasonAndParamsBySig',
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: 'clock', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'eip712Domain', data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "EXTENDED_BALLOT_TYPEHASH",
+    functionFragment: 'execute(address[],uint256[],bytes[],bytes32)',
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: 'execute(uint256)', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'getVotes', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'getVotesWithParams', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'hasVoted', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'hashProposal', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'initialize', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'name', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'nonces', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'onERC1155BatchReceived', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'onERC1155Received', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'onERC721Received', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'owner', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'proposalCount', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'proposalDeadline', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'proposalDetails', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'proposalDetailsAt', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'proposalEta', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'proposalNeedsQueuing', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'proposalProposer', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'proposalSnapshot', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'proposalThreshold', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'proposalVotes', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'propose', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'proxiableUUID', data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "UPGRADE_INTERFACE_VERSION",
+    functionFragment: 'queue(address[],uint256[],bytes[],bytes32)',
     data: BytesLike
   ): Result;
-  decodeFunctionResult(
-    functionFragment: "cancel(uint256)",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "cancel(address[],uint256[],bytes[],bytes32)",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "castVote", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "castVoteBySig",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "castVoteWithReason",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "castVoteWithReasonAndParams",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "castVoteWithReasonAndParamsBySig",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "clock", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "eip712Domain",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "execute(address[],uint256[],bytes[],bytes32)",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "execute(uint256)",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "getVotes", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getVotesWithParams",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "hasVoted", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "hashProposal",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "initialize", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "nonces", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "onERC1155BatchReceived",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "onERC1155Received",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "onERC721Received",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "proposalCount",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "proposalDeadline",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "proposalDetails",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "proposalDetailsAt",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "proposalEta",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "proposalNeedsQueuing",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "proposalProposer",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "proposalSnapshot",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "proposalThreshold",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "proposalVotes",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "propose", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "proxiableUUID",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "queue(address[],uint256[],bytes[],bytes32)",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "queue(uint256)",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "quorum", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "quorumDenominator",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "quorumNumerator(uint256)",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "quorumNumerator()",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "relay", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "renounceOwnership",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "setProposalThreshold",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "setVotingDelay",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "setVotingPeriod",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "state", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "supportsInterface",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "timelock", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "token", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "transferOwnership",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "updateQuorumNumerator",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "updateTimelock",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "updateVoteCountNumerator",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "upgradeToAndCall",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "version", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "voteCountDenominator",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "voteCountNumerator()",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "voteCountNumerator(uint256)",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "votingDelay",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "votingPeriod",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: 'queue(uint256)', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'quorum', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'quorumDenominator', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'quorumNumerator(uint256)', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'quorumNumerator()', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'relay', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'renounceOwnership', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'setProposalThreshold', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'setVotingDelay', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'setVotingPeriod', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'state', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'supportsInterface', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'timelock', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'token', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'transferOwnership', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'updateQuorumNumerator', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'updateTimelock', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'updateVoteCountNumerator', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'upgradeToAndCall', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'version', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'voteCountDenominator', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'voteCountNumerator()', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'voteCountNumerator(uint256)', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'votingDelay', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'votingPeriod', data: BytesLike): Result;
 
   events: {
-    "EIP712DomainChanged()": EventFragment;
-    "Initialized(uint64)": EventFragment;
-    "OwnershipTransferred(address,address)": EventFragment;
-    "ProposalCanceled(uint256)": EventFragment;
-    "ProposalCreated(uint256,address,address[],uint256[],string[],bytes[],uint256,uint256,string)": EventFragment;
-    "ProposalExecuted(uint256)": EventFragment;
-    "ProposalQueued(uint256,uint256)": EventFragment;
-    "ProposalThresholdSet(uint256,uint256)": EventFragment;
-    "QuorumNumeratorUpdated(uint256,uint256)": EventFragment;
-    "TimelockChange(address,address)": EventFragment;
-    "Upgraded(address)": EventFragment;
-    "VoteCast(address,uint256,uint8,uint256,string)": EventFragment;
-    "VoteCastWithParams(address,uint256,uint8,uint256,string,bytes)": EventFragment;
-    "VoteNumeratorUpdated(uint256,uint256)": EventFragment;
-    "VotingDelaySet(uint256,uint256)": EventFragment;
-    "VotingPeriodSet(uint256,uint256)": EventFragment;
+    'EIP712DomainChanged()': EventFragment;
+    'Initialized(uint64)': EventFragment;
+    'OwnershipTransferred(address,address)': EventFragment;
+    'ProposalCanceled(uint256)': EventFragment;
+    'ProposalCreated(uint256,address,address[],uint256[],string[],bytes[],uint256,uint256,string)': EventFragment;
+    'ProposalExecuted(uint256)': EventFragment;
+    'ProposalQueued(uint256,uint256)': EventFragment;
+    'ProposalThresholdSet(uint256,uint256)': EventFragment;
+    'QuorumNumeratorUpdated(uint256,uint256)': EventFragment;
+    'TimelockChange(address,address)': EventFragment;
+    'Upgraded(address)': EventFragment;
+    'VoteCast(address,uint256,uint8,uint256,string)': EventFragment;
+    'VoteCastWithParams(address,uint256,uint8,uint256,string,bytes)': EventFragment;
+    'VoteNumeratorUpdated(uint256,uint256)': EventFragment;
+    'VotingDelaySet(uint256,uint256)': EventFragment;
+    'VotingPeriodSet(uint256,uint256)': EventFragment;
   };
 
-  getEvent(nameOrSignatureOrTopic: "EIP712DomainChanged"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Initialized"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "ProposalCanceled"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "ProposalCreated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "ProposalExecuted"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "ProposalQueued"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "ProposalThresholdSet"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "QuorumNumeratorUpdated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "TimelockChange"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Upgraded"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "VoteCast"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "VoteCastWithParams"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "VoteNumeratorUpdated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "VotingDelaySet"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "VotingPeriodSet"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'EIP712DomainChanged'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'Initialized'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'OwnershipTransferred'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'ProposalCanceled'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'ProposalCreated'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'ProposalExecuted'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'ProposalQueued'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'ProposalThresholdSet'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'QuorumNumeratorUpdated'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'TimelockChange'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'Upgraded'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'VoteCast'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'VoteCastWithParams'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'VoteNumeratorUpdated'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'VotingDelaySet'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'VotingPeriodSet'): EventFragment;
 }
 
 export interface EIP712DomainChangedEventObject {}
-export type EIP712DomainChangedEvent = TypedEvent<
-  [],
-  EIP712DomainChangedEventObject
->;
+export type EIP712DomainChangedEvent = TypedEvent<[], EIP712DomainChangedEventObject>;
 
-export type EIP712DomainChangedEventFilter =
-  TypedEventFilter<EIP712DomainChangedEvent>;
+export type EIP712DomainChangedEventFilter = TypedEventFilter<EIP712DomainChangedEvent>;
 
 export interface InitializedEventObject {
   version: BigNumber;
@@ -716,19 +442,14 @@ export type OwnershipTransferredEvent = TypedEvent<
   OwnershipTransferredEventObject
 >;
 
-export type OwnershipTransferredEventFilter =
-  TypedEventFilter<OwnershipTransferredEvent>;
+export type OwnershipTransferredEventFilter = TypedEventFilter<OwnershipTransferredEvent>;
 
 export interface ProposalCanceledEventObject {
   proposalId: BigNumber;
 }
-export type ProposalCanceledEvent = TypedEvent<
-  [BigNumber],
-  ProposalCanceledEventObject
->;
+export type ProposalCanceledEvent = TypedEvent<[BigNumber], ProposalCanceledEventObject>;
 
-export type ProposalCanceledEventFilter =
-  TypedEventFilter<ProposalCanceledEvent>;
+export type ProposalCanceledEventFilter = TypedEventFilter<ProposalCanceledEvent>;
 
 export interface ProposalCreatedEventObject {
   proposalId: BigNumber;
@@ -742,17 +463,7 @@ export interface ProposalCreatedEventObject {
   description: string;
 }
 export type ProposalCreatedEvent = TypedEvent<
-  [
-    BigNumber,
-    string,
-    string[],
-    BigNumber[],
-    string[],
-    string[],
-    BigNumber,
-    BigNumber,
-    string
-  ],
+  [BigNumber, string, string[], BigNumber[], string[], string[], BigNumber, BigNumber, string],
   ProposalCreatedEventObject
 >;
 
@@ -761,22 +472,15 @@ export type ProposalCreatedEventFilter = TypedEventFilter<ProposalCreatedEvent>;
 export interface ProposalExecutedEventObject {
   proposalId: BigNumber;
 }
-export type ProposalExecutedEvent = TypedEvent<
-  [BigNumber],
-  ProposalExecutedEventObject
->;
+export type ProposalExecutedEvent = TypedEvent<[BigNumber], ProposalExecutedEventObject>;
 
-export type ProposalExecutedEventFilter =
-  TypedEventFilter<ProposalExecutedEvent>;
+export type ProposalExecutedEventFilter = TypedEventFilter<ProposalExecutedEvent>;
 
 export interface ProposalQueuedEventObject {
   proposalId: BigNumber;
   etaSeconds: BigNumber;
 }
-export type ProposalQueuedEvent = TypedEvent<
-  [BigNumber, BigNumber],
-  ProposalQueuedEventObject
->;
+export type ProposalQueuedEvent = TypedEvent<[BigNumber, BigNumber], ProposalQueuedEventObject>;
 
 export type ProposalQueuedEventFilter = TypedEventFilter<ProposalQueuedEvent>;
 
@@ -789,8 +493,7 @@ export type ProposalThresholdSetEvent = TypedEvent<
   ProposalThresholdSetEventObject
 >;
 
-export type ProposalThresholdSetEventFilter =
-  TypedEventFilter<ProposalThresholdSetEvent>;
+export type ProposalThresholdSetEventFilter = TypedEventFilter<ProposalThresholdSetEvent>;
 
 export interface QuorumNumeratorUpdatedEventObject {
   oldQuorumNumerator: BigNumber;
@@ -801,17 +504,13 @@ export type QuorumNumeratorUpdatedEvent = TypedEvent<
   QuorumNumeratorUpdatedEventObject
 >;
 
-export type QuorumNumeratorUpdatedEventFilter =
-  TypedEventFilter<QuorumNumeratorUpdatedEvent>;
+export type QuorumNumeratorUpdatedEventFilter = TypedEventFilter<QuorumNumeratorUpdatedEvent>;
 
 export interface TimelockChangeEventObject {
   oldTimelock: string;
   newTimelock: string;
 }
-export type TimelockChangeEvent = TypedEvent<
-  [string, string],
-  TimelockChangeEventObject
->;
+export type TimelockChangeEvent = TypedEvent<[string, string], TimelockChangeEventObject>;
 
 export type TimelockChangeEventFilter = TypedEventFilter<TimelockChangeEvent>;
 
@@ -849,8 +548,7 @@ export type VoteCastWithParamsEvent = TypedEvent<
   VoteCastWithParamsEventObject
 >;
 
-export type VoteCastWithParamsEventFilter =
-  TypedEventFilter<VoteCastWithParamsEvent>;
+export type VoteCastWithParamsEventFilter = TypedEventFilter<VoteCastWithParamsEvent>;
 
 export interface VoteNumeratorUpdatedEventObject {
   oldVoteNumerator: BigNumber;
@@ -861,17 +559,13 @@ export type VoteNumeratorUpdatedEvent = TypedEvent<
   VoteNumeratorUpdatedEventObject
 >;
 
-export type VoteNumeratorUpdatedEventFilter =
-  TypedEventFilter<VoteNumeratorUpdatedEvent>;
+export type VoteNumeratorUpdatedEventFilter = TypedEventFilter<VoteNumeratorUpdatedEvent>;
 
 export interface VotingDelaySetEventObject {
   oldVotingDelay: BigNumber;
   newVotingDelay: BigNumber;
 }
-export type VotingDelaySetEvent = TypedEvent<
-  [BigNumber, BigNumber],
-  VotingDelaySetEventObject
->;
+export type VotingDelaySetEvent = TypedEvent<[BigNumber, BigNumber], VotingDelaySetEventObject>;
 
 export type VotingDelaySetEventFilter = TypedEventFilter<VotingDelaySetEvent>;
 
@@ -879,10 +573,7 @@ export interface VotingPeriodSetEventObject {
   oldVotingPeriod: BigNumber;
   newVotingPeriod: BigNumber;
 }
-export type VotingPeriodSetEvent = TypedEvent<
-  [BigNumber, BigNumber],
-  VotingPeriodSetEventObject
->;
+export type VotingPeriodSetEvent = TypedEvent<[BigNumber, BigNumber], VotingPeriodSetEventObject>;
 
 export type VotingPeriodSetEventFilter = TypedEventFilter<VotingPeriodSetEvent>;
 
@@ -903,9 +594,7 @@ export interface SeamGovernor extends BaseContract {
     eventFilter?: TypedEventFilter<TEvent>
   ): Array<TypedListener<TEvent>>;
   listeners(eventName?: string): Array<Listener>;
-  removeAllListeners<TEvent extends TypedEvent>(
-    eventFilter: TypedEventFilter<TEvent>
-  ): this;
+  removeAllListeners<TEvent extends TypedEvent>(eventFilter: TypedEventFilter<TEvent>): this;
   removeAllListeners(eventName?: string): this;
   off: OnEvent<this>;
   on: OnEvent<this>;
@@ -923,12 +612,12 @@ export interface SeamGovernor extends BaseContract {
 
     UPGRADE_INTERFACE_VERSION(overrides?: CallOverrides): Promise<[string]>;
 
-    "cancel(uint256)"(
+    'cancel(uint256)'(
       proposalId: BigNumberish,
       overrides?: Overrides & { from?: string }
     ): Promise<ContractTransaction>;
 
-    "cancel(address[],uint256[],bytes[],bytes32)"(
+    'cancel(address[],uint256[],bytes[],bytes32)'(
       targets: string[],
       values: BigNumberish[],
       calldatas: BytesLike[],
@@ -977,9 +666,7 @@ export interface SeamGovernor extends BaseContract {
 
     clock(overrides?: CallOverrides): Promise<[number]>;
 
-    eip712Domain(
-      overrides?: CallOverrides
-    ): Promise<
+    eip712Domain(overrides?: CallOverrides): Promise<
       [string, string, string, BigNumber, string, string, BigNumber[]] & {
         fields: string;
         name: string;
@@ -991,7 +678,7 @@ export interface SeamGovernor extends BaseContract {
       }
     >;
 
-    "execute(address[],uint256[],bytes[],bytes32)"(
+    'execute(address[],uint256[],bytes[],bytes32)'(
       targets: string[],
       values: BigNumberish[],
       calldatas: BytesLike[],
@@ -999,7 +686,7 @@ export interface SeamGovernor extends BaseContract {
       overrides?: PayableOverrides & { from?: string }
     ): Promise<ContractTransaction>;
 
-    "execute(uint256)"(
+    'execute(uint256)'(
       proposalId: BigNumberish,
       overrides?: PayableOverrides & { from?: string }
     ): Promise<ContractTransaction>;
@@ -1070,10 +757,7 @@ export interface SeamGovernor extends BaseContract {
 
     proposalCount(overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    proposalDeadline(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    proposalDeadline(proposalId: BigNumberish, overrides?: CallOverrides): Promise<[BigNumber]>;
 
     proposalDetails(
       proposalId: BigNumberish,
@@ -1085,25 +769,13 @@ export interface SeamGovernor extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[BigNumber, string[], BigNumber[], string[], string]>;
 
-    proposalEta(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    proposalEta(proposalId: BigNumberish, overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    proposalNeedsQueuing(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[boolean]>;
+    proposalNeedsQueuing(proposalId: BigNumberish, overrides?: CallOverrides): Promise<[boolean]>;
 
-    proposalProposer(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[string]>;
+    proposalProposer(proposalId: BigNumberish, overrides?: CallOverrides): Promise<[string]>;
 
-    proposalSnapshot(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    proposalSnapshot(proposalId: BigNumberish, overrides?: CallOverrides): Promise<[BigNumber]>;
 
     proposalThreshold(overrides?: CallOverrides): Promise<[BigNumber]>;
 
@@ -1128,7 +800,7 @@ export interface SeamGovernor extends BaseContract {
 
     proxiableUUID(overrides?: CallOverrides): Promise<[string]>;
 
-    "queue(address[],uint256[],bytes[],bytes32)"(
+    'queue(address[],uint256[],bytes[],bytes32)'(
       targets: string[],
       values: BigNumberish[],
       calldatas: BytesLike[],
@@ -1136,24 +808,21 @@ export interface SeamGovernor extends BaseContract {
       overrides?: Overrides & { from?: string }
     ): Promise<ContractTransaction>;
 
-    "queue(uint256)"(
+    'queue(uint256)'(
       proposalId: BigNumberish,
       overrides?: Overrides & { from?: string }
     ): Promise<ContractTransaction>;
 
-    quorum(
-      timepoint: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    quorum(timepoint: BigNumberish, overrides?: CallOverrides): Promise<[BigNumber]>;
 
     quorumDenominator(overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    "quorumNumerator(uint256)"(
+    'quorumNumerator(uint256)'(
       timepoint: BigNumberish,
       overrides?: CallOverrides
     ): Promise<[BigNumber]>;
 
-    "quorumNumerator()"(overrides?: CallOverrides): Promise<[BigNumber]>;
+    'quorumNumerator()'(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     relay(
       target: string,
@@ -1162,9 +831,7 @@ export interface SeamGovernor extends BaseContract {
       overrides?: PayableOverrides & { from?: string }
     ): Promise<ContractTransaction>;
 
-    renounceOwnership(
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
+    renounceOwnership(overrides?: Overrides & { from?: string }): Promise<ContractTransaction>;
 
     setProposalThreshold(
       newProposalThreshold: BigNumberish,
@@ -1181,15 +848,9 @@ export interface SeamGovernor extends BaseContract {
       overrides?: Overrides & { from?: string }
     ): Promise<ContractTransaction>;
 
-    state(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[number]>;
+    state(proposalId: BigNumberish, overrides?: CallOverrides): Promise<[number]>;
 
-    supportsInterface(
-      interfaceId: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<[boolean]>;
+    supportsInterface(interfaceId: BytesLike, overrides?: CallOverrides): Promise<[boolean]>;
 
     timelock(overrides?: CallOverrides): Promise<[string]>;
 
@@ -1225,9 +886,9 @@ export interface SeamGovernor extends BaseContract {
 
     voteCountDenominator(overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    "voteCountNumerator()"(overrides?: CallOverrides): Promise<[BigNumber]>;
+    'voteCountNumerator()'(overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    "voteCountNumerator(uint256)"(
+    'voteCountNumerator(uint256)'(
       timepoint: BigNumberish,
       overrides?: CallOverrides
     ): Promise<[BigNumber]>;
@@ -1247,12 +908,12 @@ export interface SeamGovernor extends BaseContract {
 
   UPGRADE_INTERFACE_VERSION(overrides?: CallOverrides): Promise<string>;
 
-  "cancel(uint256)"(
+  'cancel(uint256)'(
     proposalId: BigNumberish,
     overrides?: Overrides & { from?: string }
   ): Promise<ContractTransaction>;
 
-  "cancel(address[],uint256[],bytes[],bytes32)"(
+  'cancel(address[],uint256[],bytes[],bytes32)'(
     targets: string[],
     values: BigNumberish[],
     calldatas: BytesLike[],
@@ -1301,9 +962,7 @@ export interface SeamGovernor extends BaseContract {
 
   clock(overrides?: CallOverrides): Promise<number>;
 
-  eip712Domain(
-    overrides?: CallOverrides
-  ): Promise<
+  eip712Domain(overrides?: CallOverrides): Promise<
     [string, string, string, BigNumber, string, string, BigNumber[]] & {
       fields: string;
       name: string;
@@ -1315,7 +974,7 @@ export interface SeamGovernor extends BaseContract {
     }
   >;
 
-  "execute(address[],uint256[],bytes[],bytes32)"(
+  'execute(address[],uint256[],bytes[],bytes32)'(
     targets: string[],
     values: BigNumberish[],
     calldatas: BytesLike[],
@@ -1323,16 +982,12 @@ export interface SeamGovernor extends BaseContract {
     overrides?: PayableOverrides & { from?: string }
   ): Promise<ContractTransaction>;
 
-  "execute(uint256)"(
+  'execute(uint256)'(
     proposalId: BigNumberish,
     overrides?: PayableOverrides & { from?: string }
   ): Promise<ContractTransaction>;
 
-  getVotes(
-    account: string,
-    timepoint: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  getVotes(account: string, timepoint: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
   getVotesWithParams(
     account: string,
@@ -1341,11 +996,7 @@ export interface SeamGovernor extends BaseContract {
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
-  hasVoted(
-    proposalId: BigNumberish,
-    account: string,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
+  hasVoted(proposalId: BigNumberish, account: string, overrides?: CallOverrides): Promise<boolean>;
 
   hashProposal(
     targets: string[],
@@ -1394,10 +1045,7 @@ export interface SeamGovernor extends BaseContract {
 
   proposalCount(overrides?: CallOverrides): Promise<BigNumber>;
 
-  proposalDeadline(
-    proposalId: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  proposalDeadline(proposalId: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
   proposalDetails(
     proposalId: BigNumberish,
@@ -1409,25 +1057,13 @@ export interface SeamGovernor extends BaseContract {
     overrides?: CallOverrides
   ): Promise<[BigNumber, string[], BigNumber[], string[], string]>;
 
-  proposalEta(
-    proposalId: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  proposalEta(proposalId: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
-  proposalNeedsQueuing(
-    proposalId: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
+  proposalNeedsQueuing(proposalId: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
 
-  proposalProposer(
-    proposalId: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<string>;
+  proposalProposer(proposalId: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
-  proposalSnapshot(
-    proposalId: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  proposalSnapshot(proposalId: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
   proposalThreshold(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -1452,7 +1088,7 @@ export interface SeamGovernor extends BaseContract {
 
   proxiableUUID(overrides?: CallOverrides): Promise<string>;
 
-  "queue(address[],uint256[],bytes[],bytes32)"(
+  'queue(address[],uint256[],bytes[],bytes32)'(
     targets: string[],
     values: BigNumberish[],
     calldatas: BytesLike[],
@@ -1460,24 +1096,21 @@ export interface SeamGovernor extends BaseContract {
     overrides?: Overrides & { from?: string }
   ): Promise<ContractTransaction>;
 
-  "queue(uint256)"(
+  'queue(uint256)'(
     proposalId: BigNumberish,
     overrides?: Overrides & { from?: string }
   ): Promise<ContractTransaction>;
 
-  quorum(
-    timepoint: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  quorum(timepoint: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
   quorumDenominator(overrides?: CallOverrides): Promise<BigNumber>;
 
-  "quorumNumerator(uint256)"(
+  'quorumNumerator(uint256)'(
     timepoint: BigNumberish,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
-  "quorumNumerator()"(overrides?: CallOverrides): Promise<BigNumber>;
+  'quorumNumerator()'(overrides?: CallOverrides): Promise<BigNumber>;
 
   relay(
     target: string,
@@ -1486,9 +1119,7 @@ export interface SeamGovernor extends BaseContract {
     overrides?: PayableOverrides & { from?: string }
   ): Promise<ContractTransaction>;
 
-  renounceOwnership(
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
+  renounceOwnership(overrides?: Overrides & { from?: string }): Promise<ContractTransaction>;
 
   setProposalThreshold(
     newProposalThreshold: BigNumberish,
@@ -1507,10 +1138,7 @@ export interface SeamGovernor extends BaseContract {
 
   state(proposalId: BigNumberish, overrides?: CallOverrides): Promise<number>;
 
-  supportsInterface(
-    interfaceId: BytesLike,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
+  supportsInterface(interfaceId: BytesLike, overrides?: CallOverrides): Promise<boolean>;
 
   timelock(overrides?: CallOverrides): Promise<string>;
 
@@ -1546,9 +1174,9 @@ export interface SeamGovernor extends BaseContract {
 
   voteCountDenominator(overrides?: CallOverrides): Promise<BigNumber>;
 
-  "voteCountNumerator()"(overrides?: CallOverrides): Promise<BigNumber>;
+  'voteCountNumerator()'(overrides?: CallOverrides): Promise<BigNumber>;
 
-  "voteCountNumerator(uint256)"(
+  'voteCountNumerator(uint256)'(
     timepoint: BigNumberish,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
@@ -1568,12 +1196,9 @@ export interface SeamGovernor extends BaseContract {
 
     UPGRADE_INTERFACE_VERSION(overrides?: CallOverrides): Promise<string>;
 
-    "cancel(uint256)"(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    'cancel(uint256)'(proposalId: BigNumberish, overrides?: CallOverrides): Promise<void>;
 
-    "cancel(address[],uint256[],bytes[],bytes32)"(
+    'cancel(address[],uint256[],bytes[],bytes32)'(
       targets: string[],
       values: BigNumberish[],
       calldatas: BytesLike[],
@@ -1622,9 +1247,7 @@ export interface SeamGovernor extends BaseContract {
 
     clock(overrides?: CallOverrides): Promise<number>;
 
-    eip712Domain(
-      overrides?: CallOverrides
-    ): Promise<
+    eip712Domain(overrides?: CallOverrides): Promise<
       [string, string, string, BigNumber, string, string, BigNumber[]] & {
         fields: string;
         name: string;
@@ -1636,7 +1259,7 @@ export interface SeamGovernor extends BaseContract {
       }
     >;
 
-    "execute(address[],uint256[],bytes[],bytes32)"(
+    'execute(address[],uint256[],bytes[],bytes32)'(
       targets: string[],
       values: BigNumberish[],
       calldatas: BytesLike[],
@@ -1644,10 +1267,7 @@ export interface SeamGovernor extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "execute(uint256)"(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    'execute(uint256)'(proposalId: BigNumberish, overrides?: CallOverrides): Promise<void>;
 
     getVotes(
       account: string,
@@ -1676,10 +1296,7 @@ export interface SeamGovernor extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    initialize(
-      params: SeamGovernor.InitParamsStruct,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    initialize(params: SeamGovernor.InitParamsStruct, overrides?: CallOverrides): Promise<void>;
 
     name(overrides?: CallOverrides): Promise<string>;
 
@@ -1715,10 +1332,7 @@ export interface SeamGovernor extends BaseContract {
 
     proposalCount(overrides?: CallOverrides): Promise<BigNumber>;
 
-    proposalDeadline(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    proposalDeadline(proposalId: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
     proposalDetails(
       proposalId: BigNumberish,
@@ -1730,25 +1344,13 @@ export interface SeamGovernor extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[BigNumber, string[], BigNumber[], string[], string]>;
 
-    proposalEta(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    proposalEta(proposalId: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
-    proposalNeedsQueuing(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
+    proposalNeedsQueuing(proposalId: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
 
-    proposalProposer(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<string>;
+    proposalProposer(proposalId: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
-    proposalSnapshot(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    proposalSnapshot(proposalId: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
     proposalThreshold(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -1773,7 +1375,7 @@ export interface SeamGovernor extends BaseContract {
 
     proxiableUUID(overrides?: CallOverrides): Promise<string>;
 
-    "queue(address[],uint256[],bytes[],bytes32)"(
+    'queue(address[],uint256[],bytes[],bytes32)'(
       targets: string[],
       values: BigNumberish[],
       calldatas: BytesLike[],
@@ -1781,24 +1383,18 @@ export interface SeamGovernor extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "queue(uint256)"(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    'queue(uint256)'(proposalId: BigNumberish, overrides?: CallOverrides): Promise<void>;
 
-    quorum(
-      timepoint: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    quorum(timepoint: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
     quorumDenominator(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "quorumNumerator(uint256)"(
+    'quorumNumerator(uint256)'(
       timepoint: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "quorumNumerator()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'quorumNumerator()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     relay(
       target: string,
@@ -1814,41 +1410,26 @@ export interface SeamGovernor extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    setVotingDelay(
-      newVotingDelay: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    setVotingDelay(newVotingDelay: BigNumberish, overrides?: CallOverrides): Promise<void>;
 
-    setVotingPeriod(
-      newVotingPeriod: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    setVotingPeriod(newVotingPeriod: BigNumberish, overrides?: CallOverrides): Promise<void>;
 
     state(proposalId: BigNumberish, overrides?: CallOverrides): Promise<number>;
 
-    supportsInterface(
-      interfaceId: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
+    supportsInterface(interfaceId: BytesLike, overrides?: CallOverrides): Promise<boolean>;
 
     timelock(overrides?: CallOverrides): Promise<string>;
 
     token(overrides?: CallOverrides): Promise<string>;
 
-    transferOwnership(
-      newOwner: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    transferOwnership(newOwner: string, overrides?: CallOverrides): Promise<void>;
 
     updateQuorumNumerator(
       newQuorumNumerator: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    updateTimelock(
-      newTimelock: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    updateTimelock(newTimelock: string, overrides?: CallOverrides): Promise<void>;
 
     updateVoteCountNumerator(
       newVoteCountNumerator: BigNumberish,
@@ -1865,9 +1446,9 @@ export interface SeamGovernor extends BaseContract {
 
     voteCountDenominator(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "voteCountNumerator()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'voteCountNumerator()'(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "voteCountNumerator(uint256)"(
+    'voteCountNumerator(uint256)'(
       timepoint: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -1878,13 +1459,13 @@ export interface SeamGovernor extends BaseContract {
   };
 
   filters: {
-    "EIP712DomainChanged()"(): EIP712DomainChangedEventFilter;
+    'EIP712DomainChanged()'(): EIP712DomainChangedEventFilter;
     EIP712DomainChanged(): EIP712DomainChangedEventFilter;
 
-    "Initialized(uint64)"(version?: null): InitializedEventFilter;
+    'Initialized(uint64)'(version?: null): InitializedEventFilter;
     Initialized(version?: null): InitializedEventFilter;
 
-    "OwnershipTransferred(address,address)"(
+    'OwnershipTransferred(address,address)'(
       previousOwner?: string | null,
       newOwner?: string | null
     ): OwnershipTransferredEventFilter;
@@ -1893,10 +1474,10 @@ export interface SeamGovernor extends BaseContract {
       newOwner?: string | null
     ): OwnershipTransferredEventFilter;
 
-    "ProposalCanceled(uint256)"(proposalId?: null): ProposalCanceledEventFilter;
+    'ProposalCanceled(uint256)'(proposalId?: null): ProposalCanceledEventFilter;
     ProposalCanceled(proposalId?: null): ProposalCanceledEventFilter;
 
-    "ProposalCreated(uint256,address,address[],uint256[],string[],bytes[],uint256,uint256,string)"(
+    'ProposalCreated(uint256,address,address[],uint256[],string[],bytes[],uint256,uint256,string)'(
       proposalId?: null,
       proposer?: null,
       targets?: null,
@@ -1919,19 +1500,16 @@ export interface SeamGovernor extends BaseContract {
       description?: null
     ): ProposalCreatedEventFilter;
 
-    "ProposalExecuted(uint256)"(proposalId?: null): ProposalExecutedEventFilter;
+    'ProposalExecuted(uint256)'(proposalId?: null): ProposalExecutedEventFilter;
     ProposalExecuted(proposalId?: null): ProposalExecutedEventFilter;
 
-    "ProposalQueued(uint256,uint256)"(
+    'ProposalQueued(uint256,uint256)'(
       proposalId?: null,
       etaSeconds?: null
     ): ProposalQueuedEventFilter;
-    ProposalQueued(
-      proposalId?: null,
-      etaSeconds?: null
-    ): ProposalQueuedEventFilter;
+    ProposalQueued(proposalId?: null, etaSeconds?: null): ProposalQueuedEventFilter;
 
-    "ProposalThresholdSet(uint256,uint256)"(
+    'ProposalThresholdSet(uint256,uint256)'(
       oldProposalThreshold?: null,
       newProposalThreshold?: null
     ): ProposalThresholdSetEventFilter;
@@ -1940,7 +1518,7 @@ export interface SeamGovernor extends BaseContract {
       newProposalThreshold?: null
     ): ProposalThresholdSetEventFilter;
 
-    "QuorumNumeratorUpdated(uint256,uint256)"(
+    'QuorumNumeratorUpdated(uint256,uint256)'(
       oldQuorumNumerator?: null,
       newQuorumNumerator?: null
     ): QuorumNumeratorUpdatedEventFilter;
@@ -1949,19 +1527,16 @@ export interface SeamGovernor extends BaseContract {
       newQuorumNumerator?: null
     ): QuorumNumeratorUpdatedEventFilter;
 
-    "TimelockChange(address,address)"(
+    'TimelockChange(address,address)'(
       oldTimelock?: null,
       newTimelock?: null
     ): TimelockChangeEventFilter;
-    TimelockChange(
-      oldTimelock?: null,
-      newTimelock?: null
-    ): TimelockChangeEventFilter;
+    TimelockChange(oldTimelock?: null, newTimelock?: null): TimelockChangeEventFilter;
 
-    "Upgraded(address)"(implementation?: string | null): UpgradedEventFilter;
+    'Upgraded(address)'(implementation?: string | null): UpgradedEventFilter;
     Upgraded(implementation?: string | null): UpgradedEventFilter;
 
-    "VoteCast(address,uint256,uint8,uint256,string)"(
+    'VoteCast(address,uint256,uint8,uint256,string)'(
       voter?: string | null,
       proposalId?: null,
       support?: null,
@@ -1976,7 +1551,7 @@ export interface SeamGovernor extends BaseContract {
       reason?: null
     ): VoteCastEventFilter;
 
-    "VoteCastWithParams(address,uint256,uint8,uint256,string,bytes)"(
+    'VoteCastWithParams(address,uint256,uint8,uint256,string,bytes)'(
       voter?: string | null,
       proposalId?: null,
       support?: null,
@@ -1993,7 +1568,7 @@ export interface SeamGovernor extends BaseContract {
       params?: null
     ): VoteCastWithParamsEventFilter;
 
-    "VoteNumeratorUpdated(uint256,uint256)"(
+    'VoteNumeratorUpdated(uint256,uint256)'(
       oldVoteNumerator?: null,
       newVoteNumerator?: null
     ): VoteNumeratorUpdatedEventFilter;
@@ -2002,23 +1577,17 @@ export interface SeamGovernor extends BaseContract {
       newVoteNumerator?: null
     ): VoteNumeratorUpdatedEventFilter;
 
-    "VotingDelaySet(uint256,uint256)"(
+    'VotingDelaySet(uint256,uint256)'(
       oldVotingDelay?: null,
       newVotingDelay?: null
     ): VotingDelaySetEventFilter;
-    VotingDelaySet(
-      oldVotingDelay?: null,
-      newVotingDelay?: null
-    ): VotingDelaySetEventFilter;
+    VotingDelaySet(oldVotingDelay?: null, newVotingDelay?: null): VotingDelaySetEventFilter;
 
-    "VotingPeriodSet(uint256,uint256)"(
+    'VotingPeriodSet(uint256,uint256)'(
       oldVotingPeriod?: null,
       newVotingPeriod?: null
     ): VotingPeriodSetEventFilter;
-    VotingPeriodSet(
-      oldVotingPeriod?: null,
-      newVotingPeriod?: null
-    ): VotingPeriodSetEventFilter;
+    VotingPeriodSet(oldVotingPeriod?: null, newVotingPeriod?: null): VotingPeriodSetEventFilter;
   };
 
   estimateGas: {
@@ -2032,12 +1601,12 @@ export interface SeamGovernor extends BaseContract {
 
     UPGRADE_INTERFACE_VERSION(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "cancel(uint256)"(
+    'cancel(uint256)'(
       proposalId: BigNumberish,
       overrides?: Overrides & { from?: string }
     ): Promise<BigNumber>;
 
-    "cancel(address[],uint256[],bytes[],bytes32)"(
+    'cancel(address[],uint256[],bytes[],bytes32)'(
       targets: string[],
       values: BigNumberish[],
       calldatas: BytesLike[],
@@ -2088,7 +1657,7 @@ export interface SeamGovernor extends BaseContract {
 
     eip712Domain(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "execute(address[],uint256[],bytes[],bytes32)"(
+    'execute(address[],uint256[],bytes[],bytes32)'(
       targets: string[],
       values: BigNumberish[],
       calldatas: BytesLike[],
@@ -2096,7 +1665,7 @@ export interface SeamGovernor extends BaseContract {
       overrides?: PayableOverrides & { from?: string }
     ): Promise<BigNumber>;
 
-    "execute(uint256)"(
+    'execute(uint256)'(
       proposalId: BigNumberish,
       overrides?: PayableOverrides & { from?: string }
     ): Promise<BigNumber>;
@@ -2167,47 +1736,23 @@ export interface SeamGovernor extends BaseContract {
 
     proposalCount(overrides?: CallOverrides): Promise<BigNumber>;
 
-    proposalDeadline(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    proposalDeadline(proposalId: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
-    proposalDetails(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    proposalDetails(proposalId: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
-    proposalDetailsAt(
-      index: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    proposalDetailsAt(index: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
-    proposalEta(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    proposalEta(proposalId: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
-    proposalNeedsQueuing(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    proposalNeedsQueuing(proposalId: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
-    proposalProposer(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    proposalProposer(proposalId: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
-    proposalSnapshot(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    proposalSnapshot(proposalId: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
     proposalThreshold(overrides?: CallOverrides): Promise<BigNumber>;
 
-    proposalVotes(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    proposalVotes(proposalId: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
     propose(
       targets: string[],
@@ -2219,7 +1764,7 @@ export interface SeamGovernor extends BaseContract {
 
     proxiableUUID(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "queue(address[],uint256[],bytes[],bytes32)"(
+    'queue(address[],uint256[],bytes[],bytes32)'(
       targets: string[],
       values: BigNumberish[],
       calldatas: BytesLike[],
@@ -2227,24 +1772,21 @@ export interface SeamGovernor extends BaseContract {
       overrides?: Overrides & { from?: string }
     ): Promise<BigNumber>;
 
-    "queue(uint256)"(
+    'queue(uint256)'(
       proposalId: BigNumberish,
       overrides?: Overrides & { from?: string }
     ): Promise<BigNumber>;
 
-    quorum(
-      timepoint: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    quorum(timepoint: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
     quorumDenominator(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "quorumNumerator(uint256)"(
+    'quorumNumerator(uint256)'(
       timepoint: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "quorumNumerator()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'quorumNumerator()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     relay(
       target: string,
@@ -2253,9 +1795,7 @@ export interface SeamGovernor extends BaseContract {
       overrides?: PayableOverrides & { from?: string }
     ): Promise<BigNumber>;
 
-    renounceOwnership(
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
+    renounceOwnership(overrides?: Overrides & { from?: string }): Promise<BigNumber>;
 
     setProposalThreshold(
       newProposalThreshold: BigNumberish,
@@ -2272,15 +1812,9 @@ export interface SeamGovernor extends BaseContract {
       overrides?: Overrides & { from?: string }
     ): Promise<BigNumber>;
 
-    state(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    state(proposalId: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
-    supportsInterface(
-      interfaceId: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    supportsInterface(interfaceId: BytesLike, overrides?: CallOverrides): Promise<BigNumber>;
 
     timelock(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -2316,9 +1850,9 @@ export interface SeamGovernor extends BaseContract {
 
     voteCountDenominator(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "voteCountNumerator()"(overrides?: CallOverrides): Promise<BigNumber>;
+    'voteCountNumerator()'(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "voteCountNumerator(uint256)"(
+    'voteCountNumerator(uint256)'(
       timepoint: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -2335,20 +1869,16 @@ export interface SeamGovernor extends BaseContract {
 
     COUNTING_MODE(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    EXTENDED_BALLOT_TYPEHASH(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    EXTENDED_BALLOT_TYPEHASH(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    UPGRADE_INTERFACE_VERSION(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    UPGRADE_INTERFACE_VERSION(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "cancel(uint256)"(
+    'cancel(uint256)'(
       proposalId: BigNumberish,
       overrides?: Overrides & { from?: string }
     ): Promise<PopulatedTransaction>;
 
-    "cancel(address[],uint256[],bytes[],bytes32)"(
+    'cancel(address[],uint256[],bytes[],bytes32)'(
       targets: string[],
       values: BigNumberish[],
       calldatas: BytesLike[],
@@ -2399,7 +1929,7 @@ export interface SeamGovernor extends BaseContract {
 
     eip712Domain(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "execute(address[],uint256[],bytes[],bytes32)"(
+    'execute(address[],uint256[],bytes[],bytes32)'(
       targets: string[],
       values: BigNumberish[],
       calldatas: BytesLike[],
@@ -2407,7 +1937,7 @@ export interface SeamGovernor extends BaseContract {
       overrides?: PayableOverrides & { from?: string }
     ): Promise<PopulatedTransaction>;
 
-    "execute(uint256)"(
+    'execute(uint256)'(
       proposalId: BigNumberish,
       overrides?: PayableOverrides & { from?: string }
     ): Promise<PopulatedTransaction>;
@@ -2446,10 +1976,7 @@ export interface SeamGovernor extends BaseContract {
 
     name(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    nonces(
-      owner: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    nonces(owner: string, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     onERC1155BatchReceived(
       arg0: string,
@@ -2496,10 +2023,7 @@ export interface SeamGovernor extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    proposalEta(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    proposalEta(proposalId: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     proposalNeedsQueuing(
       proposalId: BigNumberish,
@@ -2533,7 +2057,7 @@ export interface SeamGovernor extends BaseContract {
 
     proxiableUUID(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "queue(address[],uint256[],bytes[],bytes32)"(
+    'queue(address[],uint256[],bytes[],bytes32)'(
       targets: string[],
       values: BigNumberish[],
       calldatas: BytesLike[],
@@ -2541,26 +2065,21 @@ export interface SeamGovernor extends BaseContract {
       overrides?: Overrides & { from?: string }
     ): Promise<PopulatedTransaction>;
 
-    "queue(uint256)"(
+    'queue(uint256)'(
       proposalId: BigNumberish,
       overrides?: Overrides & { from?: string }
     ): Promise<PopulatedTransaction>;
 
-    quorum(
-      timepoint: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    quorum(timepoint: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     quorumDenominator(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "quorumNumerator(uint256)"(
+    'quorumNumerator(uint256)'(
       timepoint: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "quorumNumerator()"(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    'quorumNumerator()'(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     relay(
       target: string,
@@ -2569,9 +2088,7 @@ export interface SeamGovernor extends BaseContract {
       overrides?: PayableOverrides & { from?: string }
     ): Promise<PopulatedTransaction>;
 
-    renounceOwnership(
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
+    renounceOwnership(overrides?: Overrides & { from?: string }): Promise<PopulatedTransaction>;
 
     setProposalThreshold(
       newProposalThreshold: BigNumberish,
@@ -2588,10 +2105,7 @@ export interface SeamGovernor extends BaseContract {
       overrides?: Overrides & { from?: string }
     ): Promise<PopulatedTransaction>;
 
-    state(
-      proposalId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    state(proposalId: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     supportsInterface(
       interfaceId: BytesLike,
@@ -2630,15 +2144,11 @@ export interface SeamGovernor extends BaseContract {
 
     version(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    voteCountDenominator(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    voteCountDenominator(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "voteCountNumerator()"(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    'voteCountNumerator()'(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "voteCountNumerator(uint256)"(
+    'voteCountNumerator(uint256)'(
       timepoint: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;

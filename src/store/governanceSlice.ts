@@ -5,7 +5,7 @@ import {
   GovDelegateTokensBySig,
   GovPrepareDelegateSig,
 } from '@aave/contract-helpers';
-import { GovernanceService, Support, ProposalState } from 'src/services/GovernanceService';
+import { GovernanceService, ProposalState, Support } from 'src/services/GovernanceService';
 import { governanceConfig } from 'src/ui-config/governanceConfig';
 import { getProvider } from 'src/utils/marketsAndNetworksConfig';
 import { StateCreator } from 'zustand';
