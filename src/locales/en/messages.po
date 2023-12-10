@@ -109,6 +109,11 @@ msgstr "APY, variable"
 msgid "About GHO"
 msgstr "About GHO"
 
+#: src/components/transactions/GovVote/GovVoteActions.tsx
+#: src/components/transactions/GovVote/GovVoteModalContent.tsx
+msgid "Abstain"
+msgstr "Abstain"
+
 #: src/layouts/WalletWidget.tsx
 msgid "Account"
 msgstr "Account"
@@ -140,6 +145,11 @@ msgstr "Add {0} to wallet to track your balance."
 #: src/ui-config/errorMapping.tsx
 msgid "Address is not a contract"
 msgstr "Address is not a contract"
+
+#: src/components/transactions/GovVote/GovVoteActions.tsx
+#: src/components/transactions/GovVote/GovVoteModalContent.tsx
+msgid "Against"
+msgstr "Against"
 
 #: src/components/transactions/Emode/EmodeModalContent.tsx
 #: src/components/transactions/Emode/EmodeModalContent.tsx
@@ -530,6 +540,10 @@ msgstr "Cancel"
 msgid "Cannot disable E-Mode"
 msgstr "Cannot disable E-Mode"
 
+#: src/modules/governance/VotingPowerInfoPanel.tsx
+msgid "Cast Vote"
+msgstr "Cast Vote"
+
 #: src/modules/governance/DelegatedInfoPanel.tsx
 msgid "Change delegation"
 msgstr "Change delegation"
@@ -849,6 +863,10 @@ msgstr "Enabling this asset as collateral increases your borrowing power and Hea
 msgid "English"
 msgstr "English"
 
+#: src/components/transactions/GovVote/GovVoteModalContent.tsx
+msgid "Enter Proposal ID"
+msgstr "Enter Proposal ID"
+
 #: src/components/transactions/GovDelegation/GovDelegationModalContent.tsx
 msgid "Enter address"
 msgstr "Enter address"
@@ -915,6 +933,11 @@ msgstr "Fixed rate"
 msgid "Flashloan is disabled for this asset, hence this position cannot be migrated."
 msgstr "Flashloan is disabled for this asset, hence this position cannot be migrated."
 
+#: src/components/transactions/GovVote/GovVoteActions.tsx
+#: src/components/transactions/GovVote/GovVoteModalContent.tsx
+msgid "For"
+msgstr "For"
+
 #: src/ui-config/errorMapping.tsx
 msgid "For repayment of a specific type of debt, the user needs to have debt that type"
 msgstr "For repayment of a specific type of debt, the user needs to have debt that type"
@@ -948,6 +971,14 @@ msgstr "Go to V3 Dashboard"
 #: src/ui-config/menu-items/index.tsx
 msgid "Governance"
 msgstr "Governance"
+
+#: src/components/transactions/GovVote/GovVoteModalContent.tsx
+msgid "Governor long"
+msgstr "Governor long"
+
+#: src/components/transactions/GovVote/GovVoteModalContent.tsx
+msgid "Governor short"
+msgstr "Governor short"
 
 #: src/layouts/components/LanguageSwitcher.tsx
 msgid "Greek"
@@ -1295,6 +1326,10 @@ msgstr "New APY"
 msgid "No assets selected to migrate."
 msgstr "No assets selected to migrate."
 
+#: src/components/transactions/GovVote/GovVoteModalContent.tsx
+msgid "No proposal ID entered"
+msgstr "No proposal ID entered"
+
 #: src/components/NoSearchResults.tsx
 #: src/components/NoSearchResults.tsx
 msgid "No search results{0}"
@@ -1304,6 +1339,10 @@ msgstr "No search results{0}"
 #: src/modules/history/HistoryWrapperMobile.tsx
 msgid "No transactions yet."
 msgstr "No transactions yet."
+
+#: src/components/transactions/GovVote/GovVoteModalContent.tsx
+msgid "No voting power"
+msgstr "No voting power"
 
 #: src/components/transactions/Emode/EmodeModalContent.tsx
 #: src/components/transactions/Emode/EmodeModalContent.tsx
@@ -1948,6 +1987,10 @@ msgstr "Testnet mode"
 msgid "Testnet mode is ON"
 msgstr "Testnet mode is ON"
 
+#: src/components/transactions/GovVote/GovVoteModalContent.tsx
+msgid "Thank you for voting!!"
+msgstr "Thank you for voting!!"
+
 #: src/components/infoTooltips/BorrowPowerTooltip.tsx
 msgid "The % of your total borrowing power used. This is based on the amount of your collateral supplied and the total amount that you can borrow."
 msgstr "The % of your total borrowing power used. This is based on the amount of your collateral supplied and the total amount that you can borrow."
@@ -2112,6 +2155,10 @@ msgstr "This is the total amount available for you to borrow. You can borrow bas
 #: src/components/infoTooltips/AvailableTooltip.tsx
 msgid "This is the total amount that you are able to supply to in this reserve. You are able to supply your wallet balance up until the supply cap is reached."
 msgstr "This is the total amount that you are able to supply to in this reserve. You are able to supply your wallet balance up until the supply cap is reached."
+
+#: src/components/transactions/GovVote/GovVoteModalContent.tsx
+msgid "This proposal is not active. Either voting has not started or it has ended."
+msgstr "This proposal is not active. Either voting has not started or it has ended."
 
 #: src/components/infoTooltips/LiquidationThresholdTooltip.tsx
 msgid "This represents the threshold at which a borrow position will be considered undercollateralized and subject to liquidation for each collateral. For example, if a collateral has a liquidation threshold of 80%, it means that the position will be liquidated when the debt value is worth 80% of the collateral value."
@@ -2324,6 +2371,10 @@ msgstr "View details"
 msgid "View on Explorer"
 msgstr "View on Explorer"
 
+#: src/components/transactions/GovVote/GovVoteModalContent.tsx
+msgid "Voting power"
+msgstr "Voting power"
+
 #: src/components/transactions/Repay/RepayModalContent.tsx
 #: src/components/transactions/Repay/RepayTypeSelector.tsx
 #: src/components/transactions/Supply/SupplyModalContent.tsx
@@ -2438,6 +2489,10 @@ msgstr "You do not have supplies in this currency"
 #: src/components/transactions/Repay/RepayModalContent.tsx
 msgid "You don’t have enough funds in your wallet to repay the full amount. If you proceed to repay with your current amount of funds, you will still have a small borrowing position in your dashboard."
 msgstr "You don’t have enough funds in your wallet to repay the full amount. If you proceed to repay with your current amount of funds, you will still have a small borrowing position in your dashboard."
+
+#: src/components/transactions/GovVote/GovVoteModalContent.tsx
+msgid "You have already cast your vote on this proposal"
+msgstr "You have already cast your vote on this proposal"
 
 #: src/modules/governance/DelegatedInfoPanel.tsx
 msgid "You have no SEAM/esSEAM to delegate."

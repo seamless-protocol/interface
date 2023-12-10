@@ -4,7 +4,6 @@ import {
   EthereumTransactionTypeExtended,
   gasLimitRecommendations,
   GasResponse,
-  // GovGetVoteOnProposal,
   GovDelegate,
   GovDelegateTokensBySig,
   GovPrepareDelegateSig,
@@ -23,6 +22,8 @@ import {
   Multicall__factory,
   SEAM,
   SEAM__factory,
+  SeamGovernor,
+  SeamGovernor__factory,
 } from 'src/services/types';
 import { Multicall3 } from 'src/services/types/Multicall';
 import { governanceConfig } from 'src/ui-config/governanceConfig';
@@ -36,15 +37,30 @@ interface Powers {
   esSEAMVotingDelegatee: string;
 }
 
-interface VoteOnProposalData {
-  votingPower: string;
-  support: boolean;
+export enum Support {
+  Against,
+  For,
+  Abstain,
 }
+
+export enum ProposalState {
+  Pending,
+  Active,
+  Canceled,
+  Defeated,
+  Succeeded,
+  Queued,
+  Expired,
+  Executed,
+}
+
 export class GovernanceService implements Hashable {
   readonly provider: Provider;
   readonly multicall: Multicall;
   readonly seam: SEAM;
   readonly esSEAM: EscrowSEAM;
+  readonly governorLong: SeamGovernor;
+  readonly governorShort: SeamGovernor;
 
   constructor(provider: Provider, public readonly chainId: number) {
     this.provider = provider;
@@ -54,10 +70,55 @@ export class GovernanceService implements Hashable {
     );
     this.seam = SEAM__factory.connect(governanceConfig.seamTokenAddress, this.provider);
     this.esSEAM = EscrowSEAM__factory.connect(governanceConfig.esSEAMTokenAddress, this.provider);
+    this.governorLong = SeamGovernor__factory.connect(
+      governanceConfig.addresses.GOVERNOR_LONG_ADDRESS,
+      this.provider
+    );
+    this.governorShort = SeamGovernor__factory.connect(
+      governanceConfig.addresses.GOVERNOR_SHORT_ADDRESS,
+      this.provider
+    );
   }
-  async getVoteOnProposal(/*request: GovGetVoteOnProposal*/): Promise<VoteOnProposalData> {
-    console.error('Cannot obtain past vote value');
-    throw new Error('getVoteOnProposal: not implemented');
+  async getHasVotedOnProposal(
+    governorAddress: string,
+    proposalId: string,
+    user: string
+  ): Promise<boolean> {
+    const governor =
+      governorAddress.toLocaleLowerCase() === this.governorShort.address.toLocaleLowerCase()
+        ? this.governorShort
+        : this.governorLong;
+
+    return governor.hasVoted(proposalId, user);
+  }
+  async getProposalState(governorAddress: string, proposalId: string): Promise<ProposalState> {
+    const governor =
+      governorAddress.toLocaleLowerCase() === this.governorShort.address.toLocaleLowerCase()
+        ? this.governorShort
+        : this.governorLong;
+
+    return governor.state(proposalId);
+  }
+  async castVote(governorAddress: string, proposalId: string, user: string, support: Support) {
+    const governor =
+      governorAddress.toLocaleLowerCase() === this.governorShort.address.toLocaleLowerCase()
+        ? this.governorShort
+        : this.governorLong;
+
+    const txs: EthereumTransactionTypeExtended[] = [];
+
+    const txCallback: () => Promise<transactionType> = this.generateTxCallback({
+      rawTxMethod: async () => governor.populateTransaction.castVote(proposalId, support),
+      from: user,
+    });
+
+    txs.push({
+      tx: txCallback,
+      txType: eEthereumTxType.GOVERNANCE_ACTION,
+      gas: this.generateTxPriceEstimation(txs, txCallback),
+    });
+
+    return txs;
   }
   async getVestedEsSEAM(user: string): Promise<string> {
     const amount = await this.esSEAM.getClaimableAmount(user);

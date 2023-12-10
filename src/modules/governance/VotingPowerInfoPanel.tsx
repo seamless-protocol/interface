@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/macro';
-import { Box, Divider, Grid, Paper, Typography } from '@mui/material';
+import { Box, Button, Divider, Grid, Paper, Typography } from '@mui/material';
 import { useEffect } from 'react';
 import { AvatarSize } from 'src/components/Avatar';
 import { CompactMode } from 'src/components/CompactableTypography';
@@ -16,14 +16,14 @@ import { GENERAL } from 'src/utils/mixPanelEvents';
 
 export function VotingPowerInfoPanel() {
   const { currentAccount } = useWeb3Context();
-  const { mainTxState: txState, type } = useModalContext();
+  const { mainTxState: txState, type, openGovVote } = useModalContext();
   const {
     data: { seam, esSEAM },
   } = useGovernanceTokens();
   const { data: vestedEsSEAM, refetch: refetchVestedEsSEAM } = useVestedEsSEAM();
   const { data: powers, refetch: refetchPowers } = usePowers();
 
-  const disableButton = vestedEsSEAM === '0' || type !== undefined;
+  const disableEsSEAMButton = vestedEsSEAM === '0' || type !== undefined;
 
   useEffect(() => {
     if (txState.success) {
@@ -34,21 +34,46 @@ export function VotingPowerInfoPanel() {
 
   return (
     <Paper>
-      <Box sx={{ px: 6, pb: 6, pt: 4 }}>
+      <Box sx={{ px: 6, pb: 6, pt: 4, pr: 6 }}>
         <Typography variant="h3">
           <Trans>Your info</Trans>
         </Typography>
-        <UserDisplay
-          withLink={true}
-          avatarProps={{ size: AvatarSize.LG }}
-          titleProps={{ variant: 'h4', addressCompactMode: CompactMode.MD }}
-          subtitleProps={{
-            variant: 'caption',
-            addressCompactMode: CompactMode.XXL,
-            color: 'text.secondary',
-          }}
-          funnel={'Your info: Governance'}
-        />
+        <Box sx={{ display: 'flex', gap: 70, justifyContent: 'space-between' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+            <UserDisplay
+              withLink={true}
+              avatarProps={{ size: AvatarSize.LG }}
+              titleProps={{ variant: 'h4', addressCompactMode: CompactMode.MD }}
+              subtitleProps={{
+                variant: 'caption',
+                addressCompactMode: CompactMode.XXL,
+                color: 'text.secondary',
+              }}
+              funnel={'Your info: Governance'}
+            />
+          </Box>
+          {powers?.votingPower && powers?.votingPower !== '0' && (
+            <Box
+              sx={{
+                display: 'flex',
+                flex: '1 0 33.33%',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
+            >
+              <Button
+                size="large"
+                sx={{
+                  width: '80%',
+                }}
+                variant="contained"
+                onClick={() => openGovVote()}
+              >
+                <Trans>Cast Vote</Trans>
+              </Button>
+            </Box>
+          )}
+        </Box>
       </Box>
       <Divider />
       <Box sx={{ p: 6, display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -111,8 +136,8 @@ export function VotingPowerInfoPanel() {
               </Grid>
             </Grid>
             <Divider />
-            <Box sx={{ display: 'flex', mt: 6 }}>
-              <Box sx={{ display: 'flex', flexDirection: 'column', mr: '25%' }}>
+            <Box sx={{ display: 'flex', mt: 6, justifyContent: 'space-between', gap: 80 }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <TextWithTooltip
                   text="Claimable SEAM"
                   variant="description"
@@ -147,7 +172,7 @@ export function VotingPowerInfoPanel() {
                   marginTop: '5px',
                 }}
               >
-                <VestedEsSEAMClaimActions blocked={disableButton} />
+                <VestedEsSEAMClaimActions blocked={disableEsSEAMButton} />
               </Box>
             </Box>
           </>

@@ -2,6 +2,7 @@ import { ProtocolAction } from '@aave/contract-helpers';
 import { Trans } from '@lingui/macro';
 import { useTransactionHandler } from 'src/helpers/useTransactionHandler';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
+import { Support } from 'src/services/GovernanceService';
 import { useRootStore } from 'src/store/root';
 
 import { TxActionsWrapper } from '../TxActionsWrapper';
@@ -9,36 +10,39 @@ import { TxActionsWrapper } from '../TxActionsWrapper';
 export type GovVoteActionsProps = {
   isWrongNetwork: boolean;
   blocked: boolean;
-  proposalId: number;
-  support: boolean;
+  governorAddress: string;
+  proposalId: string;
+  support: Support;
 };
 
 export const GovVoteActions = ({
   isWrongNetwork,
   blocked,
+  governorAddress,
   proposalId,
   support,
 }: GovVoteActionsProps) => {
-  const submitVote = useRootStore((state) => state.submitVote);
+  const castVote = useRootStore((state) => state.castVote);
   const { currentAccount } = useWeb3Context();
 
   const { action, loadingTxns, mainTxState, requiresApproval } = useTransactionHandler({
     tryPermit: false,
     handleGetTxns: async () => {
-      return submitVote({
-        proposalId: Number(proposalId),
-        user: currentAccount,
-        support: support || false,
-      });
-    },
-    eventTxInfo: {
-      proposalId,
-      support,
+      return castVote(governorAddress, proposalId, currentAccount, support);
     },
     protocolAction: ProtocolAction.vote,
     skip: blocked,
     deps: [],
   });
+
+  const voteText =
+    support === Support.For ? (
+      <Trans>For</Trans>
+    ) : support === Support.Against ? (
+      <Trans>Against</Trans>
+    ) : (
+      <Trans>Abstain</Trans>
+    );
 
   return (
     <TxActionsWrapper
@@ -47,8 +51,8 @@ export const GovVoteActions = ({
       mainTxState={mainTxState}
       preparingTransactions={loadingTxns}
       handleAction={action}
-      actionText={support ? <Trans>VOTE YAE</Trans> : <Trans>VOTE NAY</Trans>}
-      actionInProgressText={support ? <Trans>VOTE YAE</Trans> : <Trans>VOTE NAY</Trans>}
+      actionText={voteText}
+      actionInProgressText={voteText}
       isWrongNetwork={isWrongNetwork}
     />
   );
