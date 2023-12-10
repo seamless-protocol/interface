@@ -6,7 +6,6 @@ import {
   Radio,
   RadioGroup,
   TextField,
-  Typography,
 } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -51,11 +50,15 @@ export const GovVoteModalContent = () => {
   const { data: powers } = usePowers();
 
   const governorAddressQuery =
-    query['governorAddress'] === undefined || query['governorAddress'].length > 0
+    query['governorAddress'] === undefined || Array.isArray(query['governorAddress'])
       ? governanceConfig.addresses.GOVERNOR_SHORT_ADDRESS.toLocaleLowerCase()
       : (query['governorAddress'] as string).toLocaleLowerCase();
+  const proposalIdQuery =
+    query['proposalId'] === undefined || Array.isArray(query['proposalId'])
+      ? ''
+      : (query['proposalId'] as string);
 
-  const [proposalId, setProposalId] = useState(query['proposalId']?.[0] || '');
+  const [proposalId, setProposalId] = useState(proposalIdQuery);
   const [governorAddress, setGovernorAddress] = useState(governorAddressQuery);
   const [support, setSupport] = useState<Support>(Support.Abstain);
 
@@ -79,29 +82,15 @@ export const GovVoteModalContent = () => {
       case ErrorType.NOT_ENOUGH_VOTING_POWER:
         return (
           // TODO: fix text
-          <Typography>
-            <Trans>No voting power</Trans>
-          </Typography>
+          <Trans>No voting power</Trans>
         );
       case ErrorType.NO_PROPOSAL_ID:
-        return (
-          <Typography>
-            <Trans>No proposal ID entered</Trans>
-          </Typography>
-        );
+        return <Trans>No proposal ID entered</Trans>;
       case ErrorType.HAS_VOTED:
-        return (
-          <Typography>
-            <Trans>You have already cast your vote on this proposal</Trans>
-          </Typography>
-        );
+        return <Trans>You have already cast your vote on this proposal</Trans>;
       case ErrorType.PROPOSAL_NOT_ACTIVE:
         return (
-          <Typography>
-            <Trans>
-              This proposal is not active. Either voting has not started or it has ended.
-            </Trans>
-          </Typography>
+          <Trans>This proposal is not active. Either voting has not started or it has ended.</Trans>
         );
       default:
         return null;
