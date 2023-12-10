@@ -269,6 +269,7 @@ export const DashboardTopPanel = () => {
                   currentChainId={currentChainId}
                   connectedChainId={connectedChainId}
                   hideSToken={true}
+                  isReward={true}
                 />
               )}
             </Box>

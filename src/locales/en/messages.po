@@ -1402,8 +1402,8 @@ msgid "Page not found"
 msgstr "Page not found"
 
 #: src/components/incentives/IncentivesTooltipContent.tsx
-msgid "Participating in this {symbol} reserve gives annualized rewards. APY refers solely to the annualized rate of earning OG Points for your participation in the Seamless ecosystem. OG Points have no monetary value, cannot be traded or transferred among holders, and cannot be exchanged for cash or any other type of monetary value. No other rewards are offered hereby."
-msgstr "Participating in this {symbol} reserve gives annualized rewards. APY refers solely to the annualized rate of earning OG Points for your participation in the Seamless ecosystem. OG Points have no monetary value, cannot be traded or transferred among holders, and cannot be exchanged for cash or any other type of monetary value. No other rewards are offered hereby."
+msgid "Participating in this {symbol} reserve gives annualized rewards. APY refers solely to the annualized rate of earning reward tokens for your participation in the Seamless ecosystem."
+msgstr "Participating in this {symbol} reserve gives annualized rewards. APY refers solely to the annualized rate of earning reward tokens for your participation in the Seamless ecosystem."
 
 #: src/components/transactions/CollateralChange/CollateralChangeActions.tsx
 #: src/components/transactions/Faucet/FaucetActions.tsx
@@ -2275,7 +2275,6 @@ msgstr "Unbacked mint cap is exceeded"
 msgid "Underlying asset does not exist in {marketName} v3 Market, hence this position cannot be migrated."
 msgstr "Underlying asset does not exist in {marketName} v3 Market, hence this position cannot be migrated."
 
-#: src/modules/reserve-overview/AddTokenDropdown.tsx
 #: src/modules/reserve-overview/TokenLinkDropdown.tsx
 msgid "Underlying token"
 msgstr "Underlying token"
@@ -2660,6 +2659,7 @@ msgstr "withdrew"
 #: src/components/transactions/FlowCommons/ApprovalMethodToggleButton.tsx
 #: src/components/transactions/GovDelegation/GovDelegationModalContent.tsx
 #: src/modules/dashboard/DashboardEModeButton.tsx
+#: src/modules/reserve-overview/AddTokenDropdown.tsx
 #: src/modules/reserve-overview/ReserveTopDetailsWrapper.tsx
 msgid "{0}"
 msgstr "{0}"
