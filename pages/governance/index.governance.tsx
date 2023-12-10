@@ -60,14 +60,27 @@ export default function Governance(/*props: GovernancePageProps*/) {
   const { openGovVote } = useModalContext();
   const { connected } = useWeb3Context();
 
-  const proposalId = query['proposalId']?.[0];
-  const governorAddress = query['governorAddress']?.[0];
-
+  const governorAddressQuery =
+    query['governorAddress'] === undefined || Array.isArray(query['governorAddress'])
+      ? ''
+      : (query['governorAddress'] as string).toLocaleLowerCase();
+  const proposalIdQuery =
+    query['proposalId'] === undefined || Array.isArray(query['proposalId'])
+      ? ''
+      : query['proposalId'];
+  
   useEffect(() => {
-    if (connected && proposalId && proposalId !== '' && governorAddress && governorAddress !== '') {
+    console.log("connected: ", connected, ", proposalIdQuery: ", proposalIdQuery, ", governorAddressQuery: ", governorAddressQuery);
+    if (
+      connected &&
+      proposalIdQuery &&
+      proposalIdQuery !== '' &&
+      governorAddressQuery &&
+      governorAddressQuery !== ''
+    ) {
       openGovVote();
     }
-  }, [proposalId, governorAddress]);
+  }, [connected, proposalIdQuery, governorAddressQuery]);
 
   const trackEvent = useRootStore((store) => store.trackEvent);
 

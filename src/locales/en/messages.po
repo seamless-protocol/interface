@@ -2553,8 +2553,8 @@ msgid "Your supplies"
 msgstr "Your supplies"
 
 #: src/modules/governance/VotingPowerInfoPanel.tsx
-msgid "Your voting power is based on the amount of SEAM + esSEAM that has been delegated to you (you must delegate to yourself to vote with your balance)."
-msgstr "Your voting power is based on the amount of SEAM + esSEAM that has been delegated to you (you must delegate to yourself to vote with your balance)."
+msgid "Your voting power is based on the amount of SEAM that has been delegated to you (you must delegate to yourself to vote with your balance)."
+msgstr "Your voting power is based on the amount of SEAM that has been delegated to you (you must delegate to yourself to vote with your balance)."
 
 #: src/modules/dashboard/lists/SupplyAssetsList/WalletEmptyInfo.tsx
 msgid "Your {name} wallet is empty. <0>Purchase or transfer assets</0> or use <1>{0}</1> to transfer your {network} assets."

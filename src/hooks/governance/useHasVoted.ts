@@ -9,7 +9,7 @@ export const useHasVoted = (governorAddress?: string, proposalId?: string) => {
 
   return useQuery({
     queryFn: () => governanceService.getHasVotedOnProposal(governorAddress!, proposalId!, user),
-    queryKey: [QueryKeys.PROPOSAL_SATE, governorAddress, proposalId, governanceService.toHash()],
+    queryKey: [QueryKeys.HAS_VOTED, governorAddress, proposalId, user, governanceService.toHash()],
     enabled: !!user && !!governorAddress && !!proposalId,
     refetchInterval: POLLING_INTERVAL,
   });
