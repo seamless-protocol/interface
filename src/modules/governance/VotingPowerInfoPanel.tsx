@@ -5,32 +5,32 @@ import { AvatarSize } from 'src/components/Avatar';
 import { CompactMode } from 'src/components/CompactableTypography';
 import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
 import { TextWithTooltip } from 'src/components/TextWithTooltip';
-import { VestedEsSEAMClaimActions } from 'src/components/transactions/VestedEsSEAMClaim/VestedEsSEAMClaimActions';
+// import { VestedEsSEAMClaimActions } from 'src/components/transactions/VestedEsSEAMClaim/VestedEsSEAMClaimActions';
 import { UserDisplay } from 'src/components/UserDisplay';
 import { useGovernanceTokens } from 'src/hooks/governance/useGovernanceTokens';
 import { usePowers } from 'src/hooks/governance/usePowers';
-import { useVestedEsSEAM } from 'src/hooks/governance/useVestedEsSEAM';
+// import { useVestedEsSEAM } from 'src/hooks/governance/useVestedEsSEAM';
 import { useModalContext } from 'src/hooks/useModal';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 import { GENERAL } from 'src/utils/mixPanelEvents';
 
 export function VotingPowerInfoPanel() {
   const { currentAccount } = useWeb3Context();
-  const { mainTxState: txState, type, openGovVote } = useModalContext();
+  const { mainTxState: txState, /*type,*/ openGovVote } = useModalContext();
   const {
-    data: { seam, esSEAM },
+    data: { seam, /*esSEAM*/ },
   } = useGovernanceTokens();
-  const { data: vestedEsSEAM, refetch: refetchVestedEsSEAM } = useVestedEsSEAM();
+  // const { data: vestedEsSEAM, refetch: refetchVestedEsSEAM } = useVestedEsSEAM();
   const { data: powers, refetch: refetchPowers } = usePowers();
 
-  const disableEsSEAMButton = vestedEsSEAM === '0' || type !== undefined;
+  //const disableEsSEAMButton = vestedEsSEAM === '0' || type !== undefined;
 
   useEffect(() => {
     if (txState.success) {
-      refetchVestedEsSEAM();
+      // refetchVestedEsSEAM();
       refetchPowers();
     }
-  }, [txState.success, refetchVestedEsSEAM, refetchPowers]);
+  }, [txState.success, /*refetchVestedEsSEAM*/, refetchPowers]);
 
   return (
     <Paper>
@@ -96,7 +96,7 @@ export function VotingPowerInfoPanel() {
                   <>
                     <Typography variant="subheader2">
                       <Trans>
-                        Your voting power is based on the amount of SEAM + esSEAM that has been
+                        Your voting power is based on the amount of SEAM that has been
                         delegated to you (you must delegate to yourself to vote with your balance).
                       </Trans>
                     </Typography>
@@ -123,7 +123,7 @@ export function VotingPowerInfoPanel() {
                   visibleDecimals={2}
                 />
               </Grid>
-              <Grid item md={4}>
+              {/* <Grid item md={4}>
                 <Typography typography="description" color="text.secondary">
                   <Trans>esSEAM</Trans>
                 </Typography>
@@ -133,9 +133,9 @@ export function VotingPowerInfoPanel() {
                   variant="h2"
                   visibleDecimals={2}
                 />
-              </Grid>
+              </Grid> */}
             </Grid>
-            <Divider />
+            {/* <Divider />
             <Box sx={{ display: 'flex', mt: 6, justifyContent: 'space-between', gap: 80 }}>
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <TextWithTooltip
@@ -174,7 +174,7 @@ export function VotingPowerInfoPanel() {
               >
                 <VestedEsSEAMClaimActions blocked={disableEsSEAMButton} />
               </Box>
-            </Box>
+            </Box> */}
           </>
         )}
       </Box>

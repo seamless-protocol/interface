@@ -74,7 +74,7 @@ export const DelegationTokenSelector = ({
   filter,
 }: DelegationTokenSelectorProps) => {
   const {
-    data: { seam, esSEAM },
+    data: { seam, /*esSEAM*/ },
   } = useGovernanceTokens();
 
   const filteredTokens = filter ? filterTokens(delegationTokens) : delegationTokens;
@@ -96,21 +96,21 @@ export const DelegationTokenSelector = ({
           setDelegationTokenType(Number(e.target.value) as unknown as DelegationTokenType)
         }
       >
-        <FormControlLabel
+        {/* <FormControlLabel
           value={DelegationTokenType.BOTH}
           control={<Radio size="small" />}
           componentsProps={{ typography: { width: '100%' } }}
           label={<TokenRow symbol={['SEAM', 'esSEAM']} amount={Number(seam) + Number(esSEAM)} />}
           data-cy={`delegate-token-both`}
-        />
-        {/* <FormControlLabel
+        /> */}
+        <FormControlLabel
           value={DelegationTokenType.SEAM}
           control={<Radio size="small" />}
           componentsProps={{ typography: { width: '100%' } }}
           label={<TokenRow symbol="SEAM" amount={seam} />}
           data-cy={`delegate-token-SEAM`}
         />
-        <FormControlLabel
+        {/* <FormControlLabel
           value={DelegationTokenType.esSEAM}
           control={<Radio size="small" />}
           componentsProps={{ typography: { width: '100%' } }}

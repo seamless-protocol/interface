@@ -83,7 +83,7 @@ const DelegatedPower: React.FC<DelegatedPowerProps> = ({
                 </Box>
               </Row>
             )}
-            {isEsSEAMDelegated && (
+            {/* {isEsSEAMDelegated && (
               <Row
                 align="flex-start"
                 caption={
@@ -102,7 +102,7 @@ const DelegatedPower: React.FC<DelegatedPowerProps> = ({
                   </Typography>
                 </Box>
               </Row>
-            )}
+            )} */}
           </>
         )}
       </Box>
@@ -128,20 +128,26 @@ export const DelegatedInfoPanel = () => {
 
   return (
     <Paper>
-      <Box sx={{ px: 6, pb: 6, pt: 4 }}>
+      <Box sx={{ px: 6, pb: 4, pt: 4 }}>
         <Typography typography="h3">
           <Trans>Delegated power</Trans>
         </Typography>
         <Typography typography="description" sx={{ mt: 1 }} color="text.secondary">
           <Trans>
-            Use your SEAM and esSEAM to delegate your voting power. You will not be sending any
-            tokens, only the rights to vote and propose changes to the protocol. You can re-delegate
-            at any time.
+            All SEAM tokens have voting power, but in order to activate this voting power, SEAM must
+            first be delegated. Note: Delegation does not transfer token ownership, it only grants
+            “Voting Power” to the delegated address. You can either self-delegate or delegate this
+            voting power to others and you can change your delegation at anytime. To view active
+            community members who are interested in receiving delegation, click{' '}
+            <a href="https://seamlessprotocol.discourse.group/t/seamless-community-representatives/42">
+              here
+            </a>
+            .
           </Trans>
         </Typography>
         {disableButton ? (
           <Typography variant="description" color="text.muted" mt={6}>
-            <Trans>You have no SEAM/esSEAM to delegate.</Trans>
+            <Trans>You have no SEAM to delegate.</Trans>
           </Typography>
         ) : (
           <>
@@ -157,7 +163,7 @@ export const DelegatedInfoPanel = () => {
         )}
       </Box>
       <Divider />
-      <Box sx={{ p: 6, display: 'flex', flexDirection: 'column', gap: 2 }}>
+      <Box sx={{ py: 4, px: 6, display: 'flex', flexDirection: 'column', gap: 2 }}>
         <Button
           size="large"
           sx={{ width: '100%' }}

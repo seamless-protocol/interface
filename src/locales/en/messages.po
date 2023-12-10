@@ -156,6 +156,10 @@ msgstr "Against"
 msgid "All Assets"
 msgstr "All Assets"
 
+#: src/modules/governance/DelegatedInfoPanel.tsx
+msgid "All SEAM tokens have voting power, but in order to activate this voting power, SEAM must first be delegated. Note: Delegation does not transfer token ownership, it only grants “Voting Power” to the delegated address. You can either self-delegate or delegate this voting power to others and you can change your delegation at anytime. To view active community members who are interested in receiving delegation, click <0>here</0>."
+msgstr "All SEAM tokens have voting power, but in order to activate this voting power, SEAM must first be delegated. Note: Delegation does not transfer token ownership, it only grants “Voting Power” to the delegated address. You can either self-delegate or delegate this voting power to others and you can change your delegation at anytime. To view active community members who are interested in receiving delegation, click <0>here</0>."
+
 #: src/components/transactions/Borrow/GhoBorrowSuccessView.tsx
 #: src/components/transactions/FlowCommons/Success.tsx
 msgid "All done!"
@@ -188,10 +192,6 @@ msgstr "Amount"
 #: src/ui-config/errorMapping.tsx
 msgid "Amount must be greater than 0"
 msgstr "Amount must be greater than 0"
-
-#: src/modules/governance/VotingPowerInfoPanel.tsx
-msgid "Amount of esSEAM that has vested and is claimable as SEAM."
-msgstr "Amount of esSEAM that has vested and is claimable as SEAM."
 
 #: src/components/transactions/TxActionsWrapper.tsx
 msgid "Approve Confirmed"
@@ -2288,10 +2288,6 @@ msgstr "Update: Disruptions reported for WETH, WBTC, WMATIC, and USDT. AIP 230 w
 msgid "Use it to vote for or against active proposals."
 msgstr "Use it to vote for or against active proposals."
 
-#: src/modules/governance/DelegatedInfoPanel.tsx
-msgid "Use your SEAM and esSEAM to delegate your voting power. You will not be sending any tokens, only the rights to vote and propose changes to the protocol. You can re-delegate at any time."
-msgstr "Use your SEAM and esSEAM to delegate your voting power. You will not be sending any tokens, only the rights to vote and propose changes to the protocol. You can re-delegate at any time."
-
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsListMobileItem.tsx
 msgid "Used as collateral"
 msgstr "Used as collateral"
@@ -2495,8 +2491,8 @@ msgid "You have already cast your vote on this proposal"
 msgstr "You have already cast your vote on this proposal"
 
 #: src/modules/governance/DelegatedInfoPanel.tsx
-msgid "You have no SEAM/esSEAM to delegate."
-msgstr "You have no SEAM/esSEAM to delegate."
+msgid "You have no SEAM to delegate."
+msgstr "You have no SEAM to delegate."
 
 #: src/components/transactions/RateSwitch/RateSwitchModalContent.tsx
 msgid "You have not borrow yet using this currency"
@@ -2596,10 +2592,6 @@ msgstr "disabled"
 #: src/modules/history/actions/ActionDetails.tsx
 msgid "enabled"
 msgstr "enabled"
-
-#: src/modules/governance/VotingPowerInfoPanel.tsx
-msgid "esSEAM"
-msgstr "esSEAM"
 
 #: src/modules/history/actions/ActionDetails.tsx
 #: src/modules/history/actions/ActionDetails.tsx
