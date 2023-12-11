@@ -71,9 +71,9 @@ export default function MyApp(props: MyAppProps) {
       <Meta
         title={'Open Source Liquidity Protocol'}
         description={
-          'Seamless is an Open Source Protocol to create Non-Custodial Liquidity Markets to earn interest on supplying and borrowing assets with a variable or stable interest rate. The protocol is designed for easy integration into your products and services.'
+          'Seamless lays the foundation for modern DeFi, focusing on lower-collateral borrowing and a better user experience to inspire the masses.'
         }
-        imageUrl="https://app.seamlessprotocol.com/wordmark_seamless.svg"
+        imageUrl="https://app.seamlessprotocol.com/seamless.svg"
       />
       <LanguageProvider>
         <QueryClientProvider client={queryClient}>
