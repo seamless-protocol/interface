@@ -31,10 +31,13 @@ const getCoinGeckoSEAMPriceUSD = async (): Promise<string> => {
       [COINGECKO_ID]: { usd: price },
     } = await resp.json();
 
-    return parseUnits(price.toString(), PRICE_FEED_DECIMALS).toString() ?? '9.5';
+    return (
+      parseUnits(price.toString(), PRICE_FEED_DECIMALS).toString() ??
+      parseUnits('9.0', PRICE_FEED_DECIMALS).toString()
+    );
   } catch (err) {
     console.error('Error: Failed to fetch SEAM price from CoinGecko: ', err);
-    return '9.5';
+    return parseUnits('9.0', PRICE_FEED_DECIMALS).toString();
   }
 };
 
