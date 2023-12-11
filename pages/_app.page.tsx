@@ -73,7 +73,7 @@ export default function MyApp(props: MyAppProps) {
         description={
           'Seamless lays the foundation for modern DeFi, focusing on lower-collateral borrowing and a better user experience to inspire the masses.'
         }
-        imageUrl="https://app.seamlessprotocol.com/seamless.svg"
+        imageUrl="https://uploads-ssl.webflow.com/6552b540a50c1db23dd37c0e/65765d79bda3e23aaf593eb9_Seamless%20Main%20Website.png"
       />
       <LanguageProvider>
         <QueryClientProvider client={queryClient}>
