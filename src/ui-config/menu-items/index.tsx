@@ -33,7 +33,7 @@ export const navigation: Navigation[] = [
   },
   {
     link: '',
-    title: t`Swap on to Base`,
+    title: t`Swap onto Base`,
     dataCy: 'swapBase',
     disabled: false,
   },
@@ -54,6 +54,11 @@ export const navigation: Navigation[] = [
       process.env.NEXT_PUBLIC_ENABLE_GOVERNANCE === 'true' &&
       process.env.NEXT_PUBLIC_ENV === 'prod' &&
       !ENABLE_TESTNET,
+  },
+  {
+    link: ROUTES.airdrop,
+    title: t`Claim Airdrop`,
+    dataCy: 'claimAirdrop',
   },
   {
     link: ROUTES.faucet,
