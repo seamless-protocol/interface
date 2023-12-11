@@ -31,10 +31,13 @@ const getCoinGeckoSEAMPriceUSD = async (): Promise<string> => {
       [COINGECKO_ID]: { usd: price },
     } = await resp.json();
 
-    return parseUnits(price.toString(), PRICE_FEED_DECIMALS).toString() ?? '0';
+    return (
+      parseUnits(price.toString(), PRICE_FEED_DECIMALS).toString() ??
+      parseUnits('9.0', PRICE_FEED_DECIMALS).toString()
+    );
   } catch (err) {
     console.error('Error: Failed to fetch SEAM price from CoinGecko: ', err);
-    return '0';
+    return parseUnits('9.0', PRICE_FEED_DECIMALS).toString();
   }
 };
 
@@ -124,7 +127,7 @@ export const createIncentiveSlice: StateCreator<
     const promises: Promise<void>[] = [];
 
     let seamPriceUSD = seamPriceUSDCache;
-    if (seamPriceUSD === undefined || (lastFetchTimestamp + CACHE_TIME) < Date.now()) {
+    if (seamPriceUSD === undefined || lastFetchTimestamp + CACHE_TIME < Date.now()) {
       seamPriceUSDCache = await getCoinGeckoSEAMPriceUSD();
       seamPriceUSD = seamPriceUSDCache;
       lastFetchTimestamp = Date.now();
