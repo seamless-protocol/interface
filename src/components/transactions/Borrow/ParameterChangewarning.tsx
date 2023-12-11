@@ -18,7 +18,7 @@ export const ParameterChangewarning = ({ underlyingAsset }: { underlyingAsset: s
               Link: 'Governance Link',
             });
           }}
-          href="https://discord.gg/urQPJu3CKt"
+          href="https://discord.com/invite/Uye9jCVgUp"
         >
           Community Discord
         </a>{' '}

@@ -24,7 +24,7 @@ const FOOTER_ICONS = [
     title: 'Telegram',
   },
   {
-    href: 'https://discord.gg/urQPJu3CKt',
+    href: 'https://discord.com/invite/Uye9jCVgUp',
     icon: <Discord fill="white" />,
     title: 'Discord',
   },
@@ -54,7 +54,7 @@ export function AppFooter() {
       key: 'Privacy',
     },
     {
-      href: 'https://docs.seamlessprotocol.com/overview/introduction-to-seamless-protocol',
+      href: 'https://docs.seamlessprotocol.com',
       label: <Trans>Docs</Trans>,
       key: 'Docs',
     },

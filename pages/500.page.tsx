@@ -77,7 +77,7 @@ export default function Aave500Page() {
                 If the error continues to happen,
                 <br /> you may report it to this
               </Trans>{' '}
-              <Link href="https://discord.com/invite/7kHKnkDEUf" color="inherit" target="_blank">
+              <Link href="https://discord.com/invite/Uye9jCVgUp" color="inherit" target="_blank">
                 <Trans>Discord channel</Trans>
               </Link>
               .

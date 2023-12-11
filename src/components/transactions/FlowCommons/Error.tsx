@@ -41,8 +41,8 @@ export const TxErrorView = ({ txError }: { txError: TxErrorType }) => {
 
         <Typography>
           <Trans>
-            You can report incident to our <Link href="https://discord.gg/7kHKnkDEUf">Discord</Link>{' '}
-            or <Link href="https://github.com/aave/interface">Github</Link>.
+            You can report incident to our <Link href="https://discord.com/invite/Uye9jCVgUp">Discord</Link>{' '}
+            or <Link href="https://github.com/seamless-protocol/interface">Github</Link>.
           </Trans>
         </Typography>
 
