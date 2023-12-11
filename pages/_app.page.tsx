@@ -69,7 +69,7 @@ export default function MyApp(props: MyAppProps) {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <Meta
-        title={'Open Source Liquidity Protocol'}
+        title={'The First Native Base Lending & Borrowing Protocol'}
         description={
           'Seamless lays the foundation for modern DeFi, focusing on lower-collateral borrowing and a better user experience to inspire the masses.'
         }
