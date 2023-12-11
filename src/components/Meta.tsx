@@ -15,6 +15,8 @@ export function Meta({ title, description, imageUrl, timestamp }: MetaProps) {
       <meta name="description" content={description} key="description" />
       <meta property="og:title" content={`Seamless - ${title}`} key="title" />
       <meta property="og:description" content={description} key="ogdescription" />
+      <meta property="og:type" content="website" key="ogtype" />
+      <meta property="og:url" content="https://app.seamlessprotocol.com/" key="ogurl" />
       {imageUrl && <meta property="og:image" content={imageUrl} key="ogimage" />}
       {imageUrl && <meta name="twitter:image" content={imageUrl} key="twitterimage" />}
       <meta name="twitter:site" content="@seamlessfi" key="twittersite" />
@@ -23,7 +25,9 @@ export function Meta({ title, description, imageUrl, timestamp }: MetaProps) {
         content={imageUrl ? 'summary_large_image' : 'summary'}
         key="twittercard"
       />
-      <meta name="twitter:title" content={title} key="twittertitle" />
+      <meta name="twitter:domain" content="http://app.seamlessprotocol.com/" key="twitterdomain" />
+      <meta name="twitter:url" content="https://app.seamlessprotocol.com/" key="twitterurl" />
+      <meta name="twitter:title" content={`Seamless - ${title}`} key="twittertitle" />
       <meta name="twitter:description" content={description} key="twitterdescription" />
       {timestamp && <meta name="revised" content={timestamp} key="timestamp" />}
       <meta
