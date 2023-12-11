@@ -23,7 +23,6 @@ export function Meta({ title, description, imageUrl, timestamp }: MetaProps) {
         content={imageUrl ? 'summary_large_image' : 'summary'}
         key="twittercard"
       />
-      <meta name="twitter:card" content="summary_large_image" key="twittercard" />
       <meta name="twitter:domain" content="http://app.seamlessprotocol.com/" key="twitterdomain" />
       <meta name="twitter:url" content="https://app.seamlessprotocol.com/" key="twitterurl" />
       <meta name="twitter:title" content={`Seamless - ${title}`} key="twittertitle" />
