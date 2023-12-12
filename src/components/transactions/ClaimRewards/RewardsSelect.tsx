@@ -37,7 +37,7 @@ export const RewardsSelect = ({
           outline: 'none !important',
           color: 'text.primary',
           '.MuiOutlinedInput-input': {
-            backgroundColor: 'transparent',
+            backgroundColor: 'transparent !important',
           },
           '&:hover .MuiOutlinedInput-notchedOutline, .MuiOutlinedInput-notchedOutline': {
             borderColor: 'divider',
@@ -81,22 +81,26 @@ export const RewardsSelect = ({
               <Typography variant="subheader1" sx={{ mr: 1 }}>
                 {reward.symbol}
               </Typography>
-              <Typography
-                component="span"
-                sx={{ display: 'inline-flex', alignItems: 'center' }}
-                variant="caption"
-                color="text.muted"
-              >
-                ~
-              </Typography>
-              <FormattedNumber
-                value={Number(reward.balanceUsd)}
-                variant="caption"
-                compact
-                symbol="USD"
-                symbolsColor="text.muted"
-                color="text.muted"
-              />
+              {reward.balanceUsd !== '' && (
+                <>
+                  <Typography
+                    component="span"
+                    sx={{ display: 'inline-flex', alignItems: 'center' }}
+                    variant="caption"
+                    color="text.muted"
+                  >
+                    ~
+                  </Typography>
+                  <FormattedNumber
+                    value={Number(reward.balanceUsd)}
+                    variant="caption"
+                    compact
+                    symbol="USD"
+                    symbolsColor="text.muted"
+                    color="text.muted"
+                  />
+                </>
+              )}
             </Box>
           </MenuItem>
         ))}

@@ -644,7 +644,7 @@ export const createPoolSlice: StateCreator<
         user,
       });
     },
-    claimRewards: async ({ selectedReward }) => {
+    claimRewards: async ({ selectedReward, isAll }) => {
       // TODO: think about moving timestamp from hook to EventEmitter
       const timestamp = dayjs().unix();
       const reserves = selectFormattedReserves(get(), timestamp);
@@ -669,7 +669,7 @@ export const createPoolSlice: StateCreator<
       );
 
       if (get().currentMarketData.v3) {
-        if (selectedReward.symbol === 'all') {
+        if (isAll) {
           return incentivesTxBuilderV2.claimAllRewards({
             user: currentAccount,
             assets: allReserves,

@@ -18,7 +18,8 @@ export interface IncentiveSlice {
 }
 
 const PRICE_FEED_DECIMALS = 8;
-const SEAM_SYMBOL = 'SEAM'; //'OG Points';
+const SEAM_SYMBOL = 'SEAM';
+const OG_POINTS_SYMBOL = 'OG Points';
 const COINGECKO_ID = 'seamless-protocol'; //'ethereum';
 
 const getCoinGeckoSEAMPriceUSD = async (): Promise<string> => {
@@ -49,7 +50,11 @@ const incentiveDataInjectSEAMPriceUSD = (
   rewardsTokenInformation: incentiveData.rewardsTokenInformation.map((incentive) => ({
     ...incentive,
     rewardPriceFeed:
-      incentive.rewardTokenSymbol === SEAM_SYMBOL ? seamPriceUSD : incentive.rewardPriceFeed,
+      incentive.rewardTokenSymbol === SEAM_SYMBOL
+        ? seamPriceUSD
+        : incentive.rewardTokenSymbol === OG_POINTS_SYMBOL
+        ? '0'
+        : incentive.rewardPriceFeed,
     priceFeedDecimals:
       incentive.rewardTokenSymbol === SEAM_SYMBOL
         ? PRICE_FEED_DECIMALS
@@ -76,7 +81,11 @@ const userIncentiveDataInjectSEAMPriceUSD = (
   userRewardsInformation: incentiveData.userRewardsInformation.map((incentive) => ({
     ...incentive,
     rewardPriceFeed:
-      incentive.rewardTokenSymbol === SEAM_SYMBOL ? seamPriceUSD : incentive.rewardPriceFeed,
+      incentive.rewardTokenSymbol === SEAM_SYMBOL
+        ? seamPriceUSD
+        : incentive.rewardTokenSymbol === OG_POINTS_SYMBOL
+        ? '0'
+        : incentive.rewardPriceFeed,
     priceFeedDecimals:
       incentive.rewardTokenSymbol === SEAM_SYMBOL
         ? PRICE_FEED_DECIMALS

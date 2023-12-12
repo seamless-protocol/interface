@@ -12,6 +12,7 @@ import { PageTitle } from 'src/components/TopInfoPanel/PageTitle';
 import { useModalContext } from 'src/hooks/useModal';
 import { useProtocolDataContext } from 'src/hooks/useProtocolDataContext';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
+import { ERC20TokenType } from 'src/libs/web3-data-provider/Web3Provider';
 import { useRootStore } from 'src/store/root';
 import { selectIsMigrationAvailable } from 'src/store/v3MigrationSelectors';
 import { DASHBOARD, GENERAL } from 'src/utils/mixPanelEvents';
@@ -22,10 +23,7 @@ import { FormattedNumber } from '../../components/primitives/FormattedNumber';
 import { NoData } from '../../components/primitives/NoData';
 import { TopInfoPanel } from '../../components/TopInfoPanel/TopInfoPanel';
 import { TopInfoPanelItem } from '../../components/TopInfoPanel/TopInfoPanelItem';
-import {
-  ComputedReserveData,
-  useAppDataContext,
-} from '../../hooks/app-data-provider/useAppDataProvider';
+import { useAppDataContext } from '../../hooks/app-data-provider/useAppDataProvider';
 import { AddTokenDropdown } from '../reserve-overview/AddTokenDropdown';
 import { LiquidationRiskParametresInfoModal } from './LiquidationRiskParametresModal/LiquidationRiskParametresModal';
 
@@ -49,7 +47,7 @@ export const DashboardTopPanel = () => {
     isMigrateToV3Available && currentAccount !== '' && Number(user.totalLiquidityUSD) > 0;
   const theme = useTheme();
   const downToSM = useMediaQuery(theme.breakpoints.down('sm'));
-  const { claimableRewardsUsd, symbols, claimAddresses, decimals } = Object.keys(
+  const { claimableRewardsUsd, addRewardTokens } = Object.keys(
     user.calculatedUserIncentives
   ).reduce(
     (acc, rewardTokenAddress) => {
@@ -75,23 +73,23 @@ export const DashboardTopPanel = () => {
 
       const rewardBalanceUsd = Number(rewardBalance) * tokenPrice;
 
-      if (rewardBalanceUsd > 0) {
-        if (acc.symbols.indexOf(incentive.rewardTokenSymbol) === -1 && rewardTokenAddress) {
-          acc.symbols.push(incentive.rewardTokenSymbol);
-          acc.claimAddresses.push(rewardTokenAddress);
-          acc.decimals.push(incentive.rewardTokenDecimals);
-        }
+      if (acc.symbols.indexOf(incentive.rewardTokenSymbol) === -1 && rewardTokenAddress) {
+        acc.symbols.push(incentive.rewardTokenSymbol);
+        acc.addRewardTokens.push({
+          address: rewardTokenAddress,
+          symbol: incentive.rewardTokenSymbol,
+          decimals: incentive.rewardTokenDecimals,
+        });
 
         acc.claimableRewardsUsd += Number(rewardBalanceUsd);
       }
 
       return acc;
     },
-    { claimableRewardsUsd: 0, symbols: [], claimAddresses: [], decimals: [] } as {
+    { claimableRewardsUsd: 0, symbols: [], addRewardTokens: [] } as {
       claimableRewardsUsd: number;
       symbols: string[];
-      claimAddresses: string[];
-      decimals: number[];
+      addRewardTokens: ERC20TokenType[];
     }
   );
   const loanToValue =
@@ -234,6 +232,7 @@ export const DashboardTopPanel = () => {
                   variant={valueTypographyVariant}
                   visibleDecimals={2}
                   compact
+                  symbol="USD"
                   symbolsColor="#A5A8B6"
                   symbolsVariant={noDataTypographyVariant}
                   data-cy={'Claim_Value'}
@@ -255,14 +254,7 @@ export const DashboardTopPanel = () => {
               </Button>
               {connected && (
                 <AddTokenDropdown
-                  poolReserve={
-                    {
-                      symbol: symbols[0],
-                      underlyingAsset: claimAddresses[0],
-                      iconSymbol: symbols[0],
-                      decimals: decimals[0],
-                    } as ComputedReserveData
-                  }
+                  addRewardTokens={addRewardTokens}
                   downToSM={downToSM}
                   switchNetwork={switchNetwork}
                   addERC20Token={addERC20Token}

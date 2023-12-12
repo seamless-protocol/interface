@@ -71,7 +71,7 @@ export const ClaimRewardsModalContent = () => {
 
       const rewardBalanceUsd = Number(rewardBalance) * tokenPrice;
 
-      if (rewardBalanceUsd > 0) {
+      if (rewardBalanceUsd > 0 || tokenPrice === 0) {
         incentive.assets.forEach((asset) => {
           if (allAssets.indexOf(asset) === -1) {
             allAssets.push(asset);
@@ -84,6 +84,7 @@ export const ClaimRewardsModalContent = () => {
           symbol: incentive.rewardTokenSymbol,
           balance: rewardBalance,
           balanceUsd: rewardBalanceUsd.toString(),
+          tokenPrice,
           decimals: incentive.rewardTokenDecimals,
           rewardTokenAddress,
         });
@@ -98,9 +99,10 @@ export const ClaimRewardsModalContent = () => {
       const allRewards = {
         assets: allAssets,
         incentiveControllerAddress: userIncentives[0].incentiveControllerAddress,
-        symbol: 'all',
+        symbol: '',
         balance: '0',
         balanceUsd: totalClaimableUsd.toString(),
+        tokenPrice: 0,
         rewardTokenAddress: '',
       };
       setSelectedRewardSymbol('all');
@@ -145,15 +147,16 @@ export const ClaimRewardsModalContent = () => {
     return <TxErrorView txError={txError} />;
   }
 
-  if (claimRewardsTxState.success)
+  if (claimRewardsTxState.success) {
     return (
       <TxSuccessView
         action={<Trans>Claimed</Trans>}
         amount={selectedReward?.balanceUsd}
         symbol={selectedReward?.symbol}
-        addToken={addToken}
+        addToken={selectedRewardSymbol === 'all' ? undefined : addToken}
       />
     );
+  }
 
   return (
     <>
@@ -184,7 +187,7 @@ export const ClaimRewardsModalContent = () => {
                 caption={<Trans>Balance</Trans>}
                 captionVariant="description"
                 align="flex-start"
-                mb={selectedReward.symbol !== 'all' ? 0 : 4}
+                mb={selectedRewardSymbol !== 'all' ? 0 : 4}
               >
                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
                   {rewards.map((reward) => (
@@ -204,13 +207,15 @@ export const ClaimRewardsModalContent = () => {
                           {reward.symbol}
                         </Typography>
                       </Box>
-                      <FormattedNumber
-                        value={Number(reward.balanceUsd)}
-                        variant="helperText"
-                        compact
-                        symbol="USD"
-                        color="text.secondary"
-                      />
+                      {reward.balanceUsd !== "" && (
+                        <FormattedNumber
+                          value={Number(reward.balanceUsd)}
+                          variant="helperText"
+                          compact
+                          symbol="USD"
+                          color="text.secondary"
+                        />
+                      )}
                     </Box>
                   ))}
                 </Box>
@@ -235,6 +240,7 @@ export const ClaimRewardsModalContent = () => {
         isWrongNetwork={isWrongNetwork}
         selectedReward={selectedReward ?? ({} as Reward)}
         blocked={blockingError !== undefined}
+        isAll={selectedRewardSymbol === 'all'}
       />
     </>
   );

@@ -10,24 +10,26 @@ export type ClaimRewardsActionsProps = {
   isWrongNetwork: boolean;
   blocked: boolean;
   selectedReward: Reward;
+  isAll: boolean;
 };
 
 export const ClaimRewardsActions = ({
   isWrongNetwork,
   blocked,
   selectedReward,
+  isAll,
 }: ClaimRewardsActionsProps) => {
   const claimRewards = useRootStore((state) => state.claimRewards);
 
   const { action, loadingTxns, mainTxState, requiresApproval } = useTransactionHandler({
     protocolAction: ProtocolAction.claimRewards,
     eventTxInfo: {
-      assetName: selectedReward.symbol,
+      assetName: isAll ? 'all' : selectedReward.symbol,
       amount: selectedReward.balance,
     },
     tryPermit: false,
     handleGetTxns: async () => {
-      return claimRewards({ isWrongNetwork, blocked, selectedReward });
+      return claimRewards({ isWrongNetwork, blocked, selectedReward, isAll });
     },
     skip: Object.keys(selectedReward).length === 0 || blocked,
     deps: [selectedReward],
@@ -41,7 +43,7 @@ export const ClaimRewardsActions = ({
       mainTxState={mainTxState}
       handleAction={action}
       actionText={
-        selectedReward.symbol === 'all' ? (
+        isAll ? (
           <Trans>Claim all</Trans>
         ) : (
           <Trans>Claim {selectedReward.symbol}</Trans>
