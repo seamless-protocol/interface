@@ -18,7 +18,7 @@ export function VotingPowerInfoPanel() {
   const { currentAccount } = useWeb3Context();
   const { mainTxState: txState, /*type,*/ openGovVote } = useModalContext();
   const {
-    data: { seam, /*esSEAM*/ },
+    data: { seam /*esSEAM*/ },
   } = useGovernanceTokens();
   // const { data: vestedEsSEAM, refetch: refetchVestedEsSEAM } = useVestedEsSEAM();
   const { data: powers, refetch: refetchPowers } = usePowers();
@@ -30,7 +30,7 @@ export function VotingPowerInfoPanel() {
       // refetchVestedEsSEAM();
       refetchPowers();
     }
-  }, [txState.success, /*refetchVestedEsSEAM*/, refetchPowers]);
+  }, [txState.success /*refetchVestedEsSEAM*/, , refetchPowers]);
 
   return (
     <Paper>
@@ -38,7 +38,7 @@ export function VotingPowerInfoPanel() {
         <Typography variant="h3">
           <Trans>Your info</Trans>
         </Typography>
-        <Box sx={{ display: 'flex', gap: 70, justifyContent: 'space-between' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <UserDisplay
               withLink={true}
@@ -52,27 +52,6 @@ export function VotingPowerInfoPanel() {
               funnel={'Your info: Governance'}
             />
           </Box>
-          {powers?.votingPower && powers?.votingPower !== '0' && (
-            <Box
-              sx={{
-                display: 'flex',
-                flex: '1 0 33.33%',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-            >
-              <Button
-                size="large"
-                sx={{
-                  width: '80%',
-                }}
-                variant="contained"
-                onClick={() => openGovVote()}
-              >
-                <Trans>Cast Vote</Trans>
-              </Button>
-            </Box>
-          )}
         </Box>
       </Box>
       <Divider />
@@ -96,8 +75,8 @@ export function VotingPowerInfoPanel() {
                   <>
                     <Typography variant="subheader2">
                       <Trans>
-                        Your voting power is based on the amount of SEAM that has been
-                        delegated to you (you must delegate to yourself to vote with your balance).
+                        Your voting power is based on the amount of SEAM that has been delegated to
+                        you (you must delegate to yourself to vote with your balance).
                       </Trans>
                     </Typography>
                     <Typography variant="subheader2" mt={4}>
@@ -135,8 +114,24 @@ export function VotingPowerInfoPanel() {
                 />
               </Grid> */}
             </Grid>
+            <Divider />
+            {powers?.votingPower && powers?.votingPower !== '0' && (
+              <Box
+                sx={{
+                  mt: 6,
+                  display: 'flex',
+                  flex: '1 0 33.33%',
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                }}
+              >
+                <Button size="large" variant="contained" onClick={() => openGovVote()}>
+                  <Trans>Cast Vote</Trans>
+                </Button>
+              </Box>
+            )}
             {/* <Divider />
-            <Box sx={{ display: 'flex', mt: 6, justifyContent: 'space-between', gap: 80 }}>
+            <Box sx={{ display: 'flex', mt: 6, justifyContent: 'space-between' }}>
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <TextWithTooltip
                   text="Claimable SEAM"

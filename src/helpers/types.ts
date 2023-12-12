@@ -10,6 +10,7 @@ export type Reward = {
   symbol: string;
   balance: string;
   balanceUsd: string;
+  tokenPrice: number;
   rewardTokenAddress: string;
   decimals?: number;
 };
