@@ -220,7 +220,7 @@ export const ClaimRewardsModalContent = () => {
                   ))}
                 </Box>
               </Row>
-              <DetailsNumberLine description={<Trans>Total worth</Trans>} value={claimableUsd} />
+              <DetailsNumberLine description={<Trans>Total worth</Trans>} value={claimableUsd} symbol="USD" />
             </>
           )}
           {selectedRewardSymbol !== 'all' && (
