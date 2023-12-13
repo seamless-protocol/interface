@@ -207,7 +207,7 @@ export const ClaimRewardsModalContent = () => {
                           {reward.symbol}
                         </Typography>
                       </Box>
-                      {reward.balanceUsd !== "" && (
+                      {reward.balanceUsd !== '' && (
                         <FormattedNumber
                           value={Number(reward.balanceUsd)}
                           variant="helperText"
@@ -220,7 +220,11 @@ export const ClaimRewardsModalContent = () => {
                   ))}
                 </Box>
               </Row>
-              <DetailsNumberLine description={<Trans>Total worth</Trans>} value={claimableUsd} symbol="USD" />
+              <DetailsNumberLine
+                description={<Trans>Total worth</Trans>}
+                value={claimableUsd}
+                symbol="USD"
+              />
             </>
           )}
           {selectedRewardSymbol !== 'all' && (
