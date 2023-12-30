@@ -24,7 +24,7 @@ export enum WalletType {
 }
 
 const APP_NAME = 'Seamless';
-const APP_LOGO_URL = 'https://app.seamlessprotocol.com/favicon.ico';
+const APP_LOGO_URL = 'https://app.seamlessprotocol.com/black_logo_seamless.svg';
 
 const mockProvider = {
   request: Promise.resolve(null),

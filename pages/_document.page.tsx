@@ -11,7 +11,7 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta name="theme-color" content="#1B2030" />
-          <link rel="shortcut icon" href="/favicon.ico" />
+          <link rel="shortcut icon" href="/black_logo_seamless.svg" />
           <link rel="manifest" href="/manifest.json" />
           {Meta({
             title: 'Seamless Protocol',
