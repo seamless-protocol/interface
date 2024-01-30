@@ -157,8 +157,8 @@ msgid "All Assets"
 msgstr "All Assets"
 
 #: src/modules/governance/DelegatedInfoPanel.tsx
-msgid "All SEAM tokens have voting power, but in order to activate this voting power, SEAM must first be delegated. Note: Delegation does not transfer token ownership, it only grants “Voting Power” to the delegated address. You can either self-delegate or delegate this voting power to others and you can change your delegation at anytime. To view active community members who are interested in receiving delegation, click <0>here</0>."
-msgstr "All SEAM tokens have voting power, but in order to activate this voting power, SEAM must first be delegated. Note: Delegation does not transfer token ownership, it only grants “Voting Power” to the delegated address. You can either self-delegate or delegate this voting power to others and you can change your delegation at anytime. To view active community members who are interested in receiving delegation, click <0>here</0>."
+msgid "All SEAM tokens have voting power, but in order to activate this voting power, SEAM/esSEAM must first be delegated. Note: Delegation does not transfer token ownership, it only grants “Voting Power” to the delegated address. You can either self-delegate or delegate this voting power to others and you can change your delegation at anytime. To view active community members who are interested in receiving delegation, click <0>here</0>."
+msgstr "All SEAM tokens have voting power, but in order to activate this voting power, SEAM/esSEAM must first be delegated. Note: Delegation does not transfer token ownership, it only grants “Voting Power” to the delegated address. You can either self-delegate or delegate this voting power to others and you can change your delegation at anytime. To view active community members who are interested in receiving delegation, click <0>here</0>."
 
 #: src/components/transactions/Borrow/GhoBorrowSuccessView.tsx
 #: src/components/transactions/FlowCommons/Success.tsx
@@ -192,6 +192,10 @@ msgstr "Amount"
 #: src/ui-config/errorMapping.tsx
 msgid "Amount must be greater than 0"
 msgstr "Amount must be greater than 0"
+
+#: src/modules/governance/VotingPowerInfoPanel.tsx
+msgid "Amount of esSEAM that has vested and is claimable as SEAM."
+msgstr "Amount of esSEAM that has vested and is claimable as SEAM."
 
 #: src/components/transactions/TxActionsWrapper.tsx
 msgid "Approve Confirmed"
@@ -2494,8 +2498,8 @@ msgid "You have already cast your vote on this proposal"
 msgstr "You have already cast your vote on this proposal"
 
 #: src/modules/governance/DelegatedInfoPanel.tsx
-msgid "You have no SEAM to delegate."
-msgstr "You have no SEAM to delegate."
+msgid "You have no SEAM/esSEAM to delegate."
+msgstr "You have no SEAM/esSEAM to delegate."
 
 #: src/components/transactions/RateSwitch/RateSwitchModalContent.tsx
 msgid "You have not borrow yet using this currency"
@@ -2557,8 +2561,8 @@ msgid "Your supplies"
 msgstr "Your supplies"
 
 #: src/modules/governance/VotingPowerInfoPanel.tsx
-msgid "Your voting power is based on the amount of SEAM that has been delegated to you (you must delegate to yourself to vote with your balance)."
-msgstr "Your voting power is based on the amount of SEAM that has been delegated to you (you must delegate to yourself to vote with your balance)."
+msgid "Your voting power is based on the amount of SEAM + esSEAM that has been delegated to you (you must delegate to yourself to vote with your balance)."
+msgstr "Your voting power is based on the amount of SEAM + esSEAM that has been delegated to you (you must delegate to yourself to vote with your balance)."
 
 #: src/modules/dashboard/lists/SupplyAssetsList/WalletEmptyInfo.tsx
 msgid "Your {name} wallet is empty. <0>Purchase or transfer assets</0> or use <1>{0}</1> to transfer your {network} assets."
@@ -2595,6 +2599,10 @@ msgstr "disabled"
 #: src/modules/history/actions/ActionDetails.tsx
 msgid "enabled"
 msgstr "enabled"
+
+#: src/modules/governance/VotingPowerInfoPanel.tsx
+msgid "esSEAM"
+msgstr "esSEAM"
 
 #: src/modules/history/actions/ActionDetails.tsx
 #: src/modules/history/actions/ActionDetails.tsx
