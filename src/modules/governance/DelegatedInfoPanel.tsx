@@ -134,7 +134,7 @@ export const DelegatedInfoPanel = () => {
         </Typography>
         <Typography typography="description" sx={{ mt: 1 }} color="text.secondary">
           <Trans>
-            All SEAM tokens have voting power, but in order to activate this voting power, SEAM must
+            All SEAM tokens have voting power, but in order to activate this voting power, SEAM/esSEAM must
             first be delegated. Note: Delegation does not transfer token ownership, it only grants
             “Voting Power” to the delegated address. You can either self-delegate or delegate this
             voting power to others and you can change your delegation at anytime. To view active
