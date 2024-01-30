@@ -59,7 +59,7 @@ export function VotingPowerInfoPanel() {
         {currentAccount && (
           <>
             <Grid container spacing={8}>
-              <Grid item md={4}>
+              <Grid item md={3}>
                 <TextWithTooltip
                   text="Voting power"
                   variant="description"
@@ -75,8 +75,8 @@ export function VotingPowerInfoPanel() {
                   <>
                     <Typography variant="subheader2">
                       <Trans>
-                        Your voting power is based on the amount of SEAM + esSEAM that has been delegated to
-                        you (you must delegate to yourself to vote with your balance).
+                        Your voting power is based on the amount of SEAM + esSEAM that has been
+                        delegated to you (you must delegate to yourself to vote with your balance).
                       </Trans>
                     </Typography>
                     <Typography variant="subheader2" mt={4}>
@@ -91,7 +91,7 @@ export function VotingPowerInfoPanel() {
                   visibleDecimals={2}
                 />
               </Grid>
-              <Grid item md={4}>
+              <Grid item md={3}>
                 <Typography typography="description" color="text.secondary">
                   <Trans>SEAM</Trans>
                 </Typography>
@@ -102,7 +102,7 @@ export function VotingPowerInfoPanel() {
                   visibleDecimals={2}
                 />
               </Grid>
-              <Grid item md={4}>
+              <Grid item md={3}>
                 <Typography typography="description" color="text.secondary">
                   <Trans>esSEAM</Trans>
                 </Typography>
@@ -113,23 +113,14 @@ export function VotingPowerInfoPanel() {
                   visibleDecimals={2}
                 />
               </Grid>
-            </Grid>
-            <Divider />
-            {powers?.votingPower && powers?.votingPower !== '0' && (
-              <Box
-                sx={{
-                  mt: 6,
-                  display: 'flex',
-                  flex: '1 0 33.33%',
-                  flexDirection: 'column',
-                  alignItems: 'flex-start',
-                }}
-              >
+              <Grid item md={3}>
+              {powers?.votingPower && powers?.votingPower !== '0' && (
                 <Button size="large" variant="contained" onClick={() => openGovVote()}>
                   <Trans>Cast Vote</Trans>
                 </Button>
-              </Box>
-            )}
+              )}
+              </Grid>
+            </Grid>
             <Divider />
             <Box sx={{ display: 'flex', mt: 6, justifyContent: 'space-between' }}>
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
