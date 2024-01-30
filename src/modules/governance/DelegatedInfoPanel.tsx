@@ -83,7 +83,7 @@ const DelegatedPower: React.FC<DelegatedPowerProps> = ({
                 </Box>
               </Row>
             )}
-            {/* {isEsSEAMDelegated && (
+            {isEsSEAMDelegated && (
               <Row
                 align="flex-start"
                 caption={
@@ -102,7 +102,7 @@ const DelegatedPower: React.FC<DelegatedPowerProps> = ({
                   </Typography>
                 </Box>
               </Row>
-            )} */}
+            )}
           </>
         )}
       </Box>
@@ -147,7 +147,7 @@ export const DelegatedInfoPanel = () => {
         </Typography>
         {disableButton ? (
           <Typography variant="description" color="text.muted" mt={6}>
-            <Trans>You have no SEAM to delegate.</Trans>
+            <Trans>You have no SEAM/esSEAM to delegate.</Trans>
           </Typography>
         ) : (
           <>
