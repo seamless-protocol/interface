@@ -22,7 +22,7 @@ export const getFrozenProposalLink = (
   } else if (symbol && frozenProposalMap[symbol.toUpperCase() + currentMarket]) {
     return frozenProposalMap[symbol.toUpperCase() + currentMarket];
   } else {
-    return 'https://app.seamlessprotocol.com/governance';
+    return '/governance';
   }
 };
 

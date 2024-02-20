@@ -691,7 +691,6 @@ msgid "Dark mode"
 msgstr "Dark mode"
 
 #: src/modules/dashboard/DashboardTopPanel.tsx
-#: src/ui-config/menu-items/index.tsx
 msgid "Dashboard"
 msgstr "Dashboard"
 
@@ -1129,6 +1128,10 @@ msgstr "Learn more"
 #: src/components/isolationMode/IsolatedBadge.tsx
 msgid "Learn more in our <0>FAQ guide</0>"
 msgstr "Learn more in our <0>FAQ guide</0>"
+
+#: src/ui-config/menu-items/index.tsx
+msgid "Lending & Borrowing"
+msgstr "Lending & Borrowing"
 
 #: src/layouts/MobileMenu.tsx
 msgid "Links"

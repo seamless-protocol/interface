@@ -34,7 +34,7 @@ const getLink = (market: string, forum: boolean | undefined): string => {
       return 'https://snapshot.org/#/seamlessprotocol.eth/proposal/0xeefcd76e523391a14cfd0a79b531ea0a3faf0eb4a058e255fac13a2d224cc647';
     }
   } else if (market === 'Ethereum AMM') {
-    return 'https://app.seamlessprotocol.com/governance/proposal/?proposalId=239';
+    return '/governance/proposal/?proposalId=239';
   } else {
     return '';
   }
