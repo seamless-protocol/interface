@@ -1,4 +1,4 @@
-import { BookOpenIcon, CreditCardIcon, QuestionMarkCircleIcon } from '@heroicons/react/outline';
+import { BookOpenIcon, CreditCardIcon, QuestionMarkCircleIcon, CircleStackIcon, GiftIcon } from '@heroicons/react/outline';
 import { t } from '@lingui/macro';
 import { ReactNode } from 'react';
 import { ROUTES } from 'src/components/primitives/Link';
@@ -18,22 +18,17 @@ interface Navigation {
 export const navigation: Navigation[] = [
   {
     link: ROUTES.markets,
-    title: t`Markets`,
+    title: t`All Markets`,
     dataCy: 'menuMarkets',
   },
   {
     link: ROUTES.dashboard,
-    title: t`Lending & Borrowing`,
+    title: t`Supply & Borrow Dashboard`,
     dataCy: 'menuDashboard',
   },
   {
-    link: ROUTES.farms,
-    title: t`Staking Farms`,
-    dataCy: 'menuFarms',
-  },
-  {
     link: '',
-    title: t`Swap onto Base`,
+    title: t`Bridge to Base`,
     dataCy: 'swapBase',
     disabled: false,
   },
@@ -56,11 +51,6 @@ export const navigation: Navigation[] = [
       !ENABLE_TESTNET,
   },
   {
-    link: ROUTES.airdrop,
-    title: t`Claim Airdrop`,
-    dataCy: 'claimAirdrop',
-  },
-  {
     link: ROUTES.faucet,
     title: t`Faucet`,
     isVisible: () => process.env.NEXT_PUBLIC_ENV === 'staging' || ENABLE_TESTNET,
@@ -74,13 +64,23 @@ interface MoreMenuItem extends Navigation {
 
 const moreMenuItems: MoreMenuItem[] = [
   {
+    link: ROUTES.farms,
+    title: t`Staking Farms`,
+    icon: <CircleStackIcon />,
+  },
+  {
+    link: ROUTES.airdrop,
+    title: t`Claim Airdrop`,
+    icon: <GiftIcon />,
+  },
+  {
     link: 'https://docs.seamlessprotocol.com/overview/faq',
     title: t`FAQ`,
     icon: <QuestionMarkCircleIcon />,
   },
   {
-    link: 'https://github.com/seamless-protocol/interface',
-    title: t`Developers`,
+    link: 'https://github.com/seamless-protocol',
+    title: t`Github`,
     icon: <BookOpenIcon />,
   },
 ];
