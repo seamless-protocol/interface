@@ -156,6 +156,10 @@ msgstr "Against"
 msgid "All Assets"
 msgstr "All Assets"
 
+#: src/ui-config/menu-items/index.tsx
+msgid "All Markets"
+msgstr "All Markets"
+
 #: src/modules/governance/DelegatedInfoPanel.tsx
 msgid "All SEAM tokens have voting power, but in order to activate this voting power, SEAM/esSEAM must first be delegated. Note: Delegation does not transfer token ownership, it only grants “Voting Power” to the delegated address. You can either self-delegate or delegate this voting power to others and you can change your delegation at anytime. To view active community members who are interested in receiving delegation, click <0>here</0>."
 msgstr "All SEAM tokens have voting power, but in order to activate this voting power, SEAM/esSEAM must first be delegated. Note: Delegation does not transfer token ownership, it only grants “Voting Power” to the delegated address. You can either self-delegate or delegate this voting power to others and you can change your delegation at anytime. To view active community members who are interested in receiving delegation, click <0>here</0>."
@@ -518,6 +522,10 @@ msgid "Borrowing {symbol}"
 msgstr "Borrowing {symbol}"
 
 #: src/ui-config/menu-items/index.tsx
+msgid "Bridge to Base"
+msgstr "Bridge to Base"
+
+#: src/ui-config/menu-items/index.tsx
 msgid "Buy Crypto With Fiat"
 msgstr "Buy Crypto With Fiat"
 
@@ -691,7 +699,6 @@ msgid "Dark mode"
 msgstr "Dark mode"
 
 #: src/modules/dashboard/DashboardTopPanel.tsx
-#: src/ui-config/menu-items/index.tsx
 msgid "Dashboard"
 msgstr "Dashboard"
 
@@ -730,10 +737,6 @@ msgstr "Delegated power"
 #: src/modules/markets/MarketAssetsListItem.tsx
 msgid "Details"
 msgstr "Details"
-
-#: src/ui-config/menu-items/index.tsx
-msgid "Developers"
-msgstr "Developers"
 
 #: src/components/transactions/Emode/EmodeActions.tsx
 #: src/modules/dashboard/DashboardEModeButton.tsx
@@ -961,6 +964,10 @@ msgstr "Frozen or paused assets"
 #: src/modules/reserve-overview/Gho/GhoReserveConfiguration.tsx
 msgid "GHO is a native decentralized, collateral-backed digital asset pegged to USD. It is created by users via borrowing against multiple collateral. When user repays their GHO borrow position, the protocol burns that user's GHO. All the interest payments accrued by minters of GHO would be directly transferred to the AaveDAO treasury."
 msgstr "GHO is a native decentralized, collateral-backed digital asset pegged to USD. It is created by users via borrowing against multiple collateral. When user repays their GHO borrow position, the protocol burns that user's GHO. All the interest payments accrued by minters of GHO would be directly transferred to the AaveDAO treasury."
+
+#: src/ui-config/menu-items/index.tsx
+msgid "Github"
+msgstr "Github"
 
 #: src/layouts/MobileMenu.tsx
 #: src/layouts/SettingsMenu.tsx
@@ -1204,7 +1211,6 @@ msgid "Market"
 msgstr "Market"
 
 #: src/modules/markets/MarketsTopPanel.tsx
-#: src/ui-config/menu-items/index.tsx
 msgid "Markets"
 msgstr "Markets"
 
@@ -1865,6 +1871,10 @@ msgstr "Supplied asset amount"
 msgid "Supply"
 msgstr "Supply"
 
+#: src/ui-config/menu-items/index.tsx
+msgid "Supply & Borrow Dashboard"
+msgstr "Supply & Borrow Dashboard"
+
 #: src/components/transactions/Supply/SupplyModalContent.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsListMobileItem.tsx
 #: src/modules/dashboard/lists/SupplyAssetsList/SupplyAssetsListMobileItem.tsx
@@ -1910,10 +1920,6 @@ msgstr "Supplying your"
 #: src/components/transactions/Supply/SupplyActions.tsx
 msgid "Supplying {symbol}"
 msgstr "Supplying {symbol}"
-
-#: src/ui-config/menu-items/index.tsx
-msgid "Swap onto Base"
-msgstr "Swap onto Base"
 
 #: src/components/transactions/DebtSwitch/DebtSwitchActions.tsx
 #: src/components/transactions/DebtSwitch/DebtSwitchActions.tsx

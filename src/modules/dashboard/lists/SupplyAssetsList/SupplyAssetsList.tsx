@@ -10,7 +10,7 @@ import { ListHeaderWrapper } from 'src/components/lists/ListHeaderWrapper';
 import { Warning } from 'src/components/primitives/Warning';
 import { MarketWarning } from 'src/components/transactions/Warnings/MarketWarning';
 import { AssetCapsProvider } from 'src/hooks/useAssetCaps';
-import { fetchIconSymbolAndName } from 'src/ui-config/reservePatches';
+import { fetchIconSymbolAndName, RESTRICTED_MARKETS } from 'src/ui-config/reservePatches';
 
 import { ListWrapper } from '../../../../components/lists/ListWrapper';
 import { Link, ROUTES } from '../../../../components/primitives/Link';
@@ -65,7 +65,14 @@ export const SupplyAssetsList = () => {
   );
 
   const tokensToSupply = reserves
-    .filter((reserve: ComputedReserveData) => !(reserve.isFrozen || reserve.isPaused))
+    .filter(
+      (reserve: ComputedReserveData) =>
+        !(
+          reserve.isFrozen ||
+          reserve.isPaused ||
+          RESTRICTED_MARKETS.indexOf(reserve.underlyingAsset.toLowerCase()) > -1
+        )
+    )
     .map((reserve: ComputedReserveData) => {
       const walletBalance = walletBalances[reserve.underlyingAsset]?.amount;
       const walletBalanceUSD = walletBalances[reserve.underlyingAsset]?.amountUSD;

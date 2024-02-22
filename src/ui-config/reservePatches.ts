@@ -160,3 +160,7 @@ export const STABLE_ASSETS = [
   'LUSD',
   'MAI',
 ];
+
+export const RESTRICTED_MARKETS = [
+  "0xc9ae3b5673341859d3ac55941d27c8be4698c9e4"
+];
