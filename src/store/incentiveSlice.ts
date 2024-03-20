@@ -36,13 +36,25 @@ const getCoinGeckoSEAMPriceUSD = async (): Promise<string> => {
 
     return (
       parseUnits(price.toString(), PRICE_FEED_DECIMALS).toString() ??
-      parseUnits('9.0', PRICE_FEED_DECIMALS).toString()
+      parseUnits('4.0', PRICE_FEED_DECIMALS).toString()
     );
   } catch (err) {
     console.error('Error: Failed to fetch SEAM price from CoinGecko: ', err);
-    return parseUnits('9.0', PRICE_FEED_DECIMALS).toString();
+    return parseUnits('4.0', PRICE_FEED_DECIMALS).toString();
   }
 };
+
+function normalizeDecimals(
+  value: number,
+  valueDecimals: number,
+  toDecimals: number
+): number {
+  if (valueDecimals <= toDecimals) {
+    return value * 10 ** (toDecimals - valueDecimals);
+  } else {
+    return value / 10 ** (valueDecimals - toDecimals);
+  }
+}
 
 const incentiveDataInjectSEAMPriceUSD = (
   incentiveData: IncentiveDataHumanized,
@@ -51,6 +63,7 @@ const incentiveDataInjectSEAMPriceUSD = (
   ...incentiveData,
   rewardsTokenInformation: incentiveData.rewardsTokenInformation.map((incentive) => ({
     ...incentive,
+    emissionPerSecond: normalizeDecimals(parseFloat(incentive.emissionPerSecond), incentive.rewardTokenDecimals, 18).toString(),  // Hack to normalize to 18 decimals, since Aave math utils has a bug
     rewardPriceFeed:
       SEAM_SYMBOLS.includes(incentive.rewardTokenSymbol)
         ? seamPriceUSD
