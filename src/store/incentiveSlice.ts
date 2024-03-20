@@ -63,7 +63,6 @@ const incentiveDataInjectSEAMPriceUSD = (
   ...incentiveData,
   rewardsTokenInformation: incentiveData.rewardsTokenInformation.map((incentive) => ({
     ...incentive,
-    emissionPerSecond: normalizeDecimals(parseFloat(incentive.emissionPerSecond), incentive.rewardTokenDecimals, 18).toString(),  // Hack to normalize to 18 decimals, since Aave math utils has a bug
     rewardPriceFeed:
       SEAM_SYMBOLS.includes(incentive.rewardTokenSymbol)
         ? seamPriceUSD
