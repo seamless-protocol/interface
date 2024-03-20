@@ -44,18 +44,6 @@ const getCoinGeckoSEAMPriceUSD = async (): Promise<string> => {
   }
 };
 
-function normalizeDecimals(
-  value: number,
-  valueDecimals: number,
-  toDecimals: number
-): number {
-  if (valueDecimals <= toDecimals) {
-    return value * 10 ** (toDecimals - valueDecimals);
-  } else {
-    return value / 10 ** (valueDecimals - toDecimals);
-  }
-}
-
 const incentiveDataInjectSEAMPriceUSD = (
   incentiveData: IncentiveDataHumanized,
   seamPriceUSD: string
