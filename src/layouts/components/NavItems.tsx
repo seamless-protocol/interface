@@ -62,6 +62,7 @@ export const NavItems = ({ setOpen }: NavItemsProps) => {
                 color="#F1F1F3"
                 sx={{ width: '100%', p: 4 }}
                 onClick={() => handleClick(item.title, true)}
+                target=""
               >
                 {i18n._(item.title)}
               </Typography>
@@ -75,6 +76,7 @@ export const NavItems = ({ setOpen }: NavItemsProps) => {
                 }}
                 disabled={item.dataCy === 'swapBase' && isLifiWidgetOpen ? true : false}
                 href={item.link}
+                target=""
                 sx={(theme) => ({
                   color: '#F1F1F3',
                   p: '6px 8px',

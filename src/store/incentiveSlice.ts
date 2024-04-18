@@ -6,7 +6,8 @@ import {
   UserIncentiveDataHumanized,
 } from '@aave/contract-helpers';
 import { StateCreator } from 'zustand';
-import { parseUnits } from 'ethers/lib/utils';
+import { fetchExternalPrice, PRICE_FEED_DECIMALS } from 'src/store/utils/externalPriceFetcher';
+import { governanceConfig } from 'src/ui-config/governanceConfig';
 
 import { RootStore } from './root';
 
@@ -17,32 +18,11 @@ export interface IncentiveSlice {
   refreshIncentiveData: () => Promise<void>;
 }
 
-const PRICE_FEED_DECIMALS = 8;
 const SEAM_SYMBOL = 'SEAM';
 const esSEAM_SYMBOL = 'esSEAM';
 const SEAM_SYMBOLS = [SEAM_SYMBOL, esSEAM_SYMBOL];
 const OG_POINTS_SYMBOL = 'OG Points';
-const COINGECKO_ID = 'seamless-protocol'; //'ethereum';
-
-const getCoinGeckoSEAMPriceUSD = async (): Promise<string> => {
-  try {
-    const resp = await fetch(
-      `https://api.coingecko.com/api/v3/simple/price?ids=${COINGECKO_ID}&vs_currencies=usd&precision=${PRICE_FEED_DECIMALS}`
-    );
-
-    const {
-      [COINGECKO_ID]: { usd: price },
-    } = await resp.json();
-
-    return (
-      parseUnits(price.toString(), PRICE_FEED_DECIMALS).toString() ??
-      parseUnits('4.0', PRICE_FEED_DECIMALS).toString()
-    );
-  } catch (err) {
-    console.error('Error: Failed to fetch SEAM price from CoinGecko: ', err);
-    return parseUnits('4.0', PRICE_FEED_DECIMALS).toString();
-  }
-};
+const SEAM_ADDRESS = governanceConfig.seamTokenAddress.toLowerCase();
 
 const incentiveDataInjectSEAMPriceUSD = (
   incentiveData: IncentiveDataHumanized,
@@ -115,10 +95,6 @@ const userIncentivesInjectSEAMPriceUSD = (
     ),
   }));
 
-let seamPriceUSDCache: string;
-let lastFetchTimestamp: number;
-const CACHE_TIME: number = 5 * 60 * 1000; // 5 min
-
 export const createIncentiveSlice: StateCreator<
   RootStore,
   [['zustand/subscribeWithSelector', never], ['zustand/devtools', never]],
@@ -137,12 +113,7 @@ export const createIncentiveSlice: StateCreator<
     });
     const promises: Promise<void>[] = [];
 
-    let seamPriceUSD = seamPriceUSDCache;
-    if (seamPriceUSD === undefined || lastFetchTimestamp + CACHE_TIME < Date.now()) {
-      seamPriceUSDCache = await getCoinGeckoSEAMPriceUSD();
-      seamPriceUSD = seamPriceUSDCache;
-      lastFetchTimestamp = Date.now();
-    }
+    const seamExternalPrice = await fetchExternalPrice(SEAM_ADDRESS);
 
     try {
       promises.push(
@@ -151,7 +122,7 @@ export const createIncentiveSlice: StateCreator<
             lendingPoolAddressProvider: currentMarketData.addresses.LENDING_POOL_ADDRESS_PROVIDER,
           })
           .then((reserveIncentives) =>
-            reserveIncentivesInjectSEAMPriceUSD(reserveIncentives, seamPriceUSD)
+            reserveIncentivesInjectSEAMPriceUSD(reserveIncentives, seamExternalPrice.price)
           )
           .then((reserveIncentiveData) => set({ reserveIncentiveData }))
       );
@@ -163,7 +134,7 @@ export const createIncentiveSlice: StateCreator<
               user: account,
             })
             .then((userIncentiveData) =>
-              userIncentivesInjectSEAMPriceUSD(userIncentiveData, seamPriceUSD)
+              userIncentivesInjectSEAMPriceUSD(userIncentiveData, seamExternalPrice.price)
             )
             .then((userIncentiveData) =>
               set({

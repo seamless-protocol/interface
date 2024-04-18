@@ -20,6 +20,7 @@ import {
   PoolBaseCurrencyHumanized,
   PoolBundle,
   ReserveDataHumanized,
+  ReservesDataHumanized,
   ReservesIncentiveDataHumanized,
   UiIncentiveDataProvider,
   UiPoolDataProvider,
@@ -50,6 +51,8 @@ import { SwapActionProps } from 'src/components/transactions/Swap/SwapActions';
 import { Approval } from 'src/helpers/useTransactionHandler';
 import { MarketDataType } from 'src/ui-config/marketsConfig';
 import { minBaseTokenRemainingByNetwork, optimizedPath } from 'src/utils/utils';
+import { fetchExternalPrice } from 'src/store/utils/externalPriceFetcher';
+import { MOCK_PRICE_ORACLE } from 'src/ui-config/reservePatches';
 import { StateCreator } from 'zustand';
 
 import { selectCurrentChainIdV3MarketData, selectFormattedReserves } from './poolSelectors';
@@ -194,6 +197,7 @@ export const createPoolSlice: StateCreator<
             .getReservesHumanized({
               lendingPoolAddressProvider,
             })
+            .then(injectExternalPrices)
             .then((reservesResponse) =>
               set((state) =>
                 produce(state, (draft) => {
@@ -756,5 +760,23 @@ export const createPoolSlice: StateCreator<
       tx.gasLimit = estimatedGas.gt(defaultGasLimit) ? estimatedGas : defaultGasLimit;
       return tx;
     },
+  };
+};
+
+const injectExternalPrices = async ({
+  reservesData,
+  baseCurrencyData,
+}: ReservesDataHumanized): Promise<ReservesDataHumanized> => {
+  for (let r of reservesData) {
+    if (r.priceOracle.toLowerCase() === MOCK_PRICE_ORACLE.toLowerCase()) {
+      const externalPrice = await fetchExternalPrice(r.underlyingAsset.toLowerCase());
+      r.priceOracle = `https://www.coingecko.com/en/coins/${externalPrice.coingGeckoId}`;
+      r.priceInMarketReferenceCurrency = externalPrice.price;
+    }
+  }
+
+  return {
+    reservesData,
+    baseCurrencyData,
   };
 };

@@ -7,6 +7,7 @@ import { Link } from 'src/components/primitives/Link';
 import { useProtocolDataContext } from 'src/hooks/useProtocolDataContext';
 import { useRootStore } from 'src/store/root';
 import { GENERAL } from 'src/utils/mixPanelEvents';
+import { utils } from 'ethers';
 
 import { TopInfoPanelItem } from '../../components/TopInfoPanel/TopInfoPanelItem';
 import {
@@ -95,9 +96,13 @@ export const ReserveTopDetails = ({ underlyingAsset }: ReserveTopDetailsProps) =
                     asset: poolReserve.underlyingAsset,
                   })
                 }
-                href={currentNetworkConfig.explorerLinkBuilder({
-                  address: poolReserve?.priceOracle,
-                })}
+                href={
+                  utils.isAddress(poolReserve?.priceOracle)
+                    ? currentNetworkConfig.explorerLinkBuilder({
+                        address: poolReserve?.priceOracle,
+                      })
+                    : poolReserve?.priceOracle
+                }
                 sx={iconStyling}
               >
                 <SvgIcon sx={{ fontSize: downToSM ? '12px' : '14px' }}>
