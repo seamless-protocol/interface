@@ -30,7 +30,7 @@ export const fetchExternalPrice = async (
 const getCoinGeckoPriceUSD = async (address: string): Promise<string> => {
   try {
     const resp = await fetch(
-      `https://api.coingecko.com/api/v3/simple/token_price/${CHAIN_ID}?contract_addresses=${address}&vs_currencies=usd&precision=${PRICE_FEED_DECIMALS}`
+      `https://cg-price-cache.seamlessprotocol.com/simple/token_price/${CHAIN_ID}?contract_addresses=${address}&vs_currencies=usd&precision=${PRICE_FEED_DECIMALS}`
     );
 
     const {
@@ -46,7 +46,7 @@ const getCoinGeckoPriceUSD = async (address: string): Promise<string> => {
 
 const getCoinGeckoCoinDetails = async (address: string): Promise<string | undefined> => {
   try {
-    const resp = await fetch(`https://api.coingecko.com/api/v3/coins/id/contract/${address}`);
+    const resp = await fetch(`https://cg-price-cache.seamlessprotocol.com/coins/id/contract/${address}`);
 
     const { web_slug } = await resp.json();
 
