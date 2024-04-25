@@ -156,10 +156,6 @@ msgstr "Against"
 msgid "All Assets"
 msgstr "All Assets"
 
-#: src/ui-config/menu-items/index.tsx
-msgid "All Markets"
-msgstr "All Markets"
-
 #: src/modules/governance/DelegatedInfoPanel.tsx
 msgid "All SEAM tokens have voting power, but in order to activate this voting power, SEAM/esSEAM must first be delegated. Note: Delegation does not transfer token ownership, it only grants “Voting Power” to the delegated address. You can either self-delegate or delegate this voting power to others and you can change your delegation at anytime. To view active community members who are interested in receiving delegation, click <0>here</0>."
 msgstr "All SEAM tokens have voting power, but in order to activate this voting power, SEAM/esSEAM must first be delegated. Note: Delegation does not transfer token ownership, it only grants “Voting Power” to the delegated address. You can either self-delegate or delegate this voting power to others and you can change your delegation at anytime. To view active community members who are interested in receiving delegation, click <0>here</0>."
@@ -567,10 +563,6 @@ msgstr "Choose how much voting/proposition power to give to someone else by dele
 #: src/modules/dashboard/DashboardTopPanel.tsx
 msgid "Claim"
 msgstr "Claim"
-
-#: src/ui-config/menu-items/index.tsx
-msgid "Claim Airdrop"
-msgstr "Claim Airdrop"
 
 #: src/components/transactions/ClaimRewards/ClaimRewardsActions.tsx
 msgid "Claim all"
@@ -1679,6 +1671,10 @@ msgstr "Safety of your deposited collateral against the borrowed assets and its 
 #: src/components/transactions/Borrow/GhoBorrowSuccessView.tsx
 msgid "Save and share"
 msgstr "Save and share"
+
+#: src/ui-config/menu-items/index.tsx
+msgid "Seamless Mode"
+msgstr "Seamless Mode"
 
 #: src/modules/reserve-overview/TokenLinkDropdown.tsx
 msgid "Seamless debt token"

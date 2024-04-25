@@ -115,7 +115,7 @@ export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(function Link
 
 export const ROUTES = {
   dashboard: '/',
-  markets: 'https://app.seamlessprotocol.com',
+  seamlessMode: 'https://app.seamlessprotocol.com',
   staking: '/staking',
   governance: '/governance',
   faucet: '/faucet',

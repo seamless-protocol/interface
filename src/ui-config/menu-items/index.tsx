@@ -22,9 +22,9 @@ interface Navigation {
 
 export const navigation: Navigation[] = [
   {
-    link: ROUTES.markets,
-    title: t`All Markets`,
-    dataCy: 'menuMarkets',
+    link: ROUTES.seamlessMode,
+    title: t`Seamless Mode`,
+    dataCy: 'seamlessMode',
   },
   {
     link: ROUTES.dashboard,
@@ -87,11 +87,6 @@ const moreMenuItems: MoreMenuItem[] = [
         />
       </svg>
     ),
-  },
-  {
-    link: ROUTES.airdrop,
-    title: t`Claim Airdrop`,
-    icon: <GiftIcon />,
   },
   {
     link: 'https://docs.seamlessprotocol.com/overview/faq',
