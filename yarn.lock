@@ -9,9 +9,9 @@
   dependencies:
     isomorphic-unfetch "^3.1.0"
 
-"@aave/math-utils@https://github.com/seamless-protocol/aave-utilities#math-utils-dist-v1":
+"@aave/math-utils@https://github.com/seamless-protocol/aave-utilities#math-utils-dist-v2":
   version "1.28.0"
-  resolved "https://github.com/seamless-protocol/aave-utilities#a1a65b7152ab4594f498ff1dcb705fd97b7ab334"
+  resolved "https://github.com/seamless-protocol/aave-utilities#d0d8e3e4c0f0e72eb8ba522043f585253bb6fea7"
 
 "@adobe/css-tools@^4.0.1":
   version "4.0.1"

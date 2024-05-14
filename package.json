@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@aave/contract-helpers": "1.18.3",
-    "@aave/math-utils": "https://github.com/seamless-protocol/aave-utilities#math-utils-dist-v1",
+    "@aave/math-utils": "https://github.com/seamless-protocol/aave-utilities#math-utils-dist-v2",
     "@bgd-labs/aave-address-book": "^1.33.0",
     "@emotion/cache": "11.10.3",
     "@emotion/react": "11.10.4",
