@@ -22,7 +22,7 @@ yarn dev
 
 Issue: I cannot connect to `app.seamlessprotocol.com`
 
-The seamless-ui is hosted on IPFS in a decentralized manner. `app.seamlessprotocol.com` just holds a CNAME record to the Cloudflare IPFS gateway. You can use [any](https://ipfs.github.io/public-gateway-checker/) public or private IPFS gateway supporting origin isolation to access aave-ui if for some reason the Cloudflare gateway doesn't work for you
+The seamless-ui is hosted on IPFS in a decentralized manner. `app.seamlessprotocol.com` just holds a CNAME record to the Cloudflare IPFS gateway. You can use [any](https://ipfs.github.io/public-gateway-checker/) public or private IPFS gateway supporting origin isolation to access seamless-ui if for some reason the Cloudflare gateway doesn't work for you
 
 ## License
 
