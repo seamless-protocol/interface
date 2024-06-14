@@ -4,10 +4,12 @@ import {
   UserReservesIncentivesDataHumanized,
   IncentiveDataHumanized,
   UserIncentiveDataHumanized,
+  RewardInfoHumanized,
+  UserRewardInfoHumanized,
 } from '@aave/contract-helpers';
 import { StateCreator } from 'zustand';
 import { fetchExternalPrice, PRICE_FEED_DECIMALS } from 'src/store/utils/externalPriceFetcher';
-import { governanceConfig } from 'src/ui-config/governanceConfig';
+import { MOCK_PRICE_ORACLE } from 'src/ui-config/reservePatches';
 
 import { RootStore } from './root';
 
@@ -18,82 +20,74 @@ export interface IncentiveSlice {
   refreshIncentiveData: () => Promise<void>;
 }
 
-const SEAM_SYMBOL = 'SEAM';
-const esSEAM_SYMBOL = 'esSEAM';
-const SEAM_SYMBOLS = [SEAM_SYMBOL, esSEAM_SYMBOL];
-const OG_POINTS_SYMBOL = 'OG Points';
-const SEAM_ADDRESS = governanceConfig.seamTokenAddress.toLowerCase();
-
-const incentiveDataInjectSEAMPriceUSD = (
-  incentiveData: IncentiveDataHumanized,
-  seamPriceUSD: string
-): IncentiveDataHumanized => ({
-  ...incentiveData,
-  rewardsTokenInformation: incentiveData.rewardsTokenInformation.map((incentive) => ({
-    ...incentive,
+const injectExternalPrices = async <T extends RewardInfoHumanized | UserRewardInfoHumanized>({
+  rewardOracleAddress,
+  priceFeedDecimals,
+  rewardPriceFeed,
+  rewardTokenAddress,
+  ...rest
+}: T): Promise<T extends RewardInfoHumanized ? RewardInfoHumanized : UserRewardInfoHumanized> =>
+  ({
+    ...rest,
+    rewardTokenAddress,
+    rewardOracleAddress,
     rewardPriceFeed:
-      SEAM_SYMBOLS.includes(incentive.rewardTokenSymbol)
-        ? seamPriceUSD
-        : incentive.rewardTokenSymbol === OG_POINTS_SYMBOL
-        ? '0'
-        : incentive.rewardPriceFeed,
+      rewardOracleAddress?.toLowerCase() === MOCK_PRICE_ORACLE.toLowerCase()
+        ? (await fetchExternalPrice(rewardTokenAddress)).price
+        : rewardPriceFeed,
     priceFeedDecimals:
-      SEAM_SYMBOLS.includes(incentive.rewardTokenSymbol)
+      rewardOracleAddress?.toLowerCase() === MOCK_PRICE_ORACLE.toLowerCase()
         ? PRICE_FEED_DECIMALS
-        : incentive.priceFeedDecimals,
-  })),
+        : priceFeedDecimals,
+  } as any);
+
+const incentiveDataInjectRewardPriceUSD = async (
+  incentiveData: IncentiveDataHumanized
+): Promise<IncentiveDataHumanized> => ({
+  ...incentiveData,
+  rewardsTokenInformation: await Promise.all(
+    incentiveData.rewardsTokenInformation.map(injectExternalPrices)
+  ),
 });
 
-const reserveIncentivesInjectSEAMPriceUSD = (
-  reserveIncentives: ReservesIncentiveDataHumanized[],
-  seamPriceUSD: string
-): ReservesIncentiveDataHumanized[] =>
-  reserveIncentives.map((reserveIncentive) => ({
-    ...reserveIncentive,
-    aIncentiveData: incentiveDataInjectSEAMPriceUSD(reserveIncentive.aIncentiveData, seamPriceUSD),
-    vIncentiveData: incentiveDataInjectSEAMPriceUSD(reserveIncentive.vIncentiveData, seamPriceUSD),
-    sIncentiveData: incentiveDataInjectSEAMPriceUSD(reserveIncentive.sIncentiveData, seamPriceUSD),
-  }));
+const reserveIncentivesInjectRewardPriceUSD = async (
+  reserveIncentives: ReservesIncentiveDataHumanized[]
+): Promise<ReservesIncentiveDataHumanized[]> =>
+  Promise.all(
+    reserveIncentives.map(async (reserveIncentive) => ({
+      ...reserveIncentive,
+      aIncentiveData: await incentiveDataInjectRewardPriceUSD(reserveIncentive.aIncentiveData),
+      vIncentiveData: await incentiveDataInjectRewardPriceUSD(reserveIncentive.vIncentiveData),
+      sIncentiveData: await incentiveDataInjectRewardPriceUSD(reserveIncentive.sIncentiveData),
+    }))
+  );
 
-const userIncentiveDataInjectSEAMPriceUSD = (
-  incentiveData: UserIncentiveDataHumanized,
-  seamPriceUSD: string
-): UserIncentiveDataHumanized => ({
+const userIncentiveDataInjectRewardPriceUSD = async (
+  incentiveData: UserIncentiveDataHumanized
+): Promise<UserIncentiveDataHumanized> => ({
   ...incentiveData,
-  userRewardsInformation: incentiveData.userRewardsInformation.map((incentive) => ({
-    ...incentive,
-    rewardPriceFeed:
-      SEAM_SYMBOLS.includes(incentive.rewardTokenSymbol)
-        ? seamPriceUSD
-        : incentive.rewardTokenSymbol === OG_POINTS_SYMBOL
-        ? '0'
-        : incentive.rewardPriceFeed,
-    priceFeedDecimals:
-      SEAM_SYMBOLS.includes(incentive.rewardTokenSymbol)
-        ? PRICE_FEED_DECIMALS
-        : incentive.priceFeedDecimals,
-  })),
+  userRewardsInformation: await Promise.all(
+    incentiveData.userRewardsInformation.map(injectExternalPrices)
+  ),
 });
 
-const userIncentivesInjectSEAMPriceUSD = (
-  userIncentives: UserReservesIncentivesDataHumanized[],
-  seamPriceUSD: string
-): UserReservesIncentivesDataHumanized[] =>
-  userIncentives.map((userIncentive) => ({
-    ...userIncentive,
-    aTokenIncentivesUserData: userIncentiveDataInjectSEAMPriceUSD(
-      userIncentive.aTokenIncentivesUserData,
-      seamPriceUSD
-    ),
-    vTokenIncentivesUserData: userIncentiveDataInjectSEAMPriceUSD(
-      userIncentive.vTokenIncentivesUserData,
-      seamPriceUSD
-    ),
-    sTokenIncentivesUserData: userIncentiveDataInjectSEAMPriceUSD(
-      userIncentive.sTokenIncentivesUserData,
-      seamPriceUSD
-    ),
-  }));
+const userIncentivesInjectRewardPriceUSD = async (
+  userIncentives: UserReservesIncentivesDataHumanized[]
+): Promise<UserReservesIncentivesDataHumanized[]> =>
+  Promise.all(
+    userIncentives.map(async (userIncentive) => ({
+      ...userIncentive,
+      aTokenIncentivesUserData: await userIncentiveDataInjectRewardPriceUSD(
+        userIncentive.aTokenIncentivesUserData
+      ),
+      vTokenIncentivesUserData: await userIncentiveDataInjectRewardPriceUSD(
+        userIncentive.vTokenIncentivesUserData
+      ),
+      sTokenIncentivesUserData: await userIncentiveDataInjectRewardPriceUSD(
+        userIncentive.sTokenIncentivesUserData
+      ),
+    }))
+  );
 
 export const createIncentiveSlice: StateCreator<
   RootStore,
@@ -113,17 +107,13 @@ export const createIncentiveSlice: StateCreator<
     });
     const promises: Promise<void>[] = [];
 
-    const seamExternalPrice = await fetchExternalPrice(SEAM_ADDRESS);
-
     try {
       promises.push(
         poolDataProviderContract
           .getReservesIncentivesDataHumanized({
             lendingPoolAddressProvider: currentMarketData.addresses.LENDING_POOL_ADDRESS_PROVIDER,
           })
-          .then((reserveIncentives) =>
-            reserveIncentivesInjectSEAMPriceUSD(reserveIncentives, seamExternalPrice.price)
-          )
+          .then(reserveIncentivesInjectRewardPriceUSD)
           .then((reserveIncentiveData) => set({ reserveIncentiveData }))
       );
       if (account) {
@@ -133,9 +123,7 @@ export const createIncentiveSlice: StateCreator<
               lendingPoolAddressProvider: currentMarketData.addresses.LENDING_POOL_ADDRESS_PROVIDER,
               user: account,
             })
-            .then((userIncentiveData) =>
-              userIncentivesInjectSEAMPriceUSD(userIncentiveData, seamExternalPrice.price)
-            )
+            .then(userIncentivesInjectRewardPriceUSD)
             .then((userIncentiveData) =>
               set({
                 userIncentiveData,
