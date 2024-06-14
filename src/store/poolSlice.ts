@@ -769,7 +769,7 @@ const injectExternalPrices = async ({
 }: ReservesDataHumanized): Promise<ReservesDataHumanized> => {
   for (let r of reservesData) {
     if (r.priceOracle?.toLowerCase() === MOCK_PRICE_ORACLE.toLowerCase()) {
-      const externalPrice = await fetchExternalPrice(r.underlyingAsset?.toLowerCase());
+      const externalPrice = await fetchExternalPrice(r.underlyingAsset);
       r.priceOracle = `https://www.coingecko.com/en/coins/${externalPrice.coingGeckoId}`;
       r.priceInMarketReferenceCurrency = externalPrice.price;
     }

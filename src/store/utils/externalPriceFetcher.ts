@@ -20,22 +20,23 @@ const REPLACE_ADDRESSES: { [key: string]: string } = {
 
 export const fetchExternalPrice = async (
   address: string
-): Promise<{ price: string; coingGeckoId: string }> => ({
-  price: await queryClient.fetchQuery({
-    queryKey: ['fetchExternalPrice', 'price', address],
-    queryFn: () => getCoinGeckoPriceUSD(address),
-  }),
-  coingGeckoId: await queryClient.fetchQuery({
-    queryKey: ['fetchExternalPrice', 'coingGeckoId', address],
-    queryFn: () => getCoinGeckoCoinDetails(address),
-  }),
-});
+): Promise<{ price: string; coingGeckoId: string }> => {
+  address = address.toLowerCase();
+  return {
+    price: await queryClient.fetchQuery({
+      queryKey: ['fetchExternalPrice', 'price', address],
+      queryFn: () => getCoinGeckoPriceUSD(address),
+    }),
+    coingGeckoId: await queryClient.fetchQuery({
+      queryKey: ['fetchExternalPrice', 'coingGeckoId', address],
+      queryFn: () => getCoinGeckoCoinDetails(address),
+    }),
+  };
+};
 
 const getCoinGeckoPriceUSD = async (address: string): Promise<string> => {
   try {
-    address = REPLACE_ADDRESSES[address.toLowerCase()]
-      ? REPLACE_ADDRESSES[address.toLowerCase()].toLowerCase()
-      : address;
+    address = REPLACE_ADDRESSES[address]?.toLowerCase() || address;
     if (IGNORE_ADDRESSES.find((val) => val.toLowerCase() === address) !== undefined) {
       return '0';
     }
@@ -56,9 +57,7 @@ const getCoinGeckoPriceUSD = async (address: string): Promise<string> => {
 
 const getCoinGeckoCoinDetails = async (address: string): Promise<string | undefined> => {
   try {
-    address = REPLACE_ADDRESSES[address.toLowerCase()]
-      ? REPLACE_ADDRESSES[address.toLowerCase()].toLowerCase()
-      : address;
+    address = REPLACE_ADDRESSES[address]?.toLowerCase() || address;
     if (IGNORE_ADDRESSES.find((val) => val.toLowerCase() === address) !== undefined) {
       return '';
     }

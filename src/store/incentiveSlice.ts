@@ -33,7 +33,7 @@ const injectExternalPrices = async <T extends RewardInfoHumanized | UserRewardIn
     rewardOracleAddress,
     rewardPriceFeed:
       rewardOracleAddress?.toLowerCase() === MOCK_PRICE_ORACLE.toLowerCase()
-        ? (await fetchExternalPrice(rewardTokenAddress.toLowerCase())).price
+        ? (await fetchExternalPrice(rewardTokenAddress)).price
         : rewardPriceFeed,
     priceFeedDecimals:
       rewardOracleAddress?.toLowerCase() === MOCK_PRICE_ORACLE.toLowerCase()
@@ -52,8 +52,8 @@ const incentiveDataInjectRewardPriceUSD = async (
 
 const reserveIncentivesInjectRewardPriceUSD = async (
   reserveIncentives: ReservesIncentiveDataHumanized[]
-): Promise<ReservesIncentiveDataHumanized[]> => {
-  const reps = await Promise.all(
+): Promise<ReservesIncentiveDataHumanized[]> =>
+  Promise.all(
     reserveIncentives.map(async (reserveIncentive) => ({
       ...reserveIncentive,
       aIncentiveData: await incentiveDataInjectRewardPriceUSD(reserveIncentive.aIncentiveData),
@@ -61,11 +61,6 @@ const reserveIncentivesInjectRewardPriceUSD = async (
       sIncentiveData: await incentiveDataInjectRewardPriceUSD(reserveIncentive.sIncentiveData),
     }))
   );
-
-  console.log("reps", reps);
-  return reps;
-}
-  
 
 const userIncentiveDataInjectRewardPriceUSD = async (
   incentiveData: UserIncentiveDataHumanized
@@ -78,8 +73,8 @@ const userIncentiveDataInjectRewardPriceUSD = async (
 
 const userIncentivesInjectRewardPriceUSD = async (
   userIncentives: UserReservesIncentivesDataHumanized[]
-): Promise<UserReservesIncentivesDataHumanized[]> => {
-  const resp = await Promise.all(
+): Promise<UserReservesIncentivesDataHumanized[]> =>
+  Promise.all(
     userIncentives.map(async (userIncentive) => ({
       ...userIncentive,
       aTokenIncentivesUserData: await userIncentiveDataInjectRewardPriceUSD(
@@ -93,11 +88,6 @@ const userIncentivesInjectRewardPriceUSD = async (
       ),
     }))
   );
-
-  console.log("resp: ", resp);
-  return resp;
-}
-  
 
 export const createIncentiveSlice: StateCreator<
   RootStore,
