@@ -22,13 +22,18 @@ interface Navigation {
 export const navigation: Navigation[] = [
   {
     link: ROUTES.seamlessMode,
-    title: t`Seamless Mode`,
-    dataCy: 'seamlessMode',
+    title: t`Seamless ILMs`,
+    dataCy: 'seamlessILMs',
   },
   {
     link: ROUTES.dashboard,
-    title: t`Supply & Borrow Dashboard`,
+    title: t`Lend & Borrow Dashboard`,
     dataCy: 'menuDashboard',
+  },
+  {
+    link: ROUTES.markets,
+    title: t`Lend & Borrow Markets`,
+    dataCy: 'menuMarkets',
   },
   {
     link: '',
