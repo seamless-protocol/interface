@@ -10,7 +10,7 @@ import { MarketWarning } from 'src/components/transactions/Warnings/MarketWarnin
 import { useAppDataContext } from 'src/hooks/app-data-provider/useAppDataProvider';
 import { useProtocolDataContext } from 'src/hooks/useProtocolDataContext';
 import MarketAssetsList from 'src/modules/markets/MarketAssetsList';
-import { fetchIconSymbolAndName } from 'src/ui-config/reservePatches';
+import { fetchIconSymbolAndName, RESTRICTED_MARKETS } from 'src/ui-config/reservePatches';
 
 export const MarketAssetsListContainer = () => {
   const { reserves, loading } = useAppDataContext();
@@ -21,7 +21,7 @@ export const MarketAssetsListContainer = () => {
 
   const filteredData = reserves
     // Filter out any non-active reserves
-    .filter((res) => res.isActive)
+    .filter((res) => res.isActive && RESTRICTED_MARKETS.indexOf(res.underlyingAsset.toLowerCase()) === -1)
     // Filter out all GHO, as we deliberately display it on supported markets
     .filter((res) => {
       if (!searchTerm) return true;

@@ -1129,6 +1129,14 @@ msgstr "Learn more"
 msgid "Learn more in our <0>FAQ guide</0>"
 msgstr "Learn more in our <0>FAQ guide</0>"
 
+#: src/ui-config/menu-items/index.tsx
+msgid "Lend & Borrow Dashboard"
+msgstr "Lend & Borrow Dashboard"
+
+#: src/ui-config/menu-items/index.tsx
+msgid "Lend & Borrow Markets"
+msgstr "Lend & Borrow Markets"
+
 #: src/layouts/MobileMenu.tsx
 msgid "Links"
 msgstr "Links"
@@ -1673,8 +1681,8 @@ msgid "Save and share"
 msgstr "Save and share"
 
 #: src/ui-config/menu-items/index.tsx
-msgid "Seamless Mode"
-msgstr "Seamless Mode"
+msgid "Seamless ILMs"
+msgstr "Seamless ILMs"
 
 #: src/modules/reserve-overview/TokenLinkDropdown.tsx
 msgid "Seamless debt token"
@@ -1866,10 +1874,6 @@ msgstr "Supplied asset amount"
 #: src/modules/reserve-overview/ReserveActions.tsx
 msgid "Supply"
 msgstr "Supply"
-
-#: src/ui-config/menu-items/index.tsx
-msgid "Supply & Borrow Dashboard"
-msgstr "Supply & Borrow Dashboard"
 
 #: src/components/transactions/Supply/SupplyModalContent.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsListMobileItem.tsx
