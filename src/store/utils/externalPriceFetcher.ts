@@ -62,7 +62,7 @@ const getCoinGeckoCoinDetails = async (address: string): Promise<string | undefi
       return '';
     }
     const resp = await fetch(
-      `https://cg-price-cache.seamlessprotocol.com/coins/id/contract/${address}`
+      `https://cg-price-cache.seamlessprotocol.com/coins/base/contract/${address}`
     );
 
     const { web_slug } = await resp.json();

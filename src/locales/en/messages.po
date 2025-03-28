@@ -1129,6 +1129,10 @@ msgstr "Learn more"
 msgid "Learn more in our <0>FAQ guide</0>"
 msgstr "Learn more in our <0>FAQ guide</0>"
 
+#: src/layouts/MainLayout.tsx
+msgid "Legacy Platform Sunset"
+msgstr "Legacy Platform Sunset"
+
 #: src/ui-config/menu-items/index.tsx
 msgid "Lend & Borrow Dashboard"
 msgstr "Lend & Borrow Dashboard"
@@ -2053,6 +2057,10 @@ msgstr "The cooldown period is the time required prior to unstaking your tokens 
 #: src/components/transactions/Swap/SwapModalContent.tsx
 msgid "The effects on the health factor would cause liquidation. Try lowering the amount."
 msgstr "The effects on the health factor would cause liquidation. Try lowering the amount."
+
+#: src/layouts/MainLayout.tsx
+msgid "The legacy platform will be sunsetting on April 14th, 2025. New deposits and borrows will be disabled. We encourage you to migrate to Seamless Vaults on Morpho. More details <0>HERE</0>."
+msgstr "The legacy platform will be sunsetting on April 14th, 2025. New deposits and borrows will be disabled. We encourage you to migrate to Seamless Vaults on Morpho. More details <0>HERE</0>."
 
 #: src/modules/migration/MigrationBottomPanel.tsx
 msgid "The loan to value of the migrated positions would cause liquidation. Increase migrated collateral or reduce migrated borrow to continue."
