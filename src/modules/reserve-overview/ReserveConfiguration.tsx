@@ -26,7 +26,7 @@ type ReserveConfigurationProps = {
 };
 
 export const ReserveConfiguration: React.FC<ReserveConfigurationProps> = ({ reserve }) => {
-  const { currentNetworkConfig, currentMarketData, currentMarket } = useProtocolDataContext();
+  const { currentNetworkConfig, currentMarketData } = useProtocolDataContext();
   const reserveId =
     reserve.underlyingAsset + currentMarketData.addresses.LENDING_POOL_ADDRESS_PROVIDER;
   const renderCharts =
@@ -46,7 +46,7 @@ export const ReserveConfiguration: React.FC<ReserveConfigurationProps> = ({ rese
             <Trans>
               This asset is frozen due to an community decision.{' '}
               <Link
-                href={getFrozenProposalLink(reserve.symbol, currentMarket)}
+                href={getFrozenProposalLink()}
                 sx={{ textDecoration: 'underline' }}
               >
                 <Trans>More details</Trans>
@@ -103,7 +103,7 @@ export const ReserveConfiguration: React.FC<ReserveConfigurationProps> = ({ rese
             <Box sx={{ flexGrow: 1, minWidth: 0, maxWidth: '100%', width: '100%' }}>
               {!reserve.borrowingEnabled && (
                 <Warning sx={{ mb: '40px' }} severity="error">
-                  <BorrowDisabledWarning symbol={reserve.symbol} currentMarket={currentMarket} />
+                  <BorrowDisabledWarning />
                 </Warning>
               )}
               <BorrowInfo
