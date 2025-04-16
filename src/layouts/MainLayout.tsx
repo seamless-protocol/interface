@@ -30,7 +30,7 @@ export function MainLayout({ children }: { children: ReactNode }) {
               </Typography>
               <Typography>
                 <Trans>
-                  The legacy platform will be sunsetting on April 14th, 2025. New deposits and borrows will be disabled. We encourage you to migrate to Seamless Vaults on Morpho. More details{" "}
+                As of April 14th, 2025, the legacy platform has been sunset. New deposits and borrows are disabled. Existing users can still withdraw/repay. We encourage you to migrate to Seamless Vaults on Morpho. More details{" "}
                   <Link href="https://discord.com/channels/1037820309400731769/1037836076875788419/1355232743541182566">HERE</Link>.
                 </Trans>
               </Typography>

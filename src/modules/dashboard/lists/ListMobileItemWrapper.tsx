@@ -48,13 +48,13 @@ export const ListMobileItemWrapper = ({
     const showBorrowDisabledTooltip = !frozen && !borrowEnabled;
     return (
       <>
-        {showFrozenTooltip && <FrozenTooltip symbol={symbol} currentMarket={currentMarket} />}
+        {showFrozenTooltip && <FrozenTooltip />}
         {showRenFilTooltip && <RenFILToolTip />}
         {showAmplTooltip && <AMPLToolTip />}
         {showstETHTooltip && <StETHCollateralToolTip />}
         {showBUSDOffBoardingTooltip && <BUSDOffBoardingTooltip />}
         {showBorrowDisabledTooltip && symbol && currentMarket && (
-          <BorrowDisabledToolTip symbol={symbol} currentMarket={currentMarket} />
+          <BorrowDisabledToolTip />
         )}
       </>
     );
